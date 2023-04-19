@@ -1,38 +1,301 @@
-.App {
-  text-align: center;
+/* FONTS */
+@font-face {
+  font-family: 'Metropolis-Black';
+  src: url('fonts/Metropolis-Black.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+@font-face {
+  font-family: 'Metropolis-Bold';
+  src: url('fonts/Metropolis-Bold.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+@font-face {
+  font-family: 'Metropolis-Medium';
+  src: url('fonts/Metropolis-Medium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+@font-face {
+  font-family: 'Metropolis-Regular';
+  src: url('fonts/Metropolis-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+@font-face {
+  font-family: 'Metropolis-SemiBold';
+  src: url('fonts/Metropolis-SemiBold.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+.Landing {
+  background-color: #181826;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  height: 100vh;
+}
+
+.LandingHero {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.LandingHero h1 {
   color: white;
+  margin: 0;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 96px;
 }
 
-.App-link {
-  color: #61dafb;
+.LandingHero sub {
+  font-weight: 500;
+  font-family: 'Metropolis-Medium';
+  color: white;
+  margin: 0;
+  font-size: 18px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.Upload {
+  border-radius: 8px;
+  padding: 18px 24px;
+  font-weight: 800;
+  font-size: 16px;
+  font-family: 'Metropolis-Black';
+  color: white;
+  background-color: #D92929;
+  border: 0;
+}
+
+.Instructions {
+  margin: 40px 80px;
+}
+
+.WrappedIntroduction {
+  text-align: center;
+  height: 100vh;
+  padding: 0 420px;
+  background-color: #7E18A1;
+  color: #F5EC72;
+}
+
+.Report h1 {
+  font-family: 'Metropolis-Black';
+}
+
+.Report p {
+  font-family: 'Metropolis-Medium';
+}
+
+.Report sub {
+  font-family: 'Metropolis-Medium';
+}
+
+.Report label {
+  font-family: 'Metropolis-Bold';
+}
+
+.WrappedIntroduction h1 {
+  font-size: 52px;
+  margin-bottom: 16px;
+}
+
+.WrappedIntroduction sub {
+  font-size: 20px;
+  margin: 0;
+}
+
+.Here {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.HereSub {
+  width: 80%;
+}
+
+.ScrollDown {
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 32px;
+}
+
+.ScrollDown label {
+  margin-bottom: 16px;
+}
+
+.WrappedWelcome {
+  text-align: center;
+  height: 100vh;
+  padding: 0 450px;
+  background-color: #95C12B;
+  line-height: 40px;
+  color: #FEFFB9;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.genres {
+  width: 100%;
+}
+
+.carousel {
+  display: flex;
+  width: 100%;
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+.WrappedGenres {
+  height: 100vh;
+  padding: 0 80px;
+  background-color: #EE9021;
+  color: #EEFFE7;
+}
+
+.WrappedMinutes {
+  height: 80vh;
+  text-align: center;
+  padding: 0 420px;
+  background-color: #C72B68;
+  color: #F5EC72;
+}
+
+.carouselCard {
+  padding: 0 8px;
+  height: 60vh;
+}
+
+.carouselCard img {
+  border-radius: 12px;
+  height: 100%;
+}
+
+.firstCard {
+  padding-right: 8px;
+  margin-left: 80px;
+  height: 60vh;
+}
+
+.lastCard {
+  padding-left: 8px;
+  margin-right: 80px;
+  height: 60vh;
+}
+
+.firstCard img {
+  border-radius: 12px;
+  height: 100%;
+}
+
+.lastCard img {
+  border-radius: 12px;
+  height: 100%;
+}
+
+.OverviewDesc {
+  padding-left: 80px;
+}
+
+.WrappedShowOverview {
+  padding: 80px 0;
+  background-color: #7E18A1;
+  color: #F5EC72;
+}
+
+.WrappedShowEpisodes {
+  padding: 80px 240px;
+  background-color: #95C12B;
+  color: #FEFFB9;
+}
+
+.Episode {
+  position: relative;
+}
+
+.EpisodeImg {
+  height: 50vh;
+}
+
+.EpisodeImg img {
+  border-radius: 12px;
+  height: 100%;
+}
+
+.WrappedBingeShow {
+  text-align: center;
+  padding: 40px 420px;
+  background-color: #EE9021;
+  color: #EEFFE7;
+}
+
+.BingeShow {
+  height: 60vh;
+}
+.BingeShow img {
+  border-radius: 12px;
+  height: 100%;
+}
+
+.WrappedRatingShow {
+  padding: 80px 240px;
+}
+
+.ratedShow {
+  height: 75vh;
+}
+.ratedShow img {
+  border-radius: 12px;
+  height: 100%;
+}
+
+.best {
+  background-color: #C72B68;
+  color: #F5EC72;
+}
+
+.worst {
+  background-color: #7E18A1;
+  color: #F5EC72;
+}
+
+.WrappedMoviesOverview {
+  padding: 80px 80px;
+  background-color: #95C12B;
+  color: #FEFFB9;
+}
+
+.WrappedPersonality {
+  height: 100vh;
+  padding: 0 160px;
+  background-color: #EE9021;
+}
+
+.PersonalityContainer {
+  background-color: #7E18A1;
+  color: #F5EC72;
 }
