@@ -93,6 +93,22 @@
 
 .Report h1 {
   font-family: 'Metropolis-Black';
+  font-size: 96px;
+}
+
+.Report h2 {
+  font-family: 'Metropolis-Black';
+  font-size: 52px;
+}
+
+.Report h3 {
+  font-family: 'Metropolis-Black';
+  font-size: 44px;
+}
+
+.Report h4 {
+  font-family: 'Metropolis-Black';
+  font-size: 28px;
 }
 
 .Report p {
@@ -107,8 +123,7 @@
   font-family: 'Metropolis-Bold';
 }
 
-.WrappedIntroduction h1 {
-  font-size: 52px;
+.WrappedIntroduction h2 {
   margin-bottom: 16px;
 }
 
@@ -131,19 +146,20 @@
 .ScrollDown {
   position: absolute;
   bottom: 0;
-  margin-bottom: 32px;
+  margin-bottom: 48px;
 }
 
 .ScrollDown label {
+  font-size: 16px;
   margin-bottom: 16px;
 }
 
 .WrappedWelcome {
   text-align: center;
   height: 100vh;
-  padding: 0 450px;
+  padding: 0 420px;
   background-color: #95C12B;
-  line-height: 40px;
+  line-height: 62px;
   color: #FEFFB9;
 }
 
@@ -164,6 +180,7 @@
 }
 
 .carousel {
+  margin-bottom: 64px;
   display: flex;
   width: 100%;
   overflow-x: scroll;
@@ -171,18 +188,45 @@
 }
 
 .WrappedGenres {
-  height: 100vh;
-  padding: 0 80px;
+  padding: 96px 80px 96px 80px;
   background-color: #EE9021;
   color: #EEFFE7;
 }
 
+.WrappedGenres h1 {
+  margin: 48px 0;
+}
+
+.WrappedGenres p {
+  margin: 8px 0;
+  font-size: 32px;
+}
+
+.WrappedGenres sub {
+  font-size: 20px;
+}
+
+.DescMain {
+  margin-bottom: 64px;
+}
+
 .WrappedMinutes {
-  height: 80vh;
   text-align: center;
-  padding: 0 420px;
+  padding: 80px 420px 96px 420px;
   background-color: #C72B68;
   color: #F5EC72;
+}
+
+.WrappedMinutes h1 {
+  margin: 0;
+}
+
+.WrappedMinutes p {
+  font-size: 20px;
+}
+
+.WrappedMinutes sub {
+  font-size: 16px;
 }
 
 .carouselCard {
@@ -221,24 +265,60 @@
   padding-left: 80px;
 }
 
-.WrappedShowOverview {
-  padding: 80px 0;
+.WrappedOverview {
+  padding: 80px 0 64px 0;
   background-color: #7E18A1;
   color: #F5EC72;
 }
 
+.WrappedOverview h3 {
+  margin: 0;
+}
+
+.WrappedOverview p {
+  font-size: 24px;
+}
+
 .WrappedShowEpisodes {
-  padding: 80px 240px;
+  padding: 80px 240px 56px 240px;
   background-color: #95C12B;
   color: #FEFFB9;
 }
 
+.WrappedShowEpisodes h2 {
+  margin: 0;
+}
+
+.WrappedShowEpisodes h4 {
+  margin: 0;
+}
+
+.WrappedShowEpisodes p {
+  font-size: 20px;
+}
+
+.Episodes {
+  padding: 24px 160px 56px 160px;
+}
+
 .Episode {
-  position: relative;
+  margin-bottom: 36px;
+  display: flex;
+  flex-direction: row;
 }
 
 .EpisodeImg {
   height: 50vh;
+}
+
+.EpisodeDesc {
+  display: flex;
+  margin-left: 24px;
+}
+
+.DescContent {
+  display: inline-block;
+    align-self: flex-end;
 }
 
 .EpisodeImg img {
@@ -248,26 +328,67 @@
 
 .WrappedBingeShow {
   text-align: center;
-  padding: 40px 420px;
+  padding: 80px 160px 64px 160px;
   background-color: #EE9021;
   color: #EEFFE7;
 }
 
-.BingeShow {
-  height: 60vh;
+.bingeDesc {
+  margin-top: 8px;
+  width: 60%;
 }
+
+.WrappedBingeShow h1 {
+  margin: 0;
+}
+
+.WrappedBingeShow sub {
+  font-size: 24px;
+}
+
+.WrappedBingeShow p {
+  line-height: 28px;
+  font-size: 20px;
+}
+
+.BingeShow {
+  margin-top: 8px;
+  margin-bottom: 24px;
+  height: 75vh;
+}
+
 .BingeShow img {
   border-radius: 12px;
   height: 100%;
 }
 
 .WrappedRatingShow {
+  display: flex;
+  justify-content: space-between;
   padding: 80px 240px;
 }
 
-.ratedShow {
-  height: 75vh;
+.WrappedRatingShow h2 {
+  line-height: 72px;
 }
+
+.WrappedRatingShow sub {
+  font-size: 20px;
+}
+
+.ratedShow {
+  height: 72vh;
+}
+
+.ratingLeft {
+  margin-right: 56px;
+}
+
+.ratingRight {
+  text-align: right;
+  margin-left: 56px;
+}
+
 .ratedShow img {
   border-radius: 12px;
   height: 100%;
@@ -284,18 +405,85 @@
 }
 
 .WrappedMoviesOverview {
-  padding: 80px 80px;
+  padding: 80px 240px 56px 240px;
   background-color: #95C12B;
   color: #FEFFB9;
 }
 
+.WrappedMoviesOverview h2 {
+  margin: 0;
+}
+
+.WrappedMoviesOverview h3 {
+  margin: 0;
+}
+
+.WrappedMoviesOverview h4 {
+  margin: 8px;
+}
+
+.WrappedMoviesOverview p {
+  font-size: 20px;
+}
+
+.FavoriteMovie {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.favoriteMovieImg {
+  margin-top: 16px;
+  height: 75vh;
+}
+
+.favoriteMovieImg img {
+  border-radius: 12px;
+  height: 100%;
+}
+
 .WrappedPersonality {
+  text-align: center;
   height: 100vh;
   padding: 0 160px;
   background-color: #EE9021;
 }
 
+.WrappedPersonality h2 {
+  margin: 0;
+}
+
+.WrappedPersonality h4 {
+  margin: 0;
+}
+
+.WrappedPersonality p {
+  line-height: 28px;
+  font-size: 20px;
+}
+
 .PersonalityContainer {
-  background-color: #7E18A1;
+  border-radius: 24px;
+  padding: 40px;
+  background-color: #3818a1;
   color: #F5EC72;
+}
+
+.personalityGraphic {
+  margin: 24px 0;
+}
+
+.personalityDesc {
+  width: 50%;
+}
+
+.NVTI {
+  padding: 8px 16px;
+  border-radius: 24px;
+  background-color: #C72B68;
+  width: fit-content;
+  margin: auto;
+}
+
+.NVTI p {
+  margin: 0;
 }
