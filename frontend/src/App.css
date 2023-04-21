@@ -1,3 +1,138 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
 /* FONTS */
 @font-face {
   font-family: 'Metropolis-Black';
@@ -50,29 +185,27 @@
 
 .LandingHero {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 2.5em;
 }
 
 .LandingHero h1 {
   color: white;
-  margin: 0;
   font-family: 'Bebas Neue', cursive;
-  font-size: 96px;
+  font-size: 6em;
 }
 
 .LandingHero sub {
   font-weight: 500;
   font-family: 'Metropolis-Medium';
   color: white;
-  margin: 0;
-  font-size: 18px;
+  font-size: 1.125em;
 }
 
 .Upload {
   border-radius: 8px;
-  padding: 18px 24px;
+  padding: 1.125em 1.5em;
   font-weight: 800;
-  font-size: 16px;
+  font-size: 1em;
   font-family: 'Metropolis-Black';
   color: white;
   background-color: #D92929;
@@ -80,35 +213,35 @@
 }
 
 .Instructions {
-  margin: 40px 80px;
+  margin: 2.5em 5em;
 }
 
 .WrappedIntroduction {
   text-align: center;
   height: 100vh;
-  padding: 0 420px;
+  padding: 0 26.25em;
   background-color: #7E18A1;
   color: #F5EC72;
 }
 
 .Report h1 {
   font-family: 'Metropolis-Black';
-  font-size: 96px;
+  font-size: 6em;
 }
 
 .Report h2 {
   font-family: 'Metropolis-Black';
-  font-size: 52px;
+  font-size: 3.25em;
 }
 
 .Report h3 {
   font-family: 'Metropolis-Black';
-  font-size: 44px;
+  font-size: 2.75em;
 }
 
 .Report h4 {
   font-family: 'Metropolis-Black';
-  font-size: 28px;
+  font-size: 1.75em;
 }
 
 .Report p {
@@ -124,12 +257,12 @@
 }
 
 .WrappedIntroduction h2 {
-  margin-bottom: 16px;
+  margin-bottom: 0.25em;
 }
 
 .WrappedIntroduction sub {
-  font-size: 20px;
-  margin: 0;
+  line-height: 1.5em;
+  font-size: 1.25em;
 }
 
 .Here {
@@ -146,20 +279,20 @@
 .ScrollDown {
   position: absolute;
   bottom: 0;
-  margin-bottom: 48px;
+  margin-bottom: 3em;
 }
 
 .ScrollDown label {
-  font-size: 16px;
-  margin-bottom: 16px;
+  font-size: 1em;
+  margin-bottom: 1em;
 }
 
 .WrappedWelcome {
   text-align: center;
   height: 100vh;
-  padding: 0 420px;
+  padding: 0 26.25em;
   background-color: #95C12B;
-  line-height: 62px;
+  line-height: 4em;
   color: #FEFFB9;
 }
 
@@ -170,17 +303,23 @@
   align-items: center;
 }
 
-.two-col {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
 
 .genres {
+  display: flex;
+  flex-direction: row;
   width: 100%;
 }
 
+.GenreDesc {
+  width: 50%;
+}
+
+.GenreVis {
+  width: 50%;
+}
+
 .carousel {
-  margin-bottom: 64px;
+  margin-bottom: 4em;
   display: flex;
   width: 100%;
   overflow-x: scroll;
@@ -188,121 +327,118 @@
 }
 
 .WrappedGenres {
-  padding: 96px 80px 96px 80px;
+  padding: 8em 6em;
   background-color: #EE9021;
   color: #EEFFE7;
 }
 
 .WrappedGenres h1 {
-  margin: 48px 0;
+  margin: 0.5em 0;
 }
 
 .WrappedGenres p {
-  margin: 8px 0;
-  font-size: 32px;
+  font-size: 2em;
 }
 
 .WrappedGenres sub {
-  font-size: 20px;
+  font-size: 1.25em;
 }
 
 .DescMain {
-  margin-bottom: 64px;
+  margin-bottom: 4em;
 }
 
 .WrappedMinutes {
   text-align: center;
-  padding: 80px 420px 96px 420px;
+  padding: 5em 26.25em;
   background-color: #C72B68;
   color: #F5EC72;
 }
 
 .WrappedMinutes h1 {
-  margin: 0;
+  margin: 0.25em 0;
 }
 
 .WrappedMinutes p {
-  font-size: 20px;
+  font-size: 1.25em;
 }
 
 .WrappedMinutes sub {
-  font-size: 16px;
+  margin-top: 1.5em;
+  font-size: 1em;
 }
 
 .carouselCard {
-  padding: 0 8px;
+  padding: 0 0.5em;
   height: 60vh;
 }
 
 .carouselCard img {
-  border-radius: 12px;
+  border-radius: 0.75em;
   height: 100%;
 }
 
 .firstCard {
-  padding-right: 8px;
-  margin-left: 80px;
+  padding-right: 0.5em;
+  margin-left: 5em;
   height: 60vh;
 }
 
 .lastCard {
-  padding-left: 8px;
-  margin-right: 80px;
+  padding-left: 0.5em;
+  margin-right: 5em;
   height: 60vh;
 }
 
 .firstCard img {
-  border-radius: 12px;
+  border-radius: 0.75em;
   height: 100%;
 }
 
 .lastCard img {
-  border-radius: 12px;
+  border-radius: 0.75em;
   height: 100%;
 }
 
 .OverviewDesc {
-  padding-left: 80px;
+  padding-left: 5em;
 }
 
 .WrappedOverview {
-  padding: 80px 0 64px 0;
+  padding: 5em 0 4em 0;
   background-color: #7E18A1;
   color: #F5EC72;
 }
 
 .WrappedOverview h3 {
-  margin: 0;
+  margin-bottom: 0.75em;
 }
 
 .WrappedOverview p {
-  font-size: 24px;
+  margin-bottom: 1.5em;
+  font-size: 1.5em;
 }
 
 .WrappedShowEpisodes {
-  padding: 80px 240px 56px 240px;
+  padding: 5em 15em 3.5em 15em;
   background-color: #95C12B;
   color: #FEFFB9;
 }
 
-.WrappedShowEpisodes h2 {
-  margin: 0;
-}
-
 .WrappedShowEpisodes h4 {
-  margin: 0;
+  margin-bottom: 0.5em;
 }
 
 .WrappedShowEpisodes p {
-  font-size: 20px;
+  font-size: 1.25em;
 }
 
 .Episodes {
-  padding: 24px 160px 56px 160px;
+  padding: 2em 10em 4.5em 10em;
 }
 
 .Episode {
-  margin-bottom: 36px;
+  margin-bottom: 2.25em;
   display: flex;
   flex-direction: row;
 }
@@ -311,69 +447,88 @@
   height: 50vh;
 }
 
+.EpisodeImg img {
+  height: 100%;
+}
+
 .EpisodeDesc {
   display: flex;
-  margin-left: 24px;
+  margin-left: 1.5em;
 }
 
 .DescContent {
   display: inline-block;
-    align-self: flex-end;
+  align-self: flex-end;
+}
+
+.DescContent h2 {
+  margin-bottom: 0.25em;
+}
+
+.DescContentMovie {
+  display: inline-block;
+  align-self: flex-end;
+}
+
+.DescContentMovie h2 {
+  margin-top: 0.25em;
 }
 
 .EpisodeImg img {
-  border-radius: 12px;
+  border-radius: 0.75em;
   height: 100%;
 }
 
 .WrappedBingeShow {
   text-align: center;
-  padding: 80px 160px 64px 160px;
+  padding: 5em 10em 4em 10em;
   background-color: #EE9021;
   color: #EEFFE7;
 }
 
+.WrappedBingeShow h1 {
+  margin-bottom: 0;
+}
+
 .bingeDesc {
-  margin-top: 8px;
+  margin: 1.5em 0 0.75em 0;
   width: 60%;
 }
 
-.WrappedBingeShow h1 {
-  margin: 0;
-}
-
 .WrappedBingeShow sub {
-  font-size: 24px;
+  font-size: 1.5em;
 }
 
 .WrappedBingeShow p {
-  line-height: 28px;
-  font-size: 20px;
+  line-height: 1.5em;
+  font-size: 1.25em;
 }
 
 .BingeShow {
-  margin-top: 8px;
-  margin-bottom: 24px;
+  margin-top: 1em;
+  margin-bottom: 1.5em;
   height: 75vh;
 }
 
 .BingeShow img {
-  border-radius: 12px;
+  border-radius: 0.75em;
   height: 100%;
 }
 
 .WrappedRatingShow {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
-  padding: 80px 240px;
+  padding: 5em 15em;
 }
 
 .WrappedRatingShow h2 {
-  line-height: 72px;
+  line-height: 1.5em;
+  margin-bottom: 1em;
 }
 
 .WrappedRatingShow sub {
-  font-size: 20px;
+  font-size: 1.25em;
 }
 
 .ratedShow {
@@ -381,16 +536,17 @@
 }
 
 .ratingLeft {
-  margin-right: 56px;
+  text-align: left;
+  margin-right: 3.5em;
 }
 
 .ratingRight {
   text-align: right;
-  margin-left: 56px;
+  margin-left: 3.5em;
 }
 
 .ratedShow img {
-  border-radius: 12px;
+  border-radius: 0.75em;
   height: 100%;
 }
 
@@ -405,71 +561,60 @@
 }
 
 .WrappedMoviesOverview {
-  padding: 80px 240px 56px 240px;
+  padding: 5em 15em 3.5em 15em;
   background-color: #95C12B;
   color: #FEFFB9;
 }
 
-.WrappedMoviesOverview h2 {
-  margin: 0;
-}
-
 .WrappedMoviesOverview h3 {
-  margin: 0;
+  margin-bottom: 0.5em;
 }
 
-.WrappedMoviesOverview h4 {
-  margin: 8px;
-}
 
 .WrappedMoviesOverview p {
-  font-size: 20px;
+  font-size: 1.25em;
 }
 
 .FavoriteMovie {
   text-align: center;
-  margin-bottom: 36px;
+  margin-bottom: 3em;
 }
 
 .favoriteMovieImg {
-  margin-top: 16px;
+  margin: 1.5em 0;
   height: 75vh;
 }
 
 .favoriteMovieImg img {
-  border-radius: 12px;
+  border-radius: 0.75em;
   height: 100%;
 }
 
 .WrappedPersonality {
   text-align: center;
-  height: 100vh;
-  padding: 0 160px;
+  padding: 5em 10em;
   background-color: #EE9021;
 }
 
 .WrappedPersonality h2 {
-  margin: 0;
-}
-
-.WrappedPersonality h4 {
-  margin: 0;
+  margin-bottom: 0.25em;
 }
 
 .WrappedPersonality p {
-  line-height: 28px;
-  font-size: 20px;
+  line-height: 1.25em;
+  font-size: 1.25em;
 }
 
 .PersonalityContainer {
-  border-radius: 24px;
-  padding: 40px;
+  border-radius: 1.5em;
+  padding: 2.5em;
   background-color: #3818a1;
   color: #F5EC72;
 }
 
 .personalityGraphic {
-  margin: 24px 0;
+  width: 12vw;
+  margin: 1.75em 0;
 }
 
 .personalityDesc {
@@ -477,13 +622,437 @@
 }
 
 .NVTI {
-  padding: 8px 16px;
-  border-radius: 24px;
+  font-weight: 800;
+  padding: 0.5em 1em;
+  border-radius: 1.5em;
   background-color: #C72B68;
   width: fit-content;
   margin: auto;
+  margin-top: 1.5em;
 }
 
-.NVTI p {
-  margin: 0;
+@media screen and (max-width: 1200px) {
+
+  html,
+  body,
+  div,
+  span,
+  applet,
+  object,
+  iframe,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  blockquote,
+  pre,
+  a,
+  abbr,
+  acronym,
+  address,
+  big,
+  cite,
+  code,
+  del,
+  dfn,
+  em,
+  img,
+  ins,
+  kbd,
+  q,
+  s,
+  samp,
+  small,
+  strike,
+  strong,
+  sub,
+  sup,
+  tt,
+  var,
+  b,
+  u,
+  i,
+  center,
+  dl,
+  dt,
+  dd,
+  ol,
+  ul,
+  li,
+  fieldset,
+  form,
+  label,
+  legend,
+  table,
+  caption,
+  tbody,
+  tfoot,
+  thead,
+  tr,
+  th,
+  td,
+  article,
+  aside,
+  canvas,
+  details,
+  embed,
+  figure,
+  figcaption,
+  footer,
+  header,
+  hgroup,
+  menu,
+  nav,
+  output,
+  ruby,
+  section,
+  summary,
+  time,
+  mark,
+  audio,
+  video {
+    font-size: 97%;
+  }
+
+  .WrappedIntroduction {
+    padding: 0 16em;
+  }
+
+  .WrappedWelcome {
+    padding: 0 16em;
+  }
+
+  .WrappedMinutes {
+    padding: 5em 16em;
+  }
+
+  .WrappedShowEpisodes {
+    padding: 5em 12em 3.5em 12em;
+  }
+
+  .WrappedBingeShow {
+    padding: 5em 6em 4em 6em;
+  }
+
+  .WrappedRatingShow {
+    padding: 5em 6em;
+  }
+
+  .WrappedMoviesOverview {
+    padding: 5em 8em 3.5em 8em;
+  }
+
+  .WrappedPersonality {
+    padding: 4em 8em;
+  }
+
+  .carouselCard {
+    padding: 0 0.5em;
+    height: 40vh;
+  }
+
+  .firstCard {
+    padding-right: 0.5em;
+    margin-left: 4em;
+    height: 40vh;
+  }
+
+  .lastCard {
+    padding-left: 0.5em;
+    margin-right: 4em;
+    height: 40vh;
+  }
+
+  .OverviewDesc {
+    padding-left: 4em;
+  }
+
+  .Episodes {
+    padding: 2em 10em 4.5em 10em;
+  }
+
+  .Episode {
+    margin-bottom: 2.5em;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .EpisodeImg {
+    height: 40vh;
+  }
+
+  .BingeShow {
+    height: 75vh;
+  }
+
+  .bingeDesc {
+    width: 75%;
+  }
+
+  .WrappedRatingShow {
+    padding: 5em 6em;
+  }
+
+  .WrappedRatingShow h2 {
+    line-height: 1.25em;
+    margin-bottom: 0.5em;
+  }
+
+  .ratedShow {
+    margin: auto;
+    height: 60vh;
+  }
+
+  .personalityGraphic {
+    width: 16vw;
+    margin: 1.5em 0;
+  }
+
+  .personalityDesc {
+    width: 65%;
+  }
+
+    .WrappedGenres {
+      padding: 6em 5em;
+      background-color: #EE9021;
+      color: #EEFFE7;
+    }
+
+}
+
+@media screen and (max-width: 800px) {
+
+  html,
+  body,
+  div,
+  span,
+  applet,
+  object,
+  iframe,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  blockquote,
+  pre,
+  a,
+  abbr,
+  acronym,
+  address,
+  big,
+  cite,
+  code,
+  del,
+  dfn,
+  em,
+  img,
+  ins,
+  kbd,
+  q,
+  s,
+  samp,
+  small,
+  strike,
+  strong,
+  sub,
+  sup,
+  tt,
+  var,
+  b,
+  u,
+  i,
+  center,
+  dl,
+  dt,
+  dd,
+  ol,
+  ul,
+  li,
+  fieldset,
+  form,
+  label,
+  legend,
+  table,
+  caption,
+  tbody,
+  tfoot,
+  thead,
+  tr,
+  th,
+  td,
+  article,
+  aside,
+  canvas,
+  details,
+  embed,
+  figure,
+  figcaption,
+  footer,
+  header,
+  hgroup,
+  menu,
+  nav,
+  output,
+  ruby,
+  section,
+  summary,
+  time,
+  mark,
+  audio,
+  video {
+    font-size: 95%;
+  }
+
+  .WrappedIntroduction {
+    padding: 0 9em;
+  }
+
+  .WrappedWelcome {
+    padding: 0 9em;
+  }
+
+  .WrappedMinutes {
+    padding: 5em 9em;
+  }
+
+  .WrappedShowEpisodes {
+    padding: 5em 4em 3.5em 4em;
+  }
+
+  .WrappedBingeShow {
+    padding: 5em 4em 4em 4em;
+  }
+
+  .WrappedRatingShow {
+    padding: 5em 6em;
+  }
+
+  .WrappedMoviesOverview {
+    padding: 5em 4em 3.5em 4em;
+  }
+
+  .WrappedPersonality {
+    padding: 8em 5em;
+  }
+
+  .carouselCard {
+    padding: 0 0.5em;
+    height: 30vh;
+  }
+
+  .firstCard {
+    padding-right: 0.5em;
+    margin-left: 3.5em;
+    height: 30vh;
+  }
+
+  .lastCard {
+    padding-left: 0.5em;
+    margin-right: 3.5em;
+    height: 30vh;
+  }
+
+  .OverviewDesc {
+    padding-left: 3.5em;
+  }
+
+  .Episodes {
+    padding: 2em 5em 4.5em 5em;
+  }
+
+  .Episode {
+    margin-bottom: 2em;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .EpisodeImg {
+    height: 30vh;
+  }
+
+  .BingeShow {
+    height: 60vh;
+  }
+
+  .bingeDesc {
+    width: 80%;
+  }
+
+  .WrappedRatingShow {
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 5em 6em;
+  }
+
+  .WrappedRatingShow h2 {
+    line-height: 1.25em;
+    margin-bottom: 0.25em;
+  }
+
+  .ratedShow {
+    margin: auto;
+    height: 60vh;
+  }
+
+  .ratingLeft {
+    text-align: center;
+    margin-right: 0;
+    margin-bottom: 3.5em;
+  }
+
+  .ratingRight {
+    margin-top: 3.5em;
+    text-align: center;
+    margin-left: 0;
+  }
+
+  .favoriteMovieImg {
+    margin: 1.5em 0;
+    height: 60vh;
+  }
+
+  .personalityGraphic {
+    width: 32vw;
+    margin: 2em 0;
+  }
+
+  .personalityDesc {
+    width: 85%;
+  }
+
+  .WrappedShowEpisodes h4 {
+    line-height: 1.5em;
+    margin-bottom: 0.25em;
+  }
+
+  .WrappedBingeShow h1 {
+    margin-bottom: 0.15em;
+  }
+
+  .WrappedMoviesOverview h3 {
+    margin-bottom: 0.25em;
+  }
+    .PersonalityContainer {
+      padding: 4em;
+    }
+
+        .genres {
+          flex-direction: column;
+          width: 100%;
+        }
+    
+        .GenreDesc {
+          text-align: center;
+          width: 100%;
+        }
+    
+        .GenreVis {
+          width: 100%;
+        }
 }
