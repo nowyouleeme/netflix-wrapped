@@ -31,8 +31,8 @@ export function NVTIPersonality(props: NVTIPersonalityProps) {
                   y2="219"
                   gradientUnits="userSpaceOnUse"
                 >
-                  <stop stop-color="#95C12B" />
-                  <stop offset="1" stop-color="#DB1864" />
+                  <stop stopColor="#95C12B" />
+                  <stop offset="1" stopColor="#DB1864" />
                 </linearGradient>
               </defs>
             </svg>
