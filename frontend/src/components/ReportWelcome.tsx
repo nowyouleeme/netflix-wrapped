@@ -1,7 +1,10 @@
-export function ReportWelcome() {
+interface ReportWelcomeProps {
+    name: string;
+}
+export function ReportWelcome(props: ReportWelcomeProps) {
     return (
       <div className="center WrappedWelcome">
-        <h2>Welcome to your Netflix Wrapped, Justin</h2>
+        <h2>Welcome to your Netflix Wrapped, {props.name}</h2>
       </div>
     );
 }

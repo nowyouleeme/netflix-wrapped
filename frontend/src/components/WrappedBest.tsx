@@ -1,5 +1,6 @@
 interface WrappedBest {
     name: string;
+    type: string;
     rating: number;
 }
 export function WrappedBest(props: WrappedBest) {
@@ -7,8 +8,7 @@ export function WrappedBest(props: WrappedBest) {
       <div className="WrappedRatingShow best">
         <div className="ratingLeft">
           <h2>
-            The most critically acclaimed show you watched was{" "}
-            <i>{props.name}</i>, rated {props.rating} on IMDb.
+            The most critically acclaimed {props.type} you watched was <i>{props.name}</i>, rated {props.rating} on IMDb.
           </h2>
           <sub>You have some great taste!</sub>
         </div>

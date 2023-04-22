@@ -202,14 +202,9 @@ table {
 }
 
 .Upload {
-  border-radius: 8px;
-  padding: 1.125em 1.5em;
   font-weight: 800;
   font-size: 1em;
   font-family: 'Metropolis-Black';
-  color: white;
-  background-color: #D92929;
-  border: 0;
 }
 
 .Instructions {
