@@ -25,11 +25,9 @@ function Landing() {
           <h1>NETFLIX WRAPPED</h1>
           <sub>A lookback on your time with Netflix.</sub>
         </div>
-        <Uploader/> 
-    
-        
-        
-        <Link style={{textDecoration: "none"}} to={`/Report`}>
+        <Uploader />
+
+        <Link style={{ textDecoration: "none" }} to={`/Report`}>
           <label className="Upload" htmlFor="netflix-file">
             <Button
               onClick={handleClick}
@@ -38,12 +36,13 @@ function Landing() {
                 fontFamily: "Metropolis-Black",
                 color: "white",
                 backgroundColor: "#D92929",
+                marginTop: "1em",
               }}
               variant="contained"
               color="primary"
               component="span"
             >
-              {uploadState}
+              See your Wrapped
             </Button>
           </label>
         </Link>
