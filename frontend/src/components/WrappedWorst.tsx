@@ -9,7 +9,7 @@ export function WrappedWorst(props:WrappedWorstProps) {
       <div className="WrappedRatingShow worst">
         <div className="ratedShow">
             {/* image url would be props probably */}
-          <img src={require("../assets/poster-780.jpg")} />
+          <img src={require("../assets/images/poster-780.jpg")} />
         </div>
         <div className="ratingRight">
           <h2>

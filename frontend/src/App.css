@@ -298,7 +298,6 @@ table {
   align-items: center;
 }
 
-
 .genres {
   display: flex;
   flex-direction: row;
@@ -306,15 +305,23 @@ table {
 }
 
 .GenreDesc {
+  margin-bottom: 0;
   width: 50%;
 }
 
 .GenreVis {
+  background-color: #ffba6add;
+  padding: 3em 0.5em;
   width: 50%;
+  border-radius: 1em;
+}
+
+.carouselContainer {
+  padding: 0 5em;
+  margin-bottom: 4em;
 }
 
 .carousel {
-  margin-bottom: 4em;
   display: flex;
   width: 100%;
   overflow-x: scroll;
@@ -327,9 +334,6 @@ table {
   color: #EEFFE7;
 }
 
-.WrappedGenres h1 {
-  margin: 0.5em 0;
-}
 
 .WrappedGenres p {
   font-size: 2em;
@@ -339,8 +343,12 @@ table {
   font-size: 1.25em;
 }
 
+.WrappedGenres h1 {
+  margin: 0.5em 0;
+}
+
 .DescMain {
-  margin-bottom: 4em;
+  margin-bottom: 5em;
 }
 
 .WrappedMinutes {
@@ -810,11 +818,11 @@ table {
     width: 65%;
   }
 
-    .WrappedGenres {
-      padding: 6em 5em;
-      background-color: #EE9021;
-      color: #EEFFE7;
-    }
+  .WrappedGenres {
+    padding: 6em 5em;
+    background-color: #EE9021;
+    color: #EEFFE7;
+  }
 
 }
 
@@ -1033,21 +1041,39 @@ table {
   .WrappedMoviesOverview h3 {
     margin-bottom: 0.25em;
   }
-    .PersonalityContainer {
-      padding: 4em;
-    }
 
-        .genres {
-          flex-direction: column;
-          width: 100%;
-        }
-    
-        .GenreDesc {
-          text-align: center;
-          width: 100%;
-        }
-    
-        .GenreVis {
-          width: 100%;
-        }
+  .PersonalityContainer {
+    padding: 4em;
+  }
+
+  .genres {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .GenreDesc {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 4em;
+  }
+
+  .GenreVis {
+    margin: auto;
+    padding: 2em 1em;
+    width: 85%;
+  }
+
+  .WrappedGenres {
+    padding: 6em 2em;
+    background-color: #EE9021;
+    color: #EEFFE7;
+  }
+
+  .WrappedGenres h1 {
+    margin: 0.3em 0;
+  }
+
+  .DescMain {
+    margin-bottom: 1.5em;
+  }
 }
