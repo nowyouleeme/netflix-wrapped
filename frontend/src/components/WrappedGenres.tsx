@@ -14,13 +14,6 @@ interface WrappedGenresProps {
   // just need array of data
   genres: Array<{ genre: string; count: number }>
 }
-// "topGenres": [
-//     { "genre": "Action", "count": 12 },
-//     { "genre": "Romance", "count": 10 },
-//     { "genre": "Comedy", "count": 9 },
-//     { "genre": "Thriller", "count": 3 },
-//     { "genre": "Slice of Life", "count": 1 }
-//   ],
 
 export function WrappedGenres(props: WrappedGenresProps) {
 
@@ -46,8 +39,6 @@ export function WrappedGenres(props: WrappedGenresProps) {
       {
         label: "# of shows and movies watched",
         data: buildGenreCount(props.genres),
-        scaleFontColor: "#FFFFFF",
-        pointLabelFontColor: "#FFFFFF",
         backgroundColor: [
           "#1CADFF",
           "#7E18A1",
@@ -61,6 +52,13 @@ export function WrappedGenres(props: WrappedGenresProps) {
   };
 
   let options = {
+    scales: {
+      r: {
+        ticks: {
+          display: false
+        }
+      }
+    },
     maintainAspectRatio: false,
     plugins: {
       legend: {
@@ -71,6 +69,7 @@ export function WrappedGenres(props: WrappedGenresProps) {
             family: "Metropolis-Medium",
           },
           color: "#4D6344",
+          
         },
       },
     },

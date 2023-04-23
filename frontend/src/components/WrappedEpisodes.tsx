@@ -28,32 +28,25 @@ export function WrappedEpisodes(props: WrappedEpisodesProps) {
           <p>with some you just couldn't get enough of:</p>
         </div>
         <div className="Episodes">
-          <div className="Episode">
-            <div className="EpisodeImg">
-              <img src={require("../assets/images/poster-780.jpg")} />
-            </div>
-            <div className="EpisodeDesc">
-              <div className="DescContent">
-                <h2>24 episodes</h2>
-                <p>
-                  You watched through 50% of the episodes for <i>Dynasty</i>
-                </p>
+          {props.above50.map((value, index) => (
+            <div className="Episode">
+              <div className="EpisodeImg">
+                <img
+                  src={require("../" + value.image)}
+                  alt={`Poster for the show '${value.title}'`}
+                />
+              </div>
+              <div className="EpisodeDesc">
+                <div className="DescContent">
+                  <h2>{value.numEpWatched} episodes</h2>
+                  <p>
+                    You watched through {value.percentageFinished}% of the
+                    episodes for <i>{value.title}</i>
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="Episode">
-            <div className="EpisodeImg">
-              <img src={require("../assets/images/poster-780.jpg")} />
-            </div>
-            <div className="EpisodeDesc">
-              <div className="DescContent">
-                <h2>24 episodes</h2>
-                <p>
-                  You watched through 50% of the episodes for <i>Dynasty</i>
-                </p>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
 
@@ -62,32 +55,25 @@ export function WrappedEpisodes(props: WrappedEpisodesProps) {
           And others that you started but <b>never finished:</b>
         </p>
         <div className="Episodes">
-          <div className="Episode">
-            <div className="EpisodeImg">
-              <img src={require("../assets/images/poster-780.jpg")} />
-            </div>
-            <div className="EpisodeDesc">
-              <div className="DescContent">
-                <h2>24 episodes</h2>
-                <p>
-                  You watched through 50% of the episodes for <i>Dynasty</i>
-                </p>
+          {props.below50.map((value, index) => (
+            <div className="Episode">
+              <div className="EpisodeImg">
+                <img
+                  src={require("../" + value.image)}
+                  alt={`Poster for the show '${value.title}'`}
+                />
+              </div>
+              <div className="EpisodeDesc">
+                <div className="DescContent">
+                  <h2>{value.numEpWatched} episodes</h2>
+                  <p>
+                    You watched through {value.percentageFinished}% of the
+                    episodes for <i>{value.title}</i>
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="Episode">
-            <div className="EpisodeImg">
-              <img src={require("../assets/images/poster-780.jpg")} />
-            </div>
-            <div className="EpisodeDesc">
-              <div className="DescContent">
-                <h2>24 episodes</h2>
-                <p>
-                  You watched through 50% of the episodes for <i>Dynasty</i>
-                </p>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>

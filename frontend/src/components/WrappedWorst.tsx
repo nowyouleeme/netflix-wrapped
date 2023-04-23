@@ -1,20 +1,27 @@
 interface WrappedWorstProps {
-    name: string;
-    type: string;
-    rating: number;
+  type: string;
+  worstRated: { title: string; rating: number; image: string };
+  backgroundColor: string;
+  color: string;
 }
 
 export function WrappedWorst(props:WrappedWorstProps) {
+  let altText =
+    `Poster for the ${props.type} '${props.worstRated.title}'`;
     return (
-      <div className="WrappedRatingShow worst">
+      <div
+        className="WrappedRatingShow worst"
+        style={{ backgroundColor: props.backgroundColor, color: props.color }}
+      >
         <div className="ratedShow">
-            {/* image url would be props probably */}
-          <img src={require("../assets/images/poster-780.jpg")} />
+          {/* image url would be props probably */}
+          <img src={require("../" + props.worstRated.image)} alt={altText}/>
         </div>
         <div className="ratingRight">
           <h2>
-            The worst rated {props.type} you watched was <i>{props.name}</i>,
-            rated {props.rating} on IMDb.
+            The worst rated {props.type} you watched was{" "}
+            <i>{props.worstRated.title}</i>, rated{" "}
+            {props.worstRated.rating.toFixed(1)} on IMDb.
           </h2>
           <sub>
             {/* this will probably be props but maybe would have to convert string to element bc include other html tags */}

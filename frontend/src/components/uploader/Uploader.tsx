@@ -7,13 +7,6 @@ import { Button } from '@mui/material';
 function Uploader() {
     const [file, setFile] = useState<File>();
 
-    const fileReader = new FileReader();
-
-    const handleOnSubmit = () => {
-        
-      };
-
-
     return (
       <div className="Uploader">
         <form>
@@ -84,14 +77,13 @@ function Uploader() {
               fontFamily: "Metropolis-Black",
               color: "#D92929",
               backgroundColor: "white",
-              marginTop: "1em"
-            
+              marginTop: "1em",
             }}
             variant="contained"
             color="primary"
             component="span"
           >
-            IMPORT CSV
+            Get your wrapped
           </Button>
         </form>
       </div>

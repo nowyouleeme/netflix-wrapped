@@ -12,14 +12,25 @@
     "shows": [
       {
         "title": "Bob's Burgers",
-        "numEpWatched": 4
+        "numEpWatched": 4,
+        "image": "assets/images/poster-780.jpg"
       },
       {
         "title": "Ivy's Burgers",
-        "numEpWatched": 3
+        "numEpWatched": 3,
+        "image": "assets/images/poster-780.jpg"
       }
     ],
-    "movies": ["Spider-Man", "Blah"]
+    "movies": [
+      {
+        "title": "Spider-Man",
+        "image": "assets/images/poster-780.jpg"
+      },
+      {
+        "title": "Idk",
+        "image": "assets/images/poster-780.jpg"
+      }
+    ]
   },
   "shows": {
     "totalEpWatched": 200,
@@ -120,12 +131,12 @@
     },
     "worstRated": {
       "title": "BLah",
-      "rating": 1,
+      "rating": 1.0,
       "image": "assets/images/poster-780.jpg"
     }
   },
   "personality": {
-    "title": "Explorer",
+    "title": "The Explorer",
     "description": "You’re an adventurous one. Not limiting yourself to either movies or shows, you delve into wide and varied range of genres to explore the unknown."
   }
 }

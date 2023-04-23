@@ -1,7 +1,8 @@
-interface NVTIPersonalityProps{
-    NVTI: string;
+interface NVTIPersonalityProps {
+  personality: {
     title: string;
-    desc: string;
+    description: string;
+  };
 }
 
 export function NVTIPersonality(props: NVTIPersonalityProps) {
@@ -37,16 +38,11 @@ export function NVTIPersonality(props: NVTIPersonalityProps) {
               </defs>
             </svg>
           </div>
-          <h2>{props.title}</h2>
+          <h2>✧ {props.personality.title} ✧</h2>
           <div className="personalityDesc">
             <p>
-              <i>
-                {props.desc}
-              </i>
+              <i>{props.personality.description}</i>
             </p>
-            <div className="NVTI">
-              <p>✧ {props.NVTI} ✧</p>
-            </div>
           </div>
         </div>
       </div>

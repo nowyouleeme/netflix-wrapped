@@ -1,36 +1,34 @@
-import React, { useState, useRef } from "react";
-import { Button } from "@mui/material";
-import { Outlet, Link } from "react-router-dom";
+import { Button, TextField } from "@mui/material";
+import { Link } from "react-router-dom";
 import "../App.css";
 import Uploader from "../components/uploader/Uploader"
+import { useState } from "react";
 function Landing() {
-  const [uploadState, setUploadState] = useState<string>(
-    "Upload ViewingHistory.csv File"
-  );
-  function handleClick() {
-    // ideally you'd set the file object, get the info, send it to backend
-    setUploadState("Generating your Wrapped...");
-    // then wait till you get info back, trigger statechange of page/navigate to new?
-    // create new app component and navigate to that? is that even possible
-    //  https://bobbyhadz.com/blog/react-onclick-redirect
-    // https://stackoverflow.com/questions/49840197/how-can-i-set-delay-function-in-react-routing
-    // https://reactrouter.com/en/main/start/tutorial
-    // idk which to do
-  }
-
+const [contents, setContents] = useState("");
   return (
     <div className="LandingBackground">
-      <div className="Landing">
+      <div className="center Landing">
         <div className="LandingHero">
           <h1>NETFLIX WRAPPED</h1>
           <sub>A lookback on your time with Netflix.</sub>
         </div>
+        <TextField
+          id="outlined-basic"
+          label="What's your name?"
+          sx={{ input: { color: "white", fontFamily: "Metropolis-Medium" } }}
+          variant="outlined"
+          onChange={(e) => setContents(e.target.value)} // this will actually store the content inside the input box
+          value={contents} // NEED TO SPECIFY THIS IN ORDER FOR TEXT BOX TO CLEAR
+        />
         <Uploader />
 
-        <Link style={{ textDecoration: "none" }} to={`/Report`}>
+        <Link
+          style={{ textDecoration: "none" }}
+          to={`/Report`}
+          state={{ name: contents }}
+        >
           <label className="Upload" htmlFor="netflix-file">
             <Button
-              onClick={handleClick}
               style={{
                 padding: "0.75em 1.5em",
                 fontFamily: "Metropolis-Black",
@@ -42,10 +40,27 @@ function Landing() {
               color="primary"
               component="span"
             >
-              See your Wrapped
+              go
             </Button>
           </label>
         </Link>
+        <div className="center Help">
+          <label>How do I get my ViewingHistory.csv?</label>
+          <div className="arrow">
+            <svg
+              width="30"
+              height="18"
+              viewBox="0 0 30 18"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M3.42048 0L14.5553 11.1348L25.69 0L29.1105 3.44474L14.5553 18L0 3.44474L3.42048 0Z"
+                fill="rgb(193, 193, 193"
+              />
+            </svg>
+          </div>
+        </div>
       </div>
       <div className="Instructions">
         <div>

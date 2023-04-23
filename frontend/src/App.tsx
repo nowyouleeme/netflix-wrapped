@@ -1,7 +1,3 @@
-import React, { useState } from "react";
-import logo from "./logo.svg";
-import { Button } from "@mui/material";
-import { InputLabel } from "@mui/material";
 import "./App.css";
 import { WrappedGenres } from "./components/WrappedGenres";
 import { WrappedMinutes } from "./components/WrappedMinutes";
@@ -12,63 +8,61 @@ import { WrappedMoviesOverview } from "./components/WrappedMoviesOverview";
 import { NVTIPersonality } from "./components/NVTIPersonality";
 import { ReportIntro } from "./components/ReportIntro";
 import { ReportWelcome } from "./components/ReportWelcome";
-import Landing from "./pages/Landing";
-import mockShowData from "./assets/mocks/mockShows.json";
 import { WrappedOverview } from "./components/WrappedOverview";
 import mockAll from "./assets/mocks/mockAll.json";
+import { BingeData } from "./components/BingeData";
+import { useLocation} from "react-router-dom";
 
 // mockShowData.forEach((item) => {
 //   item.image = process.env.PUBLIC_URL + "/" + item.image;
 // });
 
 function App() {
+  const location = useLocation();
+  const state = location.state;
   return (
     <div className="Report">
       <ReportIntro year={2022} />
-      <ReportWelcome name="Justin" />
+      <ReportWelcome name={state.name} />
       <WrappedGenres genres={mockAll.topGenres} />
       <WrappedMinutes totalMin={mockAll.totalMin} />
-
       <WrappedOverview
         shows={mockAll.shows.allShows}
         movies={mockAll.movie.allMovies}
       />
-
       <WrappedEpisodes
         totalEps={mockAll.shows.totalEpWatched}
         totalShows={mockAll.shows.allShows.length}
         above50={mockAll.shows.topShows.above50}
         below50={mockAll.shows.topShows.below50}
       />
-
-      <WrappedBest type="show" name="Street Food" rating={8.4} />
-      <WrappedWorst type="show" name="Street Food" rating={8.4} />
-      <WrappedMoviesOverview nameMovie="Spider-Man" favNum={5} />
-      <WrappedBest type="movie" name="Spider-Man" rating={8.4} />
-      <WrappedWorst type="movie" name="Spider-Man" rating={8.4} />
-      <div className="center WrappedBingeShow">
-        <h1>March 18th, 2022</h1>
-        <sub>was quite the special day.</sub>
-        <div className="bingeDesc">
-          <p>
-            On this day, you managed to watch <b>11 episodes</b> of{" "}
-            <i>Street Food: USA</i>, making it your{" "}
-            <b>most bingeful show day</b> of the year.
-          </p>
-        </div>
-
-        <div className="BingeShow">
-          <img src={require("./assets/images/poster-780.jpg")} />
-        </div>
-        <p>Pretty productive, if we say so ourselves!</p>
-      </div>
-      <NVTIPersonality
-        desc="You’re an adventurous one. Not limiting yourself to either
-                movies or shows, you delve into wide and varied range of genres
-                to explore the unknown."
-        title="The Explorer"
-        NVTI="ENDP"
+      <WrappedBest
+        type="show"
+        bestRated={mockAll.shows.bestRated}
+        color="#EEFFE7"
+        backgroundColor="#EE9021"
       />
+      <WrappedWorst
+        color="#F5EC72"
+        backgroundColor="#C72B68"
+        worstRated={mockAll.shows.worstRated}
+        type="show"
+      />
+      <WrappedMoviesOverview year={2022} movies={mockAll.movie.topMovies} />
+      <WrappedBest
+        color="#FEFFB9"
+        backgroundColor="#95C12B"
+        type="movie"
+        bestRated={mockAll.movie.bestRated}
+      />
+      <WrappedWorst
+        color="#EEFFE7"
+        backgroundColor="#EE9021"
+        worstRated={mockAll.movie.worstRated}
+        type="movie"
+      />
+      <BingeData bingeData={mockAll.bingeData} />
+      <NVTIPersonality personality={mockAll.personality} />
     </div>
   );
 }
