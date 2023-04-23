@@ -13,71 +13,33 @@ import { NVTIPersonality } from "./components/NVTIPersonality";
 import { ReportIntro } from "./components/ReportIntro";
 import { ReportWelcome } from "./components/ReportWelcome";
 import Landing from "./pages/Landing";
-import mockShowData from "./assets/mockShows.json";
+import mockShowData from "./assets/mocks/mockShows.json";
+import { WrappedOverview } from "./components/WrappedOverview";
+import mockAll from "./assets/mocks/mockAll.json";
 
-mockShowData.forEach((item) => {
-  item.image = process.env.PUBLIC_URL + "/" + item.image;
-});
+// mockShowData.forEach((item) => {
+//   item.image = process.env.PUBLIC_URL + "/" + item.image;
+// });
 
 function App() {
   return (
     <div className="Report">
       <ReportIntro year={2022} />
       <ReportWelcome name="Justin" />
-      <WrappedGenres favGenre="Action" numGenres={4} />
-      <WrappedMinutes totalMin={100000} />
+      <WrappedGenres genres={mockAll.topGenres} />
+      <WrappedMinutes totalMin={mockAll.totalMin} />
 
-      <div className="WrappedOverview">
-        <div className="OverviewDesc">
-          <h3>Out of that time you spent with us in 2022,</h3>
-          <p>
-            you watched <b>{5} shows</b>...
-          </p>
-        </div>
+      <WrappedOverview
+        shows={mockAll.shows.allShows}
+        movies={mockAll.movie.allMovies}
+      />
 
-        {/* map list of shows to make a card component */}
-        <div className="carousel">
-          {mockShowData.map((value, index) => (
-            <div className="carouselCard">
-              <img
-                src={require(value.image)}
-              />
-            </div>
-          ))}
-          <div className="firstCard">
-            <img src={require("./assets/poster-780.jpg")} />
-          </div>
-          <div className="carouselCard">
-            <img src={require("./assets/poster-780.jpg")} />
-          </div>
-          <div className="carouselCard">
-            <img src={require("./assets/poster-780.jpg")} />
-          </div>
-          <div className="lastCard">
-            <img src={require("./assets/poster-780.jpg")} />
-          </div>
-        </div>
-
-        <div className="OverviewDesc">
-          <p>
-            and <b>{5} movies</b>!
-          </p>
-        </div>
-
-        <div className="carousel">
-          <div className="firstCard">
-            <img src={require("./assets/poster-780.jpg")} />
-          </div>
-          <div className="carouselCard">
-            <img src={require("./assets/poster-780.jpg")} />
-          </div>
-          <div className="lastCard">
-            <img src={require("./assets/poster-780.jpg")} />
-          </div>
-        </div>
-      </div>
-
-      <WrappedEpisodes totalEps={24} totalShows={5} />
+      <WrappedEpisodes
+        totalEps={mockAll.shows.totalEpWatched}
+        totalShows={mockAll.shows.allShows.length}
+        above50={mockAll.shows.topShows.above50}
+        below50={mockAll.shows.topShows.below50}
+      />
 
       <WrappedBest type="show" name="Street Food" rating={8.4} />
       <WrappedWorst type="show" name="Street Food" rating={8.4} />
@@ -96,7 +58,7 @@ function App() {
         </div>
 
         <div className="BingeShow">
-          <img src={require("./assets/poster-780.jpg")} />
+          <img src={require("./assets/images/poster-780.jpg")} />
         </div>
         <p>Pretty productive, if we say so ourselves!</p>
       </div>

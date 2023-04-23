@@ -15,7 +15,7 @@ export function WrappedMoviesOverview(props: WrappedMoviesProps) {
           </p>
           <div className="center">
             <div className="favoriteMovieImg">
-              <img src={require("../assets/poster-780.jpg")} />
+              <img src={require("../assets/images/poster-780.jpg")} />
             </div>
             <p>
               which you watched <b>{props.favNum} times</b> in 2022.
@@ -27,7 +27,7 @@ export function WrappedMoviesOverview(props: WrappedMoviesProps) {
           <div className="Episodes">
             <div className="Episode">
               <div className="EpisodeImg">
-                <img src={require("../assets/poster-780.jpg")} />
+                <img src={require("../assets/images/poster-780.jpg")} />
               </div>
               <div className="EpisodeDesc">
                 <div className="DescContentMovie">
@@ -40,7 +40,7 @@ export function WrappedMoviesOverview(props: WrappedMoviesProps) {
             </div>
             <div className="Episode">
               <div className="EpisodeImg">
-                <img src={require("../assets/poster-780.jpg")} />
+                <img src={require("../assets/images/poster-780.jpg")} />
               </div>
               <div className="EpisodeDesc">
                 <div className="DescContentMovie">

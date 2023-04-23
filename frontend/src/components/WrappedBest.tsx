@@ -13,7 +13,7 @@ export function WrappedBest(props: WrappedBest) {
           <sub>You have some great taste!</sub>
         </div>
         <div className="ratedShow">
-          <img src={require("../assets/poster-780.jpg")} />
+          <img src={require("../assets/images/poster-780.jpg")} />
         </div>
       </div>
     );

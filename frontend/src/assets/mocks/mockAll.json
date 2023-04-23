@@ -1,0 +1,131 @@
+{
+  "topGenres": [
+    { "genre": "Action", "count": 12 },
+    { "genre": "Romance", "count": 10 },
+    { "genre": "Comedy", "count": 9 },
+    { "genre": "Thriller", "count": 3 },
+    { "genre": "Slice of Life", "count": 1 }
+  ],
+  "totalMin": 100000,
+  "bingeData": {
+    "date": "2022-04-21",
+    "shows": [
+      {
+        "title": "Bob's Burgers",
+        "numEpWatched": 4
+      },
+      {
+        "title": "Ivy's Burgers",
+        "numEpWatched": 3
+      }
+    ],
+    "movies": ["Spider-Man", "Blah"]
+  },
+  "shows": {
+    "totalEpWatched": 200,
+    "allShows": [
+      "assets/images/poster-780.jpg",
+      "assets/images/poster-780.jpg",
+      "assets/images/poster-780.jpg",
+      "assets/images/poster-780.jpg",
+      "assets/images/poster-780.jpg",
+      "assets/images/poster-780.jpg"
+    ],
+    "topShows": {
+      "above50": [
+        {
+          "title": "Bob's Burgers",
+          "numEpWatched": 20,
+          "percentageFinished": 80,
+          "image": "assets/images/poster-780.jpg"
+        },
+        {
+          "title": "Bob's Burgers",
+          "numEpWatched": 20,
+          "percentageFinished": 75,
+          "image": "assets/images/poster-780.jpg"
+        },
+        {
+          "title": "Bob's Burgers",
+          "numEpWatched": 20,
+          "percentageFinished": 50,
+          "image": "assets/images/poster-780.jpg"
+        }
+      ],
+      "below50": [
+        {
+          "title": "Bob's Burgers",
+          "numEpWatched": 5,
+          "percentageFinished": 10,
+          "image": "assets/images/poster-780.jpg"
+        },
+        {
+          "title": "Bob's Burgers",
+          "numEpWatched": 5,
+          "percentageFinished": 10,
+          "image": "assets/images/poster-780.jpg"
+        },
+        {
+          "title": "Bob's Burgers",
+          "numEpWatched": 5,
+          "percentageFinished": 10,
+          "image": "assets/images/poster-780.jpg"
+        }
+      ]
+    },
+    "bestRated": {
+      "title": "Bob's Burgers",
+      "rating": 8.4,
+      "image": "assets/images/poster-780.jpg"
+    },
+    "worstRated": {
+      "title": "Ivy's Burgers",
+      "rating": 3.2,
+      "image": "assets/images/poster-780.jpg"
+    }
+  },
+  "movie": {
+    "allMovies": [
+      "assets/images/poster-780.jpg",
+      "assets/images/poster-780.jpg",
+      "assets/images/poster-780.jpg",
+      "assets/images/poster-780.jpg"
+    ],
+    "topMovies": [
+      {
+        "title": "Spider-Man",
+        "numTimesWatched": 10,
+        "image": "assets/images/poster-780.jpg"
+      },
+      {
+        "title": "Spider-Man",
+        "numTimesWatched": 8,
+        "image": "assets/images/poster-780.jpg"
+      },
+      {
+        "title": "Spider-Man",
+        "numTimesWatched": 5,
+        "image": "assets/images/poster-780.jpg"
+      },
+      {
+        "title": "Spider-Man",
+        "numTimesWatched": 4,
+        "image": "assets/images/poster-780.jpg"
+      }
+    ],
+    "bestRated": {
+      "title": "Spider-Man",
+      "rating": 9.9,
+      "image": "assets/images/poster-780.jpg"
+    },
+    "worstRated": {
+      "title": "BLah",
+      "rating": 1,
+      "image": "assets/images/poster-780.jpg"
+    }
+  },
+  "personality": {
+    "title": "Explorer",
+    "description": "You’re an adventurous one. Not limiting yourself to either movies or shows, you delve into wide and varied range of genres to explore the unknown."
+  }
+}
