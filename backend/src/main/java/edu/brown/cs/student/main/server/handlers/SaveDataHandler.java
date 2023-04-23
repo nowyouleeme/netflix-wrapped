@@ -3,7 +3,6 @@ package edu.brown.cs.student.main.server.handlers;
 import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;
 import com.squareup.moshi.Types;
-import edu.brown.cs.student.main.annotations.AnnotationsParser;
 import edu.brown.cs.student.main.csv.data.Data;
 import java.io.IOException;
 import java.lang.reflect.Type;
@@ -31,23 +30,16 @@ public class SaveDataHandler implements Route {
   @Override
   public Object handle(Request request, Response response) throws Exception {
     QueryParamsMap queryMap = request.queryMap();
-    String userCSV = queryMap.value("csv");
-    String userEmail = queryMap.value("email");
-    String userPassword = queryMap.value("password");
-
+    String userCSV = queryMap.value("usercsv");
     HashMap<String, String> errorMessages = new HashMap<>();
 
+    if (queryMap.toMap().size() != 1) {
+      errorMessages.put("error_bad_json", "expected 1 query parameters but received" + queryMap.toMap().size());
+      return serialize(fail(errorMessages));
+    }
 
     if (userCSV == null) {
       errorMessages.put("error_bad_json", "need user's csv to save data");
-      return serialize(fail(errorMessages));
-    }
-    if (userEmail == null) {
-      errorMessages.put("error_bad_json", "need user's email to save data");
-      return serialize(fail(errorMessages));
-    }
-    if (userPassword == null) {
-      errorMessages.put("error_bad_json", "need user's password to save data");
       return serialize(fail(errorMessages));
     }
 
@@ -55,10 +47,8 @@ public class SaveDataHandler implements Route {
     try {
       //TODO: use moshi to turn the json into a UserCSV object
       Data.UserCSV parsedUserCSV = new Data.UserCSV("filler");
-      //take the user's email and password and make a UserID
-      UserID userID = new UserID(userEmail, userPassword);
-      //save the userID and userCSV into the serverInfo
-      serverInfo.saveUserData(userID, parsedUserCSV);
+      //save the userCSV into the serverInfo
+      serverInfo.saveUserData(parsedUserCSV);
     } catch (Exception e) {
       System.out.println(e.getMessage()); // TODO: better error handling
     }

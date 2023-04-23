@@ -35,27 +35,21 @@ public class WipeDataHandler implements Route {
   @Override
   public Object handle(Request request, Response response) throws Exception {
     QueryParamsMap queryMap = request.queryMap();
-    String userEmail = queryMap.value("email");
-    String userPassword = queryMap.value("password");
-
     HashMap<String, String> errorMessages = new HashMap<>();
+    if (queryMap.toMap().size() != 0) {
+      errorMessages.put("error_bad_json", "expected 0 query parameters but received" + queryMap.toMap().size());
+      return serialize(fail(errorMessages));
+    }
 
-    if (userEmail == null) {
-      errorMessages.put("error_bad_json", "need user's email to wipe data");
-      return serialize(fail(errorMessages));
-    }
-    if (userPassword == null) {
-      errorMessages.put("error_bad_json", "need user's password to wipe data");
-      return serialize(fail(errorMessages));
-    }
 
 
     try {
-      UserID userID = new UserID(userEmail, userPassword);
       //save the userID and userCSV into the serverInfo
-      serverInfo.wipeUserData(userID);
+      serverInfo.wipeUserData();
     } catch (Exception e) {
       System.out.println(e.getMessage()); // TODO: better error handling
+      errorMessages.put("error_bad_json", e.getMessage());
+      return serialize(fail(errorMessages));
     }
     return serialize(success());
   }

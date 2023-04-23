@@ -4,6 +4,7 @@ import static spark.Spark.after;
 
 import edu.brown.cs.student.main.server.handlers.SaveDataHandler;
 import edu.brown.cs.student.main.server.handlers.WipeDataHandler;
+import edu.brown.cs.student.main.server.handlers.WrappedHandler;
 import spark.Spark;
 
 /** Class that holds our Server (entry point). */
@@ -31,6 +32,7 @@ public class Server {
     Spark.get("saveData", new SaveDataHandler(serverInfo));
     // System.out.print(serverInfo.getFullRedliningGeoJSON().keySet());
     Spark.get("wipeData", new WipeDataHandler(serverInfo));
+    Spark.get("wrapped", new WrappedHandler(serverInfo));
 
     Spark.init();
     Spark.awaitInitialization();

@@ -2,20 +2,11 @@ import React, { useState, useRef } from "react";
 import { Button } from "@mui/material";
 import { Outlet, Link } from "react-router-dom";
 import "../App.css";
-
+import Uploader from "../components/uploader/Uploader"
 function Landing() {
-  const [fileName, setFileName] = useState<string | undefined>("");
-  const [file, setFile] = useState<File>();
   const [uploadState, setUploadState] = useState<string>(
     "Upload ViewingHistory.csv File"
   );
-
-  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
-    setFile(event.target.files?.[0]);
-    setFileName(event.target.files?.[0].name);
-  }
-  const hiddenFileInput = useRef<HTMLInputElement>(null);
-
   function handleClick() {
     // ideally you'd set the file object, get the info, send it to backend
     setUploadState("Generating your Wrapped...");
@@ -34,14 +25,9 @@ function Landing() {
           <h1>NETFLIX WRAPPED</h1>
           <sub>A lookback on your time with Netflix.</sub>
         </div>
-        <input
-          id="netflix-file"
-          type="file"
-          ref={hiddenFileInput}
-          style={{ visibility: "hidden" }}
-          accept=".csv"
-          onChange={handleChange}
-        />
+        <Uploader/> 
+    
+        
         
         <Link style={{textDecoration: "none"}} to={`/Report`}>
           <label className="Upload" htmlFor="netflix-file">
