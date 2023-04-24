@@ -140,8 +140,8 @@ export function BingeData(props: BingeDataProps) {
         {bingeImages(props.bingeData.shows, props.bingeData.movies).map(
           (value, index) => {
             return (
-              <div className="BingeShow">
-                <img src={require("../" + value)}/>
+              <div className="BingeShow" key={index}>
+                <img src={value} />
               </div>
             );
           }

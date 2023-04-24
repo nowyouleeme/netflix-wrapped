@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "../App.css";
 import Uploader from "../components/uploader/Uploader"
 import { useState } from "react";
+
 function Landing() {
 const [contents, setContents] = useState("");
   return (
@@ -46,7 +47,6 @@ const [contents, setContents] = useState("");
         </Link>
         <div className="center Help">
           <label>How do I get my ViewingHistory.csv?</label>
-          <div className="arrow">
             <svg
               width="30"
               height="18"
@@ -59,7 +59,6 @@ const [contents, setContents] = useState("");
                 fill="rgb(193, 193, 193"
               />
             </svg>
-          </div>
         </div>
       </div>
       <div className="Instructions">

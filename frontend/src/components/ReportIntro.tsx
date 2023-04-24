@@ -16,11 +16,11 @@ export function ReportIntro(props: ReportIntroProps) {
           </div>
         </div>
       </Fade>
-      <Fade className="center" triggerOnce delay={3000} duration={2000}>
+      <Fade className="center" triggerOnce delay={3200} duration={1500}>
         <div className="center ScrollDown">
-          <label>Scroll down to see more</label>
           <div className="arrow">
-            <svg
+            <label>Scroll down to see more</label>
+            {/* <svg
               width="30"
               height="18"
               viewBox="0 0 30 18"
@@ -31,7 +31,7 @@ export function ReportIntro(props: ReportIntroProps) {
                 d="M3.42048 0L14.5553 11.1348L25.69 0L29.1105 3.44474L14.5553 18L0 3.44474L3.42048 0Z"
                 fill="#F5EC72"
               />
-            </svg>
+            </svg> */}
           </div>
         </div>
       </Fade>

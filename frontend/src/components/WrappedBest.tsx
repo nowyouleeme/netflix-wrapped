@@ -7,7 +7,10 @@ interface WrappedBestProps {
 export function WrappedBest(props: WrappedBestProps) {
   let altText = `Poster for the ${props.type} '${props.bestRated.title}'`
     return (
-      <div className="WrappedRatingShow" style={{backgroundColor: props.backgroundColor, color: props.color}}>
+      <div
+        className="WrappedRatingShow"
+        style={{ backgroundColor: props.backgroundColor, color: props.color }}
+      >
         <div className="ratingLeft">
           <h2>
             The most critically acclaimed {props.type} you watched was{" "}
@@ -17,7 +20,7 @@ export function WrappedBest(props: WrappedBestProps) {
           <sub>You have some great taste!</sub>
         </div>
         <div className="ratedShow">
-          <img src={require("../" + props.bestRated.image)} alt={altText}/>
+          <img src={props.bestRated.image} alt={altText} />
         </div>
       </div>
     );

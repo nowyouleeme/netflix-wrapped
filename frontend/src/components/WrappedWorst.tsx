@@ -15,7 +15,7 @@ export function WrappedWorst(props:WrappedWorstProps) {
       >
         <div className="ratedShow">
           {/* image url would be props probably */}
-          <img src={require("../" + props.worstRated.image)} alt={altText}/>
+          <img src={props.worstRated.image} alt={altText} />
         </div>
         <div className="ratingRight">
           <h2>

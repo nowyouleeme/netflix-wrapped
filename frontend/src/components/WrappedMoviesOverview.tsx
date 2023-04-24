@@ -26,7 +26,7 @@ export function WrappedMoviesOverview(props: WrappedMoviesProps) {
           <div className="Episode">
             <div className="EpisodeImg">
               <img
-                src={require("../" + movies[i].image)}
+                src={movies[i].image}
                 alt={`Poster for the movie '${movies[i].title}'`}
               />
             </div>
@@ -56,7 +56,7 @@ export function WrappedMoviesOverview(props: WrappedMoviesProps) {
         <div className="center">
           <div className="favoriteMovieImg">
             <img
-              src={require("../" + props.movies[0].image)}
+              src={props.movies[0].image}
               alt={`Poster for the movie '${props.movies[0].title}'`}
             />
           </div>

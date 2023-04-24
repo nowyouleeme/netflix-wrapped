@@ -13,34 +13,33 @@
       {
         "title": "Bob's Burgers",
         "numEpWatched": 4,
-        "image": "assets/images/poster-780.jpg"
+        "image": "https://image.tmdb.org/t/p/original/4b4v7RnPhNyPEaVGFarEuo74r8W.jpg"
       },
       {
         "title": "Ivy's Burgers",
         "numEpWatched": 3,
-        "image": "assets/images/poster-780.jpg"
+        "image": "https://image.tmdb.org/t/p/original/4b4v7RnPhNyPEaVGFarEuo74r8W.jpg"
       }
     ],
     "movies": [
       {
         "title": "Spider-Man",
-        "image": "assets/images/poster-780.jpg"
+        "image": "https://image.tmdb.org/t/p/original/4b4v7RnPhNyPEaVGFarEuo74r8W.jpg"
       },
       {
         "title": "Idk",
-        "image": "assets/images/poster-780.jpg"
+        "image": "https://image.tmdb.org/t/p/original/4b4v7RnPhNyPEaVGFarEuo74r8W.jpg"
       }
     ]
   },
   "shows": {
     "totalEpWatched": 200,
     "allShows": [
-      "assets/images/poster-780.jpg",
-      "assets/images/poster-780.jpg",
-      "assets/images/poster-780.jpg",
-      "assets/images/poster-780.jpg",
-      "assets/images/poster-780.jpg",
-      "assets/images/poster-780.jpg"
+      "https://image.tmdb.org/t/p/original/4b4v7RnPhNyPEaVGFarEuo74r8W.jpg",
+      "https://image.tmdb.org/t/p/original/4b4v7RnPhNyPEaVGFarEuo74r8W.jpg",
+      "https://image.tmdb.org/t/p/original/4b4v7RnPhNyPEaVGFarEuo74r8W.jpg",
+      "https://image.tmdb.org/t/p/original/4b4v7RnPhNyPEaVGFarEuo74r8W.jpg",
+      "https://image.tmdb.org/t/p/original/4b4v7RnPhNyPEaVGFarEuo74r8W.jpg"
     ],
     "topShows": {
       "above50": [
@@ -48,19 +47,19 @@
           "title": "Bob's Burgers",
           "numEpWatched": 20,
           "percentageFinished": 80,
-          "image": "assets/images/poster-780.jpg"
+          "image": "https://image.tmdb.org/t/p/original/4b4v7RnPhNyPEaVGFarEuo74r8W.jpg"
         },
         {
           "title": "Bob's Burgers",
           "numEpWatched": 20,
           "percentageFinished": 75,
-          "image": "assets/images/poster-780.jpg"
+          "image": "https://image.tmdb.org/t/p/original/4b4v7RnPhNyPEaVGFarEuo74r8W.jpg"
         },
         {
           "title": "Bob's Burgers",
           "numEpWatched": 20,
           "percentageFinished": 50,
-          "image": "assets/images/poster-780.jpg"
+          "image": "https://image.tmdb.org/t/p/original/4b4v7RnPhNyPEaVGFarEuo74r8W.jpg"
         }
       ],
       "below50": [
@@ -68,71 +67,69 @@
           "title": "Bob's Burgers",
           "numEpWatched": 5,
           "percentageFinished": 10,
-          "image": "assets/images/poster-780.jpg"
+          "image": "https://image.tmdb.org/t/p/original/4b4v7RnPhNyPEaVGFarEuo74r8W.jpg"
         },
         {
           "title": "Bob's Burgers",
           "numEpWatched": 5,
           "percentageFinished": 10,
-          "image": "assets/images/poster-780.jpg"
+          "image": "https://image.tmdb.org/t/p/original/4b4v7RnPhNyPEaVGFarEuo74r8W.jpg"
         },
         {
           "title": "Bob's Burgers",
           "numEpWatched": 5,
           "percentageFinished": 10,
-          "image": "assets/images/poster-780.jpg"
+          "image": "https://image.tmdb.org/t/p/original/4b4v7RnPhNyPEaVGFarEuo74r8W.jpg"
         }
       ]
     },
     "bestRated": {
       "title": "Bob's Burgers",
       "rating": 8.4,
-      "image": "assets/images/poster-780.jpg"
+      "image": "https://image.tmdb.org/t/p/original/4b4v7RnPhNyPEaVGFarEuo74r8W.jpg"
     },
     "worstRated": {
       "title": "Ivy's Burgers",
       "rating": 3.2,
-      "image": "assets/images/poster-780.jpg"
+      "image": "https://image.tmdb.org/t/p/original/4b4v7RnPhNyPEaVGFarEuo74r8W.jpg"
     }
   },
   "movie": {
     "allMovies": [
-      "assets/images/poster-780.jpg",
-      "assets/images/poster-780.jpg",
-      "assets/images/poster-780.jpg",
-      "assets/images/poster-780.jpg"
+      "https://image.tmdb.org/t/p/original/4b4v7RnPhNyPEaVGFarEuo74r8W.jpg",
+      "https://image.tmdb.org/t/p/original/4b4v7RnPhNyPEaVGFarEuo74r8W.jpg"
     ],
     "topMovies": [
       {
         "title": "Spider-Man",
         "numTimesWatched": 10,
-        "image": "assets/images/poster-780.jpg"
+        "image": "https://image.tmdb.org/t/p/original/4b4v7RnPhNyPEaVGFarEuo74r8W.jpg"
       },
       {
         "title": "Spider-Man",
         "numTimesWatched": 8,
-        "image": "assets/images/poster-780.jpg"
+        "image": "https://image.tmdb.org/t/p/original/4b4v7RnPhNyPEaVGFarEuo74r8W.jpg"
       },
       {
         "title": "Spider-Man",
         "numTimesWatched": 5,
-        "image": "assets/images/poster-780.jpg"
+        "image": "https://image.tmdb.org/t/p/original/4b4v7RnPhNyPEaVGFarEuo74r8W.jpg"
       },
       {
         "title": "Spider-Man",
         "numTimesWatched": 4,
-        "image": "assets/images/poster-780.jpg"
+        "image": "https://image.tmdb.org/t/p/original/4b4v7RnPhNyPEaVGFarEuo74r8W.jpg"
       }
     ],
     "bestRated": {
       "title": "Spider-Man",
       "rating": 9.9,
-      "image": "assets/images/poster-780.jpg"
+      "image": "https://image.tmdb.org/t/p/original/4b4v7RnPhNyPEaVGFarEuo74r8W.jpg"
     },
     "worstRated": {
       "title": "BLah",
       "rating": 1.0,
-      "image": "assets/images/poster-780.jpg"
+      "image": "https://image.tmdb.org/t/p/original/4b4v7RnPhNyPEaVGFarEuo74r8W.jpg"
     }
   },
   "personality": {

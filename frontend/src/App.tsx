@@ -12,6 +12,8 @@ import { WrappedOverview } from "./components/WrappedOverview";
 import mockAll from "./assets/mocks/mockAll.json";
 import { BingeData } from "./components/BingeData";
 import { useLocation} from "react-router-dom";
+import { useEffect, useState } from "react";
+import { key } from "./private/key";
 
 // mockShowData.forEach((item) => {
 //   item.image = process.env.PUBLIC_URL + "/" + item.image;
@@ -20,6 +22,7 @@ import { useLocation} from "react-router-dom";
 function App() {
   const location = useLocation();
   const state = location.state;
+
   return (
     <div className="Report">
       <ReportIntro year={2022} />

@@ -188,6 +188,11 @@ table {
   font-family: 'Metropolis-Bold';
 }
 
+.Landing p {
+  color: rgb(193, 193, 193);
+  font-family: 'Metropolis-Medium';
+}
+
 .LandingHero {
   text-align: center;
   margin-bottom: 2.5em;
@@ -284,14 +289,14 @@ table {
 
 /* https: //sowebsited.com/animations/scrolldownanimation.html */
 .arrow {
-      -webkit-animation: ca3_fade_move_down 1.5s ease-in-out infinite;
-        -moz-animation: ca3_fade_move_down 1.5s ease-in-out infinite;
-        animation: ca3_fade_move_down 1.5s ease-in-out infinite;
+      -webkit-animation: ca3_fade_move_down 1.75s ease-in-out infinite;
+        -moz-animation: ca3_fade_move_down 1.75s ease-in-out infinite;
+        animation: ca3_fade_move_down 1.75s ease-in-out infinite;
 }
 /*animated scroll arrow animation*/
 @-webkit-keyframes ca3_fade_move_down {
   0% {
-    -webkit-transform: translate(0, -5px);
+    -webkit-transform: translate(0, -25px);
     opacity: 0;
   }
 
@@ -300,14 +305,14 @@ table {
   }
 
   100% {
-    -webkit-transform: translate(0, 20px);
+    -webkit-transform: translate(0, 10px);
     opacity: 0;
   }
 }
 
 @-moz-keyframes ca3_fade_move_down {
   0% {
-    -moz-transform: translate(0, -5px);
+    -moz-transform: translate(0, -25px);
     opacity: 0;
   }
 
@@ -316,14 +321,14 @@ table {
   }
 
   100% {
-    -moz-transform: translate(0, 20px);
+    -moz-transform: translate(0, 10px);
     opacity: 0;
   }
 }
 
 @keyframes ca3_fade_move_down {
   0% {
-    transform: translate(0, -5px);
+    transform: translate(0, -25px);
     opacity: 0;
   }
 
@@ -332,7 +337,7 @@ table {
   }
 
   100% {
-    transform: translate(0, 20px);
+    transform: translate(0, 10px);
     opacity: 0;
   }
 }
@@ -348,9 +353,14 @@ table {
   margin-bottom: 3em;
 }
 
+.Help p {
+  font-size: 0.75em;
+
+}
+
 .Help label {
   font-size: 1em;
-  margin-bottom: 1em;
+  margin-bottom: 1.5em;
 }
 
 .WrappedWelcome {
