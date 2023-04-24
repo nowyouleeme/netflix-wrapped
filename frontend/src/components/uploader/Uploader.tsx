@@ -35,7 +35,7 @@ function Uploader() {
               color="primary"
               component="span"
             >
-              Upload ViewingHistory.CSV File
+              Upload NetflixViewingHistory.CSV File
             </Button>
           </label>
 
