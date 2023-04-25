@@ -1,0 +1,23 @@
+
+import { render, screen } from "@testing-library/react";
+import mockAll from "../../../assets/mocks/mockActor.json";
+import { WrappedMinutes } from "../../../components/report/WrappedMinutes";
+
+test("renders WrappedMinutes", () => {
+  render(<WrappedMinutes totalMin={mockAll.totalMin} />);
+
+  expect(
+    screen.getByText(/All that exploration added up to/i)
+  ).toBeInTheDocument();
+
+  const minutes = screen.getByRole("heading", {
+    name: "100,000 100,000 100,000 100,000",
+  });
+  expect(minutes).toBeInTheDocument();
+
+  expect(screen.getByText(/minutes on Netflix./i)).toBeInTheDocument();
+
+  expect(screen.getByText(/That's about/i)).toBeInTheDocument();
+  expect(screen.getByText(/1,666 hours,/i)).toBeInTheDocument();
+  expect(screen.getByText(/69 days!/i)).toBeInTheDocument();
+});

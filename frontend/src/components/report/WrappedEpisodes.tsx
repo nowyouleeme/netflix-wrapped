@@ -31,10 +31,16 @@ export function WrappedEpisodes(props: WrappedEpisodesProps) {
           {props.above50.map((value, index) => (
             <div className="Episode" key={index}>
               <div className="EpisodeImg">
-                <img
-                  src={value.image}
-                  alt={`Poster for the show '${value.title}'`}
-                />
+                <a
+                  rel="noreferrer"
+                  target="_blank"
+                  href={"https://www.google.com/search?q=" + value.title}
+                >
+                  <img
+                    src={value.image}
+                    alt={`Poster for the show '${value.title}'`}
+                  />
+                </a>
               </div>
               <div className="EpisodeDesc">
                 <div className="DescContent">
@@ -58,10 +64,16 @@ export function WrappedEpisodes(props: WrappedEpisodesProps) {
           {props.below50.map((value, index) => (
             <div className="Episode" key={index}>
               <div className="EpisodeImg">
-                <img
-                  src={value.image}
-                  alt={`Poster for the show '${value.title}'`}
-                />
+                <a
+                  rel="noreferrer"
+                  target="_blank"
+                  href={"https://www.google.com/search?q=" + value.title}
+                >
+                  <img
+                    src={value.image}
+                    alt={`Poster for the show '${value.title}'`}
+                  />
+                </a>
               </div>
               <div className="EpisodeDesc">
                 <div className="DescContent">

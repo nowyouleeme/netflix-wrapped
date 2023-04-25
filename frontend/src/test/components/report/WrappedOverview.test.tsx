@@ -1,0 +1,23 @@
+import { render, screen } from "@testing-library/react";
+import mockAll from "../../../assets/mocks/mockActor.json";
+import { WrappedOverview } from "../../../components/report/WrappedOverview";
+
+test("render WrappedOverview", () => {
+  render(
+    <WrappedOverview
+      shows={mockAll.shows.allShows}
+      movies={mockAll.movie.allMovies}
+    />
+  );
+
+  const header = screen.getByRole("heading", {
+    name: /Out of that time you spent with us in 2022,/i,
+  });
+  expect(header).toBeInTheDocument();
+
+  expect(screen.getByText(/you watched/i)).toBeInTheDocument();
+  expect(screen.getByText(/7 shows/i)).toBeInTheDocument();
+  expect(screen.getByText(/5 movies/i)).toBeInTheDocument();
+
+  // check carousel rendering
+});

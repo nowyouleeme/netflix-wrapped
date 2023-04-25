@@ -1,23 +1,29 @@
-import "./App.css";
-import { WrappedGenres } from "./components/report/WrappedGenres";
-import { WrappedMinutes } from "./components/report/WrappedMinutes";
-import { WrappedEpisodes } from "./components/report/WrappedEpisodes";
-import { WrappedMoviesOverview } from "./components/report/WrappedMoviesOverview";
-import { NVTIPersonality } from "./components/report/NVTIPersonality";
-import { ReportIntro } from "./components/report/ReportIntro";
-import { ReportWelcome } from "./components/report/ReportWelcome";
-import { WrappedOverview } from "./components/report/WrappedOverview";
-import mockAll from "./assets/mocks/mockActor.json";
-import { BingeData } from "./components/report/BingeData";
-import { useLocation} from "react-router-dom";
-import { WrappedFavActors } from "./components/report/WrappedFavActors";
+import "../App.css";
+import { WrappedGenres } from "../components/report/WrappedGenres";
+import { WrappedMinutes } from "../components/report/WrappedMinutes";
+import { WrappedEpisodes } from "../components/report/WrappedEpisodes";
+import { WrappedMoviesOverview } from "../components/report/WrappedMoviesOverview";
+import { NVTIPersonality } from "../components/report/NVTIPersonality";
+import { ReportIntro } from "../components/report/ReportIntro";
+import { ReportWelcome } from "../components/report/ReportWelcome";
+import { WrappedOverview } from "../components/report/WrappedOverview";
+import mockAll from "../assets/mocks/mockActor.json";
+import { BingeData } from "../components/report/BingeData";
+import { useLocation } from "react-router-dom";
+import { WrappedFavActors } from "../components/report/WrappedFavActors";
 
-function App() {
+// mockShowData.forEach((item) => {
+//   item.image = process.env.PUBLIC_URL + "/" + item.image;
+// });
 
+function Report() {
+  const location = useLocation();
+  const state = location.state;
 
   return (
     <div className="Report">
       <ReportIntro year={2022} />
+      <ReportWelcome name={state.name} />
       <WrappedGenres genres={mockAll.top5Genres} />
       <WrappedMinutes totalMin={mockAll.totalMin} />
       <WrappedOverview
@@ -61,4 +67,4 @@ function App() {
   );
 }
 
-export default App;
+export default Report;

@@ -1,7 +1,7 @@
 import { Button, TextField } from "@mui/material";
 import { Link } from "react-router-dom";
 import "../App.css";
-import Uploader from "../components/uploader/Uploader";
+import Uploader from "../components/landing/Uploader";
 import { useState } from "react";
 
 function Landing() {
@@ -76,23 +76,42 @@ function Landing() {
             </p>
             <p>
               You can also locate your viewing activity{" "}
-              <a href="https://www.netflix.com/viewingactivity" target="_blank">
+              <a
+                rel="noreferrer"
+                href="https://www.netflix.com/viewingactivity"
+                target="_blank"
+              >
                 HERE.
               </a>
             </p>
           </div>
           <div className="instructionsImg">
-            <img src={require("../assets/images/findCSV.jpg")} />
+            <img
+              src={require("../assets/images/findCSV.jpg")}
+              alt="Netflix 'Account' Settings Page"
+            />
           </div>
         </div>
         <div className="instructionsSection">
           <div className="instructionsText">
             <h2>2. Download your Netflix Viewing History</h2>
-            <p>After clicking "View," you should be able to see a page that says "Activity for [your profile name]." Scroll down to the bottom of the screen where it says "Download All."</p>
-            <p>Clicking that button will download your Netflix viewing activity in a .CSV format onto your device, which you can upload to our application along with your name above! The file should be titled "NetflixViewingHistory.csv." </p>
+            <p>
+              After clicking "View," you should be able to see a page that says
+              "Activity for [your profile name]." Scroll down to the bottom of
+              the screen where it says "Download All."
+            </p>
+            <p>
+              Clicking that button will download your Netflix viewing activity
+              in a .CSV format onto your device, which you can upload to our
+              application along with your name above! The file should be titled
+              "NetflixViewingHistory.csv."{" "}
+            </p>
           </div>
           <div className="instructionsImg">
-            <img src={require("../assets/images/downloadCSV.jpg")} />
+            <img
+              src={require("../assets/images/downloadCSV.jpg")}
+              alt="Netflix 'Viewing History' Page within 'Account'"
+            />
           </div>
         </div>
       </div>

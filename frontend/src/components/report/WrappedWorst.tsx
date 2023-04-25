@@ -15,7 +15,13 @@ export function WrappedWorst(props:WrappedWorstProps) {
       >
         <div className="ratedShow">
           {/* image url would be props probably */}
-          <img src={props.worstRated.image} alt={altText} />
+          <a
+            rel="noreferrer"
+            target="_blank"
+            href={"https://www.google.com/search?q=" + props.worstRated.title}
+          >
+            <img src={props.worstRated.image} alt={altText} />
+          </a>
         </div>
         <div className="ratingRight">
           <h2>

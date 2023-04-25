@@ -20,7 +20,13 @@ export function WrappedBest(props: WrappedBestProps) {
           <sub>You have some great taste!</sub>
         </div>
         <div className="ratedShow">
-          <img src={props.bestRated.image} alt={altText} />
+          <a
+            rel="noreferrer"
+            target="_blank"
+            href={"https://www.google.com/search?q=" + props.bestRated.title}
+          >
+            <img src={props.bestRated.image} alt={altText} />
+          </a>
         </div>
       </div>
     );

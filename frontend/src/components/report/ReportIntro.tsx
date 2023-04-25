@@ -5,7 +5,6 @@ interface ReportIntroProps {
 export function ReportIntro(props: ReportIntroProps) {
   return (
     <div className="center WrappedIntroduction">
-      <Fade triggerOnce delay={1000} duration={2000}>
         <div className="Here">
           <h2>Your Netflix {props.year} Wrapped is finally here!</h2>
           <div className="HereSub">
@@ -15,8 +14,6 @@ export function ReportIntro(props: ReportIntroProps) {
             </sub>
           </div>
         </div>
-      </Fade>
-      <Fade className="center" triggerOnce delay={3200} duration={1500}>
         <div className="center ScrollDown">
           <div className="arrow">
             <label>Scroll down to see more</label>
@@ -34,7 +31,6 @@ export function ReportIntro(props: ReportIntroProps) {
             </svg> */}
           </div>
         </div>
-      </Fade>
     </div>
   );
 }

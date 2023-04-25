@@ -1,10 +1,8 @@
-import { useEffect, useState } from "react";
-import { key } from "../private/key";
 import { MediaCarousel } from "./MediaCarousel";
 
 interface WrappedOverviewProps {
-  shows: Array<string>;
-  movies: Array<string>;
+  shows: { title: string; image: string }[];
+  movies: { title: string; image: string }[];
 }
 
 export function WrappedOverview(props: WrappedOverviewProps) {

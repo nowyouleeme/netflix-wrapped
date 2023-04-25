@@ -23,12 +23,18 @@ export function WrappedMoviesOverview(props: WrappedMoviesProps) {
     for (let i=0; i < movies.length; i++) {
       if (i!==0) {
         favMovies.push(
-          <div className="Episode">
+          <div className="Episode" key={`Poster for '${movies[i].title}'"`}>
             <div className="EpisodeImg">
-              <img
-                src={movies[i].image}
-                alt={`Poster for the movie '${movies[i].title}'`}
-              />
+              <a
+                rel="noreferrer"
+                href={"https://www.google.com/search?q=" + movies[i].title}
+                target="_blank"
+              >
+                <img
+                  src={movies[i].image}
+                  alt={`Poster for the movie '${movies[i].title}'`}
+                />
+              </a>
             </div>
             <div className="EpisodeDesc">
               <div className="DescContentMovie">
@@ -49,16 +55,22 @@ export function WrappedMoviesOverview(props: WrappedMoviesProps) {
   return (
     <div className="center WrappedMoviesOverview">
       <div className="FavoriteMovie">
-        <h3>When it comes to movies,</h3>
+        <h3>When it came to movies,</h3>
         <p>
           you were a number one fan for <i>{props.movies[0].title}</i>:
         </p>
         <div className="center">
           <div className="favoriteMovieImg">
-            <img
-              src={props.movies[0].image}
-              alt={`Poster for the movie '${props.movies[0].title}'`}
-            />
+            <a
+              rel="noreferrer"
+              href={"https://www.google.com/search?q=" + props.movies[0].title}
+              target="_blank"
+            >
+              <img
+                src={props.movies[0].image}
+                alt={`Poster for the movie '${props.movies[0].title}'`}
+              />
+            </a>
           </div>
           <p>
             which you watched <b>{props.movies[0].numTimesWatched} times</b> in{" "}

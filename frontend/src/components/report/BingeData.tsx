@@ -104,12 +104,13 @@ export function BingeData(props: BingeDataProps) {
       image: string;
     }[]
   ) {
-    let posters: string[] = [];
+    let posters: {title: string; image: string}[] = [];
     for (let i = 0; i < shows.length; i++) {
-        posters.push(shows[i].image)
+      let show = { title: shows[i].title, image: shows[i].image};
+        posters.push(show)
     }
     for (let i = 0; i < movies.length; i++) {
-      posters.push(movies[i].image);
+      posters.push(movies[i]);
     }
     return posters;
   }
@@ -141,7 +142,13 @@ export function BingeData(props: BingeDataProps) {
           (value, index) => {
             return (
               <div className="BingeShow" key={index}>
-                <img src={value} />
+                <a
+                  rel="noreferrer"
+                  href={"https://www.google.com/search?q=" + value.title}
+                  target="_blank"
+                >
+                  <img src={value.image} />
+                </a>
               </div>
             );
           }

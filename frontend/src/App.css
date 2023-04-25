@@ -136,7 +136,7 @@ table {
 /* FONTS */
 @font-face {
   font-family: 'Metropolis-Black';
-  src: url('fonts/Metropolis-Black.woff') format('woff');
+  src: url('assets/fonts/Metropolis-Black.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 
@@ -144,7 +144,7 @@ table {
 
 @font-face {
   font-family: 'Metropolis-Bold';
-  src: url('fonts/Metropolis-Bold.woff') format('woff');
+  src: url('assets/fonts/Metropolis-Bold.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 
@@ -152,7 +152,7 @@ table {
 
 @font-face {
   font-family: 'Metropolis-Medium';
-  src: url('fonts/Metropolis-Medium.woff') format('woff');
+  src: url('assets/fonts/Metropolis-Medium.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 
@@ -160,7 +160,7 @@ table {
 
 @font-face {
   font-family: 'Metropolis-Regular';
-  src: url('fonts/Metropolis-Regular.woff') format('woff');
+  src: url('assets/fonts/Metropolis-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 
@@ -168,7 +168,7 @@ table {
 
 @font-face {
   font-family: 'Metropolis-SemiBold';
-  src: url('fonts/Metropolis-SemiBold.woff') format('woff');
+  src: url('assets/fonts/Metropolis-SemiBold.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 
@@ -452,7 +452,17 @@ table {
 
 .carouselCard {
   padding: 0 0.5em;
-  height: 60vh;
+  height: 50vh;
+}
+
+.actorCarouselCard {
+  padding: 0 0.5em;
+  height: 42vh;
+}
+
+.actorCarouselCard img {
+  border-radius: 0.75em;
+  height: 100%;
 }
 
 .carouselCard img {
@@ -545,8 +555,8 @@ table {
 .WrappedBingeShow {
   text-align: center;
   padding: 5em 10em 4em 10em;
-  background-color: #C72B68;
-  color: #F5EC72;
+  background-color: #95C12B;
+  color: #FEFFB9;
 }
 
 .WrappedBingeShow h1 {
@@ -554,7 +564,7 @@ table {
 }
 
 .WrappedBingeShow a {
-  color: #F5EC72;
+  color: #FEFFB9;
 }
 
 .bingeDesc {
@@ -637,7 +647,7 @@ table {
 
 .WrappedMoviesOverview {
   padding: 5em 15em 3.5em 15em;
-  background-color: #7E18A1;
+  background-color: #C72B68;
   color: #F5EC72;
 }
 
@@ -669,7 +679,7 @@ table {
 .WrappedPersonality {
   text-align: center;
   padding: 5em 10em;
-  background-color: #7E18A1;
+  background-color: #EE9021;
 }
 
 .WrappedPersonality h2 {
@@ -682,12 +692,11 @@ table {
 }
 
 .PersonalityContainer {
-
   width: 60%;
   border-radius: 1.5em;
   padding: 2.5em;
-  background-color: #ffffff;
-  color: #000000;
+  background-color: #7E18A1;
+  color: #F5EC72;
 }
 
 .personalityGraphic {
@@ -755,6 +764,44 @@ table {
 .instructionsImg img {
   border-radius: 1em;
   width: 100%;
+}
+
+.WrappedActors {
+  padding: 5em 14em;
+  text-align: center;
+  flex-direction: column;
+}
+
+.actorContainer {
+  max-width: 100%;
+  padding: 0 5em;
+  margin: 2em 0 5em 0;
+}
+
+.WrappedActors h3 {
+  line-height: 1.25em;
+}
+
+.WrappedActors p {
+  font-size: 1.25em;
+}
+
+.error-page {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:center;
+}
+
+.error-page h1 {
+  font-size: 4em;
+  margin-bottom: 0.25em;
+}
+
+.error-page p {
+  font-size: 1.5em;
 }
 
 @media screen and (max-width: 1200px) {
@@ -867,6 +914,10 @@ table {
     padding: 5em 6em;
   }
 
+  .WrappedActors {
+    padding: 4.5em 8em;
+  }
+
   .WrappedMoviesOverview {
     padding: 5em 8em 3.5em 8em;
   }
@@ -877,7 +928,12 @@ table {
 
   .carouselCard {
     padding: 0 0.5em;
-    height: 40vh;
+    height: 35vh;
+  }
+
+  .actorCarouselCard {
+    padding: 0 0.5em;
+    height: 35vh;
   }
 
   .firstCard {
@@ -956,6 +1012,12 @@ table {
     grid-template-columns: repeat(auto-fill, minmax(max(8em, 100%/var(--n)), 1fr));
     row-gap: 2em;
   }
+
+
+.actorContainer {
+  padding: 0 4em;
+  margin: 2em 0 5em 0;
+}
 
 }
 
@@ -1082,6 +1144,11 @@ table {
     height: 30vh;
   }
 
+  .actorCarouselCard {
+    padding: 0 0.5em;
+    height: 25vh;
+  }
+
   .firstCard {
     padding-right: 0.5em;
     margin-left: 3.5em;
@@ -1123,7 +1190,10 @@ table {
   .WrappedRatingShow {
     flex-direction: column;
     justify-content: space-between;
-    padding: 5em 6em;
+  }
+
+  .WrappedActors {
+    padding: 4em 6em;
   }
 
   .WrappedRatingShow h2 {
@@ -1238,4 +1308,8 @@ table {
     border-radius: 1em;
     width: 100%;
   }
+
+    .WrappedActors h3 {
+      line-height: 1.15em;
+    }
 }
