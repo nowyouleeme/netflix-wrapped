@@ -14,7 +14,7 @@ function Uploader() {
             id="netflix-file"
             type="file"
             accept=".csv"
-            style={{ visibility: "hidden" }}
+            style={{ visibility: "hidden" , height: "0"}}
             className="input-field"
             onChange={({ target: { files } }) => {
               //set the file to new one
@@ -30,6 +30,7 @@ function Uploader() {
                 fontFamily: "Metropolis-Black",
                 color: "white",
                 backgroundColor: "#D92929",
+  
               }}
               variant="contained"
               color="primary"

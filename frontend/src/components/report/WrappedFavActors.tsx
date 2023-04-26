@@ -78,7 +78,7 @@ export function WrappedFavActors(props: WrappedFavActorsProps) {
           {props.media.map((value, index) => (
             <div
               className="actorCarouselCard"
-              key={"Poster for " + value.title + index}
+              key={"Poster for " + value.title + index + props.media}
             >
               <a
                 rel="noreferrer"

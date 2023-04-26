@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import Landing from './pages/Landing';
 import Error from "./pages/Error";
 import Report from './pages/Report';
+import { AnimatePresence } from "framer-motion";
 
 const router = createBrowserRouter([
   {
@@ -14,7 +15,7 @@ const router = createBrowserRouter([
     errorElement: <Error />,
   },
   {
-    path: "report",
+    path: "Report",
     element: <Report />,
     errorElement: <Error />,
   },
@@ -25,7 +26,9 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+      <AnimatePresence>
+        <RouterProvider router={router} />
+      </AnimatePresence>
   </React.StrictMode>
 );
 

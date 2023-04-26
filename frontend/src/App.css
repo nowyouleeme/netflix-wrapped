@@ -175,6 +175,7 @@ table {
 }
 
 .Landing {
+  width: 100%;
   background-color: #181826;
   display: flex;
   flex-direction: column;
@@ -281,62 +282,6 @@ table {
   position: absolute;
   bottom: 0;
   margin-bottom: 3em;
-}
-
-/* https: //sowebsited.com/animations/scrolldownanimation.html */
-.arrow {
-  -webkit-animation: ca3_fade_move_down 1.75s ease-in-out infinite;
-  -moz-animation: ca3_fade_move_down 1.75s ease-in-out infinite;
-  animation: ca3_fade_move_down 1.75s ease-in-out infinite;
-}
-
-/*animated scroll arrow animation*/
-@-webkit-keyframes ca3_fade_move_down {
-  0% {
-    -webkit-transform: translate(0, -25px);
-    opacity: 0;
-  }
-
-  50% {
-    opacity: 1;
-  }
-
-  100% {
-    -webkit-transform: translate(0, 10px);
-    opacity: 0;
-  }
-}
-
-@-moz-keyframes ca3_fade_move_down {
-  0% {
-    -moz-transform: translate(0, -25px);
-    opacity: 0;
-  }
-
-  50% {
-    opacity: 1;
-  }
-
-  100% {
-    -moz-transform: translate(0, 10px);
-    opacity: 0;
-  }
-}
-
-@keyframes ca3_fade_move_down {
-  0% {
-    transform: translate(0, -25px);
-    opacity: 0;
-  }
-
-  50% {
-    opacity: 1;
-  }
-
-  100% {
-    transform: translate(0, 10px);
-    opacity: 0;
-  }
 }
 
 .ScrollDown label {
@@ -726,7 +671,8 @@ table {
 }
 
 .Instructions {
-  margin: 4em 8em;
+  background-color: #eeeeee;
+  padding: 4em 8em;
 }
 
 .Instructions h2 {
@@ -796,13 +742,33 @@ table {
 }
 
 .error-page h1 {
+  font-family: 'Metropolis-Bold';
   font-size: 4em;
+
   margin-bottom: 0.25em;
 }
 
 .error-page p {
+  font-family: 'Metropolis-Medium';
   font-size: 1.5em;
 }
+
+
+.fileUpload {
+  display: flex;
+}
+
+.LandingInput {
+    display: flex;
+    flex-direction: row;
+}
+
+.UploaderContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 
 @media screen and (max-width: 1200px) {
 

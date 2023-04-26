@@ -11,6 +11,7 @@ import mockAll from "../assets/mocks/mockActor.json";
 import { BingeData } from "../components/report/BingeData";
 import { useLocation } from "react-router-dom";
 import { WrappedFavActors } from "../components/report/WrappedFavActors";
+import { motion } from "framer-motion";
 
 // mockShowData.forEach((item) => {
 //   item.image = process.env.PUBLIC_URL + "/" + item.image;
@@ -21,7 +22,14 @@ function Report() {
   const state = location.state;
 
   return (
-    <div className="Report">
+    <motion.div
+    
+      className="Report"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 2 }}
+    >
       <ReportIntro year={2022} />
       <ReportWelcome name={state.name} />
       <WrappedGenres genres={mockAll.top5Genres} />
@@ -55,7 +63,7 @@ function Report() {
         media={mockAll.movie.movieActors.actorFeaturedMovies}
         saying={
           <p>
-            Looks like you have some favorites... but we <b>all</b> do.
+            Looks like you have some favorite folks... but we <b>all</b> do.
           </p>
         }
         color="#F5EC72"
@@ -63,7 +71,7 @@ function Report() {
       />
       <BingeData bingeData={mockAll.bingeData} />
       <NVTIPersonality personality={mockAll.personality} />
-    </div>
+    </motion.div>
   );
 }
 
