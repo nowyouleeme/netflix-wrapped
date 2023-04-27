@@ -15,6 +15,8 @@ interface WrappedEpisodesProps {
   }[];
 };
 
+export const episode_display = "Episodes watched by user with episode count and percentage finished"
+
 export function WrappedEpisodes(props: WrappedEpisodesProps) {
   // pass in array of different processed show objects with how many episodes of tht show u watched + percentage
   return (
@@ -27,7 +29,7 @@ export function WrappedEpisodes(props: WrappedEpisodesProps) {
           </h4>
           <p>with some you just couldn't get enough of:</p>
         </div>
-        <div className="Episodes">
+        <div role="figure" aria-label={episode_display} className="Episodes">
           {props.above50.map((value, index) => (
             <div className="Episode" key={index}>
               <div className="EpisodeImg">

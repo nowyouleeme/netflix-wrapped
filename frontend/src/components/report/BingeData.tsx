@@ -13,6 +13,8 @@ interface BingeDataProps {
   };
 }
 
+export const binge_grid = "Binge grid data with posters";
+
 export function BingeData(props: BingeDataProps) {
   let date: Date = new Date(props.bingeData.date);
   const nth = function (d: number) {
@@ -137,7 +139,7 @@ export function BingeData(props: BingeDataProps) {
           of the year.
         </p>
       </div>
-      <div className="BingeGrid">
+      <div role="figure" aria-label={binge_grid} className="BingeGrid">
         {bingeImages(props.bingeData.shows, props.bingeData.movies).map(
           (value, index) => {
             return (

@@ -28,6 +28,9 @@ const style = {
   },
 };
 
+export const next_button_field = "Navigation to upload CSV";
+export const back_button_field = "Navigation to text field";
+
 function Landing() {
   const [contents, setContents] = useState<string>("");
   const [selectedTab, setSelectedTab] = useState("field");
@@ -61,6 +64,7 @@ function Landing() {
                 />
 
                 <Button
+                  aria-label={next_button_field}
                   style={{
                     padding: "0.75em 1.5em",
                     fontFamily: "Metropolis-Black",
@@ -79,13 +83,14 @@ function Landing() {
                 <Uploader />
                 <div>
                   <Button
+                    aria-label={back_button_field}
                     style={{
                       padding: "0.75em 1.5em",
                       fontFamily: "Metropolis-Black",
                       color: "white",
                       backgroundColor: "#D92929",
                       marginTop: "1em",
-                      marginRight: "1em"
+                      marginRight: "1em",
                     }}
                     onClick={() => setSelectedTab("field")}
                   >
@@ -98,6 +103,7 @@ function Landing() {
                   >
                     <label className="Upload" htmlFor="netflix-file">
                       <Button
+                      
                         style={{
                           padding: "0.75em 1.5em",
                           fontFamily: "Metropolis-Black",

@@ -1,7 +1,7 @@
 
 import { render, screen } from "@testing-library/react";
 import mockAll from "../../../assets/mocks/mockActor.json";
-import { WrappedMoviesOverview } from "../../../components/report/WrappedMoviesOverview";
+import { WrappedMoviesOverview, favorite_movie, remaining_movies } from "../../../components/report/WrappedMoviesOverview";
 
 test("renders WrappedMoviesOverview", () => {
   render(
@@ -23,5 +23,15 @@ test("renders WrappedMoviesOverview", () => {
   });
   expect(header2).toBeInTheDocument();
 
-  // render cards!!
+  expect(
+    screen.getByRole("figure", {
+      name: favorite_movie,
+    })
+  ).toBeInTheDocument();
+  expect(
+    screen.getByRole("figure", {
+      name: remaining_movies,
+    })
+  ).toBeInTheDocument();
+  // render individual cards
 });

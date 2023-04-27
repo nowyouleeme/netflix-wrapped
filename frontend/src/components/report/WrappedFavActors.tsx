@@ -1,3 +1,5 @@
+import { carousel_label } from "./MediaCarousel";
+
 interface WrappedFavActorsProps {
     type: string;
   actors: string[];
@@ -74,7 +76,7 @@ export function WrappedFavActors(props: WrappedFavActorsProps) {
         {getActors(props.actors)}, such as:
       </h3>
       <div className="actorContainer">
-        <div className="carousel">
+        <div role="figure" aria-label={carousel_label} className="carousel">
           {props.media.map((value, index) => (
             <div
               className="actorCarouselCard"

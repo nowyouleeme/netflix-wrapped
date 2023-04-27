@@ -6,7 +6,8 @@ interface WrappedMoviesProps {
     image: string;
   }[];
 }
-
+export const remaining_movies = "Remaining top 4 movies watched"
+export const favorite_movie = "Most watched movie"
 export function WrappedMoviesOverview(props: WrappedMoviesProps) {
   // receive map of other favorites
 
@@ -54,7 +55,11 @@ export function WrappedMoviesOverview(props: WrappedMoviesProps) {
 
   return (
     <div className="center WrappedMoviesOverview">
-      <div className="FavoriteMovie">
+      <div
+        role="figure"
+        aria-label={favorite_movie}
+        className="FavoriteMovie"
+      >
         <h3>When it came to movies,</h3>
         <p>
           you were a number one fan for <i>{props.movies[0].title}</i>:
@@ -80,7 +85,9 @@ export function WrappedMoviesOverview(props: WrappedMoviesProps) {
       </div>
       <div className="center OtherMovieFavorites">
         <h4>Some of your other favorites included:</h4>
-        <div className="Episodes">{showOtherFavs(props.movies)}</div>
+        <div role="figure" aria-label={remaining_movies} className="Episodes">
+          {showOtherFavs(props.movies)}
+        </div>
       </div>
     </div>
   );

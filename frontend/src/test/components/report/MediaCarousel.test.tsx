@@ -5,4 +5,5 @@ import { MediaCarousel } from "../../../components/report/MediaCarousel";
 test("render MediaCarousel", () => {
   console.log("hello");
   // render!!
+  // check individual cards
 });

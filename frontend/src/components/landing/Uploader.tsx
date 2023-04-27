@@ -2,6 +2,8 @@ import {useState} from 'react'
 import Papa from "papaparse";
 import { Button } from '@mui/material';
 
+export const upload_csv = "Upload CSV file here";
+export const fetch_wrapped = "Fetch your wrapped report";
 
 
 function Uploader() {
@@ -25,6 +27,7 @@ function Uploader() {
           />
           <label className="Upload" htmlFor="netflix-file">
             <Button
+            aria-label={upload_csv}
               style={{
                 padding: "0.75em 1.5em",
                 fontFamily: "Metropolis-Black",
@@ -41,6 +44,7 @@ function Uploader() {
           </label>
 
           <Button
+          aria-label={fetch_wrapped}
             onClick={() => {
               //when user submits,
               if (file) {

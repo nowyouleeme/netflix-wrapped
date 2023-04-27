@@ -1,7 +1,7 @@
 
 import { render, screen } from "@testing-library/react";
 import mockAll from "../../../assets/mocks/mockActor.json";
-import { BingeData } from "../../../components/report/BingeData";
+import { BingeData, binge_grid } from "../../../components/report/BingeData";
 
 test("renders BingeData", () => {
   render(<BingeData bingeData={mockAll.bingeData} />);
@@ -25,5 +25,11 @@ test("renders BingeData", () => {
   expect(
     screen.getByText(/Pretty productive, if we say so ourselves!/i)
   ).toBeInTheDocument();
-  // render cards!!
+
+  expect(
+    screen.getByRole("figure", {
+      name: binge_grid,
+    })
+  ).toBeInTheDocument();
+  // check individual cards
 });

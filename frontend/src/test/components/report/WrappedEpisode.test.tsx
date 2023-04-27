@@ -1,7 +1,8 @@
 
 import { render, screen } from "@testing-library/react";
 import mockAll from "../../../assets/mocks/mockActor.json";
-import { WrappedEpisodes } from "../../../components/report/WrappedEpisodes";
+import { WrappedEpisodes, episode_display } from "../../../components/report/WrappedEpisodes";
+import { carousel_label } from "../../../components/report/MediaCarousel";
 
 test("render WrappedEpisodes", () => {
   render(
@@ -27,5 +28,11 @@ test("render WrappedEpisodes", () => {
   ).toBeInTheDocument();
   expect(screen.getByText(/never finished:/i)).toBeInTheDocument();
 
-  // render cards!!!
+  expect(
+    screen.getByRole("figure", {
+      name: episode_display,
+    })
+  ).toBeInTheDocument();
+
+  // check individual cards
 });

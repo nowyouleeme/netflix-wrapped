@@ -2,6 +2,7 @@
 import { render, screen } from "@testing-library/react";
 import mockAll from "../../../assets/mocks/mockActor.json";
 import { WrappedFavActors } from "../../../components/report/WrappedFavActors";
+import { carousel_label } from "../../../components/report/MediaCarousel";
 
 test("render WrappedFavActors", () => {
   render(
@@ -31,5 +32,11 @@ test("render WrappedFavActors", () => {
   expect(screen.getByText(/amazing/i)).toBeInTheDocument();
   expect(screen.getByText(/taste in entertainers!/i)).toBeInTheDocument();
 
-  // render cards!!
+  expect(
+    screen.getByRole("figure", {
+      name: carousel_label,
+    })
+  ).toBeInTheDocument();
+
+  // check individual cards
 });

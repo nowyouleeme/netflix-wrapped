@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import mockAll from "../../../assets/mocks/mockActor.json";
 import { WrappedOverview } from "../../../components/report/WrappedOverview";
+import { carousel_label } from "../../../components/report/MediaCarousel";
 
 test("render WrappedOverview", () => {
   render(
@@ -19,5 +20,11 @@ test("render WrappedOverview", () => {
   expect(screen.getByText(/7 shows/i)).toBeInTheDocument();
   expect(screen.getByText(/5 movies/i)).toBeInTheDocument();
 
-  // check carousel rendering
+  expect(
+    screen.getAllByRole("figure", {
+      name: carousel_label,
+    }).length
+  ).toBe(2);
+
+  // check individual cards
 });
