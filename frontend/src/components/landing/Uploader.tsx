@@ -2,16 +2,20 @@ import {useState} from 'react'
 import Papa from "papaparse";
 import { Button } from '@mui/material';
 
-export const upload_csv = "Upload CSV file here";
+export const load_csv = "Select CSV file here"; //TODO: fix any testing that depended on the specific text.. if there's errors
 export const fetch_wrapped = "Fetch your wrapped report";
+export const upload_csv = "Upload the selected CSV file";
 
 
 function Uploader() {
     const [file, setFile] = useState<File>();
+    const [csvUploadStatus, setCsvUploadStatus] = useState("");
 
     return (
       <div className="Uploader">
         <form>
+
+          {/* input for the user to put in their csv */}
           <input
             id="netflix-file"
             type="file"
@@ -25,6 +29,9 @@ function Uploader() {
               }
             }}
           />
+
+
+          {/* button UI for the input field for the user's csv */}
           <label className="Upload" htmlFor="netflix-file">
             <Button
             aria-label={upload_csv}
@@ -39,40 +46,41 @@ function Uploader() {
               color="primary"
               component="span"
             >
-              Upload NetflixViewingHistory.CSV File
+              Select NetflixViewingHistory.CSV File
             </Button>
           </label>
 
+          
+          
+
           <Button
-          aria-label={fetch_wrapped}
+            aria-label={upload_csv}
             onClick={() => {
               //when user submits,
               if (file) {
                 console.log("hello hello file file");
-                Papa.parse(file, {
-                  //parse the file
+                //parse the file
+                Papa.parse(file, { 
                   complete: function (results) {
                     //upon parsing completion
-                    //send to backend
+                    //1. send to backend
+                    console.log(results)
                     const url =
-                      "http://localhost:6969/saveData?usercsv=" +
-                      results.data.toString();
+                      "http://localhost:6969/saveData?usercsv={usercsv:" +
+                      results.data + "}"
+                    console.log("url is " + url)
                     fetch(url)
                       .then((response) => response.json())
                       .then((responseJSON) => {
                         if (responseJSON.result === "success") {
-                          //TODO: maybe some 'success' screen
+                          //'success' dialog
+                          setCsvUploadStatus("netflix viewing history csv successfully uploaded")
                           console.log("successfully sent to backend"); // it's working
                         } else {
-                          //TODO: maybe some 'fail' screen
+                          //FIXME: 'fail' dialog based on backend error thrown
+                          setCsvUploadStatus("failed to upload netflix viewing history csv")
                         }
                       })
-                      //FIXME: get information back from backend algorithm
-                      .then(() => {
-                        fetch("http://localhost:6969/wrapped").then();
-                      });
-                    //TODO: display their wrapped
-                    console.log("Finished:", results.data);
                   },
                 });
               }
@@ -86,10 +94,38 @@ function Uploader() {
             }}
             variant="contained"
             color="primary"
-            component="span"
-          >
+            component="span">
+            Upload NetflixViewingHistory.CSV File
+          </Button>
+
+          {/* update when the csv has been uploaded or failed uploading */}
+          {/* TODO: aria label for this */}
+          <div className = "csv-upload-status"> 
+            {csvUploadStatus}
+          </div>
+
+
+          <Button
+            aria-label={fetch_wrapped}
+            onClick={() => {
+              //make call to the backend endpoint for retrieving a report...
+              
+            }}
+            style={{
+              padding: "0.75em 1.5em",
+              fontFamily: "Metropolis-Black",
+              color: "#D92929",
+              backgroundColor: "white",
+              marginTop: "1em",
+            }}
+            variant="contained"
+            color="primary"
+            component="span">
             Get your wrapped
           </Button>
+
+
+
         </form>
       </div>
     );

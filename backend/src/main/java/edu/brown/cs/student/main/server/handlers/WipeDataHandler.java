@@ -41,17 +41,16 @@ public class WipeDataHandler implements Route {
       return serialize(fail(errorMessages));
     }
 
-
-
     try {
-      //save the userID and userCSV into the serverInfo
+      //wipe userCSV from the serverInfo
       serverInfo.wipeUserData();
+      System.out.print("user data in server info\n" + serverInfo.getUserData() + "\n");
+      return serialize(success());
     } catch (Exception e) {
       System.out.println(e.getMessage()); // TODO: better error handling
       errorMessages.put("error_bad_json", e.getMessage());
       return serialize(fail(errorMessages));
     }
-    return serialize(success());
   }
 
   /**

@@ -12,14 +12,20 @@ import { BingeData } from "../components/report/BingeData";
 import { useLocation } from "react-router-dom";
 import { WrappedFavActors } from "../components/report/WrappedFavActors";
 import { motion } from "framer-motion";
+import { Button } from '@mui/material';
+import {useState} from 'react'
+
 
 // mockShowData.forEach((item) => {
 //   item.image = process.env.PUBLIC_URL + "/" + item.image;
 // });
 
+export const wipe_data = "Wipe your personal csv data from our server"
+
 function Report() {
   const location = useLocation();
   const state = location.state;
+  const [wipeDataStatus, setWipeDataStatus] = useState("")
 
   return (
     <motion.div
@@ -71,6 +77,41 @@ function Report() {
       />
       <BingeData bingeData={mockAll.bingeData} />
       <NVTIPersonality personality={mockAll.personality} />
+
+      {/* Button to wipe data */}
+      <Button
+        aria-label={wipe_data}
+        onClick={() => {
+          //call backend API
+          const url = "http://localhost:6969/wipeData"
+          fetch(url)
+            .then((response) => response.json())
+            .then((responseJSON) => {
+              if (responseJSON.result === "success") {
+                //'success' dialog
+                setWipeDataStatus("your netflix viewing history data has been successfully removed")
+                console.log("successfully sent to backend"); // it's working
+              } else {
+                //FIXME: 'fail' dialog based on backend error thrown
+                setWipeDataStatus("failed to wipe netflix viewing history data")
+              }
+            })          
+        }}
+        style={{
+          padding: "0.75em 1.5em",
+          fontFamily: "Metropolis-Black",
+          color: "#D92929",
+          backgroundColor: "white",
+          marginTop: "1em",
+        }}
+        variant="contained"
+        color="primary"
+        component="span">
+        Remove your NetflixViewingHistory.CSV File from our memory
+      </Button>
+      <div className = "csv-upload-status"> 
+        {wipeDataStatus}
+      </div>
     </motion.div>
   );
 }

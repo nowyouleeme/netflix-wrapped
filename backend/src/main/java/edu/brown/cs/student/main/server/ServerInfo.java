@@ -30,6 +30,10 @@ public class ServerInfo {
     //  maybe try catch in case data was unsaved (therefore not in map)
   }
 
+  public Data.UserCSV getUserData() {
+    return this.currentUserCSV;
+  }
+
 
 
 }

@@ -9,6 +9,7 @@ import java.lang.reflect.Type;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import edu.brown.cs.student.main.server.Server;
@@ -30,7 +31,7 @@ public class SaveDataHandler implements Route {
   @Override
   public Object handle(Request request, Response response) throws Exception {
     QueryParamsMap queryMap = request.queryMap();
-    String userCSV = queryMap.value("usercsv");
+    String userCSVQuery = queryMap.value("usercsv");
     HashMap<String, String> errorMessages = new HashMap<>();
 
     if (queryMap.toMap().size() != 1) {
@@ -38,21 +39,30 @@ public class SaveDataHandler implements Route {
       return serialize(fail(errorMessages));
     }
 
-    if (userCSV == null) {
+    if (userCSVQuery == null) {
       errorMessages.put("error_bad_json", "need user's csv to save data");
       return serialize(fail(errorMessages));
     }
 
 
     try {
-      //TODO: use moshi to turn the json into a UserCSV object
-      Data.UserCSV parsedUserCSV = new Data.UserCSV("filler");
+      Moshi moshi = new Moshi.Builder()
+              .build();
+      System.out.print("usercsvquery\n" + userCSVQuery + "\n");
+      Data.UserCSV parsedUserCSV = moshi.adapter(Data.UserCSV.class).fromJson(userCSVQuery);
+      System.out.print("parsedUserCSV\n" + parsedUserCSV  + "\n");
+
+      //TODO: make sure the user csv is shaped right (2 columns, headers being title and date)
+
       //save the userCSV into the serverInfo
       serverInfo.saveUserData(parsedUserCSV);
+      System.out.print("user data in server\n" + serverInfo.getUserData() + "\n");
+      return serialize(success());
     } catch (Exception e) {
       System.out.println(e.getMessage()); // TODO: better error handling
+      errorMessages.put("error_bad_json", e.getMessage());
+      return serialize(fail(errorMessages));
     }
-    return serialize(success());
   }
 
   /**
