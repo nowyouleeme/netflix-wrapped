@@ -1,4 +1,4 @@
-package edu.brown.cs.student.main.components;
+package edu.brown.cs.student.main.components.helpers;
 
 import com.squareup.moshi.*;
 

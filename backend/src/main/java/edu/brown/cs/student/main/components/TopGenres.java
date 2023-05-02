@@ -6,13 +6,21 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import edu.brown.cs.student.main.components.helpers.CreateMap;
+
 public class TopGenres {
     public TopGenres() {
     }
 
-    public ArrayList<String> getTopGenres(ArrayList<Map<String, ArrayList<ArrayList<String>>>> userHistoryMapList) {
+    public ArrayList<String> getTopGenres(String[][] userHistory) {
         ArrayList<String> returnGenreList = new ArrayList<String>();
         Map<String, Integer> genreCountMap = new HashMap<>();
+        
+        ArrayList<Map<String, ArrayList<ArrayList<String>>>> userHistoryMapList = new ArrayList<Map<String, ArrayList<ArrayList<String>>>>();
+        CreateMap mapCreator = new CreateMap();
+
+        userHistoryMapList = mapCreator.createWatchedMovieMap(userHistory);
+        
         for (Map<String, ArrayList<ArrayList<String>>> map : userHistoryMapList) {
             for (Map.Entry<String, ArrayList<ArrayList<String>>> entry : map.entrySet()) {
             String key = entry.getKey();

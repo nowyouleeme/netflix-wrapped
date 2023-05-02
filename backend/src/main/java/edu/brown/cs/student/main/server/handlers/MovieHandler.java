@@ -11,9 +11,9 @@ import com.squareup.moshi.JsonDataException;
 import com.squareup.moshi.Moshi;
 
 import spark.Route;
-import edu.brown.cs.student.main.components.CreateMap;
-import edu.brown.cs.student.main.components.JsonReader;
 import edu.brown.cs.student.main.components.TopGenres;
+import edu.brown.cs.student.main.components.helpers.CreateMap;
+import edu.brown.cs.student.main.components.helpers.JsonReader;
 import edu.brown.cs.student.main.movieData.PosterData;
 import edu.brown.cs.student.main.movieData.PosterFetch;
 import edu.brown.cs.student.main.movieData.movieData;
@@ -54,10 +54,10 @@ public class MovieHandler implements Route {
       JsonReader<movieJson> jsonReader = new JsonReader<>(movieJson.class);
       movieJson result = jsonReader.fromJson("backend/data/netflix_titles.json");
       Map<String, String> cast = result.cast();
-      CreateMap mapCreator = new CreateMap(history);
+      CreateMap mapCreator = new CreateMap();
       TopGenres topGenre = new TopGenres();
-      topGenre.getTopGenres(mapCreator.createWatchedMovieMap());
-      
+      topGenre.getTopGenres(history);
+
 
       return new MovieSuccessResponse(cast).serialize();
     } catch (IOException | JsonDataException e) {

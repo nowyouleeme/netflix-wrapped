@@ -1,4 +1,4 @@
-package edu.brown.cs.student.main.components;
+package edu.brown.cs.student.main.components.helpers;
 // package edu.brown.cs.student.main.movieData;
 
 // import edu.brown.cs.student.main.movieData.movieData.movieJson;

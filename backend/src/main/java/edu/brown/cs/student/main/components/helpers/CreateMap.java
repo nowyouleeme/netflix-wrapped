@@ -1,4 +1,4 @@
-package edu.brown.cs.student.main.components;
+package edu.brown.cs.student.main.components.helpers;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -11,14 +11,12 @@ import com.squareup.moshi.JsonDataException;
 import edu.brown.cs.student.main.movieData.movieData.movieJson;
 
 public class CreateMap {
-  String[][] history;
 
-  public CreateMap(String[][] userData) {
-    history = userData;
+  public CreateMap() {
 
   }
 
-  public ArrayList<Map<String, ArrayList<ArrayList<String>>>> createWatchedMovieMap() {
+  public ArrayList<Map<String, ArrayList<ArrayList<String>>>> createWatchedMovieMap(String[][] history) {
 
     Map<String, ArrayList<ArrayList<String>>> movieMap = new HashMap<>();
     ArrayList<Map<String, ArrayList<ArrayList<String>>>> historyMapList = new ArrayList<>();
