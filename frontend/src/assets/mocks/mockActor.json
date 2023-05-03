@@ -54,19 +54,16 @@
       {
         "title": "Reply 1988",
         "numEpWatched": 20,
-        "percentageFinished": 80,
         "image": "https://image.tmdb.org/t/p/original/mqhYVbe20pB0PQXVZVdtbMakOCF.jpg"
       },
       {
         "title": "Attack on Titan",
         "numEpWatched": 20,
-        "percentageFinished": 75,
         "image": "https://image.tmdb.org/t/p/original/ihuDg9TeRzoOhv2cZVA8gi50NFl.jpg"
       },
       {
         "title": "Juvenile Justice",
         "numEpWatched": 20,
-        "percentageFinished": 50,
         "image": "https://image.tmdb.org/t/p/original/xH2wTVlsUlYeFEOVGFDaamHkMCm.jpg"
       }
     ],
@@ -75,19 +72,16 @@
         {
           "title": "Reply 1988",
           "numEpWatched": 20,
-          "percentageFinished": 80,
           "image": "https://image.tmdb.org/t/p/original/mqhYVbe20pB0PQXVZVdtbMakOCF.jpg"
         },
         {
           "title": "Attack on Titan",
           "numEpWatched": 20,
-          "percentageFinished": 75,
           "image": "https://image.tmdb.org/t/p/original/ihuDg9TeRzoOhv2cZVA8gi50NFl.jpg"
         },
         {
           "title": "Juvenile Justice",
           "numEpWatched": 20,
-          "percentageFinished": 50,
           "image": "https://image.tmdb.org/t/p/original/xH2wTVlsUlYeFEOVGFDaamHkMCm.jpg"
         }
       ],
@@ -95,7 +89,6 @@
         {
           "title": "Gilmore Girls",
           "numEpWatched": 5,
-          "percentageFinished": 10,
           "image": "https://image.tmdb.org/t/p/original/d2Aw8BloAZQTmXMjNoy2M6KekLi.jpg"
         }
       ]

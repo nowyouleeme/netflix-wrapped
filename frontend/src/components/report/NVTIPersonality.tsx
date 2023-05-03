@@ -10,7 +10,7 @@ export function NVTIPersonality(props: NVTIPersonalityProps) {
     return (
       <div className="center WrappedPersonality">
         <div className="center PersonalityContainer">
-          <h4>Meet your NVTI personality:</h4>
+          <p className="personalityBigP">Meet your NVTI personality:</p>
           <div className="personalityGraphic">
             <svg
               width="100%"
@@ -38,9 +38,9 @@ export function NVTIPersonality(props: NVTIPersonalityProps) {
               </defs>
             </svg>
           </div>
-          <h2>✧ {props.personality.title} ✧</h2>
+          <p className="personalityTitle">✧ {props.personality.title} ✧</p>
           <div className="personalityDesc">
-            <p>
+            <p className="personalityDescP">
               <i>{props.personality.description}</i>
             </p>
           </div>

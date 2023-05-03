@@ -36,7 +36,7 @@ function Landing() {
   const [selectedTab, setSelectedTab] = useState("field");
 
   return (
-    <div className="LandingBackground">
+    <div aria-live="polite" className="LandingBackground">
       <div className="center Landing">
         <div className="LandingHero">
           <h1>NETFLIX WRAPPED</h1>
@@ -54,6 +54,7 @@ function Landing() {
             {selectedTab === "field" ? (
               <>
                 <TextField
+                  role="textbox"
                   color="primary"
                   style={{ marginRight: "1.5em" }}
                   id="outlined-basic"
@@ -103,7 +104,6 @@ function Landing() {
                   >
                     <label className="Upload" htmlFor="netflix-file">
                       <Button
-                      
                         style={{
                           padding: "0.75em 1.5em",
                           fontFamily: "Metropolis-Black",
@@ -169,12 +169,12 @@ function Landing() {
               <p>
                 Log into your Netflix account and navigate to your "Account"
                 settings by clicking your account avatar in the upper-right
-                corner of the screen. Navigate from "Profile & Parental
-                Controls" &gt; "Viewing Activity" and click on the "View"
-                button.
+                corner of the screen.
               </p>
               <p>
-                You can also locate your viewing activity{" "}
+                Navigate from "Profile & Parental Controls" &gt; "Viewing
+                Activity" and click on the "View" button. You can also locate
+                your viewing activity{" "}
                 <a
                   rel="noreferrer"
                   href="https://www.netflix.com/viewingactivity"

@@ -4,13 +4,11 @@ interface WrappedEpisodesProps {
   above50: {
     title: string;
     numEpWatched: number;
-    percentageFinished: number;
     image: string;
   }[];
   below50: {
     title: string;
     numEpWatched: number;
-    percentageFinished: number;
     image: string;
   }[];
 };
@@ -23,11 +21,13 @@ export function WrappedEpisodes(props: WrappedEpisodesProps) {
     <div className="two-row WrappedShowEpisodes">
       <div className="EpisodesMany">
         <div style={{ textAlign: "center" }}>
-          <h4>
+          <p className="episodesBigP">
             You watched a total of {props.totalEps} episodes of{" "}
             {props.totalShows} different shows,
-          </h4>
-          <p>with some you just couldn't get enough of:</p>
+          </p>
+          <p className="episodesDescP">
+            with some you just couldn't get enough of:
+          </p>
         </div>
         <div role="figure" aria-label={episode_display} className="Episodes">
           {props.above50.map((value, index) => (
@@ -46,10 +46,12 @@ export function WrappedEpisodes(props: WrappedEpisodesProps) {
               </div>
               <div className="EpisodeDesc">
                 <div className="DescContent">
-                  <h2>{value.numEpWatched} episodes</h2>
-                  <p>
-                    You watched through {value.percentageFinished}% of the
-                    episodes for <i>{value.title}</i>
+                  <p className="DescContentSmallP">You watched</p>
+                  <p className="DescContentBigP">
+                    {value.numEpWatched} episodes
+                  </p>
+                  <p className="DescContentSmallP">
+                    of <i>{value.title}</i>
                   </p>
                 </div>
               </div>
@@ -59,7 +61,7 @@ export function WrappedEpisodes(props: WrappedEpisodesProps) {
       </div>
 
       <div className="EpisodesLess">
-        <p style={{ textAlign: "center" }}>
+        <p className="episodesDescP" style={{ textAlign: "center" }}>
           And others that you started but <b>never finished:</b>
         </p>
         <div className="Episodes">
@@ -79,10 +81,12 @@ export function WrappedEpisodes(props: WrappedEpisodesProps) {
               </div>
               <div className="EpisodeDesc">
                 <div className="DescContent">
-                  <h2>{value.numEpWatched} episodes</h2>
-                  <p>
-                    You watched through {value.percentageFinished}% of the
-                    episodes for <i>{value.title}</i>
+                  <p className="DescContentSmallP">You watched</p>
+                  <p className="DescContentBigP">
+                    {value.numEpWatched} episodes
+                  </p>
+                  <p className="DescContentSmallP">
+                    of <i>{value.title}</i>
                   </p>
                 </div>
               </div>

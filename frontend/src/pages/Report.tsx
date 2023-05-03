@@ -16,10 +16,6 @@ import { Button } from '@mui/material';
 import {useState} from 'react'
 
 
-// mockShowData.forEach((item) => {
-//   item.image = process.env.PUBLIC_URL + "/" + item.image;
-// });
-
 export const wipe_data = "Wipe your personal csv data from our server"
 
 function Report() {
@@ -29,7 +25,6 @@ function Report() {
 
   return (
     <motion.div
-    
       className="Report"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -55,7 +50,7 @@ function Report() {
         actors={mockAll.shows.showActors.mostWatchedActors}
         media={mockAll.shows.showActors.actorFeaturedShows}
         saying={
-          <p>
+          <p className="actorsDescP">
             You've got <b>amazing</b> taste in entertainers!
           </p>
         }
@@ -68,8 +63,8 @@ function Report() {
         actors={mockAll.movie.movieActors.mostWatchedActors}
         media={mockAll.movie.movieActors.actorFeaturedMovies}
         saying={
-          <p>
-            Looks like you have some favorite folks... but we <b>all</b> do.
+          <p className="actorsDescP">
+            Looks like you have some favorite folks!
           </p>
         }
         color="#F5EC72"
@@ -79,38 +74,46 @@ function Report() {
       <NVTIPersonality personality={mockAll.personality} />
 
       {/* Button to wipe data */}
-      <Button
-        aria-label={wipe_data}
-        onClick={() => {
-          //call backend API
-          const url = "http://localhost:6969/wipeData"
-          fetch(url)
-            .then((response) => response.json())
-            .then((responseJSON) => {
-              if (responseJSON.result === "success") {
-                //'success' dialog
-                setWipeDataStatus("your netflix viewing history data has been successfully removed")
-                console.log("successfully sent to backend"); // it's working
-              } else {
-                //FIXME: 'fail' dialog based on backend error thrown
-                setWipeDataStatus("failed to wipe netflix viewing history data")
-              }
-            })          
-        }}
-        style={{
-          padding: "0.75em 1.5em",
-          fontFamily: "Metropolis-Black",
-          color: "#D92929",
-          backgroundColor: "white",
-          marginTop: "1em",
-        }}
-        variant="contained"
-        color="primary"
-        component="span">
-        Remove your NetflixViewingHistory.CSV File from our memory
-      </Button>
-      <div className = "csv-upload-status"> 
-        {wipeDataStatus}
+      <div className="WrappedWipe">
+        <p>
+          Finished with your report and want to wipe your data from our servers?
+        </p>
+        <Button
+          aria-label={wipe_data}
+          onClick={() => {
+            //call backend API
+            const url = "http://localhost:6969/wipeData";
+            fetch(url)
+              .then((response) => response.json())
+              .then((responseJSON) => {
+                if (responseJSON.result === "success") {
+                  //'success' dialog
+                  setWipeDataStatus(
+                    "your netflix viewing history data has been successfully removed"
+                  );
+                  console.log("successfully sent to backend"); // it's working
+                } else {
+                  //FIXME: 'fail' dialog based on backend error thrown
+                  setWipeDataStatus(
+                    "failed to wipe netflix viewing history data"
+                  );
+                }
+              });
+          }}
+          style={{
+            padding: "0.75em 1.5em",
+            fontFamily: "Metropolis-Black",
+            color: "white",
+            backgroundColor: "#D92929",
+            marginTop: "2em",
+          }}
+          variant="contained"
+          color="primary"
+          component="span"
+        >
+          Clear my history
+        </Button>
+        <div className="csv-upload-status">{wipeDataStatus}</div>
       </div>
     </motion.div>
   );

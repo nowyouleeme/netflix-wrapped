@@ -9,49 +9,54 @@ export const upload_csv = "Upload the selected CSV file";
 
 function Uploader() {
     const [file, setFile] = useState<File>();
+    const [fileSelected, setFileSelected] = useState<boolean>(false);
+    const [confirmUpload, setConfirmUpload] = useState<boolean>(false);
     const [csvUploadStatus, setCsvUploadStatus] = useState("");
 
     return (
       <div className="Uploader">
         <form>
-
           {/* input for the user to put in their csv */}
           <input
             id="netflix-file"
             type="file"
             accept=".csv"
-            style={{ visibility: "hidden" , height: "0"}}
+            style={{ visibility: "hidden", height: "0" }}
             className="input-field"
             onChange={({ target: { files } }) => {
               //set the file to new one
               if (files) {
                 setFile(files[0]);
+                setFileSelected(true);
               }
             }}
           />
-
+          {/* this will upload to say file selected / whether or not upload was successfull */}
+          {confirmUpload ? (
+            <></>
+          ) : fileSelected ? (
+            <p style={{ marginBottom: "1em" }}>File selected: {file?.name}</p>
+          ) : (
+            <></>
+          )}
 
           {/* button UI for the input field for the user's csv */}
           <label className="Upload" htmlFor="netflix-file">
             <Button
-            aria-label={upload_csv}
+              aria-label={load_csv}
               style={{
                 padding: "0.75em 1.5em",
                 fontFamily: "Metropolis-Black",
                 color: "white",
                 backgroundColor: "#D92929",
-  
               }}
               variant="contained"
               color="primary"
               component="span"
             >
-              Select NetflixViewingHistory.CSV File
+              Select Your NetflixViewingHistory.CSV File
             </Button>
           </label>
-
-          
-          
 
           <Button
             aria-label={upload_csv}
@@ -60,27 +65,33 @@ function Uploader() {
               if (file) {
                 console.log("hello hello file file");
                 //parse the file
-                Papa.parse(file, { 
+                Papa.parse(file, {
                   complete: function (results) {
                     //upon parsing completion
                     //1. send to backend
-                    console.log(results)
+                    console.log(results);
                     const url =
                       "http://localhost:6969/saveData?usercsv={usercsv:" +
-                      results.data + "}"
-                    console.log("url is " + url)
+                      results.data +
+                      "}";
+                    console.log("url is " + url);
                     fetch(url)
                       .then((response) => response.json())
                       .then((responseJSON) => {
+                        setConfirmUpload(true);
                         if (responseJSON.result === "success") {
                           //'success' dialog
-                          setCsvUploadStatus("netflix viewing history csv successfully uploaded")
+                          setCsvUploadStatus(
+                            "netflix viewing history csv successfully uploaded"
+                          );
                           console.log("successfully sent to backend"); // it's working
                         } else {
                           //FIXME: 'fail' dialog based on backend error thrown
-                          setCsvUploadStatus("failed to upload netflix viewing history csv")
+                          setCsvUploadStatus(
+                            "failed to upload netflix viewing history csv"
+                          );
                         }
-                      })
+                      });
                   },
                 });
               }
@@ -94,38 +105,39 @@ function Uploader() {
             }}
             variant="contained"
             color="primary"
-            component="span">
-            Upload NetflixViewingHistory.CSV File
+            component="span"
+          >
+            Upload the CSV
           </Button>
 
           {/* update when the csv has been uploaded or failed uploading */}
           {/* TODO: aria label for this */}
-          <div className = "csv-upload-status"> 
-            {csvUploadStatus}
-          </div>
+          <div className="csv-upload-status">{csvUploadStatus}</div>
 
-
-          <Button
-            aria-label={fetch_wrapped}
-            onClick={() => {
-              //make call to the backend endpoint for retrieving a report...
-              
-            }}
-            style={{
-              padding: "0.75em 1.5em",
-              fontFamily: "Metropolis-Black",
-              color: "#D92929",
-              backgroundColor: "white",
-              marginTop: "1em",
-            }}
-            variant="contained"
-            color="primary"
-            component="span">
-            Get your wrapped
-          </Button>
-
-
-
+          {/* make so that this button will only show when user uploads valid file */}
+          {csvUploadStatus ===
+          "netflix viewing history csv successfully uploaded" ? (
+            <Button
+              aria-label={fetch_wrapped}
+              onClick={() => {
+                //make call to the backend endpoint for retrieving a report...
+              }}
+              style={{
+                padding: "0.75em 1.5em",
+                fontFamily: "Metropolis-Black",
+                color: "white",
+                backgroundColor: "#D92929",
+                marginTop: "1em",
+              }}
+              variant="contained"
+              color="primary"
+              component="span"
+            >
+              Get your wrapped!
+            </Button>
+          ) : (
+            <></>
+          )}
         </form>
       </div>
     );

@@ -8,9 +8,7 @@ test("renders WrappedMoviesOverview", () => {
     <WrappedMoviesOverview year={2022} movies={mockAll.movie.top5Movies} />
   );
 
-  const header1 = screen.getByRole("heading", {
-    name: /When it came to movies,/i,
-  });
+  const header1 = screen.getByText(/When it came to movies,/i);
   expect(header1).toBeInTheDocument();
 
   expect(
@@ -18,9 +16,7 @@ test("renders WrappedMoviesOverview", () => {
   ).toBeInTheDocument();
   expect(screen.getByText(/which you watched/i)).toBeInTheDocument();
 
-  const header2 = screen.getByRole("heading", {
-    name: /Some of your other favorites included:/i,
-  });
+  const header2 = screen.getByText(/Some of your other favorites included:/i);
   expect(header2).toBeInTheDocument();
 
   expect(

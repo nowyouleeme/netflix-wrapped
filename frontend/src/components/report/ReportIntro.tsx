@@ -1,23 +1,23 @@
-import { Fade } from "react-awesome-reveal";
+
 interface ReportIntroProps {
   year: number;
 }
 export function ReportIntro(props: ReportIntroProps) {
   return (
-    <div className="center WrappedIntroduction">
-        <div className="Here">
-          <h2>Your Netflix {props.year} Wrapped is finally here!</h2>
-          <div className="HereSub">
-            <sub>
-              Take a glimpse at your watch time, top shows + movies, favorite
-              genres—all in one place.
-            </sub>
-          </div>
+    <div   className="center WrappedIntroduction">
+      <div className="Here">
+        <h1>Your Netflix {props.year} Wrapped is finally here!</h1>
+        <div className="HereSub">
+          <sub>
+            Take a glimpse at your watch time, top shows + movies, favorite
+            genres—all in one place.
+          </sub>
         </div>
-        <div className="center ScrollDown">
-          <div className="arrow">
-            <label>Scroll down to see more</label>
-            {/* <svg
+      </div>
+      <div className="center ScrollDown">
+        <div className="arrow">
+          <label>Scroll down to see more</label>
+          {/* <svg
               width="30"
               height="18"
               viewBox="0 0 30 18"
@@ -29,8 +29,8 @@ export function ReportIntro(props: ReportIntroProps) {
                 fill="#F5EC72"
               />
             </svg> */}
-          </div>
         </div>
+      </div>
     </div>
   );
 }

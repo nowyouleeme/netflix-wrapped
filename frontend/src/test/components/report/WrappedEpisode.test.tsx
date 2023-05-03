@@ -14,9 +14,7 @@ test("render WrappedEpisodes", () => {
     />
   );
 
-  const header = screen.getByRole("heading", {
-    name: /You watched a total of 200 episodes of 7 different shows,/i,
-  });
+  const header = screen.getByText(/You watched a total of 200 episodes of 7 different shows,/i);
   expect(header).toBeInTheDocument();
 
   expect(

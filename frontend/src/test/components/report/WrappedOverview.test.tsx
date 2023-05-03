@@ -11,9 +11,8 @@ test("render WrappedOverview", () => {
     />
   );
 
-  const header = screen.getByRole("heading", {
-    name: /Out of that time you spent with us in 2022,/i,
-  });
+  const header = screen.getByText(
+    /Out of that time you spent with us in 2022/i);
   expect(header).toBeInTheDocument();
 
   expect(screen.getByText(/you watched/i)).toBeInTheDocument();
