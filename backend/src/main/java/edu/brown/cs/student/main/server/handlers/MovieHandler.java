@@ -12,7 +12,7 @@ import com.squareup.moshi.Moshi;
 
 import spark.Route;
 import edu.brown.cs.student.main.components.TopGenres;
-import edu.brown.cs.student.main.components.helpers.CreateMap;
+import edu.brown.cs.student.main.components.helpers.MapCreator;
 import edu.brown.cs.student.main.components.helpers.JsonReader;
 import edu.brown.cs.student.main.movieData.PosterData;
 import edu.brown.cs.student.main.movieData.PosterFetch;
@@ -54,11 +54,11 @@ public class MovieHandler implements Route {
       JsonReader<movieJson> jsonReader = new JsonReader<>(movieJson.class);
       movieJson result = jsonReader.fromJson("backend/data/netflix_titles.json");
       Map<String, String> cast = result.cast();
-      CreateMap mapCreator = new CreateMap();
+      MapCreator mapCreator = new MapCreator();
       TopGenres topGenre = new TopGenres();
       topGenre.getTopGenres(history);
-
-
+      mapCreator.printMapWithArray(mapCreator.createWatchedMovieMap(history).get(0));
+      
       return new MovieSuccessResponse(cast).serialize();
     } catch (IOException | JsonDataException e) {
       System.out.println(e.getMessage());

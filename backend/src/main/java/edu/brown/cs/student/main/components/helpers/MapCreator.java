@@ -10,34 +10,97 @@ import com.squareup.moshi.JsonDataException;
 
 import edu.brown.cs.student.main.movieData.movieData.movieJson;
 
-public class CreateMap {
+public class MapCreator {
 
-  public CreateMap() {
+  public MapCreator() {
 
   }
 
   public ArrayList<Map<String, ArrayList<ArrayList<String>>>> createWatchedMovieMap(String[][] history) {
+    //fix show issue
 
-    Map<String, ArrayList<ArrayList<String>>> movieMap = new HashMap<>();
+
     ArrayList<Map<String, ArrayList<ArrayList<String>>>> historyMapList = new ArrayList<>();
-    movieMap = createMovieMap();
+
+
     for (int i = 0; i < history.length; i++) {
-      ArrayList<ArrayList<String>> movieInfo = new ArrayList<ArrayList<String>>();
-      Map<String, ArrayList<ArrayList<String>>> mapToAdd = new HashMap<>();
+      //fill up historyMapList.
+      final Map<String, ArrayList<ArrayList<String>>> movieMap = createMovieMap();
+      Map<String, ArrayList<ArrayList<String>>> mapToAdd = new HashMap<String, ArrayList<ArrayList<String>>>();
+      //System.out.println(mapToAdd.get(history[i][0]).size());
 
-      if (movieMap.get(history[i][0]) != null) {
+      //check if a title is a show: search and not found-> split by :, and search again. 
+
+      if(movieMap.containsKey(history[i][0])){
+        ArrayList<ArrayList<String>> movieInfo = new ArrayList<ArrayList<String>>();
         movieInfo = movieMap.get(history[i][0]);
+        mapToAdd.put(history[i][0], movieInfo);
+        ArrayList<String> stringList = new ArrayList<String>();
+        stringList.add(history[i][1]);
+        //this line ic changing movemap somehow
+        mapToAdd.get(history[i][0]).add(stringList);
       }
-      // gets null if not found
-      ArrayList<String> watchDateList = new ArrayList<>();
-      watchDateList.add(history[i][1]);
-      movieInfo.add(watchDateList);
-
-      mapToAdd.put(history[i][0], movieInfo);
+      else{
+        if (movieMap.containsKey(history[i][0].split(":")[0])){
+          String showTitle = history[i][0].split(":")[0];
+          ArrayList<ArrayList<String>> movieInfo = new ArrayList<ArrayList<String>>();
+          movieInfo = movieMap.get(showTitle);
+          mapToAdd.put(showTitle, movieInfo);
+          ArrayList<String> stringList = new ArrayList<String>();
+          stringList.add(history[i][1]);
+          //this line ic changing movemap somehow
+          mapToAdd.get(showTitle).add(stringList);
+        }
+        else{
+          ArrayList<ArrayList<String>> largeStringArray = new ArrayList<ArrayList<String>>();
+          ArrayList<String> stringList = new ArrayList<String>();
+          stringList.add(history[i][1]);
+          largeStringArray.add(stringList);
+          //this line ic changing movemap somehow
+          mapToAdd.put(history[i][0], largeStringArray);
+        }
+      }
       historyMapList.add(mapToAdd);
+      printMapWithArray(mapToAdd);
     }
     return historyMapList;
   }
+
+// //loop through the history length
+// for (int i = 0; i < history.length; i++) {
+//   //make new variables, movieInfo is the movie information array and mapToAdd is the map we add to the final array
+//   ArrayList<ArrayList<String>> movieInfo = new ArrayList<ArrayList<String>>();
+//   Map<String, ArrayList<ArrayList<String>>> mapToAdd = new HashMap<>();
+
+//   //if movieMap actually has information on the movie title,
+//   if (movieMap.containsKey(history[i][0])) {
+//     //movieinfo is the information in the movieMap. 
+
+//     System.out.println(history[i][0] + ": " + movieMap.get(history[i][0]).size());
+//     movieInfo = movieMap.get(history[i][0]);
+//   }
+//   // gets null if not found
+//   ArrayList<String> watchDateList = new ArrayList<>();
+//   watchDateList.add(history[i][1]);
+//   // prevent adding multiple versions of view dates.
+
+//   movieInfo.add(watchDateList);
+  
+
+
+//   mapToAdd.put(history[i][0], movieInfo);
+//   historyMapList.add(mapToAdd);
+// }
+// System.out.println(historyMapList.size());
+// for (Map<String, ArrayList<ArrayList<String>>> entry : historyMapList) {
+//   printMapWithArray(entry);
+// }
+// return historyMapList;
+
+
+
+
+
 
 
   public Map<String, ArrayList<ArrayList<String>>> createMovieMap() {

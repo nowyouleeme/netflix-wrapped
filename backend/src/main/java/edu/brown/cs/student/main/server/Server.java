@@ -32,29 +32,22 @@ public class Server {
     // set up loadData and wipeData endpoints
 
     String[][] movieData1 = { 
-      {"Seinfeld: Season 8: The Little Kicks", "4/14/23"},
-      {"The Net", "5/5/22"},
       {"Valentine's Day", "2/14/21"},
-      {"Rurouni Kenshin: The Beginning", "6/4/22"},
-      {"Transformers: War for Cybertron: Kingdom", "7/29/21"},
-      {"Yowamushi Pedal", "7/29/21"},
-      {"Pok\u00e9mon Master Journeys: The Series", "7/29/21"},
-      {"The Net", "5/5/22"},
-      {"The Net", "5/5/22"},
-      {"The Net", "5/5/22"},
-      {"The Net", "5/5/22"},
-      {"Valentine's Day", "2/14/21"},
-      {"Valentine's Day", "2/14/21"},
-      {"Valentine's Day", "2/14/21"},
-      {"Valentine's Day", "2/14/21"},
-      {"Valentine's Day", "2/14/21"},
-      {"Valentine's Day", "2/14/21"},
-      {"Valentine's Day", "2/14/21"},
+      {"Valentine's Day", "9/21/21"},
+
+      {"Squid Game: level2", "2/14/21"},
+      {"Squid Game: level1", "9/21/21"},
+      {"Squid Game: level1", "12/21/21"},
+
+      {"asflnv", "2/14/21"},
+      {"asflnv", "9/21/21"}
   };
     Spark.get("saveData", new SaveDataHandler(serverInfo));
     // System.out.print(serverInfo.getFullRedliningGeoJSON().keySet());
     Spark.get("wipeData", new WipeDataHandler(serverInfo));
     Spark.get("wrapped", new WrappedHandler(serverInfo));
+
+
     Spark.get("movies", new MovieHandler(movieData1));
 
     Spark.init();
