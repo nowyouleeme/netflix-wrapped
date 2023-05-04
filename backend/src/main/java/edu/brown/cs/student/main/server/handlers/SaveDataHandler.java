@@ -50,13 +50,20 @@ public class SaveDataHandler implements Route {
       Moshi moshi = new Moshi.Builder().build();
       System.out.print("usercsvquery\n" + userCSVQuery + "\n");
       Data.UserCSV parsedUserCSV = moshi.adapter(Data.UserCSV.class).fromJson(userCSVQuery);
-      System.out.print("parsedUserCSV\n" + Arrays.toString(parsedUserCSV.usercsv()[0])  + "\n");
+
+      System.out.print("parsedUserCSV\n");
+      for (int i = 0; i < parsedUserCSV.usercsv().length; i++) {
+        System.out.print(Arrays.toString(parsedUserCSV.usercsv()[i])  + "\n");
+      }
 
       //TODO: make sure the user csv is shaped right (2 columns, headers being title and date)
 
       //save the userCSV into the serverInfo
       serverInfo.saveUserData(parsedUserCSV);
-      System.out.print("user data in server\n" + Arrays.toString(serverInfo.getUserData().usercsv()[1]) + "\n");
+      System.out.print("user data in server\n");
+      for (int i = 0; i < serverInfo.getUserData().usercsv().length; i++) {
+        System.out.print(Arrays.toString(serverInfo.getUserData().usercsv()[i])  + "\n");
+      }
 
       //return serialized success response
       return serialize(success());

@@ -26,7 +26,7 @@ public class Server {
         });
 
     //TODO: initialize with real generator!!
-      ReportGenerator mockRGenerator = new MockRGenerator();
+    ReportGenerator mockRGenerator = new MockRGenerator();
     // serverInfo contains the shared states, including the current user csv and the report generator of choice
     ServerInfo serverInfo = new ServerInfo(mockRGenerator);
 

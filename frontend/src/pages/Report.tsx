@@ -7,7 +7,6 @@ import { NVTIPersonality } from "../components/report/NVTIPersonality";
 import { ReportIntro } from "../components/report/ReportIntro";
 import { ReportWelcome } from "../components/report/ReportWelcome";
 import { WrappedOverview } from "../components/report/WrappedOverview";
-import mockAll from "../assets/mocks/mockActor.json";
 import { BingeData } from "../components/report/BingeData";
 import { useLocation } from "react-router-dom";
 import { WrappedFavActors } from "../components/report/WrappedFavActors";
@@ -24,10 +23,10 @@ function Report() {
   const location = useLocation();
   const state = location.state;
   const [wipeDataStatus, setWipeDataStatus] = useState("")
-
-  //TODO: uncomment below
-  // const mockAll = state.reportJSON
   
+  //TODO: uncomment below
+  const [mockAll, setMockAll] = useState(state.reportJSON) 
+
   return (
     <motion.div
       className="Report"
@@ -94,7 +93,7 @@ function Report() {
                 if (responseJSON.result === "success") {
                   //'success' dialog
                   setWipeDataStatus(
-                    "your netflix viewing history data has been successfully removed"
+                    "your netflix viewing history data has been successfully removed from the backend"
                   );
                   console.log("successfully sent to backend"); // it's working
                 } else {
@@ -104,6 +103,10 @@ function Report() {
                   );
                 }
               });
+            //clear out the data shown in the wrapped report
+            setMockAll(null);
+            //TODO: is the data associated with the location still stored? 
+            //  if so, find a way to remove that CHECK if you can remove the data but then go back and forth in browser
             //TODO: wipe data from frontend (landing)
             // setUserReportJSON(null)   
             //TODO: reroute to the landing page
@@ -125,6 +128,8 @@ function Report() {
       </div>
     </motion.div>
   );
-}
+  }
+  
+
 
 export default Report;

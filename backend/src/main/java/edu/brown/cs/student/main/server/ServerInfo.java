@@ -45,7 +45,7 @@ public class ServerInfo {
    * function that generates the json with all the information contained in the wrapped report.
    * @return a String representing the json
    */
-  public String generateReportJSON() {
+  public Data.WrappedData generateReportJSON() {
     return reportGenerator.generateReportJSON(currentUserCSV.usercsv());
   }
 

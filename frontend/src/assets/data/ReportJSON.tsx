@@ -1,4 +1,4 @@
-interface ReportJSON {
+export interface ReportJSON {
   top5Genres: [
     {
       genre: string;

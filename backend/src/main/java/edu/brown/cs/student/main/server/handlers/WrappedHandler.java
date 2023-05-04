@@ -44,7 +44,7 @@ public class WrappedHandler implements Route {
 
         try {
             //  1. we use the generator in server info to generate the report.
-            String reportJSON = serverInfo.generateReportJSON();
+            Data.WrappedData reportJSON = serverInfo.generateReportJSON();
             //  2. we send this report into the frontend.
             return serialize(success(reportJSON));
 
@@ -73,7 +73,7 @@ public class WrappedHandler implements Route {
      *
      * @return the hashmap mapping the response for a successful request.
      */
-    public Map<String, Object> success(String reportJSON) {
+    public Map<String, Object> success(Data.WrappedData reportJSON) {
         Map<String, Object> successful = new HashMap<>();
         successful.put("result", "success");
         successful.put("report", reportJSON);
@@ -90,7 +90,7 @@ public class WrappedHandler implements Route {
     public static String serialize(Map<String, Object> response) {
         Moshi moshi = new Moshi.Builder().build();
         Type mapOfJSONResponse =
-                Types.newParameterizedType(Map.class, String.class, Object.class);
+                Types.newParameterizedType(Map.class, String.class, Object.class, Data.WrappedData.class);
         JsonAdapter<Map<String, Object>> adapter = moshi.adapter(mapOfJSONResponse);
         return adapter.toJson(response);
     }

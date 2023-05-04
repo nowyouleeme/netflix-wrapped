@@ -3,7 +3,8 @@ import Papa from "papaparse";
 import { Button} from '@mui/material';
 import { Link } from "react-router-dom";
 import mockAll from "../../assets/mocks/mockActor.json";
-
+import { convertCSV } from './Parsing';
+import { ReportJSON } from '../../assets/data/ReportJSON';
 export const load_csv = "Select CSV file here"; //TODO: fix any testing that depended on the specific text.. if there's errors
 export const generate_wrapped = "Generate your wrapped report";
 export const upload_csv = "Upload the selected CSV file";
@@ -41,7 +42,7 @@ function Uploader(props: UploaderProps) {
           />
           {/* this will upload to say file selected / whether or not upload was successfull */}
           {confirmUpload ? (
-            <></>
+            <p style={{ marginBottom: "1em" }}>File Uploaded Successfully {file?.name}</p>
           ) : fileSelected ? (
             <p style={{ marginBottom: "1em" }}>File selected: {file?.name}</p>
           ) : (
@@ -66,7 +67,7 @@ function Uploader(props: UploaderProps) {
             </Button>
           </label>
 
-          {/* button UI for the uploading the user's csv */}          
+{/* button UI for the uploading the user's csv */}          
           <Button
             aria-label={upload_csv}
             onClick={() => {
@@ -74,35 +75,32 @@ function Uploader(props: UploaderProps) {
               if (file) {
                 console.log("hello hello file file");
                 //parse the file
-                Papa.parse(file, {
-                  complete: function (results) {
-                    //upon parsing completion
-                    //1. send to backend
-                    console.log(results);
+                convertCSV(file)
+                  .then((jsonstring: String) => {
+                    console.log("inside .then jsonstring is :" + jsonstring)
                     const url =
-                      "http://localhost:6969/saveData?usercsv={usercsv:" +
-                      results.data +
-                      "}";
-                    console.log("url is " + url);
-                    fetch(url)
-                      .then((response) => response.json())
-                      .then((responseJSON) => {
-                        setConfirmUpload(true);
-                        if (responseJSON.result === "success") {
-                          //'success' dialog
-                          setCsvUploadStatus(
-                            "netflix viewing history csv successfully uploaded"
-                          );
-                          console.log("successfully sent to backend"); // it's working
-                        } else {
-                          //FIXME: 'fail' dialog based on backend error thrown
-                          setCsvUploadStatus(
-                            "failed to upload netflix viewing history csv"
-                          );
-                        }
-                      });
-                  },
-                });
+                      "http://localhost:6969/saveData?usercsv=" + jsonstring;
+                      console.log("url is " + url);
+                      fetch(url)
+                        .then((response) => response.json())
+                        .then((responseJSON) => {
+                          setConfirmUpload(true);
+                          if (responseJSON.result === "success") {
+                            //'success' dialog
+                            setCsvUploadStatus(
+                              "netflix viewing history csv successfully uploaded"
+                            );
+                            console.log("successfully sent to backend"); 
+                          } else {
+                            setCsvUploadStatus(
+                              "failed to upload netflix viewing history csv"
+                            );
+                          }
+                        });
+                  })
+                
+
+                
               }
             }}
             style={{
@@ -133,17 +131,22 @@ function Uploader(props: UploaderProps) {
               //make call to the backend endpoint for generating a report...
               const url = "http://localhost:6969/wrapped"
               fetch(url)
-                .then((response) => response.json())
+                .then((response) => {
+                  console.log(response);
+                  return response.json()
+                })
                 .then((responseJSON) => {
                   if (responseJSON.result === "success") {
                     //'success' dialog
                     setReportStatus("report successfully generated")
-                    console.log("sent wrapped request to backend")
-                    //FIXME: parse the backend response into typescript object
-                    let parsedReportJSON: ReportJSON = JSON.parse(responseJSON.report);
+                    console.log("sent wrapped request to backend, responseJSON : " + responseJSON)
+                    //parse the backend response into typescript object
+                    console.log("responseJSON.report : " + responseJSON.report)
+                    let parsedReportJSON: ReportJSON = JSON.parse(JSON.stringify(responseJSON.report));
+                    console.log("parsedReportJSON: " + parsedReportJSON)
                     setReportJSON(parsedReportJSON)
                   } else {
-                    //TODO: 'fail' dialog based on backend error thrown
+                    //'fail' dialog based on backend error thrown
                     setReportStatus("failed to generate report")
                   }
                 })
@@ -169,7 +172,6 @@ function Uploader(props: UploaderProps) {
             <Link
               style={{ textDecoration: "none" }}
               to={`/Report`}
-              // TODO: replace mockAll with parsed JSON
               state={{ name: name, reportJSON: reportJSON}} 
             >
               <label className="Upload" htmlFor="netflix-file">

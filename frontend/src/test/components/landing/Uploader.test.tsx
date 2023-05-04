@@ -1,9 +1,9 @@
 import { render, screen } from "@testing-library/react";
 import mockAll from "../../../assets/mocks/mockActor.json";
-import Uploader, { fetch_wrapped, load_csv, upload_csv } from "../../../components/landing/Uploader";
+import Uploader, { generate_wrapped, load_csv, upload_csv } from "../../../components/landing/Uploader";
 
 test("render Uploader", () => {
-  render(<Uploader/>)
+  render(<Uploader name={"Tim"}/>)
 
   expect(screen.getAllByRole("button").length).toBe(2);
 
