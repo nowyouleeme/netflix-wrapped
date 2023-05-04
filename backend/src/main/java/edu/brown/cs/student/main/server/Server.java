@@ -121,9 +121,9 @@ public class Server {
 
     try (FileWriter writer = new FileWriter("backend/backend-ml/data/viewhist.csv")) {
       for (int j = 0; j < movieData3.length; j++) {
-        writer.append(movieData3[j][0]);
+        writer.append("\""+movieData3[j][0]+"\"");
         writer.append(",");
-        writer.append(movieData3[j][1]);
+        writer.append("\""+movieData3[j][1]+"\"");
         writer.append("\n");
       }
       writer.close();
