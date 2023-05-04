@@ -56,19 +56,24 @@ public class MovieHandler implements Route {
   public Object handle(Request request, Response response) throws Exception {
     try {
       JsonReader<movieJson> jsonReader = new JsonReader<>(movieJson.class);
-      //movieJson result = jsonReader.fromJson("backend/data/netflix_titles.json");
-     // Map<String, String> cast = result.cast();
+      // movieJson result = jsonReader.fromJson("backend/data/netflix_titles.json");
+      // Map<String, String> cast = result.cast();
       MapCreator mapCreator = new MapCreator();
       TopGenres topGenre = new TopGenres();
       BingeData bingeData = new BingeData();
       TotalMin totalMin = new TotalMin();
       MovieSection movieSection = new MovieSection();
       ShowSection showSection = new ShowSection();
-      
 
-      ArrayList<Map<String, ArrayList<ArrayList<String>>>> userHistoryMapList = mapCreator.createWatchedMovieMap(history);
+      ArrayList<Map<String, ArrayList<ArrayList<String>>>> userHistoryMapList = mapCreator
+          .createWatchedMovieMap(history);
       JSONFinalFetch finalFetchJson = new JSONFinalFetch();
-      
+
+
+
+
+
+
       Personality personality = new Personality();
 
       finalFetchJson.personality.title = personality.getPersonality(history, userHistoryMapList);
@@ -78,22 +83,17 @@ public class MovieHandler implements Route {
       finalFetchJson.movie = movieSection.getMovieSection(history, userHistoryMapList);
       finalFetchJson.shows = showSection.getShowSection(history, userHistoryMapList);
 
-
-      //System.out.println("TotalTime: "+totalMin.getTotalMin(history));
+      // System.out.println("TotalTime: "+totalMin.getTotalMin(history));
       // System.out.println("bingeData: " + bingeData.getBingeData(history));
       // System.out.println("movieSection: "+ movieSection.getMovieSection(history));
       // System.out.println("showSection: "+ showSection.getMovieSection(history));
-      
 
-
-      // for (Map<String, ArrayList<ArrayList<String>>> element : mapCreator.createWatchedMovieMap(history)){
-      //   mapCreator.printMapWithArray(element);
+      // for (Map<String, ArrayList<ArrayList<String>>> element :
+      // mapCreator.createWatchedMovieMap(history)){
+      // mapCreator.printMapWithArray(element);
       // }
-      
-      
+
       return new MovieSuccessResponse(finalFetchJson).serialize();
-
-
 
     } catch (IOException | JsonDataException e) {
       System.out.println(e.getMessage());

@@ -52,7 +52,7 @@ print(model.summary())
 
 app = Flask(__name__)
 
-@app.route('/filepath/', defaults={'path' : 'data/NetflixViewingHistoryBIG.csv'})
+@app.route('/filepath/', defaults={'path' : 'data/viewhist.csv'})
 #@app.route('/filepath/', defaults={'path' : 'data/viewhist.csv'})
 @app.route('/filepath/<path>')
 def prediction(path):
