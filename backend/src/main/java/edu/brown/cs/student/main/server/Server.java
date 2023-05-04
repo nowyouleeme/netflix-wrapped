@@ -30,7 +30,7 @@ public class Server {
 
 
     // serverInfo contains the shared states, including the 'database' of user csvs
-    ServerInfo serverInfo = new ServerInfo();
+    // ServerInfo serverInfo = new ServerInfo();
     // System.out.println("server info's redlining geojson is ccurently initalizing
     // as " +
     // serverInfo.getFullRedliningGeoJSON());

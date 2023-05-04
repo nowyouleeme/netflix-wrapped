@@ -13,6 +13,7 @@ import com.squareup.moshi.Moshi;
 import spark.Route;
 import edu.brown.cs.student.main.components.BingeData;
 import edu.brown.cs.student.main.components.MovieSection;
+import edu.brown.cs.student.main.components.Personality;
 import edu.brown.cs.student.main.components.ShowSection;
 import edu.brown.cs.student.main.components.TopGenres;
 import edu.brown.cs.student.main.components.TotalMin;
@@ -68,8 +69,9 @@ public class MovieHandler implements Route {
       ArrayList<Map<String, ArrayList<ArrayList<String>>>> userHistoryMapList = mapCreator.createWatchedMovieMap(history);
       JSONFinalFetch finalFetchJson = new JSONFinalFetch();
       
+      Personality personality = new Personality();
 
-      finalFetchJson.personality.title = "UNDECIDEDPERSONALITY";
+      finalFetchJson.personality.title = personality.getPersonality(history, userHistoryMapList);
       finalFetchJson.top5Genres = topGenre.getTopGenres(history, userHistoryMapList).top5Genres;
       finalFetchJson.bingeData = bingeData.getBingeData(history, userHistoryMapList);
       finalFetchJson.totalMin = totalMin.getTotalMin(history, userHistoryMapList).totalMin;
