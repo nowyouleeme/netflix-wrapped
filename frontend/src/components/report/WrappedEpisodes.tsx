@@ -1,12 +1,12 @@
 interface WrappedEpisodesProps {
   totalEps: number;
   totalShows: number;
-  above50: {
+  mostWatched: {
     title: string;
     numEpWatched: number;
     image: string;
   }[];
-  below50: {
+  leastWatched: {
     title: string;
     numEpWatched: number;
     image: string;
@@ -30,7 +30,7 @@ export function WrappedEpisodes(props: WrappedEpisodesProps) {
           </p>
         </div>
         <div role="figure" aria-label={episode_display} className="Episodes">
-          {props.above50.map((value, index) => (
+          {props.mostWatched.map((value, index) => (
             <div className="Episode" key={index}>
               <div className="EpisodeImg">
                 <a
@@ -65,7 +65,7 @@ export function WrappedEpisodes(props: WrappedEpisodesProps) {
           And others that you started but <b>never finished:</b>
         </p>
         <div className="Episodes">
-          {props.below50.map((value, index) => (
+          {props.leastWatched.map((value, index) => (
             <div className="Episode" key={index}>
               <div className="EpisodeImg">
                 <a

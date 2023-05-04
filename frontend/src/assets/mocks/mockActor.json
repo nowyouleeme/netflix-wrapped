@@ -68,7 +68,7 @@
       }
     ],
     "topShows": {
-      "above50_3": [
+      "mostWatched": [
         {
           "title": "Reply 1988",
           "numEpWatched": 20,
@@ -85,7 +85,7 @@
           "image": "https://image.tmdb.org/t/p/original/xH2wTVlsUlYeFEOVGFDaamHkMCm.jpg"
         }
       ],
-      "below50_3": [
+      "leastWatched": [
         {
           "title": "Gilmore Girls",
           "numEpWatched": 5,

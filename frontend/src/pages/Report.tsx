@@ -47,8 +47,8 @@ function Report() {
       <WrappedEpisodes
         totalEps={mockAll.shows.totalEpWatched}
         totalShows={mockAll.shows.allShows.length}
-        above50={mockAll.shows.topShows.above50_3}
-        below50={mockAll.shows.topShows.below50_3}
+        mostWatched={mockAll.shows.topShows.mostWatched}
+        leastWatched={mockAll.shows.topShows.leastWatched}
       />
       <WrappedFavActors
         type="show"
