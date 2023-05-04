@@ -18,11 +18,16 @@ import {useState} from 'react'
 
 export const wipe_data = "Wipe your personal csv data from our server"
 
+
+
 function Report() {
   const location = useLocation();
   const state = location.state;
   const [wipeDataStatus, setWipeDataStatus] = useState("")
 
+  //TODO: uncomment below
+  // const mockAll = state.reportJSON
+  
   return (
     <motion.div
       className="Report"
@@ -99,6 +104,9 @@ function Report() {
                   );
                 }
               });
+            //TODO: wipe data from frontend (landing)
+            // setUserReportJSON(null)   
+            //TODO: reroute to the landing page
           }}
           style={{
             padding: "0.75em 1.5em",

@@ -32,7 +32,7 @@ export const next_button_field = "Navigation to upload CSV";
 export const back_button_field = "Navigation to text field";
 
 function Landing() {
-  const [contents, setContents] = useState<string>("");
+  const [userName, setUserName] = useState<string>("");
   const [selectedTab, setSelectedTab] = useState("field");
 
   return (
@@ -61,7 +61,7 @@ function Landing() {
                   label="What's your name?"
                   sx={style}
                   variant="outlined"
-                  onChange={(e) => setContents(e.target.value)} // this will actually store the content inside the input box
+                  onChange={(e) => setUserName(e.target.value)} // this will actually store the content inside the input box
                 />
 
                 <Button
@@ -81,7 +81,8 @@ function Landing() {
               </>
             ) : (
               <div className="UploaderContainer">
-                <Uploader />
+                {/* //TODO: give uploader the prop of the name */}
+                <Uploader name={userName}/>  
                 <div>
                   <Button
                     aria-label={back_button_field}
@@ -100,7 +101,7 @@ function Landing() {
                   <Link
                     style={{ textDecoration: "none" }}
                     to={`/Report`}
-                    state={{ name: contents }}
+                    state={{ name: userName}}
                   >
                     <label className="Upload" htmlFor="netflix-file">
                       <Button

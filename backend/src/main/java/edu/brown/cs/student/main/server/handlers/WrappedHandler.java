@@ -33,22 +33,27 @@ public class WrappedHandler implements Route {
     }
 
     @Override
-    public Object handle(Request request, Response response) throws Exception {
+    public Object handle(Request request, Response response) {
         QueryParamsMap queryMap = request.queryMap();
         HashMap<String, String> errorMessages = new HashMap<>();
+
         if (queryMap.toMap().size() != 0) {
             errorMessages.put("error_bad_json", "expected 0 query parameters but received" + queryMap.toMap().size());
             return serialize(fail(errorMessages));
         }
 
         try {
-            //TODO: Here is where the algorithms would be run, using the user data stored in serverinfo.
+            //  1. we use the generator in server info to generate the report.
+            String reportJSON = serverInfo.generateReportJSON();
+            //  2. we send this report into the frontend.
+            return serialize(success(reportJSON));
+
+
         } catch (Exception e) {
             System.out.println(e.getMessage()); // TODO: better error handling
             errorMessages.put("error_bad_json", e.getMessage());
             return serialize(fail(errorMessages));
         }
-        return serialize(success());
     }
 
     /**
@@ -68,9 +73,10 @@ public class WrappedHandler implements Route {
      *
      * @return the hashmap mapping the response for a successful request.
      */
-    public Map<String, Object> success() {
+    public Map<String, Object> success(String reportJSON) {
         Map<String, Object> successful = new HashMap<>();
         successful.put("result", "success");
+        successful.put("report", reportJSON);
         return successful;
     }
 
@@ -84,7 +90,7 @@ public class WrappedHandler implements Route {
     public static String serialize(Map<String, Object> response) {
         Moshi moshi = new Moshi.Builder().build();
         Type mapOfJSONResponse =
-                Types.newParameterizedType(Map.class, String.class, Object.class, Data.UserCSV.class);
+                Types.newParameterizedType(Map.class, String.class, Object.class);
         JsonAdapter<Map<String, Object>> adapter = moshi.adapter(mapOfJSONResponse);
         return adapter.toJson(response);
     }

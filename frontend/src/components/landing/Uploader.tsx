@@ -1,17 +1,25 @@
 import {useState} from 'react'
 import Papa from "papaparse";
-import { Button } from '@mui/material';
+import { Button} from '@mui/material';
+import { Link } from "react-router-dom";
+import mockAll from "../../assets/mocks/mockActor.json";
 
 export const load_csv = "Select CSV file here"; //TODO: fix any testing that depended on the specific text.. if there's errors
-export const fetch_wrapped = "Fetch your wrapped report";
+export const generate_wrapped = "Generate your wrapped report";
 export const upload_csv = "Upload the selected CSV file";
 
+export interface UploaderProps {
+  name: String;
+}
 
-function Uploader() {
+function Uploader(props: UploaderProps) {
     const [file, setFile] = useState<File>();
     const [fileSelected, setFileSelected] = useState<boolean>(false);
     const [confirmUpload, setConfirmUpload] = useState<boolean>(false);
     const [csvUploadStatus, setCsvUploadStatus] = useState("");
+    const [reportStatus, setReportStatus] = useState("");
+    const [reportJSON, setReportJSON] = useState<ReportJSON>();
+    const name = props.name;
 
     return (
       <div className="Uploader">
@@ -58,6 +66,7 @@ function Uploader() {
             </Button>
           </label>
 
+          {/* button UI for the uploading the user's csv */}          
           <Button
             aria-label={upload_csv}
             onClick={() => {
@@ -112,29 +121,75 @@ function Uploader() {
 
           {/* update when the csv has been uploaded or failed uploading */}
           {/* TODO: aria label for this */}
-          <div className="csv-upload-status">{csvUploadStatus}</div>
+          <div className = "csv-upload-status"> 
+            {csvUploadStatus}
+          </div>
+
+          {/* TODO: meeds fixing*/}
+          {reportStatus}
+          <Button
+            aria-label={generate_wrapped}
+            onClick={() => {
+              //make call to the backend endpoint for generating a report...
+              const url = "http://localhost:6969/wrapped"
+              fetch(url)
+                .then((response) => response.json())
+                .then((responseJSON) => {
+                  if (responseJSON.result === "success") {
+                    //'success' dialog
+                    setReportStatus("report successfully generated")
+                    console.log("sent wrapped request to backend")
+                    //FIXME: parse the backend response into typescript object
+                    let parsedReportJSON: ReportJSON = JSON.parse(responseJSON.report);
+                    setReportJSON(parsedReportJSON)
+                  } else {
+                    //TODO: 'fail' dialog based on backend error thrown
+                    setReportStatus("failed to generate report")
+                  }
+                })
+            }}
+            style={{
+              padding: "0.75em 1.5em",
+              fontFamily: "Metropolis-Black",
+              color: "#D92929",
+              backgroundColor: "white",
+              marginTop: "1em",
+            }}
+            variant="contained"
+            color="primary"
+            component="span">
+            Generate Report
+          </Button>
+
+
 
           {/* make so that this button will only show when user uploads valid file */}
           {csvUploadStatus ===
           "netflix viewing history csv successfully uploaded" ? (
-            <Button
-              aria-label={fetch_wrapped}
-              onClick={() => {
-                //make call to the backend endpoint for retrieving a report...
-              }}
-              style={{
-                padding: "0.75em 1.5em",
-                fontFamily: "Metropolis-Black",
-                color: "white",
-                backgroundColor: "#D92929",
-                marginTop: "1em",
-              }}
-              variant="contained"
-              color="primary"
-              component="span"
+            <Link
+              style={{ textDecoration: "none" }}
+              to={`/Report`}
+              // TODO: replace mockAll with parsed JSON
+              state={{ name: name, reportJSON: reportJSON}} 
             >
-              Get your wrapped!
-            </Button>
+              <label className="Upload" htmlFor="netflix-file">
+              <Button
+                aria-label={generate_wrapped} //no onclick,it should go to link
+                style={{
+                  padding: "0.75em 1.5em",
+                  fontFamily: "Metropolis-Black",
+                  color: "white",
+                  backgroundColor: "#D92929",
+                  marginTop: "1em",
+                }}
+                variant="contained"
+                color="primary"
+                component="span"
+              >
+                Get your wrapped!
+              </Button>
+              </label>
+            </Link>
           ) : (
             <></>
           )}

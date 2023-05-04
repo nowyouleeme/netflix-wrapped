@@ -15,9 +15,6 @@ import spark.Request;
 import spark.Response;
 import spark.Route;
 
-// the below imports and where they are used, which turns the json file into a json string, is taken
-// from
-// https://www.javatpoint.com/convert-json-file-to-string-in-java#:~:text=In%20Java%2C%20we%20can%20easily,intensive%20I%2FO%20operations).
 
 /** Class that holds the handler for the "loadRLTData" server endpoint. */
 public class WipeDataHandler implements Route {
@@ -36,6 +33,7 @@ public class WipeDataHandler implements Route {
   public Object handle(Request request, Response response) throws Exception {
     QueryParamsMap queryMap = request.queryMap();
     HashMap<String, String> errorMessages = new HashMap<>();
+
     if (queryMap.toMap().size() != 0) {
       errorMessages.put("error_bad_json", "expected 0 query parameters but received" + queryMap.toMap().size());
       return serialize(fail(errorMessages));

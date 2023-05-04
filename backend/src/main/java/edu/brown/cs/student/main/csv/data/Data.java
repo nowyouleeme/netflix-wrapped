@@ -8,7 +8,7 @@ import java.util.Map;
 public class Data {
   /**
    * Record for one user's csv
-   * @param usercsv the csv of the user
+   * @param usercsv the csv of the user, represented as a 2D Array of Strings
    */
-  public record UserCSV(List<List<Object>> usercsv) {}
+  public record UserCSV(String[][] usercsv) {}
 }

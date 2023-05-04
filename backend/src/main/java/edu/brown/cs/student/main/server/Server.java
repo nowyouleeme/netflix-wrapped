@@ -2,6 +2,8 @@ package edu.brown.cs.student.main.server;
 
 import static spark.Spark.after;
 
+import edu.brown.cs.student.main.reports.MockRGenerator;
+import edu.brown.cs.student.main.reports.ReportGenerator;
 import edu.brown.cs.student.main.server.handlers.SaveDataHandler;
 import edu.brown.cs.student.main.server.handlers.WipeDataHandler;
 import edu.brown.cs.student.main.server.handlers.WrappedHandler;
@@ -23,12 +25,13 @@ public class Server {
           response.header("Access-Control-Allow-Methods", "*");
         });
 
-    // serverInfo contains the shared states, including the 'database' of user csvs
-    ServerInfo serverInfo = new ServerInfo();
-    // System.out.println("server info's redlining geojson is ccurently initalizing as " +
-    // serverInfo.getFullRedliningGeoJSON());
+    //TODO: initialize with real generator!!
+      ReportGenerator mockRGenerator = new MockRGenerator();
+    // serverInfo contains the shared states, including the current user csv and the report generator of choice
+    ServerInfo serverInfo = new ServerInfo(mockRGenerator);
 
-    // set up loadData and wipeData endpoints
+
+    // set up loadData and wipeData and wrapped endpoints
     Spark.get("saveData", new SaveDataHandler(serverInfo));
     // System.out.print(serverInfo.getFullRedliningGeoJSON().keySet());
     Spark.get("wipeData", new WipeDataHandler(serverInfo));
