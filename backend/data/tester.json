@@ -1,0 +1,190 @@
+{
+  "bingeData": {
+    "date": "4/10/20",
+    "movies": [],
+    "shows": [
+      {
+        "image": "https://image.tmdb.org/t/p/original//3KUjDt8XY7w2Ku70UE0SECmv1zP.jpg",
+        "numEpWatched": 6,
+        "title": "Community"
+      },
+      {
+        "image": "https://image.tmdb.org/t/p/original//d2Aw8BloAZQTmXMjNoy2M6KekLi.jpg",
+        "numEpWatched": 2,
+        "title": "Gilmore Girls"
+      }
+    ]
+  },
+  "movie": {
+    "allMovies": [
+      {
+        "image": "https://image.tmdb.org/t/p/original//qOTcfD2DdnOTmhH0r1TOE09VvNh.jpg",
+        "numEpWatched": 3,
+        "title": "Valentine's Day"
+      },
+      {
+        "image": "https://image.tmdb.org/t/p/original//nVJIyS2gh0hBvVEr8s9SrpSBTxL.jpg",
+        "numEpWatched": 3,
+        "title": "The Golden Child"
+      },
+      {
+        "image": "https://image.tmdb.org/t/p/original//j6VSFnm20GlkUi8yb7hM5Qfc1fA.jpg",
+        "numEpWatched": 3,
+        "title": "The Guns of Navarone"
+      },
+      {
+        "image": "https://image.tmdb.org/t/p/original//2fdYB9utyfuZBA7xqWOWNgiiEBC.jpg",
+        "numEpWatched": 1,
+        "title": "Elizabeth at 90: A Family Tribute"
+      },
+      {
+        "image": "https://image.tmdb.org/t/p/original//oiwY0z17ZqCPVSK1plvL11rSKuK.jpg",
+        "numEpWatched": 1,
+        "title": "Elizabeth Harvest"
+      }
+    ],
+    "movieActors": {
+      "actorFeaturedMovies": [
+        {
+          "image": "https://image.tmdb.org/t/p/original//qOTcfD2DdnOTmhH0r1TOE09VvNh.jpg",
+          "numEpWatched": 3,
+          "title": "Valentine's Day"
+        },
+        {
+          "image": "https://image.tmdb.org/t/p/original//qOTcfD2DdnOTmhH0r1TOE09VvNh.jpg",
+          "numEpWatched": 3,
+          "title": "Valentine's Day"
+        },
+        {
+          "image": "https://image.tmdb.org/t/p/original//qOTcfD2DdnOTmhH0r1TOE09VvNh.jpg",
+          "numEpWatched": 3,
+          "title": "Valentine's Day"
+        }
+      ],
+      "mostWatchedActors": ["Topher Grace", "Jamie Foxx", "Taylor Swift"]
+    },
+    "top5Movies": [
+      {
+        "image": "https://image.tmdb.org/t/p/original//nVJIyS2gh0hBvVEr8s9SrpSBTxL.jpg",
+        "numEpWatched": 3,
+        "title": "The Golden Child"
+      },
+      {
+        "image": "https://image.tmdb.org/t/p/original//j6VSFnm20GlkUi8yb7hM5Qfc1fA.jpg",
+        "numEpWatched": 3,
+        "title": "The Guns of Navarone"
+      },
+      {
+        "image": "https://image.tmdb.org/t/p/original//qOTcfD2DdnOTmhH0r1TOE09VvNh.jpg",
+        "numEpWatched": 3,
+        "title": "Valentine's Day"
+      },
+      {
+        "image": "https://image.tmdb.org/t/p/original//oiwY0z17ZqCPVSK1plvL11rSKuK.jpg",
+        "numEpWatched": 1,
+        "title": "Elizabeth Harvest"
+      },
+      {
+        "image": "https://image.tmdb.org/t/p/original//2fdYB9utyfuZBA7xqWOWNgiiEBC.jpg",
+        "numEpWatched": 1,
+        "title": "Elizabeth at 90: A Family Tribute"
+      }
+    ],
+    "totalMoviesWatched": 11
+  },
+  "personality": { "title": "UNDECIDEDPERSONALITY" },
+  "shows": {
+    "allShows": [
+      {
+        "image": "https://image.tmdb.org/t/p/original//dDuzrl9rUIBYieZjqmtNCdncrmZ.jpg",
+        "numEpWatched": 3,
+        "title": "Parks and Recreation"
+      },
+      {
+        "image": "https://image.tmdb.org/t/p/original//2pmRIz7Dc2cmwZUQiOsStOixyvZ.jpg",
+        "numEpWatched": 1,
+        "title": "Greenhouse Academy"
+      },
+      {
+        "image": "https://image.tmdb.org/t/p/original//3KUjDt8XY7w2Ku70UE0SECmv1zP.jpg",
+        "numEpWatched": 7,
+        "title": "Community"
+      },
+      {
+        "image": "https://image.tmdb.org/t/p/original//dg9e5fPRRId8PoBE0F6jl5y85Eu.jpg",
+        "numEpWatched": 2,
+        "title": "The Office (U.S.)"
+      },
+      {
+        "image": "https://image.tmdb.org/t/p/original//d2Aw8BloAZQTmXMjNoy2M6KekLi.jpg",
+        "numEpWatched": 5,
+        "title": "Gilmore Girls"
+      }
+    ],
+    "showActors": {
+      "actorFeaturedShows": [
+        {
+          "image": "https://image.tmdb.org/t/p/original//3KUjDt8XY7w2Ku70UE0SECmv1zP.jpg",
+          "numEpWatched": 0,
+          "title": "Community"
+        },
+        {
+          "image": "https://image.tmdb.org/t/p/original//3KUjDt8XY7w2Ku70UE0SECmv1zP.jpg",
+          "numEpWatched": 0,
+          "title": "Community"
+        },
+        {
+          "image": "https://image.tmdb.org/t/p/original//3KUjDt8XY7w2Ku70UE0SECmv1zP.jpg",
+          "numEpWatched": 0,
+          "title": "Community"
+        }
+      ],
+      "mostWatchedActors": ["Danny Pudi", "Gillian Jacobs", "Jim Rash"]
+    },
+    "topShows": {
+      "above50_3": [
+        {
+          "image": "https://image.tmdb.org/t/p/original//3KUjDt8XY7w2Ku70UE0SECmv1zP.jpg",
+          "numEpWatched": 7,
+          "title": "Community"
+        },
+        {
+          "image": "https://image.tmdb.org/t/p/original//d2Aw8BloAZQTmXMjNoy2M6KekLi.jpg",
+          "numEpWatched": 5,
+          "title": "Gilmore Girls"
+        },
+        {
+          "image": "https://image.tmdb.org/t/p/original//dDuzrl9rUIBYieZjqmtNCdncrmZ.jpg",
+          "numEpWatched": 3,
+          "title": "Parks and Recreation"
+        }
+      ],
+      "below50_3": [
+        {
+          "image": "https://image.tmdb.org/t/p/original//2pmRIz7Dc2cmwZUQiOsStOixyvZ.jpg",
+          "numEpWatched": 1,
+          "title": "Greenhouse Academy"
+        },
+        {
+          "image": "https://image.tmdb.org/t/p/original//dg9e5fPRRId8PoBE0F6jl5y85Eu.jpg",
+          "numEpWatched": 2,
+          "title": "The Office (U.S.)"
+        },
+        {
+          "image": "https://image.tmdb.org/t/p/original//dDuzrl9rUIBYieZjqmtNCdncrmZ.jpg",
+          "numEpWatched": 3,
+          "title": "Parks and Recreation"
+        }
+      ]
+    },
+    "totalEpWatched": 18
+  },
+  "top5Genres": [
+    { "count": 17, "genre": "TV Comedies" },
+    { "count": 6, "genre": "TV Dramas" },
+    { "count": 6, "genre": "Comedies" },
+    { "count": 6, "genre": "Action & Adventure" },
+    { "count": 5, "genre": "Romantic TV Shows" }
+  ],
+  "totalMin": 1924
+}
