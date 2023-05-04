@@ -6,29 +6,30 @@ interface WrappedOverviewProps {
 }
 
 export function WrappedOverview(props: WrappedOverviewProps) {
-  
   return (
     <div className="WrappedOverview">
       <div className="OverviewDesc">
-        <h3>Out of that time you spent with us in 2022,</h3>
-        <p>
+        <p className="overviewBigP">
+          Out of that time you spent with us in 2022,
+        </p>
+        <p className="overviewDescP">
           you watched <b>{props.shows.length} shows</b>...
-        </p> 
+        </p>
       </div>
- 
+
       {/* map list of shows to make a card component */}
       <div className="carouselContainer">
         <MediaCarousel media={props.shows} />
-      </div>  
+      </div>
 
       <div className="OverviewDesc">
-        <p>
+        <p className="overviewDescP">
           and <b>{props.movies.length} movies</b>!
         </p>
       </div>
 
       <div className="carouselContainer">
-        <MediaCarousel media={props.movies} /> 
+        <MediaCarousel media={props.movies} />
       </div>
     </div>
   );

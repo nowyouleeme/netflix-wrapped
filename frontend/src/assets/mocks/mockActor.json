@@ -54,48 +54,41 @@
       {
         "title": "Reply 1988",
         "numEpWatched": 20,
-        "percentageFinished": 80,
         "image": "https://image.tmdb.org/t/p/original/mqhYVbe20pB0PQXVZVdtbMakOCF.jpg"
       },
       {
         "title": "Attack on Titan",
         "numEpWatched": 20,
-        "percentageFinished": 75,
         "image": "https://image.tmdb.org/t/p/original/ihuDg9TeRzoOhv2cZVA8gi50NFl.jpg"
       },
       {
         "title": "Juvenile Justice",
         "numEpWatched": 20,
-        "percentageFinished": 50,
         "image": "https://image.tmdb.org/t/p/original/xH2wTVlsUlYeFEOVGFDaamHkMCm.jpg"
       }
     ],
     "topShows": {
-      "above50_3": [
+      "mostWatched": [
         {
           "title": "Reply 1988",
           "numEpWatched": 20,
-          "percentageFinished": 80,
           "image": "https://image.tmdb.org/t/p/original/mqhYVbe20pB0PQXVZVdtbMakOCF.jpg"
         },
         {
           "title": "Attack on Titan",
           "numEpWatched": 20,
-          "percentageFinished": 75,
           "image": "https://image.tmdb.org/t/p/original/ihuDg9TeRzoOhv2cZVA8gi50NFl.jpg"
         },
         {
           "title": "Juvenile Justice",
           "numEpWatched": 20,
-          "percentageFinished": 50,
           "image": "https://image.tmdb.org/t/p/original/xH2wTVlsUlYeFEOVGFDaamHkMCm.jpg"
         }
       ],
-      "below50_3": [
+      "leastWatched": [
         {
           "title": "Gilmore Girls",
           "numEpWatched": 5,
-          "percentageFinished": 10,
           "image": "https://image.tmdb.org/t/p/original/d2Aw8BloAZQTmXMjNoy2M6KekLi.jpg"
         }
       ]
@@ -193,7 +186,7 @@
     }
   },
   "personality": {
-    "title": "The Explorer",
+    "title": "The Otaku",
     "description": "You’re an adventurous one. Not limiting yourself to either movies or shows, you delve into wide and varied range of genres to explore the unknown."
   }
 }

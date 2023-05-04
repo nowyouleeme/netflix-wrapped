@@ -20,9 +20,9 @@ test("render WrappedFavActors", () => {
     />
   );
 
-  const header = screen.getByRole("heading", {
-    name: "You watched 3 different shows featuring Amy Hu and Thomas Jefferson , such as:",
-  });
+  const header = screen.getByText(
+    /You watched 3 different shows featuring/i
+  );
   expect(header).toBeInTheDocument();
 
   expect(screen.getByRole("link", {name: "Amy Hu"})).toBeInTheDocument();

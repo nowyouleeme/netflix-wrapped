@@ -81,15 +81,16 @@ export function WrappedGenres(props: WrappedGenresProps) {
       <div className="genres">
         <div className="GenreDesc">
           <div className="DescMain">
-            <p>This year, you explored</p>
-            <h1>
+            <p className="genresNormalP">This year, you explored</p>
+
+            <p className="genresStyledP">
               {props.genres.length}
-              <br />
+              <br aria-hidden="true" />
               different
-              <br />
+              <br aria-hidden="true" />
               genres,
-            </h1>
-            <p>
+            </p>
+            <p className="genresNormalP">
               your favorite being <b>{props.genres[0].genre}.</b>
             </p>
           </div>

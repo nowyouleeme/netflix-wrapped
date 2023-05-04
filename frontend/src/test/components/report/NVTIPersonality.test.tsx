@@ -7,16 +7,11 @@ test("renders learn react link", () => {
   render(<NVTIPersonality personality={mockAll.personality} />);
 
   expect(
-    screen.getByRole("heading", {
-      name: "Meet your NVTI personality:",
-    })
+    screen.getByText(/Meet your NVTI personality/i)
   ).toBeInTheDocument();
 
   expect(
-    screen.getByRole("heading", {
-      name: /The Explorer/i,
-    })
-  ).toBeInTheDocument();
+    screen.getByText(/The Explorer/i)).toBeInTheDocument();
 
   expect(
     screen.getByText(/You’re an adventurous one. Not limiting yourself to either movies or shows, you delve into wide and varied range of genres to explore the unknown./i)

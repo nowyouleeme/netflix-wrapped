@@ -39,10 +39,12 @@ export function WrappedMoviesOverview(props: WrappedMoviesProps) {
             </div>
             <div className="EpisodeDesc">
               <div className="DescContentMovie">
-                <p>
+                <p className="moviesDescP">
                   You watched <i>{movies[i].title}</i>
                 </p>
-                <h2>{movies[i].numTimesWatched} times</h2>
+                <p className="moviesDisplayP">
+                  {movies[i].numTimesWatched} times
+                </p>
               </div>
             </div>
           </div>
@@ -55,13 +57,9 @@ export function WrappedMoviesOverview(props: WrappedMoviesProps) {
 
   return (
     <div className="center WrappedMoviesOverview">
-      <div
-        role="figure"
-        aria-label={favorite_movie}
-        className="FavoriteMovie"
-      >
-        <h3>When it came to movies,</h3>
-        <p>
+      <div role="figure" aria-label={favorite_movie} className="FavoriteMovie">
+        <p className="moviesBigP">When it came to movies,</p>
+        <p className="moviesDescP">
           you were a number one fan for <i>{props.movies[0].title}</i>:
         </p>
         <div className="center">
@@ -77,14 +75,14 @@ export function WrappedMoviesOverview(props: WrappedMoviesProps) {
               />
             </a>
           </div>
-          <p>
+          <p className="moviesDescP">
             which you watched <b>{props.movies[0].numTimesWatched} times</b> in{" "}
             {props.year}.
           </p>
         </div>
       </div>
       <div className="center OtherMovieFavorites">
-        <h4>Some of your other favorites included:</h4>
+        <p className="moviesSubP">Some of your other favorites included:</p>
         <div role="figure" aria-label={remaining_movies} className="Episodes">
           {showOtherFavs(props.movies)}
         </div>

@@ -119,17 +119,15 @@ export function BingeData(props: BingeDataProps) {
 
   return (
     <div className="center WrappedBingeShow">
-      <h1>
+      <p className="bingeDisplayP">
         {date.toLocaleString("default", { month: "long" })} {date.getDate()}
         {nth(date.getDate())}, {date.getFullYear()}
-      </h1>
+      </p>
       <sub>was quite the special day.</sub>
       <div className="bingeDesc">
-        <p>
-          On this day, you managed to watch{" "}
-          {writeOutBinge(props.bingeData.shows, props.bingeData.movies)}, making
-          it{" "}
-          <a
+        <p className="bingeDescP">
+          On this day, you managed to watch {writeOutBinge(props.bingeData.shows, props.bingeData.movies)}, making
+          it <a
             target="_blank"
             rel="noreferrer"
             href="https://www.youtube.com/watch?v=StTqXEQ2l-Y"
@@ -149,7 +147,7 @@ export function BingeData(props: BingeDataProps) {
                   href={"https://www.google.com/search?q=" + value.title}
                   target="_blank"
                 >
-                  <img src={value.image} />
+                  <img src={value.image} alt={"Poster for " + value.title} />
                 </a>
               </div>
             );
@@ -157,7 +155,7 @@ export function BingeData(props: BingeDataProps) {
         )}
       </div>
 
-      <p>Pretty productive, if we say so ourselves!</p>
+      <p className="bingeDescP">Pretty productive, if we say so ourselves!</p>
     </div>
   );
 }

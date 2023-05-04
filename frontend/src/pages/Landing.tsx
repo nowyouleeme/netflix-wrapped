@@ -32,11 +32,11 @@ export const next_button_field = "Navigation to upload CSV";
 export const back_button_field = "Navigation to text field";
 
 function Landing() {
-  const [contents, setContents] = useState<string>("");
+  const [userName, setUserName] = useState<string>("");
   const [selectedTab, setSelectedTab] = useState("field");
 
   return (
-    <div className="LandingBackground">
+    <div aria-live="polite" className="LandingBackground">
       <div className="center Landing">
         <div className="LandingHero">
           <h1>NETFLIX WRAPPED</h1>
@@ -54,13 +54,14 @@ function Landing() {
             {selectedTab === "field" ? (
               <>
                 <TextField
+                  role="textbox"
                   color="primary"
                   style={{ marginRight: "1.5em" }}
                   id="outlined-basic"
                   label="What's your name?"
                   sx={style}
                   variant="outlined"
-                  onChange={(e) => setContents(e.target.value)} // this will actually store the content inside the input box
+                  onChange={(e) => setUserName(e.target.value)} // this will actually store the content inside the input box
                 />
 
                 <Button
@@ -80,7 +81,8 @@ function Landing() {
               </>
             ) : (
               <div className="UploaderContainer">
-                <Uploader />
+                {/* //TODO: give uploader the prop of the name */}
+                <Uploader name={userName}/>  
                 <div>
                   <Button
                     aria-label={back_button_field}
@@ -99,11 +101,10 @@ function Landing() {
                   <Link
                     style={{ textDecoration: "none" }}
                     to={`/Report`}
-                    state={{ name: contents }}
+                    state={{ name: userName}}
                   >
                     <label className="Upload" htmlFor="netflix-file">
                       <Button
-                      
                         style={{
                           padding: "0.75em 1.5em",
                           fontFamily: "Metropolis-Black",
@@ -169,12 +170,12 @@ function Landing() {
               <p>
                 Log into your Netflix account and navigate to your "Account"
                 settings by clicking your account avatar in the upper-right
-                corner of the screen. Navigate from "Profile & Parental
-                Controls" &gt; "Viewing Activity" and click on the "View"
-                button.
+                corner of the screen.
               </p>
               <p>
-                You can also locate your viewing activity{" "}
+                Navigate from "Profile & Parental Controls" &gt; "Viewing
+                Activity" and click on the "View" button. You can also locate
+                your viewing activity{" "}
                 <a
                   rel="noreferrer"
                   href="https://www.netflix.com/viewingactivity"

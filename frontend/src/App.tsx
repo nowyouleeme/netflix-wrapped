@@ -24,12 +24,12 @@ function App() {
         shows={mockAll.shows.allShows}
         movies={mockAll.movie.allMovies}
       />
-      <WrappedEpisodes
+      {/* <WrappedEpisodes
         totalEps={mockAll.shows.totalEpWatched}
         totalShows={mockAll.shows.allShows.length}
         above50={mockAll.shows.topShows.above50_3}
         below50={mockAll.shows.topShows.below50_3}
-      />
+      /> */}
       <WrappedFavActors
         type="show"
         actors={mockAll.shows.showActors.mostWatchedActors}

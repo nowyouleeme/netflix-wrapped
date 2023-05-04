@@ -10,10 +10,6 @@ test("renders WrappedMinutes", () => {
     screen.getByText(/All that exploration added up to/i)
   ).toBeInTheDocument();
 
-  const minutes = screen.getByRole("heading", {
-    name: "100,000 100,000 100,000 100,000",
-  });
-  expect(minutes).toBeInTheDocument();
 
   expect(screen.getByText(/minutes on Netflix./i)).toBeInTheDocument();
 

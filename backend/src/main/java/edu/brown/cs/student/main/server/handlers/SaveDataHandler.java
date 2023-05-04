@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,7 +30,7 @@ public class SaveDataHandler implements Route {
   }
 
   @Override
-  public Object handle(Request request, Response response) throws Exception {
+  public Object handle(Request request, Response response) {
     QueryParamsMap queryMap = request.queryMap();
     String userCSVQuery = queryMap.value("usercsv");
     HashMap<String, String> errorMessages = new HashMap<>();
@@ -46,17 +47,25 @@ public class SaveDataHandler implements Route {
 
 
     try {
-      Moshi moshi = new Moshi.Builder()
-              .build();
+      Moshi moshi = new Moshi.Builder().build();
       System.out.print("usercsvquery\n" + userCSVQuery + "\n");
       Data.UserCSV parsedUserCSV = moshi.adapter(Data.UserCSV.class).fromJson(userCSVQuery);
-      System.out.print("parsedUserCSV\n" + parsedUserCSV  + "\n");
+
+      System.out.print("parsedUserCSV\n");
+      for (int i = 0; i < parsedUserCSV.usercsv().length; i++) {
+        System.out.print(Arrays.toString(parsedUserCSV.usercsv()[i])  + "\n");
+      }
 
       //TODO: make sure the user csv is shaped right (2 columns, headers being title and date)
 
       //save the userCSV into the serverInfo
       serverInfo.saveUserData(parsedUserCSV);
-      System.out.print("user data in server\n" + serverInfo.getUserData() + "\n");
+      System.out.print("user data in server\n");
+      for (int i = 0; i < serverInfo.getUserData().usercsv().length; i++) {
+        System.out.print(Arrays.toString(serverInfo.getUserData().usercsv()[i])  + "\n");
+      }
+
+      //return serialized success response
       return serialize(success());
     } catch (Exception e) {
       System.out.println(e.getMessage()); // TODO: better error handling

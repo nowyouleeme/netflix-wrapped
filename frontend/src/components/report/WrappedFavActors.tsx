@@ -15,7 +15,7 @@ export function WrappedFavActors(props: WrappedFavActorsProps) {
     for (let i = 0; i < actors.length; i++) {
       let stringElement: JSX.Element;
       stringElement = (
-        <span>
+        <>
           <a
             style={{ color: props.color}}
             rel="noreferrer"
@@ -24,35 +24,22 @@ export function WrappedFavActors(props: WrappedFavActorsProps) {
           >
             {actors[i]}
           </a>
-        </span>
+        </>
       );
       actorsMentioned.push(stringElement);
     }
 
     if (actorsMentioned.length === 2) {
-      actorsMentioned[0] = (
-        <>
-          {actorsMentioned[0]} <span>and </span>
-        </>
-      );
+      actorsMentioned[0] = <>{actorsMentioned[0]} and&nbsp;</>;
       return actorsMentioned;
     } else if (actorsMentioned.length === 1) {
       return actorsMentioned;
     } else {
       for (let i = 0; i < actorsMentioned.length; i++) {
         if (i === actorsMentioned.length - 1) {
-          actorsMentioned[i] = (
-            <>
-              <span>and</span> {actorsMentioned[i]}
-            </>
-          );
+          actorsMentioned[i] = <>and&nbsp;{actorsMentioned[i]}</>;
         } else {
-          actorsMentioned[i] = (
-            <>
-              {actorsMentioned[i]}
-              <span>, </span>
-            </>
-          );
+          actorsMentioned[i] = <>{actorsMentioned[i]},&nbsp;</>;
         }
       }
       return actorsMentioned;
@@ -61,20 +48,20 @@ export function WrappedFavActors(props: WrappedFavActorsProps) {
 
   function numberMedia(media: { title: string; image: string }[]) {
     if (media.length === 1){
-        return <span>great {props.type}</span>
+        return <>great {props.type}</>
     } else {
-        return <span>different {props.type}s</span>
+        return <>different {props.type}s</>
     }
   }
   return (
     <div
+       
       className="center WrappedActors"
       style={{ color: props.color, backgroundColor: props.bg }}
     >
-      <h3>
-        You watched {props.media.length} {numberMedia(props.media)} featuring{" "}
-        {getActors(props.actors)}, such as:
-      </h3>
+      <p className="actorsBigP">
+        You watched {props.media.length} {numberMedia(props.media)} featuring {getActors(props.actors)}, such as:
+      </p>
       <div className="actorContainer">
         <div role="figure" aria-label={carousel_label} className="carousel">
           {props.media.map((value, index) => (

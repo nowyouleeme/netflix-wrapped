@@ -228,7 +228,6 @@ table {
 
 .Report h1 {
   font-family: 'Metropolis-Black';
-  font-size: 6em;
 }
 
 .Report h2 {
@@ -246,9 +245,6 @@ table {
   font-size: 1.75em;
 }
 
-.Report p {
-  font-family: 'Metropolis-Medium';
-}
 
 .Report sub {
   font-family: 'Metropolis-Medium';
@@ -258,8 +254,9 @@ table {
   font-family: 'Metropolis-Bold';
 }
 
-.WrappedIntroduction h2 {
+.WrappedIntroduction h1 {
   margin-bottom: 0.25em;
+  font-size: 3.25em;
 }
 
 .WrappedIntroduction sub {
@@ -310,8 +307,13 @@ table {
   height: 100vh;
   padding: 0 26.25em;
   background-color: #95C12B;
-  line-height: 4em;
   color: #FEFFB9;
+}
+
+.WrappedWelcome p {
+  line-height: 1.25em;
+  font-size: 3.25em;
+  font-family: 'Metropolis-Black';
 }
 
 .center {
@@ -345,6 +347,7 @@ table {
 }
 
 .carousel {
+  padding: 1.5vh 0;
   display: flex;
   width: 100%;
   overflow-x: scroll;
@@ -358,9 +361,16 @@ table {
   color: #EEFFE7;
 }
 
-
-.WrappedGenres p {
+.genresNormalP {
+  font-family: 'Metropolis-Medium';
   font-size: 2em;
+}
+
+.genresStyledP {
+  display: block;
+  font-family: 'Metropolis-Bold';
+  font-size: 6em;
+  margin: 0.5em 0;
 }
 
 .WrappedGenres sub {
@@ -382,12 +392,15 @@ table {
   color: #F5EC72;
 }
 
-.WrappedMinutes h1 {
-  margin: 0.25em 0;
+.minutesNormalP {
+  font-family: 'Metropolis-Medium';
+  font-size: 1.25em;
 }
 
-.WrappedMinutes p {
-  font-size: 1.25em;
+.minutesStyledP {
+  font-family: 'Metropolis-Black';
+  margin: 0.25em 0;
+  font-size: 6em;
 }
 
 .WrappedMinutes sub {
@@ -398,6 +411,13 @@ table {
 .carouselCard {
   padding: 0 0.5em;
   height: 50vh;
+  transition: transform .5s;
+    /* Animation */
+    
+}
+
+.carouselCard:hover {
+  transform: scale(1.05);
 }
 
 .actorCarouselCard {
@@ -425,12 +445,15 @@ table {
   color: #F5EC72;
 }
 
-.WrappedOverview h3 {
+.overviewBigP {
+  font-family: 'Metropolis-Black';
+  font-size: 2.75em;
   margin-bottom: 0.75em;
 }
 
-.WrappedOverview p {
-  margin-bottom: 1.5em;
+.overviewDescP {
+  font-family: 'Metropolis-Medium';
+  margin-bottom: 0.75em;
   font-size: 1.5em;
 }
 
@@ -440,13 +463,18 @@ table {
   color: #FEFFB9;
 }
 
-.WrappedShowEpisodes h4 {
+
+.episodesBigP {
+  font-family: 'Metropolis-Black';
+  font-size: 1.75em;
   margin-bottom: 0.5em;
 }
 
-.WrappedShowEpisodes p {
+.episodesDescP {
+  font-family: 'Metropolis-Medium';
   font-size: 1.25em;
 }
+
 
 .Episodes {
   padding: 2em 10em 4.5em 10em;
@@ -459,6 +487,7 @@ table {
   flex-direction: row;
 
 }
+
 
 .EpisodeImg {
   filter: drop-shadow(0px 19px 25px rgba(0, 0, 0, 0.15)) drop-shadow(0px 15px 12px rgba(0, 0, 0, 0.1));
@@ -483,6 +512,18 @@ table {
   margin-bottom: 0.25em;
 }
 
+.DescContentBigP {
+  display: block;
+  margin: 0.25em 0;
+  font-family: 'Metropolis-Black';
+  font-size: 3.25em;
+}
+
+.DescContentSmallP {
+  font-family: 'Metropolis-Medium';
+  font-size: 1.5em;
+}
+
 .DescContentMovie {
   display: inline-block;
   align-self: flex-end;
@@ -504,7 +545,10 @@ table {
   color: #FEFFB9;
 }
 
-.WrappedBingeShow h1 {
+.bingeDisplayP {
+  display: block;
+  font-family: 'Metropolis-Black';
+  font-size: 6em;
   margin-bottom: 0;
 }
 
@@ -521,7 +565,8 @@ table {
   font-size: 1.5em;
 }
 
-.WrappedBingeShow p {
+.bingeDescP {
+  font-family: 'Metropolis-medium';
   line-height: 1.5em;
   font-size: 1.25em;
 }
@@ -534,8 +579,13 @@ table {
 }
 
 .BingeShow {
+  transition: transform 0.5s;
   filter: drop-shadow(0px 19px 25px rgba(0, 0, 0, 0.15)) drop-shadow(0px 15px 12px rgba(0, 0, 0, 0.1));
   height: 35vw;
+}
+
+.BingeShow:hover {
+  transform: scale(1.05);
 }
 
 .BingeGrid {
@@ -596,12 +646,25 @@ table {
   color: #F5EC72;
 }
 
-.WrappedMoviesOverview h3 {
+.moviesDisplayP {
+  margin-top: 0.25em;
+  font-family: 'Metropolis-Black';
+  font-size: 3.25em;
+}
+
+.moviesBigP {
+  font-family: 'Metropolis-Black';
+  font-size: 2.75em;
   margin-bottom: 0.5em;
 }
 
+.moviesSubP {
+  font-family: 'Metropolis-Black';
+  font-size: 1.75em;
+}
 
-.WrappedMoviesOverview p {
+.moviesDescP {
+  font-family: 'Metropolis-Medium';
   font-size: 1.25em;
 }
 
@@ -627,11 +690,19 @@ table {
   background-color: #EE9021;
 }
 
-.WrappedPersonality h2 {
+.personalityTitle {
+  font-family: 'Metropolis-Black';
+  font-size: 3em;
   margin-bottom: 0.25em;
 }
 
-.WrappedPersonality p {
+.personalityBigP {
+  font-family: 'Metropolis-Black';
+  font-size: 1.5em;
+}
+
+.personalityDescP {
+  font-family: 'Metropolis-Medium';
   line-height: 1.25em;
   font-size: 1.25em;
 }
@@ -686,6 +757,8 @@ table {
 }
 
 .Instructions p {
+  display: block;
+  margin: 0.75em 0;
   font-family: "Metropolis-Medium";
   line-height: 1.25em;
   font-size: 1.125em;
@@ -728,7 +801,14 @@ table {
   line-height: 1.25em;
 }
 
-.WrappedActors p {
+.actorsBigP {
+  font-family: 'Metropolis-Black';
+  line-height: 1.25em;
+  font-size: 2.75em;
+}
+
+.actorsDescP {
+  font-family: 'Metropolis-Medium';
   font-size: 1.25em;
 }
 
@@ -738,7 +818,7 @@ table {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items:center;
+  align-items: center;
 }
 
 .error-page h1 {
@@ -759,8 +839,8 @@ table {
 }
 
 .LandingInput {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 .UploaderContainer {
@@ -769,6 +849,18 @@ table {
   align-items: center;
 }
 
+.WrappedWipe {
+  padding: 5em 32em;
+  background-color: #181826;
+    color: rgb(255, 255, 255);
+  text-align: center;
+}
+
+.WrappedWipe p {
+  font-family: "Metropolis-Bold";
+  line-height: 1.5em;
+  font-size: 1.5em;
+}
 
 @media screen and (max-width: 1200px) {
 
@@ -853,7 +945,7 @@ table {
   mark,
   audio,
   video {
-    font-size: 97%;
+    font-size: 98%;
   }
 
   .WrappedIntroduction {
@@ -940,14 +1032,6 @@ table {
     width: 75%;
   }
 
-  .WrappedRatingShow {
-    padding: 5em 6em;
-  }
-
-  .WrappedRatingShow h2 {
-    line-height: 1.25em;
-    margin-bottom: 0.5em;
-  }
 
   .ratedShow {
     margin: auto;
@@ -980,10 +1064,14 @@ table {
   }
 
 
-.actorContainer {
-  padding: 0 4em;
-  margin: 2em 0 5em 0;
-}
+  .actorContainer {
+    padding: 0 4em;
+    margin: 2em 0 5em 0;
+  }
+
+    .WrappedWipe {
+      padding: 5em 24em;
+    }
 
 }
 
@@ -1090,7 +1178,7 @@ table {
   }
 
   .WrappedBingeShow {
-    padding: 5em 4em 4em 4em;
+    padding: 5em 3.5em 4em 3.5em;
   }
 
   .WrappedRatingShow {
@@ -1162,27 +1250,6 @@ table {
     padding: 4em 6em;
   }
 
-  .WrappedRatingShow h2 {
-    line-height: 1.25em;
-    margin-bottom: 0.25em;
-  }
-
-  .ratedShow {
-    margin: auto;
-    height: 60vh;
-  }
-
-  .ratingLeft {
-    text-align: center;
-    margin-right: 0;
-    margin-bottom: 3.5em;
-  }
-
-  .ratingRight {
-    margin-top: 3.5em;
-    text-align: center;
-    margin-left: 0;
-  }
 
   .favoriteMovieImg {
     margin: 1.5em 0;
@@ -1198,16 +1265,16 @@ table {
     width: 85%;
   }
 
-  .WrappedShowEpisodes h4 {
+  .episodesBigP {
     line-height: 1.5em;
     margin-bottom: 0.25em;
   }
 
-  .WrappedBingeShow h1 {
+  .bingeDisplayP {
     margin-bottom: 0.15em;
   }
 
-  .WrappedMoviesOverview h3 {
+  .moviesBigP {
     margin-bottom: 0.25em;
   }
 
@@ -1239,7 +1306,7 @@ table {
     color: #EEFFE7;
   }
 
-  .WrappedGenres h1 {
+  .genresStyledP {
     margin: 0.3em 0;
   }
 
@@ -1275,7 +1342,11 @@ table {
     width: 100%;
   }
 
-    .WrappedActors h3 {
-      line-height: 1.15em;
+  .actorsBigP {
+    line-height: 1.15em;
+  }
+
+    .WrappedWipe {
+      padding: 5em 12em;
     }
 }

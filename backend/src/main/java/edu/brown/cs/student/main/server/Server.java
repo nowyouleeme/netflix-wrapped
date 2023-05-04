@@ -2,7 +2,11 @@ package edu.brown.cs.student.main.server;
 
 import static spark.Spark.after;
 
+
 import edu.brown.cs.student.main.server.handlers.MovieHandler;
+
+import edu.brown.cs.student.main.reports.MockRGenerator;
+import edu.brown.cs.student.main.reports.ReportGenerator;
 import edu.brown.cs.student.main.server.handlers.SaveDataHandler;
 import edu.brown.cs.student.main.server.handlers.WipeDataHandler;
 import edu.brown.cs.student.main.server.handlers.WrappedHandler;
@@ -23,6 +27,7 @@ public class Server {
           response.header("Access-Control-Allow-Origin", "*");
           response.header("Access-Control-Allow-Methods", "*");
         });
+
 
     // serverInfo contains the shared states, including the 'database' of user csvs
     ServerInfo serverInfo = new ServerInfo();
@@ -112,6 +117,14 @@ public class Server {
        { "asflnv", "2/14/21" },
        { "asflnv", "9/21/21" },
 };
+
+    //TODO: initialize with real generator!!
+    ReportGenerator mockRGenerator = new MockRGenerator();
+    // serverInfo contains the shared states, including the current user csv and the report generator of choice
+    ServerInfo serverInfo = new ServerInfo(mockRGenerator);
+
+
+    // set up loadData and wipeData and wrapped endpoints
     Spark.get("saveData", new SaveDataHandler(serverInfo));
     // System.out.print(serverInfo.getFullRedliningGeoJSON().keySet());
     Spark.get("wipeData", new WipeDataHandler(serverInfo));
