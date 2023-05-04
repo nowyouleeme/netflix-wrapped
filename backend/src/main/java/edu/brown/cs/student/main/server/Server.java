@@ -5,6 +5,7 @@ import static spark.Spark.after;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import edu.brown.cs.student.main.reports.MLGenerator;
 import edu.brown.cs.student.main.server.handlers.MovieHandler;
 
 import edu.brown.cs.student.main.reports.MockRGenerator;
@@ -157,10 +158,10 @@ public class Server {
     // }
 
     // TODO: initialize with real generator!!
-    ReportGenerator mockRGenerator = new MockRGenerator();
+    ReportGenerator generator = new MLGenerator();
     // serverInfo contains the shared states, including the current user csv and the
     // report generator of choice
-    ServerInfo serverInfo = new ServerInfo(mockRGenerator);
+    ServerInfo serverInfo = new ServerInfo(generator);
 
     // set up loadData and wipeData and wrapped endpoints
     Spark.get("saveData", new SaveDataHandler(serverInfo));

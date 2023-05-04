@@ -16,17 +16,24 @@ public class ShowSection {
     public JSONShowSection getShowSection(String[][] userHistory,
     ArrayList<Map<String, ArrayList<ArrayList<String>>>> userHistoryMapList) {
         PosterFetch posterFetcher = new PosterFetch();
+        System.out.print("a");
         JSONShowSection showSection = new JSONShowSection();
+        System.out.print("b");
 
         ArrayList<Map<String, ArrayList<ArrayList<String>>>> movieOnlyList = showOnly(userHistoryMapList);
+        System.out.print("c");
+        System.out.print("movie only list size" + movieOnlyList.size());
         showSection.totalEpWatched = movieOnlyList.size();
+        System.out.print("d");
 
         Map<String, Integer> movieCountMap = getMovieCountMap(getShowTitleList(movieOnlyList));
+        System.out.print("e");
         
 
         // although a for loop, this is adding only one movie title.
         ArrayList<String> movieTitles = new ArrayList<String>();
         for (int i = 0; i < movieOnlyList.size(); i++) {
+            System.out.print("f");
             Set<String> filmSet = movieOnlyList.get(i).keySet();
             for (String element : filmSet) {
                 Show show = new Show();
@@ -42,6 +49,7 @@ public class ShowSection {
 
         }
        // showSection.topShows.above50_3
+        System.out.print("g");
        ArrayList<String> topShows = getTopThree(movieOnlyList);
        ArrayList<String> bottomShows = getBottomThree(movieOnlyList);
 

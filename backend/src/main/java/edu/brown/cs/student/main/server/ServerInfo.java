@@ -1,10 +1,12 @@
 package edu.brown.cs.student.main.server;
 
 import com.squareup.moshi.Json;
+import edu.brown.cs.student.main.components.JsonDataType.JSONFinalFetch;
 import edu.brown.cs.student.main.csv.data.Data;
 import edu.brown.cs.student.main.reports.ReportGenerator;
 import edu.brown.cs.student.main.user.UserID;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -45,7 +47,7 @@ public class ServerInfo {
    * function that generates the json with all the information contained in the wrapped report.
    * @return a String representing the json
    */
-  public Data.WrappedData generateReportJSON() {
+  public JSONFinalFetch generateReportJSON() throws IOException {
     return reportGenerator.generateReportJSON(currentUserCSV.usercsv());
   }
 

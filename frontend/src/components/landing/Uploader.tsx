@@ -78,25 +78,46 @@ function Uploader(props: UploaderProps) {
                 convertCSV(file)
                   .then((jsonstring: String) => {
                     console.log("inside .then jsonstring is :" + jsonstring)
+                    
+
+
+                    //making a post...
+                    const queryString = "usercsv=" + jsonstring;
+                    // const jsonBody = Object.fromEntries(new URLSearchParams(queryString));
+
+                    // const options = {
+                    //   method: 'POST',
+                    //   headers: {
+                    //     'Content-Type': 'application/json',
+                    //     Accept: 'application/json'
+
+                    //   },
+                    //   body: JSON.stringify(jsonBody),
+                    // };
+
                     const url =
-                      "http://localhost:6969/saveData?usercsv=" + jsonstring;
-                      console.log("url is " + url);
-                      fetch(url)
-                        .then((response) => response.json())
-                        .then((responseJSON) => {
-                          setConfirmUpload(true);
-                          if (responseJSON.result === "success") {
-                            //'success' dialog
-                            setCsvUploadStatus(
-                              "netflix viewing history csv successfully uploaded"
-                            );
-                            console.log("successfully sent to backend"); 
-                          } else {
-                            setCsvUploadStatus(
-                              "failed to upload netflix viewing history csv"
-                            );
-                          }
-                        });
+                      "http://localhost:6969/saveData?" + queryString
+                    console.log("url is " + url);
+                    fetch(url)
+                      .then((response) => {
+                        if (response.ok) {
+                          return response.json()
+                        }
+                      })
+                      .then((responseJSON) => {
+                        setConfirmUpload(true);
+                        if (responseJSON.result === "success") {
+                          //'success' dialog
+                          setCsvUploadStatus(
+                            "netflix viewing history csv successfully uploaded"
+                          );
+                          console.log("successfully sent to backend"); 
+                        } else {
+                          setCsvUploadStatus(
+                            "failed to upload netflix viewing history csv"
+                          );
+                        }
+                      });
                   })
                 
 

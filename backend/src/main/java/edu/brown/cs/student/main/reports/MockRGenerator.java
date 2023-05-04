@@ -9,7 +9,7 @@ import java.nio.file.Paths;
 /**
  * class that is used as a mock wrapped report data generator
  */
-public class MockRGenerator implements ReportGenerator{
+public class MockRGenerator {
     public MockRGenerator(){}
 
     /**

@@ -1,6 +1,9 @@
 package edu.brown.cs.student.main.reports;
 
+import edu.brown.cs.student.main.components.JsonDataType.JSONFinalFetch;
 import edu.brown.cs.student.main.csv.data.Data;
+
+import java.io.IOException;
 
 /**
  * interface that represents any report generator, which must share the property that
@@ -14,5 +17,5 @@ public interface ReportGenerator {
      * @return a wrapped data object (with all the information we need to display the wrapped report on
      *       frontend)
      */
-    Data.WrappedData generateReportJSON(String[][] userCSVData);
+    JSONFinalFetch generateReportJSON(String[][] userCSVData) throws IOException;
 }
