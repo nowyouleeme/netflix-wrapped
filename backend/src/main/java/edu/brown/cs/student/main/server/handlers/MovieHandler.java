@@ -1,5 +1,6 @@
 package edu.brown.cs.student.main.server.handlers;
 
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -72,7 +73,18 @@ public class MovieHandler implements Route {
 
 
 
-
+      try (FileWriter writer = new FileWriter("backend/backend-ml/data/viewhist.csv")) {
+        for (int j = 0; j < history.length; j++) {
+          writer.append("\""+history[j][0]+"\"");
+          writer.append(",");
+          writer.append("\""+history[j][1]+"\"");
+          writer.append("\n");
+        }
+        writer.close();
+      } catch (IOException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+      }
 
       Personality personality = new Personality();
 

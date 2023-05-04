@@ -77,11 +77,35 @@ public class Server {
     };
     String[][] movieData2 = {
 
-        { "Squid Game: level2", "2/14/21" },
-        { "Squid Game: level1", "9/21/21" },
-        { "Squid Game: level1", "9/21/21" },
-        { "The Guns of Navarone", "9/21/21" },
+        { "Community: Season 1: Advanced Criminal Law", "4/10/20" },
+        { "The Golden Child", "10/21/21" },
 
+        { "The Guns of Navarone", "10/21/21" },
+        { "The Guns of Navarone", "13/21/21" },
+        { "The Guns of Navarone", "10/22/21" },
+        { "The Guns of Navarone", "11/21/21" },
+        { "The Guns of Navarone", "10/21/21" },
+        { "The Guns of Navarone", "0/21/21" },
+
+        { "Elephants Dream 4 Hour", "0/21/21" },
+        { "Elizabeth at 90: A Family Tribute", "0/21/21" },
+        { "Elizabeth at 90: A Family Tribute", "0/21/21" },
+        { "Elizabeth Harvest", "0/21/21" },
+
+        { "Elizabeth Harvest", "0/21/21" },
+        { "Elizabeth Harvest", "0/21/21" },
+        { "Elizabeth Harvest", "0/21/21" },
+        { "Elizabeth Harvest", "0/21/21" },
+
+        { "Squid Game: level2", "0/14/21" },
+        { "Squid Game: level1", "0/21/21" },
+        { "Squid Game: level1", "9/21/21" },
+
+        { "Dear White People", "0/21/21" },
+        { "Euphoria: level1", "9/21/21" },
+
+        { "asflnv", "2/14/21" },
+        { "asflnv", "9/21/21" },
     };
     String[][] movieData3 = {
         { "Parks and Recreation: Season 2: Episode 5", "4/12/20" },
@@ -119,18 +143,18 @@ public class Server {
         { "asflnv", "9/21/21" },
     };
 
-    try (FileWriter writer = new FileWriter("backend/backend-ml/data/viewhist.csv")) {
-      for (int j = 0; j < movieData3.length; j++) {
-        writer.append("\""+movieData3[j][0]+"\"");
-        writer.append(",");
-        writer.append("\""+movieData3[j][1]+"\"");
-        writer.append("\n");
-      }
-      writer.close();
-    } catch (IOException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    }
+    // try (FileWriter writer = new FileWriter("backend/backend-ml/data/viewhist.csv")) {
+    //   for (int j = 0; j < movieData3.length; j++) {
+    //     writer.append("\""+movieData3[j][0]+"\"");
+    //     writer.append(",");
+    //     writer.append("\""+movieData3[j][1]+"\"");
+    //     writer.append("\n");
+    //   }
+    //   writer.close();
+    // } catch (IOException e) {
+    //   // TODO Auto-generated catch block
+    //   e.printStackTrace();
+    // }
 
     // TODO: initialize with real generator!!
     ReportGenerator mockRGenerator = new MockRGenerator();
@@ -144,7 +168,7 @@ public class Server {
     Spark.get("wipeData", new WipeDataHandler(serverInfo));
     Spark.get("wrapped", new WrappedHandler(serverInfo));
 
-    Spark.get("movies", new MovieHandler(movieData3));
+    Spark.get("movies", new MovieHandler(movieData2));
 
     Spark.init();
     Spark.awaitInitialization();
