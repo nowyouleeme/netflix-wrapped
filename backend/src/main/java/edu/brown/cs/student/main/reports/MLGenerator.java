@@ -35,24 +35,24 @@ public class MLGenerator implements ReportGenerator {
 
 
 
-//        try (FileWriter writer = new FileWriter("backend/backend-ml/data/viewhist.csv")) {
-//            for (int j = 0; j < userCSVData.length; j++) {
-//                writer.append("\""+userCSVData[j][0]+"\"");
-//                writer.append(",");
-//                writer.append("\""+userCSVData[j][1]+"\"");
-//                writer.append("\n");
-//            }
-//            writer.close();
-//        } catch (IOException e) {
-//            // TODO Auto-generated catch block
-//            e.printStackTrace();
-//        }
+       try (FileWriter writer = new FileWriter("backend/backend-ml/data/viewhist.csv")) {
+           for (int j = 0; j < userCSVData.length; j++) {
+               writer.append("\""+userCSVData[j][0]+"\"");
+               writer.append(",");
+               writer.append("\""+userCSVData[j][1]+"\"");
+               writer.append("\n");
+           }
+           writer.close();
+       } catch (IOException e) {
+           // TODO Auto-generated catch block
+           e.printStackTrace();
+       }
 
         Personality personality = new Personality();
         System.out.print(6);
 
-//        finalFetchJson.personality.title = personality.getPersonality(userCSVData, userHistoryMapList);
-        finalFetchJson.personality.title = "ml gen mock";
+        finalFetchJson.personality.title = personality.getPersonality(userCSVData, userHistoryMapList);
+        //finalFetchJson.personality.title = "ml gen mock";
         System.out.print(7);
 
 
