@@ -28,16 +28,13 @@ public class PosterFetch {
             "&page=1", 
             PosterData.posterJson.class);
             if (posterJson.results().length != 0){
-                System.out.println("https://image.tmdb.org/t/p/original/" + posterJson.results()[0].poster_path());
                 return "https://image.tmdb.org/t/p/original/" + posterJson.results()[0].poster_path();
             }
             else{
-                System.out.println("https://i.imgur.com/mgzENYv.jpg");
                 return "https://i.imgur.com/mgzENYv.jpg";
             }
         } catch (IOException e) {
             e.printStackTrace();
-            System.out.println("https://i.imgur.com/mgzENYv.jpg");
             return "https://i.imgur.com/mgzENYv.jpg";
         }
     }

@@ -10,12 +10,8 @@ public class Personality {
 
     }
 
-    public String getPersonality(String[][] userHistory){
-        
-        ArrayList<Map<String, ArrayList<ArrayList<String>>>> userHistoryMapList = new ArrayList<Map<String, ArrayList<ArrayList<String>>>>();
-        MapCreator mapCreator = new MapCreator();
-        userHistoryMapList = mapCreator.createWatchedMovieMap(userHistory);
-        
+    public String getPersonality(String[][] userHistory,
+    ArrayList<Map<String, ArrayList<ArrayList<String>>>> userHistoryMapList){
 
 
         //user userHistoryMapList to get the personality type, return string or whatever datatype you prefer, preferably 

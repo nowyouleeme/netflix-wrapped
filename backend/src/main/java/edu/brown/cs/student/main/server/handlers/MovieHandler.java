@@ -11,14 +11,18 @@ import com.squareup.moshi.JsonDataException;
 import com.squareup.moshi.Moshi;
 
 import spark.Route;
+import edu.brown.cs.student.main.components.BingeData;
+import edu.brown.cs.student.main.components.MovieSection;
+import edu.brown.cs.student.main.components.ShowSection;
 import edu.brown.cs.student.main.components.TopGenres;
+import edu.brown.cs.student.main.components.TotalMin;
+import edu.brown.cs.student.main.components.JsonDataType.JSONFinalFetch;
+import edu.brown.cs.student.main.components.JsonDataType.movieData;
+import edu.brown.cs.student.main.components.JsonDataType.movieData.movieJson;
 import edu.brown.cs.student.main.components.helpers.MapCreator;
 import edu.brown.cs.student.main.components.helpers.JsonReader;
 import edu.brown.cs.student.main.movieData.PosterData;
 import edu.brown.cs.student.main.movieData.PosterFetch;
-import edu.brown.cs.student.main.movieData.movieData;
-import edu.brown.cs.student.main.movieData.movieData.movieJson;
-
 import spark.Request;
 import spark.Response;
 
@@ -33,7 +37,6 @@ public class MovieHandler implements Route {
    * Constructor accepts some shared csv
    */
   public MovieHandler(String[][] userData) {
-
     history = userData;
   }
 
@@ -52,14 +55,44 @@ public class MovieHandler implements Route {
   public Object handle(Request request, Response response) throws Exception {
     try {
       JsonReader<movieJson> jsonReader = new JsonReader<>(movieJson.class);
-      movieJson result = jsonReader.fromJson("backend/data/netflix_titles.json");
-      Map<String, String> cast = result.cast();
+      //movieJson result = jsonReader.fromJson("backend/data/netflix_titles.json");
+     // Map<String, String> cast = result.cast();
       MapCreator mapCreator = new MapCreator();
       TopGenres topGenre = new TopGenres();
-      topGenre.getTopGenres(history);
-      mapCreator.printMapWithArray(mapCreator.createWatchedMovieMap(history).get(0));
+      BingeData bingeData = new BingeData();
+      TotalMin totalMin = new TotalMin();
+      MovieSection movieSection = new MovieSection();
+      ShowSection showSection = new ShowSection();
       
-      return new MovieSuccessResponse(cast).serialize();
+
+      ArrayList<Map<String, ArrayList<ArrayList<String>>>> userHistoryMapList = mapCreator.createWatchedMovieMap(history);
+      JSONFinalFetch finalFetchJson = new JSONFinalFetch();
+      
+
+      finalFetchJson.personality.title = "UNDECIDEDPERSONALITY";
+      finalFetchJson.top5Genres = topGenre.getTopGenres(history, userHistoryMapList).top5Genres;
+      finalFetchJson.bingeData = bingeData.getBingeData(history, userHistoryMapList);
+      finalFetchJson.totalMin = totalMin.getTotalMin(history, userHistoryMapList).totalMin;
+      finalFetchJson.movie = movieSection.getMovieSection(history, userHistoryMapList);
+      finalFetchJson.shows = showSection.getShowSection(history, userHistoryMapList);
+
+
+      //System.out.println("TotalTime: "+totalMin.getTotalMin(history));
+      // System.out.println("bingeData: " + bingeData.getBingeData(history));
+      // System.out.println("movieSection: "+ movieSection.getMovieSection(history));
+      // System.out.println("showSection: "+ showSection.getMovieSection(history));
+      
+
+
+      // for (Map<String, ArrayList<ArrayList<String>>> element : mapCreator.createWatchedMovieMap(history)){
+      //   mapCreator.printMapWithArray(element);
+      // }
+      
+      
+      return new MovieSuccessResponse(finalFetchJson).serialize();
+
+
+
     } catch (IOException | JsonDataException e) {
       System.out.println(e.getMessage());
       return new MapFailureResponse("error_bad_request", e.getMessage()).serialize();
@@ -67,9 +100,9 @@ public class MovieHandler implements Route {
   }
 
   // Success response record
-  public record MovieSuccessResponse(String result, Map<String, String> movieJson) {
-    public MovieSuccessResponse(Map<String, String> movieJson) {
-      this("success", movieJson);
+  public record MovieSuccessResponse(String result, Object json) {
+    public MovieSuccessResponse(Object json) {
+      this("success", json);
     }
 
     /**
@@ -78,7 +111,7 @@ public class MovieHandler implements Route {
     public String serialize() {
       LinkedHashMap<String, Object> responseMap = new LinkedHashMap<>();
       responseMap.put("result", this.result);
-      responseMap.put("geoJson", this.movieJson);
+      responseMap.put("movieJson", this.json);
       try {
         Moshi moshi = new Moshi.Builder()
             .build();

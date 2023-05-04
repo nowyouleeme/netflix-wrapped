@@ -8,7 +8,7 @@ import java.util.Map;
 
 import com.squareup.moshi.JsonDataException;
 
-import edu.brown.cs.student.main.movieData.movieData.movieJson;
+import edu.brown.cs.student.main.components.JsonDataType.movieData.movieJson;
 
 public class MapCreator {
 
@@ -61,7 +61,7 @@ public class MapCreator {
         }
       }
       historyMapList.add(mapToAdd);
-      printMapWithArray(mapToAdd);
+      //printMapWithArray(mapToAdd);
     }
     return historyMapList;
   }

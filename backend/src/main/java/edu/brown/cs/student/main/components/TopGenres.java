@@ -6,21 +6,19 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import edu.brown.cs.student.main.components.JsonDataType.JSONTopGenres;
+import edu.brown.cs.student.main.components.JsonDataType.JSONTopGenres.Genre;
 import edu.brown.cs.student.main.components.helpers.MapCreator;
 
 public class TopGenres {
     public TopGenres() {
     }
 
-    public ArrayList<String> getTopGenres(String[][] userHistory) {
+    public JSONTopGenres getTopGenres(String[][] userHistory,
+    ArrayList<Map<String, ArrayList<ArrayList<String>>>> userHistoryMapList) {
+        JSONTopGenres topGenres = new JSONTopGenres();
         
-        ArrayList<String> returnGenreList = new ArrayList<String>();
         Map<String, Integer> genreCountMap = new HashMap<>();
-        
-        ArrayList<Map<String, ArrayList<ArrayList<String>>>> userHistoryMapList = new ArrayList<Map<String, ArrayList<ArrayList<String>>>>();
-        MapCreator mapCreator = new MapCreator();
-
-        userHistoryMapList = mapCreator.createWatchedMovieMap(userHistory);
 
         for (Map<String, ArrayList<ArrayList<String>>> map : userHistoryMapList) {
             for (Map.Entry<String, ArrayList<ArrayList<String>>> entry : map.entrySet()) {
@@ -45,11 +43,16 @@ public class TopGenres {
 
         // Print the top 5 genres with their counts
         int numGenres = Math.min(5, genreCountList.size());
+        System.out.println(genreCountList);
         for (int i = 0; i < numGenres; i++) {
-            returnGenreList.add(genreCountList.get(i).getKey());
-            System.out.println(genreCountList.get(i).getKey());
+            Genre genre = new Genre();
+            genre.genre = genreCountList.get(i).getKey();
+            genre.count = genreCountList.get(i).getValue();
+            topGenres.top5Genres.add(genre);
         }
-        return returnGenreList;
+
+        System.out.println("here works!");
+        return topGenres;
 
     }
 }
