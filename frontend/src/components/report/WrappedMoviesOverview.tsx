@@ -43,7 +43,7 @@ export function WrappedMoviesOverview(props: WrappedMoviesProps) {
                   You watched <i>{movies[i].title}</i>
                 </p>
                 <p className="moviesDisplayP">
-                  {movies[i].numEpWatched} times
+                  {movies[i].numEpWatched} {movies[i].numEpWatched > 1 ? ("times") : ("time")}
                 </p>
               </div>
             </div>
@@ -76,8 +76,12 @@ export function WrappedMoviesOverview(props: WrappedMoviesProps) {
             </a>
           </div>
           <p className="moviesDescP">
-            which you watched <b>{props.movies[0].numEpWatched} times</b> in{" "}
-            {props.year}.
+            which you watched{" "}
+            <b>
+              {props.movies[0].numEpWatched}{" "}
+              {props.movies[0].numEpWatched  > 1 ? "times" : "time"}
+            </b>
+            .
           </p>
         </div>
       </div>

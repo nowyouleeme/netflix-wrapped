@@ -16,10 +16,10 @@ export interface UploaderProps {
 function Uploader(props: UploaderProps) {
     const [file, setFile] = useState<File>();
     const [fileSelected, setFileSelected] = useState<boolean>(false);
-    const [csvUploadStatus, setCsvUploadStatus] = useState("");
-    const [reportStatus, setReportStatus] = useState("");
     const [reportJSON, setReportJSON] = useState<ReportJSON>();
     const [status, setStatus] = useState(<></>);
+    const [showUpload, setShowUpload] = useState(false);
+    const [showWrapped, setShowWrapped] = useState(false);
     const name = props.name;
 
     return (
@@ -39,9 +39,14 @@ function Uploader(props: UploaderProps) {
                 setFileSelected(true);
               }
             }}
+            onClick={() => {setShowWrapped(false)}}
           />
           {/* this will upload to say file selected / whether or not upload was successfull */}
-          {status}
+          {fileSelected ? (
+            <p style={{ marginBottom: "1em" }}>File selected: '{file?.name}'</p>
+          ) : (
+            status
+          )}
 
           {/* button UI for the input field for the user's csv */}
           <label className="Upload" htmlFor="netflix-file">
@@ -56,7 +61,6 @@ function Uploader(props: UploaderProps) {
               variant="contained"
               color="primary"
               component="span"
-              
             >
               Select Your NetflixViewingHistory.CSV File
             </Button>
@@ -96,17 +100,20 @@ function Uploader(props: UploaderProps) {
                         }
                       })
                       .then((responseJSON) => {
+                        setFileSelected(false);
                         setStatus(
                           <p style={{ marginBottom: "1em" }}>
                             Uploading your CSV...
                           </p>
                         );
-                        
+
                         if (responseJSON.result === "success") {
                           //'success' dialog
-                          setCsvUploadStatus(
-                            "netflix viewing history csv successfully uploaded"
-                          );
+
+                          // setCsvUploadStatus(
+                          //   "netflix viewing history csv successfully uploaded"
+                          // );
+                          setShowUpload(true);
                           setStatus(
                             <p style={{ marginBottom: "1em" }}>
                               '{file?.name}' uploaded successfully!
@@ -114,12 +121,13 @@ function Uploader(props: UploaderProps) {
                           );
                           console.log("successfully sent to backend");
                         } else {
-                          setCsvUploadStatus(
-                            "failed to upload netflix viewing history csv"
-                          );
+                          // setCsvUploadStatus(
+                          //   "failed to upload netflix viewing history csv"
+                          // );
                           setStatus(
                             <p style={{ marginBottom: "1em" }}>
-                              '{file?.name}' upload failed, please try again later. 
+                              '{file?.name}' upload failed, please try again
+                              later.
                             </p>
                           );
                         }
@@ -146,8 +154,7 @@ function Uploader(props: UploaderProps) {
           {/* update when the csv has been uploaded or failed uploading */}
           {/* TODO: aria label for this */}
           {/* <div className="csv-upload-status">{csvUploadStatus}</div> */}
-          {csvUploadStatus ===
-          "netflix viewing history csv successfully uploaded" ? (
+          {showUpload ? (
             <Button
               aria-label={generate_wrapped}
               onClick={() => {
@@ -159,13 +166,21 @@ function Uploader(props: UploaderProps) {
                     return response.json();
                   })
                   .then((responseJSON) => {
-           
-                    
-                    setStatus(<p style={{ marginBottom: "1em" }}>Loading your Netflix Wrapped...</p>);
+                    setStatus(
+                      <p style={{ marginBottom: "1em" }}>
+                        Loading your Netflix Wrapped...
+                      </p>
+                    );
                     if (responseJSON.result === "success") {
                       //'success' dialog
-                      setReportStatus("report successfully generated");
-                      setStatus(<p style={{ marginBottom: "1em" }}>Netflix Wrapped generated successfully!</p>);
+                      // setReportStatus("report successfully generated");
+                      setStatus(
+                        <p style={{ marginBottom: "1em" }}>
+                          Your Netflix Wrapped was generated successfully!
+                        </p>
+                      );
+                      setShowWrapped(true);
+                      setShowUpload(false);
                       console.log(
                         "sent wrapped request to backend, responseJSON : " +
                           responseJSON
@@ -183,18 +198,19 @@ function Uploader(props: UploaderProps) {
                       //'fail' dialog based on backend error thrown
                       setStatus(
                         <p style={{ marginBottom: "1em" }}>
-                          Failed to generate your Netflix Wrapped, please try again later. 
+                          Failed to generate your Netflix Wrapped, please try
+                          again later.
                         </p>
                       );
-                      setReportStatus("failed to generate report");
+                      // setReportStatus("failed to generate report");
                     }
                   });
               }}
               style={{
                 padding: "0.75em 1.5em",
                 fontFamily: "Metropolis-Black",
-                color: "white",
-                backgroundColor: "#D92929",
+                color: "#D92929",
+                backgroundColor: "white",
                 marginTop: "1em",
               }}
               variant="contained"
@@ -207,7 +223,7 @@ function Uploader(props: UploaderProps) {
             <></>
           )}
           {/* make so that this button will only show when user uploads valid file */}
-          {reportStatus === "report successfully generated" ? (
+          {showWrapped ? (
             <Link
               style={{ textDecoration: "none" }}
               to={`/Report`}

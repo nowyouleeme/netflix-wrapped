@@ -330,6 +330,7 @@ table {
 }
 
 .GenreDesc {
+  margin-right: 5em;
   margin-bottom: 0;
   width: 50%;
 }
@@ -347,7 +348,7 @@ table {
 }
 
 .carousel {
-  padding: 1.5vh 0;
+  padding: 1.75vh 0;
   display: flex;
   width: 100%;
   overflow-x: scroll;
@@ -364,6 +365,7 @@ table {
 .genresNormalP {
   font-family: 'Metropolis-Medium';
   font-size: 2em;
+  line-height: 1.5em;
 }
 
 .genresStyledP {
@@ -400,7 +402,7 @@ table {
 .minutesStyledP {
   font-family: 'Metropolis-Black';
   margin: 0.25em 0;
-  font-size: 6em;
+  font-size: 7.5em;
 }
 
 .WrappedMinutes sub {
@@ -549,7 +551,7 @@ table {
   display: block;
   font-family: 'Metropolis-Black';
   font-size: 6em;
-  margin-bottom: 0;
+  margin-bottom: 0.16em;
 }
 
 .WrappedBingeShow a {

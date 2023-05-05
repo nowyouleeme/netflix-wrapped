@@ -12,7 +12,7 @@ export function WrappedMinutes(props: WrappedMinutesProps) {
     }
     // ensure numbers have commas where need be for readability
     return (
-      <div   className="center WrappedMinutes">
+      <div className="center WrappedMinutes">
         <p className="minutesNormalP">All that exploration added up to</p>
         <p className="minutesStyledP">
           {Math.floor(props.totalMin).toLocaleString()}
@@ -31,11 +31,20 @@ export function WrappedMinutes(props: WrappedMinutesProps) {
 
           <br aria-hidden="true" />
         </p>
-        <p className="minutesNormalP">minutes on Netflix.</p>
+        <p className="minutesNormalP">
+          {Math.floor(props.totalMin) > 1 ? "minutes" : "minute"} on Netflix.
+        </p>
         <sub>
           That's about{" "}
-          <b>{calculateHours(props.totalMin).toLocaleString()} hours,</b> or{" "}
-          <b>{calculateDays(props.totalMin).toLocaleString()} days!</b>
+          <b>
+            {calculateHours(props.totalMin).toLocaleString()}{" "}
+            {calculateHours(props.totalMin) > 1 ? "hours" : "hour"},
+          </b>{" "}
+          or{" "}
+          <b>
+            {calculateDays(props.totalMin).toLocaleString()}{" "}
+            {calculateDays(props.totalMin) > 1 ? "days" : "day"}!
+          </b>
         </sub>
       </div>
     );

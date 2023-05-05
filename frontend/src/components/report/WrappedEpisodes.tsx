@@ -22,8 +22,9 @@ export function WrappedEpisodes(props: WrappedEpisodesProps) {
       <div className="EpisodesMany">
         <div style={{ textAlign: "center" }}>
           <p className="episodesBigP">
-            You watched a total of {props.totalEps} episodes of{" "}
-            {props.totalShows} different shows,
+            You watched a total of {props.totalEps}{" "}
+            {props.totalEps > 1 ? "episodes" : "episode"} of {props.totalShows}{" "}
+            {props.totalShows > 1 ? "different shows" : "great show"},
           </p>
           <p className="episodesDescP">
             with some you just couldn't get enough of:
@@ -48,7 +49,8 @@ export function WrappedEpisodes(props: WrappedEpisodesProps) {
                 <div className="DescContent">
                   <p className="DescContentSmallP">You watched</p>
                   <p className="DescContentBigP">
-                    {value.numEpWatched} episodes
+                    {value.numEpWatched}{" "}
+                    {value.numEpWatched > 1 ? "episodes" : "episode"}
                   </p>
                   <p className="DescContentSmallP">
                     of <i>{value.title}</i>
@@ -62,7 +64,7 @@ export function WrappedEpisodes(props: WrappedEpisodesProps) {
 
       <div className="EpisodesLess">
         <p className="episodesDescP" style={{ textAlign: "center" }}>
-          And others that you started but <b>never finished:</b>
+          And others that you started but <b>never quite finished:</b>
         </p>
         <div className="Episodes">
           {props.leastWatched.map((value, index) => (
@@ -83,7 +85,8 @@ export function WrappedEpisodes(props: WrappedEpisodesProps) {
                 <div className="DescContent">
                   <p className="DescContentSmallP">You watched</p>
                   <p className="DescContentBigP">
-                    {value.numEpWatched} episodes
+                    {value.numEpWatched}{" "}
+                    {value.numEpWatched > 1 ? "episodes" : "episode"}
                   </p>
                   <p className="DescContentSmallP">
                     of <i>{value.title}</i>

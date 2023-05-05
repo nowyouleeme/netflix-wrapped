@@ -9,7 +9,7 @@ export function ReportIntro(props: ReportIntroProps) {
         <h1>Your Netflix {props.year} Wrapped is finally here!</h1>
         <div className="HereSub">
           <sub>
-            Take a glimpse at your watch time, top shows + movies, favorite
+            Take a glimpse at your watch time, top shows + movies, and favorite
             genres—all in one place.
           </sub>
         </div>

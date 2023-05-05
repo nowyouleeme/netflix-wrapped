@@ -48,7 +48,10 @@ export function BingeData(props: BingeDataProps) {
       let stringElement: JSX.Element;
       stringElement = (
         <span>
-          <b>{shows[i].numEpWatched} episodes</b> of <i>{shows[i].title}</i>
+          <b>
+            {shows[i].numEpWatched} {shows[i].numEpWatched > 1 ? ("episodes") : ("episode")}
+          </b>{" "}
+          of <i>{shows[i].title}</i>
         </span>
       );
       contentWatched.push(stringElement);
@@ -132,9 +135,8 @@ export function BingeData(props: BingeDataProps) {
             rel="noreferrer"
             href="https://www.youtube.com/watch?v=StTqXEQ2l-Y"
           >
-            your most bingeful show day
+            your most bingeful show day.
           </a>{" "}
-          of the year.
         </p>
       </div>
       <div role="figure" aria-label={binge_grid} className="BingeGrid">

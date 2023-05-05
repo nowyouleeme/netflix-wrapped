@@ -13,7 +13,11 @@ export function WrappedOverview(props: WrappedOverviewProps) {
           Out of that time you spent with us in 2022,
         </p>
         <p className="overviewDescP">
-          you watched <b>{props.shows.length} shows</b>...
+          you watched{" "}
+          <b>
+            {props.shows.length} {props.shows.length > 1 ? "shows" : "show"}
+          </b>
+          ...
         </p>
       </div>
 
@@ -24,7 +28,11 @@ export function WrappedOverview(props: WrappedOverviewProps) {
 
       <div className="OverviewDesc">
         <p className="overviewDescP">
-          and <b>{props.movies.length} movies</b>!
+          and{" "}
+          <b>
+            {props.movies.length} {props.movies.length > 1 ? "movies" : "movie"}
+          </b>
+          !
         </p>
       </div>
 
