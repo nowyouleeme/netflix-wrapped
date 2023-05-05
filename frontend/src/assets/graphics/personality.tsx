@@ -32,7 +32,8 @@ const explorer: PersonalityItem = {
       </defs>
     </svg>
   ),
-  description: "hello",
+  description:
+    "You’re an adventurous one! Not limiting yourself to either movies or shows, you delve into wide and varied range of genres to explore the unknown and go out of your comfort zone to find some hidden gems.",
 };
 
 const binge: PersonalityItem = {
@@ -63,7 +64,7 @@ const binge: PersonalityItem = {
       </defs>
     </svg>
   ),
-  description: "hello",
+  description: "You get things done and you get them done at once! Your enthusiasm for watchings shows and movies is unmatched, dedicating much of your time going down the Netflix rabbit hole while having it play in the background while doing work or staying in to relax.",
 };
 
 const old: PersonalityItem = {
@@ -94,7 +95,7 @@ const old: PersonalityItem = {
       </defs>
     </svg>
   ),
-  description: "hello",
+  description: "You're an old soul at heart, constantly being drawn to and in tune with media of the past. Something about the old times resonants with you... perhaps you say that you were born in the wrong generation?",
 };
 
 const otaku: PersonalityItem = {
@@ -125,7 +126,7 @@ const otaku: PersonalityItem = {
       </defs>
     </svg>
   ),
-  description: "hello",
+  description: "You have an unmatched love for anime and other Japanese pop culture! Whether it be because of the compelling characters, creative visuals, interesting world building, or exposure to Japanese history and language, you show clear appreciation for quality media.",
 };
 
 const lovebird: PersonalityItem = {
@@ -156,7 +157,7 @@ const lovebird: PersonalityItem = {
       </defs>
     </svg>
   ),
-  description: "hello",
+  description: "What a romanticist! You're attracted to shows and movies that show the beauty of human relationships and seeing how different personalities mesh with each other, and you're likely to be found daydreaming about your perfect partner.",
 };
 
 personality.set("The Explorer", explorer);
