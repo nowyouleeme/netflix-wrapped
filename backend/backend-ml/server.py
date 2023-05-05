@@ -10,7 +10,7 @@ from csv_read import featurized_movies, dict
 
 input_shape = (150, 44)
 num_classes = 5
-classes = ["Explorer", "Lovebird", "Binge Watcher", "Otaku", "Old School"]
+classes = ["The Explorer", "The Lovebird", "The Binge Watcher", "The Otaku", "The Old-School Watcher"]
 
 def search_csv(str):
     keys = dict.keys()

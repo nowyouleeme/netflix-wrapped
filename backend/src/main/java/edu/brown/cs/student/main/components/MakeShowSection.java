@@ -16,24 +16,19 @@ public class MakeShowSection {
     public JSONShowSection getShowSection(String[][] userHistory,
     ArrayList<Map<String, ArrayList<ArrayList<String>>>> userHistoryMapList) {
         PosterFetch posterFetcher = new PosterFetch();
-        System.out.print("a");
         JSONShowSection showSection = new JSONShowSection();
-        System.out.print("b");
 
         ArrayList<Map<String, ArrayList<ArrayList<String>>>> movieOnlyList = showOnly(userHistoryMapList);
-        System.out.print("c");
-        System.out.print("movie only list size" + movieOnlyList.size());
+        System.out.println("movie only list size" + movieOnlyList.size());
         showSection.totalEpWatched = movieOnlyList.size();
-        System.out.print("d");
 
         Map<String, Integer> movieCountMap = getMovieCountMap(getShowTitleList(movieOnlyList));
-        System.out.print("e");
         
+        System.out.print("a");
 
         // although a for loop, this is adding only one movie title.
         ArrayList<String> movieTitles = new ArrayList<String>();
         for (int i = 0; i < movieOnlyList.size(); i++) {
-            System.out.print("f");
             Set<String> filmSet = movieOnlyList.get(i).keySet();
             for (String element : filmSet) {
                 JSONShow show = new JSONShow();
@@ -48,12 +43,11 @@ public class MakeShowSection {
             }
 
         }
+        System.out.print("b");
        // showSection.topShows.above50_3
-        System.out.print("g");
        ArrayList<String> topShows = getTopThree(movieOnlyList);
-       System.out.print("hhh");
        ArrayList<String> bottomShows = getBottomThree(movieOnlyList);
-       System.out.print("h");
+
        for(int i = 0; i < topShows.size(); i++){
         if(i % 2 == 0){
             System.out.print("i");
@@ -116,27 +110,23 @@ public class MakeShowSection {
     public ArrayList<String> getTopThree(ArrayList<Map<String, ArrayList<ArrayList<String>>>> movieList) {
         ArrayList<String> topMoviesList = new ArrayList<String>();
         ArrayList<String> movieTitleList = getShowTitleList(movieList);
-        System.out.print("aaa");
 
         Map<String, Integer> movieCountMap = getMovieCountMap(movieTitleList);
         List<Map.Entry<String, Integer>> movieCountList = new ArrayList<>(movieCountMap.entrySet());
         Collections.sort(movieCountList, (a, b) -> b.getValue().compareTo(a.getValue()));
-
-        System.out.print("bbb");
-        topMoviesList.add(movieCountList.get(0).getKey());
-        String mostWatchedvalueString = Integer.toString(movieCountList.get(0).getValue());
-        topMoviesList.add(mostWatchedvalueString);
-        System.out.print("ccc");
-        topMoviesList.add(movieCountList.get(1).getKey());
-        String secondMostWatchedvalueString = Integer.toString(movieCountList.get(1).getValue());
-        topMoviesList.add(secondMostWatchedvalueString);
-        System.out.print("ddd");
-        topMoviesList.add(movieCountList.get(2).getKey());
-        System.out.print("eee");
-        String thirdMostWatchedvalueString = Integer.toString(movieCountList.get(2).getValue());
-        System.out.print("fff");
-        topMoviesList.add(thirdMostWatchedvalueString);
-        System.out.print("ggg");
+        try{
+            topMoviesList.add(movieCountList.get(0).getKey());
+            String mostWatchedvalueString = Integer.toString(movieCountList.get(0).getValue());
+            topMoviesList.add(mostWatchedvalueString);
+            topMoviesList.add(movieCountList.get(1).getKey());
+            String secondMostWatchedvalueString = Integer.toString(movieCountList.get(1).getValue());
+            topMoviesList.add(secondMostWatchedvalueString);
+            topMoviesList.add(movieCountList.get(2).getKey());
+            String thirdMostWatchedvalueString = Integer.toString(movieCountList.get(2).getValue());
+            topMoviesList.add(thirdMostWatchedvalueString);
+        } catch(Exception e) {
+            return topMoviesList;
+        }
         return topMoviesList;
     }
 
@@ -149,17 +139,21 @@ public class MakeShowSection {
         Collections.sort(movieCountList, (a, b) -> b.getValue().compareTo(a.getValue()));
 
         int sizeNum = movieCountList.size() - 1;
-        topMoviesList.add(movieCountList.get(sizeNum).getKey());
-        String mostWatchedvalueString = Integer.toString(movieCountList.get(sizeNum).getValue());
-        topMoviesList.add(mostWatchedvalueString);
+        try {
+            topMoviesList.add(movieCountList.get(sizeNum).getKey());
+            String mostWatchedvalueString = Integer.toString(movieCountList.get(sizeNum).getValue());
+            topMoviesList.add(mostWatchedvalueString);
 
-        topMoviesList.add(movieCountList.get(sizeNum-1).getKey());
-        String secondMostWatchedvalueString = Integer.toString(movieCountList.get(sizeNum-1).getValue());
-        topMoviesList.add(secondMostWatchedvalueString);
+            topMoviesList.add(movieCountList.get(sizeNum-1).getKey());
+            String secondMostWatchedvalueString = Integer.toString(movieCountList.get(sizeNum-1).getValue());
+            topMoviesList.add(secondMostWatchedvalueString);
 
-        topMoviesList.add(movieCountList.get(sizeNum-2).getKey());
-        String thirdMostWatchedvalueString = Integer.toString(movieCountList.get(sizeNum-2).getValue());
-        topMoviesList.add(thirdMostWatchedvalueString);
+            topMoviesList.add(movieCountList.get(sizeNum-2).getKey());
+            String thirdMostWatchedvalueString = Integer.toString(movieCountList.get(sizeNum-2).getValue());
+            topMoviesList.add(thirdMostWatchedvalueString);
+        } catch (Exception e) {
+            return topMoviesList;
+        }
         return topMoviesList;
     }
 
