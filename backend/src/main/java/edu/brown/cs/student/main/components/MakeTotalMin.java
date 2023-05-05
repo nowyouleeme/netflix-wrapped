@@ -9,8 +9,8 @@ import java.util.Map;
 import edu.brown.cs.student.main.components.JsonDataType.JSONTotalMin;
 import edu.brown.cs.student.main.components.helpers.MapCreator;
 
-public class TotalMin {
-    public TotalMin() {
+public class MakeTotalMin {
+    public MakeTotalMin() {
     }
 
     public JSONTotalMin getTotalMin(String[][] userHistory,

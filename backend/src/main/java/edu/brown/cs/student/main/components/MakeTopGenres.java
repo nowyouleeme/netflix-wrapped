@@ -7,11 +7,11 @@ import java.util.List;
 import java.util.Map;
 
 import edu.brown.cs.student.main.components.JsonDataType.JSONTopGenres;
-import edu.brown.cs.student.main.components.JsonDataType.JSONTopGenres.Genre;
+import edu.brown.cs.student.main.components.JsonDataType.JSONTopGenres.JSONGenre;
 import edu.brown.cs.student.main.components.helpers.MapCreator;
 
-public class TopGenres {
-    public TopGenres() {
+public class MakeTopGenres {
+    public MakeTopGenres() {
     }
 
     public JSONTopGenres getTopGenres(String[][] userHistory,
@@ -45,7 +45,7 @@ public class TopGenres {
         int numGenres = Math.min(5, genreCountList.size());
         System.out.println(genreCountList);
         for (int i = 0; i < numGenres; i++) {
-            Genre genre = new Genre();
+            JSONGenre genre = new JSONGenre();
             genre.genre = genreCountList.get(i).getKey();
             genre.count = genreCountList.get(i).getValue();
             topGenres.top5Genres.add(genre);

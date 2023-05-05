@@ -12,12 +12,12 @@ import com.squareup.moshi.JsonDataException;
 import com.squareup.moshi.Moshi;
 
 import spark.Route;
-import edu.brown.cs.student.main.components.BingeData;
-import edu.brown.cs.student.main.components.MovieSection;
-import edu.brown.cs.student.main.components.Personality;
-import edu.brown.cs.student.main.components.ShowSection;
-import edu.brown.cs.student.main.components.TopGenres;
-import edu.brown.cs.student.main.components.TotalMin;
+import edu.brown.cs.student.main.components.MakeBingeData;
+import edu.brown.cs.student.main.components.MakeMovieSection;
+import edu.brown.cs.student.main.components.MakePersonality;
+import edu.brown.cs.student.main.components.MakeShowSection;
+import edu.brown.cs.student.main.components.MakeTopGenres;
+import edu.brown.cs.student.main.components.MakeTotalMin;
 import edu.brown.cs.student.main.components.JsonDataType.JSONFinalFetch;
 import edu.brown.cs.student.main.components.JsonDataType.movieData;
 import edu.brown.cs.student.main.components.JsonDataType.movieData.movieJson;
@@ -60,11 +60,11 @@ public class MovieHandler implements Route {
       // movieJson result = jsonReader.fromJson("backend/data/netflix_titles.json");
       // Map<String, String> cast = result.cast();
       MapCreator mapCreator = new MapCreator();
-      TopGenres topGenre = new TopGenres();
-      BingeData bingeData = new BingeData();
-      TotalMin totalMin = new TotalMin();
-      MovieSection movieSection = new MovieSection();
-      ShowSection showSection = new ShowSection();
+      MakeTopGenres topGenre = new MakeTopGenres();
+      MakeBingeData bingeData = new MakeBingeData();
+      MakeTotalMin totalMin = new MakeTotalMin();
+      MakeMovieSection movieSection = new MakeMovieSection();
+      MakeShowSection showSection = new MakeShowSection();
 
       ArrayList<Map<String, ArrayList<ArrayList<String>>>> userHistoryMapList = mapCreator
           .createWatchedMovieMap(history);
@@ -86,7 +86,7 @@ public class MovieHandler implements Route {
         e.printStackTrace();
       }
 
-      Personality personality = new Personality();
+      MakePersonality personality = new MakePersonality();
 
       finalFetchJson.personality.title = personality.getPersonality(history, userHistoryMapList);
       finalFetchJson.top5Genres = topGenre.getTopGenres(history, userHistoryMapList).top5Genres;

@@ -3,10 +3,10 @@ package edu.brown.cs.student.main.components.JsonDataType;
 import java.util.ArrayList;
 import java.util.List;
 
-import edu.brown.cs.student.main.components.JsonDataType.JSONTopGenres.Genre;
+import edu.brown.cs.student.main.components.JsonDataType.JSONTopGenres.JSONGenre;
 
 public class JSONFinalFetch {
-    public List<Genre> top5Genres = new ArrayList<>();
+    public List<JSONGenre> top5Genres = new ArrayList<>();
     public int totalMin = 0;
     public JSONBingeData bingeData = new JSONBingeData();
     public JSONShowSection shows = new JSONShowSection();

@@ -9,11 +9,11 @@ import java.util.Map;
 import java.util.Set;
 
 import edu.brown.cs.student.main.components.JsonDataType.JSONBingeData;
-import edu.brown.cs.student.main.components.JsonDataType.JSONBingeData.BingeMovie;
-import edu.brown.cs.student.main.components.JsonDataType.JSONBingeData.BingeShow;
+import edu.brown.cs.student.main.components.JsonDataType.JSONBingeData.JSONBingeMovie;
+import edu.brown.cs.student.main.components.JsonDataType.JSONBingeData.JSONBingeShow;
 import edu.brown.cs.student.main.movieData.PosterFetch;
 
-public class BingeData {
+public class MakeBingeData {
 
     public JSONBingeData getBingeData(String[][] userHistory,
             ArrayList<Map<String, ArrayList<ArrayList<String>>>> userHistoryMapList) {
@@ -54,7 +54,7 @@ public class BingeData {
 
         if (showsInDate != null) {
             for (Map.Entry<String, Integer> entry : showsInDate) {
-                BingeShow show = new BingeShow();
+                JSONBingeShow show = new JSONBingeShow();
 
                 show.title = entry.getKey();
                 show.numEpWatched = entry.getValue();
@@ -64,7 +64,7 @@ public class BingeData {
         }
         ArrayList<String> movieList = getMoviesInDate(dateCountList.get(0).getKey(), userHistoryMapList);
         for (int i = 0; i < movieList.size(); i++) {
-            BingeMovie movie = new BingeMovie();
+            JSONBingeMovie movie = new JSONBingeMovie();
             movie.title = movieList.get(i);
             movie.image = posterFetcher.getPosterLink(movieList.get(i));
             bingeData.movies.add(movie);

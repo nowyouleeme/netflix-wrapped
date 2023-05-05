@@ -5,23 +5,23 @@ import java.util.List;
 
 public class JSONShowSection {
     public Integer totalEpWatched = 0;
-    public List<Show> allShows = new ArrayList<>();
-    public TopShows topShows = new TopShows();
-    public ShowActors showActors = new ShowActors();
+    public List<JSONShow> allShows = new ArrayList<>();
+    public JSONTopShows topShows = new JSONTopShows();
+    public JSONShowActors showActors = new JSONShowActors();
   
-    public static class Show {
+    public static class JSONShow {
         public String title = new String();
         public int numEpWatched = 0;
         public String image = new String();
     }
 
-    public static class TopShows {
-        public List<Show> above50_3 = new ArrayList<Show>();
-        public List<Show> below50_3 = new ArrayList<Show>();
+    public static class JSONTopShows {
+        public List<JSONShow> mostWatched = new ArrayList<JSONShow>();
+        public List<JSONShow> leastWatched = new ArrayList<JSONShow>();
     }
 
-    public static class ShowActors {
+    public static class JSONShowActors {
         public List<String> mostWatchedActors = new ArrayList<String>();
-        public List<Show> actorFeaturedShows = new ArrayList<Show>();
+        public List<JSONShow> actorFeaturedShows = new ArrayList<JSONShow>();
     }
 }

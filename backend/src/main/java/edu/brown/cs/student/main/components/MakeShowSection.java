@@ -8,10 +8,10 @@ import java.util.Map;
 import java.util.Set;
 
 import edu.brown.cs.student.main.components.JsonDataType.JSONShowSection;
-import edu.brown.cs.student.main.components.JsonDataType.JSONShowSection.Show;
+import edu.brown.cs.student.main.components.JsonDataType.JSONShowSection.JSONShow;
 import edu.brown.cs.student.main.movieData.PosterFetch;
 
-public class ShowSection {
+public class MakeShowSection {
 
     public JSONShowSection getShowSection(String[][] userHistory,
     ArrayList<Map<String, ArrayList<ArrayList<String>>>> userHistoryMapList) {
@@ -31,7 +31,7 @@ public class ShowSection {
         for (int i = 0; i < movieOnlyList.size(); i++) {
             Set<String> filmSet = movieOnlyList.get(i).keySet();
             for (String element : filmSet) {
-                Show show = new Show();
+                JSONShow show = new JSONShow();
                 show.title = element;
                 show.image = posterFetcher.getPosterLink(element);
                 show.numEpWatched = movieCountMap.get(element);
@@ -51,22 +51,22 @@ public class ShowSection {
        for(int i = 0; i < topShows.size(); i++){
         if(i % 2 == 0){
             System.out.print("i");
-            Show mostShow = new Show();
+            JSONShow mostShow = new JSONShow();
             mostShow.title = topShows.get(i);
             mostShow.image = posterFetcher.getPosterLink(topShows.get(i));
             mostShow.numEpWatched = Integer.parseInt(topShows.get(i+1));
-            showSection.topShows.above50_3.add(mostShow);
+            showSection.topShows.mostWatched.add(mostShow);
             System.out.print("j");
         }
        }
        System.out.print("k");
        for(int i = 0; i < bottomShows.size(); i++){
         if(i % 2 == 0){
-            Show mostShow = new Show();
+            JSONShow mostShow = new JSONShow();
             mostShow.title = bottomShows.get(i);
             mostShow.image = posterFetcher.getPosterLink(bottomShows.get(i));
             mostShow.numEpWatched = Integer.parseInt(bottomShows.get(i+1));
-            showSection.topShows.below50_3.add(mostShow);
+            showSection.topShows.leastWatched.add(mostShow);
         }
        }
        System.out.print("l");
@@ -75,7 +75,7 @@ public class ShowSection {
         showSection.showActors.mostWatchedActors = actorInfo(movieOnlyList);
 
         for (String actor : actorInfo(movieOnlyList)) {
-            Show show = new Show();
+            JSONShow show = new JSONShow();
             show.title = actorFeaturedMovies(actor, movieOnlyList);
             show.image = posterFetcher.getPosterLink(actorFeaturedMovies(actor, movieOnlyList));
             showSection.showActors.actorFeaturedShows.add(show);

@@ -14,8 +14,8 @@ import com.squareup.moshi.Moshi;
 import edu.brown.cs.student.main.components.helpers.MapCreator;
 import okio.Buffer;
 
-public class Personality {
-    public Personality(){
+public class MakePersonality {
+    public MakePersonality(){
 
     }
 
