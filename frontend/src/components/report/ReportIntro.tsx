@@ -4,7 +4,7 @@ interface ReportIntroProps {
 }
 export function ReportIntro(props: ReportIntroProps) {
   return (
-    <div   className="center WrappedIntroduction">
+    <div className="center WrappedIntroduction">
       <div className="Here">
         <h1>Your Netflix {props.year} Wrapped is finally here!</h1>
         <div className="HereSub">
@@ -16,7 +16,7 @@ export function ReportIntro(props: ReportIntroProps) {
       </div>
       <div className="center ScrollDown">
         <div className="arrow">
-          <label>Scroll down to see more</label>
+          <label>Scroll down to see more ⬇</label>
           {/* <svg
               width="30"
               height="18"

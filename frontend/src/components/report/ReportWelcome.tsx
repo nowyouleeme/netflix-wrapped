@@ -13,7 +13,7 @@ export function ReportWelcome(props: ReportWelcomeProps) {
   }
     return (
       <div className="center WrappedWelcome">
-        <p>Welcome to your Netflix Wrapped{fillName()}</p>
+        <p>Welcome to your Netflix Wrapped{fillName()} 🎁</p>
       </div>
     );
 }

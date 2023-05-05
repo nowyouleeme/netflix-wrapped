@@ -88,14 +88,14 @@ export function WrappedGenres(props: WrappedGenresProps) {
               <br aria-hidden="true" />
               top
               <br aria-hidden="true" />
-              {props.genres.length > 1 ? ("genres.") : ("genre.")}
+              {props.genres.length > 1 ? "genres." : "genre."}
             </p>
             <p className="genresNormalP">
               Your favorite seemed to be <b>{props.genres[0].genre}!</b>
             </p>
           </div>
 
-          <sub>Look at you go, venturing into the unknown.</sub>
+          <sub>Look at you go, venturing into the unknown 🚀</sub>
         </div>
         <div className="GenreVis">
           <PolarArea data={data} width="1vw" height="25vh" options={options} />

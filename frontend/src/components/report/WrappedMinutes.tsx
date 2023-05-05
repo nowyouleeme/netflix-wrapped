@@ -4,11 +4,13 @@ interface WrappedMinutesProps {
 export function WrappedMinutes(props: WrappedMinutesProps) {
     // function to calculate hours/days
     function calculateHours(minutes: number) {
-        return Math.floor(minutes / 60);
+      let hours = minutes / 60 ;
+        return hours.toFixed(1);
     }
 
     function calculateDays(minutes: number) {
-      return Math.floor((minutes / 60) / 24);
+      let days = (minutes / 60) / 24
+      return days.toFixed(1);
     }
     // ensure numbers have commas where need be for readability
     return (
@@ -38,12 +40,12 @@ export function WrappedMinutes(props: WrappedMinutesProps) {
           That's about{" "}
           <b>
             {calculateHours(props.totalMin).toLocaleString()}{" "}
-            {calculateHours(props.totalMin) > 1 ? "hours" : "hour"},
+            {Number(calculateHours(props.totalMin)) > 1 ? "hours" : "hour"},
           </b>{" "}
           or{" "}
           <b>
             {calculateDays(props.totalMin).toLocaleString()}{" "}
-            {calculateDays(props.totalMin) > 1 ? "days" : "day"}!
+            {Number(calculateDays(props.totalMin)) > 1 ? "days" : "day"}!
           </b>
         </sub>
       </div>
