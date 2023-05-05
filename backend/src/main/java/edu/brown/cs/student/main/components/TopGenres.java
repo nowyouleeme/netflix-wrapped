@@ -51,7 +51,6 @@ public class TopGenres {
             topGenres.top5Genres.add(genre);
         }
 
-        System.out.println("here works!");
         return topGenres;
 
     }

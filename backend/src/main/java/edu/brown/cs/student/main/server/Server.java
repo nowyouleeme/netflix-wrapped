@@ -144,19 +144,6 @@ public class Server {
         { "asflnv", "9/21/21" },
     };
 
-    // try (FileWriter writer = new FileWriter("backend/backend-ml/data/viewhist.csv")) {
-    //   for (int j = 0; j < movieData3.length; j++) {
-    //     writer.append("\""+movieData3[j][0]+"\"");
-    //     writer.append(",");
-    //     writer.append("\""+movieData3[j][1]+"\"");
-    //     writer.append("\n");
-    //   }
-    //   writer.close();
-    // } catch (IOException e) {
-    //   // TODO Auto-generated catch block
-    //   e.printStackTrace();
-    // }
-
     // TODO: initialize with real generator!!
     ReportGenerator generator = new MLGenerator();
     // serverInfo contains the shared states, including the current user csv and the
