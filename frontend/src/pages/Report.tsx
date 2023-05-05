@@ -8,11 +8,12 @@ import { ReportIntro } from "../components/report/ReportIntro";
 import { ReportWelcome } from "../components/report/ReportWelcome";
 import { WrappedOverview } from "../components/report/WrappedOverview";
 import { BingeData } from "../components/report/BingeData";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate} from "react-router-dom";
 import { WrappedFavActors } from "../components/report/WrappedFavActors";
 import { motion } from "framer-motion";
 import { Button } from '@mui/material';
 import {useState} from 'react'
+import { Console } from "console";
 
 
 export const wipe_data = "Wipe your personal csv data from our server"
@@ -26,11 +27,44 @@ export const wipe_data = "Wipe your personal csv data from our server"
 function Report() {
   const location = useLocation();
   const state = location.state;
-  const [wipeDataStatus, setWipeDataStatus] = useState("")
+  const initLocationState = (state!= null)
+  const [showReport, setShowReport] = useState(initLocationState)
+  const navigate = useNavigate();
+
+
   
   //TODO: uncomment below
-  const [mockAll, setMockAll] = useState(state.reportJSON) 
+  // const [mockAll, setMockAll] = useState(state.reportJSON)
 
+  // if (wipeDataStatus === "backend wiping...") {
+  //   return (
+  //     <div>
+  //       backend wiping...
+  //     </div>
+  //   )
+  // } else if (wipeDataStatus === "frontend non-stateful wiping...") {
+  //   return (
+  //     <div>
+  //       frontend non-stateful wiping...
+  //     </div>
+  //   )
+  // } else if (wipeDataStatus === "frontend stateful wiping...") {
+  //   return (
+  //     <div>
+  //       frontend non-stateful wiping...
+  //     </div>
+  //   )
+  // } else if (wipeDataStatus === "done") {
+  //   return (
+  //     <div>
+  //       done
+  //     </div>
+  //   )
+  // }
+
+
+  //the below is code that will run, assuming that we are not in the process of
+  //wiping data
   return (
     <motion.div
       className="Report"
@@ -39,24 +73,24 @@ function Report() {
       exit={{ opacity: 0 }}
       transition={{ duration: 2 }}
     >
-      <ReportIntro />
-      <ReportWelcome name={state.name} />
-      <WrappedGenres genres={mockAll.top5Genres} />
-      <WrappedMinutes totalMin={mockAll.totalMin} />
-      <WrappedOverview
-        shows={mockAll.shows.allShows}
-        movies={mockAll.movie.allMovies}
-      />
-      <WrappedEpisodes
-        totalEps={mockAll.shows.totalEpWatched}
-        totalShows={mockAll.shows.allShows.length}
-        mostWatched={mockAll.shows.topShows.mostWatched}
-        leastWatched={mockAll.shows.topShows.leastWatched}
-      />
-      <WrappedFavActors
+      {showReport && (<ReportIntro />)}
+      {showReport && (<ReportWelcome name={state.name} />)}
+      {showReport && (<WrappedGenres genres={state.reportJSON.top5Genres} />)}
+      {showReport && (<WrappedMinutes totalMin={state.reportJSON.totalMin} />)}
+      {showReport && (<WrappedOverview
+        shows={state.reportJSON.shows.allShows}
+        movies={state.reportJSON.movie.allMovies}
+      />)}
+      {showReport && (<WrappedEpisodes
+        totalEps={state.reportJSON.shows.totalEpWatched}
+        totalShows={state.reportJSON.shows.allShows.length}
+        mostWatched={state.reportJSON.shows.topShows.mostWatched}
+        leastWatched={state.reportJSON.shows.topShows.leastWatched}
+      />)}
+      {showReport && (<WrappedFavActors
         type="show"
-        actors={mockAll.shows.showActors.mostWatchedActors}
-        media={mockAll.shows.showActors.actorFeaturedShows}
+        actors={state.reportJSON.shows.showActors.mostWatchedActors}
+        media={state.reportJSON.shows.showActors.actorFeaturedShows}
         saying={
           <p className="actorsDescP">
             You've got <b>amazing</b> taste in entertainers!
@@ -64,12 +98,12 @@ function Report() {
         }
         color="#EEFFE7"
         bg="#EE9021"
-      />
-      <WrappedMoviesOverview year={2022} movies={mockAll.movie.top5Movies} />
-      <WrappedFavActors
+      />)}
+      {showReport && (<WrappedMoviesOverview year={2022} movies={state.reportJSON.movie.top5Movies} />)}
+      {showReport && (<WrappedFavActors
         type="movie"
-        actors={mockAll.movie.movieActors.mostWatchedActors}
-        media={mockAll.movie.movieActors.actorFeaturedMovies}
+        actors={state.reportJSON.movie.movieActors.mostWatchedActors}
+        media={state.reportJSON.movie.movieActors.actorFeaturedMovies}
         saying={
           <p className="actorsDescP">
             Looks like you have some favorite folks!
@@ -77,12 +111,14 @@ function Report() {
         }
         color="#F5EC72"
         bg="#7E18A1"
-      />
-      <BingeData bingeData={mockAll.bingeData} />
-      <NVTIPersonality personality={mockAll.personality} />
+      />)}
+      {showReport && (<BingeData bingeData={state.reportJSON.bingeData} />)}
+      {showReport && (<NVTIPersonality personality={state.reportJSON.personality} />)}
+
+      {!showReport && (<div> no report data in server</div>)}
 
       {/* Button to wipe data */}
-      <div className="WrappedWipe">
+      {showReport && (<div className="WrappedWipe">
         <p className="WrappedWipeP">
           Finished with your report and want to wipe your data from our servers?
         </p>
@@ -92,31 +128,7 @@ function Report() {
         <Button
           aria-label={wipe_data}
           onClick={() => {
-            //call backend API
-            const url = "http://localhost:6969/wipeData";
-            fetch(url)
-              .then((response) => response.json())
-              .then((responseJSON) => {
-                if (responseJSON.result === "success") {
-                  //'success' dialog
-                  setWipeDataStatus(
-                    "your netflix viewing history data has been successfully removed from the backend"
-                  );
-                  console.log("successfully sent to backend"); // it's working
-                } else {
-                  //FIXME: 'fail' dialog based on backend error thrown
-                  setWipeDataStatus(
-                    "failed to wipe netflix viewing history data"
-                  );
-                }
-              });
-            //clear out the data shown in the wrapped report
-            setMockAll(null);
-            //TODO: is the data associated with the location still stored?
-            //  if so, find a way to remove that CHECK if you can remove the data but then go back and forth in browser
-            //TODO: wipe data from frontend (landing)
-            // setUserReportJSON(null)
-            //TODO: reroute to the landing page
+            handleWipingData()         
           }}
           style={{
             padding: "0.75em 1.5em",
@@ -134,10 +146,36 @@ function Report() {
           Clear my history
         </Button>
         <p className="cute">Made with ❤️ by Kathryn, Karen, CJ, and Brian</p>
-      </div>
+      </div>)}
     </motion.div>
   );
+
+  function handleWipingData() {
+    //hide the report
+    setShowReport(false);
+    console.log("report hidden")
+    //wipe the backend info TODO: ask cj and brian if they save the user data anywhere...
+    const url = "http://localhost:6969/wipeData";
+    fetch(url)
+      .then((response) => response.json())
+      .then((responseJSON) => {
+        if (responseJSON.result === "success") {
+          console.log("successfully wiped data from backend"); // it's working
+        } else {
+          //FIXME: 'fail' dialog based on backend error thrown
+          console.log("failed to wipe data from backend");
+        }
+      });
+    //wipe the data associated with the location /Report
+    navigate('/', { replace: true });
+    // navigate('/Report');
+    console.log("/Report name and reportJSON deleted")
+    //TODO: check if we wiped csv data from frontend (landing/Uploader)
+     
+    //TODO: reroute to the landing page
+
   }
+}
   
 
 

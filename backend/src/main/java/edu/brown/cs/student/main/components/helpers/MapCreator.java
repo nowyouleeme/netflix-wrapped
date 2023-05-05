@@ -107,7 +107,7 @@ public class MapCreator {
     Map<String, ArrayList<ArrayList<String>>> finalMap = new HashMap<>();
     try {
       JsonReader<movieJson> jsonReader = new JsonReader<>(movieJson.class);
-      movieJson result = jsonReader.fromJson("backend/data/netflix_titles.json");
+      movieJson result = jsonReader.fromJson("data/netflix_titles.json");
 
       Map<String, String> listed_in = result.listed_in();
       Map<String, Integer> release_year = result.release_year();

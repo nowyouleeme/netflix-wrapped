@@ -113,11 +113,11 @@ function Landing() {
                   >
                     back
                   </Button>
-                  <Link
+                  {/* <Link
                     style={{ textDecoration: "none" }}
                     to={`/Report`}
                     state={{ name: userName }}
-                  ></Link>
+                  ></Link> */}
                 </div>
               </div>
             )}

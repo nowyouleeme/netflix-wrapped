@@ -104,6 +104,8 @@ function Uploader(props: UploaderProps) {
                       .then((response) => {
                         if (response.ok) {
                           return response.json();
+                        } else {                          
+                            throw new Error("unable to connect to backend server");
                         }
                       })
                       .then((responseJSON) => {
@@ -139,6 +141,13 @@ function Uploader(props: UploaderProps) {
                           );
                         }
                       });
+                      // .catch((error) => {
+                      //   setStatus(<p style={{ marginBottom: "1em" }}>
+                      //   '{file?.name}' upload failed, please try again
+                      //   later.
+                      //   </p>);
+                      //   console.log("hi")
+                      // });
                   });
                 }
               }}
@@ -234,7 +243,7 @@ function Uploader(props: UploaderProps) {
             <Link
               style={{ textDecoration: "none" }}
               to={`/Report`}
-              state={{ name: name, reportJSON: reportJSON }}
+              state={{ name: name, reportJSON: reportJSON}}
             >
               <label className="Upload" htmlFor="netflix-file">
                 <Button

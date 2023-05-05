@@ -52,11 +52,26 @@ public class SaveDataHandler implements Route {
       Data.UserCSV parsedUserCSV = moshi.adapter(Data.UserCSV.class).fromJson(userCSVQuery);
 
       System.out.print("parsedUserCSV\n");
+      //must be at least 2 rows
+      if (parsedUserCSV.usercsv().length < 2) {
+        errorMessages.put("error_bad_json", "The csv we received was not formatted correctly. Review our instructions on how to download your netflix viewing history, and try again.");
+        return serialize(fail(errorMessages));
+      }
+
+      //each row must be 2 columns
       for (int i = 0; i < parsedUserCSV.usercsv().length; i++) {
+        if (parsedUserCSV.usercsv()[i].length != 2) {
+          errorMessages.put("error_bad_json", "The csv we received was not formatted correctly. Review our instructions on how to download your netflix viewing history, and try again.");
+          return serialize(fail(errorMessages));
+        }
         System.out.print(Arrays.toString(parsedUserCSV.usercsv()[i])  + "\n");
       }
 
-      //TODO: make sure the user csv is shaped right (2 columns, headers being title and date)
+      //headers must be title and date
+      if (!(parsedUserCSV.usercsv()[0][0].equals("Title") && parsedUserCSV.usercsv()[0][1].equals("Date"))) {
+        errorMessages.put("error_bad_json", "The csv we received was not formatted correctly. Review our instructions on how to download your netflix viewing history, and try again.");
+        return serialize(fail(errorMessages));
+      }
 
       //save the userCSV into the serverInfo
       serverInfo.saveUserData(parsedUserCSV);
@@ -69,7 +84,7 @@ public class SaveDataHandler implements Route {
       return serialize(success());
     } catch (Exception e) {
       System.out.println(e.getMessage()); // TODO: better error handling
-      errorMessages.put("error_bad_json", e.getMessage());
+      errorMessages.put("error_bad_json", "Sorry, an unexpected error has occurred.");
       return serialize(fail(errorMessages));
     }
   }
