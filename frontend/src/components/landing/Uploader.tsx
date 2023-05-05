@@ -39,7 +39,7 @@ function Uploader(props: UploaderProps) {
                 setFileSelected(true);
               }
             }}
-            onClick={() => {setShowWrapped(false)}}
+            onClick={() => {setShowWrapped(false); setShowUpload(false)}}
           />
           {/* this will upload to say file selected / whether or not upload was successfull */}
           {fileSelected ? (
