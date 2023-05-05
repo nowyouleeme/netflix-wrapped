@@ -152,7 +152,11 @@ function Landing() {
                 </svg>
               </motion.div>
             ) : (
-              <></>
+              <p
+                className="center Help"
+              >
+                Made with ❤️ by Kathryn, Karen, CJ, and Brian
+              </p>
             )}
           </motion.div>
         </AnimatePresence>
@@ -166,14 +170,14 @@ function Landing() {
             <div className="instructionsText">
               <h2>1. Find your Netflix Viewing History</h2>
               <p>
-                Log into your Netflix account and navigate to your "Account"
-                settings by clicking your account avatar in the upper-right
-                corner of the screen.
+                Log into your Netflix account and navigate to your{" "}
+                <b>"Account"</b> settings by clicking your account avatar in the{" "}
+                <b>upper-right corner</b> of the screen.
               </p>
               <p>
-                Navigate from "Profile & Parental Controls" &gt; "Viewing
-                Activity" and click on the "View" button. You can also locate
-                your viewing activity{" "}
+                Navigate from <b>"Profile & Parental Controls"</b> to{" "}
+                <b>"Viewing Activity"</b> and click on the <b>"View"</b> button.
+                You can also locate your viewing activity{" "}
                 <a
                   rel="noreferrer"
                   href="https://www.netflix.com/viewingactivity"
@@ -194,15 +198,16 @@ function Landing() {
             <div className="instructionsText">
               <h2>2. Download your Netflix Viewing History</h2>
               <p>
-                After clicking "View," you should be able to see a page that
-                says "Activity for [your profile name]." Scroll down to the
-                bottom of the screen where it says "Download All."
+                After clicking <b>"View"</b>, you should be able to see a page
+                that says <b>"Activity for [your profile name]"</b>. Scroll down
+                to the bottom of the screen where it says <b>"Download All"</b>.
               </p>
               <p>
-                Clicking that button will download your Netflix viewing activity
-                in a .CSV format onto your device, which you can upload to our
-                application along with your name above! The file should be
-                titled "NetflixViewingHistory.csv."{" "}
+                Clicking that button will{" "}
+                <b>download your Netflix viewing activity in a .CSV format</b>{" "}
+                onto your device, which you can upload to our application along
+                with your name above! The file should be titled{" "}
+                <b>"NetflixViewingHistory.csv"</b>.
               </p>
             </div>
             <div className="instructionsImg">
@@ -212,6 +217,11 @@ function Landing() {
               />
             </div>
           </div>
+          <p
+            style={{ color: "#656565", marginTop: "6em", textAlign: "center" }}
+          >
+            Made with ❤️ by Kathryn, Karen, CJ, and Brian
+          </p>
         </div>
       ) : (
         <></>

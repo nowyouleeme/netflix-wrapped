@@ -292,6 +292,12 @@ table {
   margin-bottom: 3em;
 }
 
+.subReroute{
+  display: block;
+  margin-top: 0.5em;
+  color: rgb(221, 221, 221);
+}
+
 .Help p {
   font-size: 0.75em;
 
@@ -868,16 +874,22 @@ table {
 }
 
 .WrappedWipe {
-  padding: 5em 32em;
+  padding: 5em 32em 3em 32em;
   background-color: #181826;
     color: rgb(255, 255, 255);
   text-align: center;
 }
 
-.WrappedWipe p {
+.WrappedWipeP {
   font-family: "Metropolis-Bold";
   line-height: 1.5em;
   font-size: 1.5em;
+}
+
+.cute {
+  font-family: "Metropolis-Medium";
+  color: rgb(193, 193, 193);
+  font-size: 1em;
 }
 
 @media screen and (max-width: 1200px) {

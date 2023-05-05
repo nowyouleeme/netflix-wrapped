@@ -83,9 +83,12 @@ function Report() {
 
       {/* Button to wipe data */}
       <div className="WrappedWipe">
-        <p>
+        <p className="WrappedWipeP">
           Finished with your report and want to wipe your data from our servers?
         </p>
+        <sub className="subReroute">
+          Clicking this button will also re-route you to the landing page.
+        </sub>
         <Button
           aria-label={wipe_data}
           onClick={() => {
@@ -109,10 +112,10 @@ function Report() {
               });
             //clear out the data shown in the wrapped report
             setMockAll(null);
-            //TODO: is the data associated with the location still stored? 
+            //TODO: is the data associated with the location still stored?
             //  if so, find a way to remove that CHECK if you can remove the data but then go back and forth in browser
             //TODO: wipe data from frontend (landing)
-            // setUserReportJSON(null)   
+            // setUserReportJSON(null)
             //TODO: reroute to the landing page
           }}
           style={{
@@ -120,15 +123,17 @@ function Report() {
             fontFamily: "Metropolis-Black",
             color: "white",
             backgroundColor: "#D92929",
-            marginTop: "2em",
+            marginTop: "1.5em",
+            marginBottom: "10em"
           }}
           variant="contained"
           color="primary"
           component="span"
+          size="large"
         >
           Clear my history
         </Button>
-        <div className="csv-upload-status">{wipeDataStatus}</div>
+        <p className="cute">Made with ❤️ by Kathryn, Karen, CJ, and Brian</p>
       </div>
     </motion.div>
   );
