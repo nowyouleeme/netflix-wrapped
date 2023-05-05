@@ -129,39 +129,39 @@
       },
       {
         "title": "The Call",
-        "numTimesWatched": 4,
+        "numEpWatched": 4,
         "image": "https://image.tmdb.org/t/p/original/4b4v7RnPhNyPEaVGFarEuo74r8W.jpg"
       },
       {
         "title": "21 Jump Street",
-        "numTimesWatched": 4,
+        "numEpWatched": 4,
         "image": "https://image.tmdb.org/t/p/original/mX3bhC7gS7oAzvGOaFceR5f01IJ.jpg"
       }
     ],
     "top5Movies": [
       {
         "title": "Inception",
-        "numTimesWatched": 10,
+        "numEpWatched": 10,
         "image": "https://image.tmdb.org/t/p/original/edv5CZvWj09upOsy2Y6IwDhK8bt.jpg"
       },
       {
         "title": "Minions: The Rise of Gru",
-        "numTimesWatched": 8,
+        "numEpWatched": 8,
         "image": "https://image.tmdb.org/t/p/original/wKiOkZTN9lUUUNZLmtnwubZYONg.jpg"
       },
       {
         "title": "La La Land",
-        "numTimesWatched": 5,
+        "numEpWatched": 5,
         "image": "https://image.tmdb.org/t/p/original/uDO8zWDhfWwoFdKS4fzkUJt0Rf0.jpg"
       },
       {
         "title": "The Call",
-        "numTimesWatched": 4,
+        "numEpWatched": 4,
         "image": "https://image.tmdb.org/t/p/original/4b4v7RnPhNyPEaVGFarEuo74r8W.jpg"
       },
       {
         "title": "21 Jump Street",
-        "numTimesWatched": 4,
+        "numEpWatched": 4,
         "image": "https://image.tmdb.org/t/p/original/mX3bhC7gS7oAzvGOaFceR5f01IJ.jpg"
       }
     ],

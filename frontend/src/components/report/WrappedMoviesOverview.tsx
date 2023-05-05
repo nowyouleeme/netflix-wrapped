@@ -2,7 +2,7 @@ interface WrappedMoviesProps {
   year: number;
   movies: {
     title: string;
-    numTimesWatched: number;
+    numEpWatched: number;
     image: string;
   }[];
 }
@@ -14,7 +14,7 @@ export function WrappedMoviesOverview(props: WrappedMoviesProps) {
   function showOtherFavs(
     movies: {
       title: string;
-      numTimesWatched: number;
+      numEpWatched: number;
       image: string;
     }[]
   ) {
@@ -43,7 +43,7 @@ export function WrappedMoviesOverview(props: WrappedMoviesProps) {
                   You watched <i>{movies[i].title}</i>
                 </p>
                 <p className="moviesDisplayP">
-                  {movies[i].numTimesWatched} times
+                  {movies[i].numEpWatched} times
                 </p>
               </div>
             </div>
@@ -76,7 +76,7 @@ export function WrappedMoviesOverview(props: WrappedMoviesProps) {
             </a>
           </div>
           <p className="moviesDescP">
-            which you watched <b>{props.movies[0].numTimesWatched} times</b> in{" "}
+            which you watched <b>{props.movies[0].numEpWatched} times</b> in{" "}
             {props.year}.
           </p>
         </div>
