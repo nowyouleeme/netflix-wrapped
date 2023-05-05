@@ -12,7 +12,7 @@ import com.squareup.moshi.JsonDataException;
 import com.squareup.moshi.Moshi;
 
 import spark.Route;
-import edu.brown.cs.student.main.components.BingeData;
+import edu.brown.cs.student.main.components.MakeBingeData;
 import edu.brown.cs.student.main.components.MovieSection;
 import edu.brown.cs.student.main.components.Personality;
 import edu.brown.cs.student.main.components.ShowSection;
@@ -61,7 +61,7 @@ public class MovieHandler implements Route {
       // Map<String, String> cast = result.cast();
       MapCreator mapCreator = new MapCreator();
       TopGenres topGenre = new TopGenres();
-      BingeData bingeData = new BingeData();
+      MakeBingeData bingeData = new MakeBingeData();
       TotalMin totalMin = new TotalMin();
       MovieSection movieSection = new MovieSection();
       ShowSection showSection = new ShowSection();

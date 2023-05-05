@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.Set;
 
 import edu.brown.cs.student.main.components.JsonDataType.JSONMovieSection;
-import edu.brown.cs.student.main.components.JsonDataType.JSONMovieSection.Movie;
+import edu.brown.cs.student.main.components.JsonDataType.JSONMovieSection.JSONMovie;
 import edu.brown.cs.student.main.movieData.PosterFetch;
 
 public class MovieSection {
@@ -32,7 +32,7 @@ public class MovieSection {
         for (int i = 0; i < movieOnlyList.size(); i++) {
             Set<String> filmSet = movieOnlyList.get(i).keySet();
             for (String element : filmSet) {
-                Movie movie = new Movie();
+                JSONMovie movie = new JSONMovie();
                 movie.title = element;
                 movie.image = posterFetcher.getPosterLink(element);
                 movie.numEpWatched = movieCountMap.get(element);
@@ -44,7 +44,7 @@ public class MovieSection {
         }
         // although a for loop, this is adding only one movie title.
         for (String element : getTopFiveMovies(movieOnlyList)) {
-            Movie movie = new Movie();
+            JSONMovie movie = new JSONMovie();
             movie.title = element;
             movie.image = posterFetcher.getPosterLink(element);
             movie.numEpWatched = movieCountMap.get(element);
@@ -57,7 +57,7 @@ public class MovieSection {
         }
         for (String element : actorInfo(movieOnlyList)){
             String actorMovie = actorFeaturedMovies(element, movieOnlyList);
-            Movie movie = new Movie();
+            JSONMovie movie = new JSONMovie();
             movie.title = actorMovie;
             movie.image = posterFetcher.getPosterLink(actorMovie);
             movie.numEpWatched = movieCountMap.get(actorMovie);

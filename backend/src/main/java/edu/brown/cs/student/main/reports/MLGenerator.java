@@ -5,6 +5,8 @@ import edu.brown.cs.student.main.components.JsonDataType.JSONFinalFetch;
 import edu.brown.cs.student.main.components.JsonDataType.movieData;
 import edu.brown.cs.student.main.components.helpers.JsonReader;
 import edu.brown.cs.student.main.components.helpers.MapCreator;
+import edu.brown.cs.student.main.csv.data.Data;
+import edu.brown.cs.student.main.csv.data.Data.WrappedData;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -79,5 +81,31 @@ public class MLGenerator implements ReportGenerator {
 
         return finalFetchJson;
 
+    }
+    public WrappedData converterToData(JSONFinalFetch dataToConvert){
+
+
+        //List<>
+
+        Data.GenreCount[] genreCountArr = new Data.GenreCount[dataToConvert.top5Genres.size()];
+        for (int i= 0; i < dataToConvert.top5Genres.size(); i++){
+            Data.GenreCount genreCount = new Data.GenreCount(dataToConvert.top5Genres.get(i).genre,
+            dataToConvert.top5Genres.get(i).count);
+            genreCountArr[i] = (genreCount);
+        }
+        Data.BingeData bingeData = new Data.BingeData(dataToConvert.bingeData.date, );
+        
+
+
+
+
+
+
+
+
+
+        WrappedData = new WrappedData(genreCountArr, dataToConvert.totalMin, 
+        null, null, null, null);
+        
     }
 }
