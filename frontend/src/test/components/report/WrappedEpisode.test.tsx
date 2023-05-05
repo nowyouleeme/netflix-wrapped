@@ -4,6 +4,9 @@ import mockAll from "../../../assets/mocks/mockActor.json";
 import { WrappedEpisodes, episode_display } from "../../../components/report/WrappedEpisodes";
 import { carousel_label } from "../../../components/report/MediaCarousel";
 
+/**
+ * Test where we check that the WrappedEpisodes component renders properly.
+ */
 // test("render WrappedEpisodes", () => {
 //   render(
 //     <WrappedEpisodes

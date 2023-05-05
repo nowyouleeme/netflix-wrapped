@@ -5,6 +5,9 @@ import Landing, { next_button_field } from "../../pages/Landing";
 import userEvent from "@testing-library/user-event";
 import { upload_csv } from "../../components/landing/Uploader";
 
+/**
+ * Test where we check that the Landing component renders properly.
+ */
 test("render Landing", async() => {
   render(
     <Landing/>

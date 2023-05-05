@@ -1,18 +1,25 @@
 import {useState} from 'react'
-import Papa from "papaparse";
 import { Button} from '@mui/material';
 import { Link } from "react-router-dom";
-import mockAll from "../../assets/mocks/mockActor.json";
 import { convertCSV } from './Parsing';
 import { ReportJSON } from '../../assets/data/ReportJSON';
 export const load_csv = "Select CSV file here"; //TODO: fix any testing that depended on the specific text.. if there's errors
 export const generate_wrapped = "Generate your wrapped report";
 export const upload_csv = "Upload the selected CSV file";
 
+/**
+ * An interface containing all of the properties expected of the props that are passed into the Uploader component.
+ */
 export interface UploaderProps {
   name: String;
 }
 
+/**
+ * Function that returns a Uploader component, 
+ * which displays information and interactive components for the user to select and upload their NetflixViewingHistory.csv. 
+ * @param props all of the information needed to select and upload their viewing history. 
+ * @returns a Uploader component
+ */
 function Uploader(props: UploaderProps) {
     const [file, setFile] = useState<File>();
     const [fileSelected, setFileSelected] = useState<boolean>(false);

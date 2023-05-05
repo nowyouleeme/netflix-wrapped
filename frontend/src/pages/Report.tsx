@@ -18,7 +18,11 @@ import {useState} from 'react'
 export const wipe_data = "Wipe your personal csv data from our server"
 
 
-
+/**
+ * Function that returns the Netflix Wrapped Report React component, containing information and visualizing the data on a user's
+ * watching and viewing behavior on Netflix
+ * @returns the Netflix Wrapped Report React component
+ */
 function Report() {
   const location = useLocation();
   const state = location.state;
@@ -35,7 +39,7 @@ function Report() {
       exit={{ opacity: 0 }}
       transition={{ duration: 2 }}
     >
-      <ReportIntro year={2022} />
+      <ReportIntro />
       <ReportWelcome name={state.name} />
       <WrappedGenres genres={mockAll.top5Genres} />
       <WrappedMinutes totalMin={mockAll.totalMin} />

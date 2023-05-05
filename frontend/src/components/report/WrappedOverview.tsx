@@ -1,10 +1,19 @@
 import { MediaCarousel } from "./MediaCarousel";
 
+/**
+ * An interface containing all of the properties expected of the props that are passed into the WrappedOverview component.
+ */
 interface WrappedOverviewProps {
   shows: { title: string; image: string }[];
   movies: { title: string; image: string }[];
 }
 
+/**
+ * Function that returns a WrappedOverview component, 
+ * which displays information on all of the shows and movies a user has watched in their NetflixViewingHistory.csv.
+ * @param props all of the information needed to display the shows and movies a user has watched
+ * @returns a WrappedOverview component
+ */
 export function WrappedOverview(props: WrappedOverviewProps) {
   return (
     <div className="WrappedOverview">

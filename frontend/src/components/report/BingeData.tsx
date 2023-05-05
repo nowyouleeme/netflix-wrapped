@@ -1,3 +1,6 @@
+/**
+ * An interface containing all of the properties expected of the props that are passed into the BingeData component.
+ */
 interface BingeDataProps {
   bingeData: {
     date: string;
@@ -15,8 +18,20 @@ interface BingeDataProps {
 
 export const binge_grid = "Binge grid data with posters";
 
+/**
+ * Function that returns a BingeData component, 
+ * which displays information on the data the user binged the most media and what content they watched based on their NetflixViewingHistory.csv.
+ * @param props all of the information needed to display the user's most binged date
+ * @returns a BingeData component
+ */
 export function BingeData(props: BingeDataProps) {
   let date: Date = new Date(props.bingeData.date);
+
+  /**
+   * Function that attaches the correct nominal to the given number.
+   * @param num the number input
+   * @returns the nominal for that number
+   */
   const nth = function (d: number) {
     if (d > 3 && d < 21) return "th";
     switch (d % 10) {
@@ -31,6 +46,12 @@ export function BingeData(props: BingeDataProps) {
     }
   };
 
+  /**
+   * Function that maps out all of the binged shows and movies as readable text.
+   * @param shows the shows that the user binged on
+   * @param movies the movies that the user binged on
+   * @returns a JSX.Element that describes all of the shows and movies the user binged on
+   */
   function writeOutBinge(
     shows: {
       title: string;
@@ -49,7 +70,8 @@ export function BingeData(props: BingeDataProps) {
       stringElement = (
         <span>
           <b>
-            {shows[i].numEpWatched} {shows[i].numEpWatched > 1 ? ("episodes") : ("episode")}
+            {shows[i].numEpWatched}{" "}
+            {shows[i].numEpWatched > 1 ? "episodes" : "episode"}
           </b>{" "}
           of <i>{shows[i].title}</i>
         </span>
@@ -68,8 +90,7 @@ export function BingeData(props: BingeDataProps) {
     }
 
     if (contentWatched.length === 2) {
-      contentWatched[0] =
-      (
+      contentWatched[0] = (
         <>
           {contentWatched[0]} <span>and </span>
         </>
@@ -98,6 +119,12 @@ export function BingeData(props: BingeDataProps) {
     }
   }
 
+  /**
+   * Function that generates the poster images of the content that the user binged on.
+   * @param shows the shows that the user binged on
+   * @param movies the movies that the user binged on
+   * @returns a responsive grid displaying all of the posters of the content that the user binged on
+   */
   function bingeImages(
     shows: {
       title: string;
@@ -109,10 +136,10 @@ export function BingeData(props: BingeDataProps) {
       image: string;
     }[]
   ) {
-    let posters: {title: string; image: string}[] = [];
+    let posters: { title: string; image: string }[] = [];
     for (let i = 0; i < shows.length; i++) {
-      let show = { title: shows[i].title, image: shows[i].image};
-        posters.push(show)
+      let show = { title: shows[i].title, image: shows[i].image };
+      posters.push(show);
     }
     for (let i = 0; i < movies.length; i++) {
       posters.push(movies[i]);
@@ -129,14 +156,17 @@ export function BingeData(props: BingeDataProps) {
       <sub>was quite the special day.</sub>
       <div className="bingeDesc">
         <p className="bingeDescP">
-          On this day, you managed to watch {writeOutBinge(props.bingeData.shows, props.bingeData.movies)}, making
-          it <a
+          On this day, you managed to watch{" "}
+          {writeOutBinge(props.bingeData.shows, props.bingeData.movies)}, making
+          it{" "}
+          <a
             target="_blank"
             rel="noreferrer"
             href="https://www.youtube.com/watch?v=StTqXEQ2l-Y"
           >
-            your most bingeful show day.
-          </a>{" "}
+            your most bingeful show day
+          </a>
+          .
         </p>
       </div>
       <div role="figure" aria-label={binge_grid} className="BingeGrid">

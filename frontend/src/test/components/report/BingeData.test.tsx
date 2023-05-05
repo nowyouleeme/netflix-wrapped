@@ -3,6 +3,9 @@ import { render, screen } from "@testing-library/react";
 import mockAll from "../../../assets/mocks/mockActor.json";
 import { BingeData, binge_grid } from "../../../components/report/BingeData";
 
+/**
+ * Test where we check that the BingeData component renders properly.
+ */
 test("renders BingeData", () => {
   render(<BingeData bingeData={mockAll.bingeData} />);
 

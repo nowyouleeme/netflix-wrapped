@@ -1,3 +1,6 @@
+/**
+ * An interface containing all of the properties expected of the props that are passed into the WrappedMoviesOverview component.
+ */
 interface WrappedMoviesProps {
   year: number;
   movies: {
@@ -6,11 +9,24 @@ interface WrappedMoviesProps {
     image: string;
   }[];
 }
-export const remaining_movies = "Remaining top 4 movies watched"
-export const favorite_movie = "Most watched movie"
+export const remaining_movies = "Remaining top 4 movies watched";
+export const favorite_movie = "Most watched movie";
+
+/**
+ * Function that returns a WrappedMoviesOverview component, 
+ * which displays information on all of the movies a user has watched in their NetflixViewingHistory.csv and 
+ * how many times they watched it.
+ * @param props all of the information needed to display the movies a user has watched
+ * @returns a WrappedMoviesOverview component
+ */
 export function WrappedMoviesOverview(props: WrappedMoviesProps) {
   // receive map of other favorites
 
+  /**
+   * Function that generates JSX.Elements for the remaining movies that are not the top most watched.
+   * @param movies the movies that are not the top most watched, but are part of the movies the user most frequently watched.
+   * @returns an array of JSX.Elements visualizing the movies
+   */
   function showOtherFavs(
     movies: {
       title: string;
@@ -18,11 +34,10 @@ export function WrappedMoviesOverview(props: WrappedMoviesProps) {
       image: string;
     }[]
   ) {
+    let favMovies: JSX.Element[] = [];
 
-    let favMovies: JSX.Element[] = []
-
-    for (let i=0; i < movies.length; i++) {
-      if (i!==0) {
+    for (let i = 0; i < movies.length; i++) {
+      if (i !== 0) {
         favMovies.push(
           <div className="Episode" key={`Poster for '${movies[i].title}'"`}>
             <div className="EpisodeImg">
@@ -43,7 +58,8 @@ export function WrappedMoviesOverview(props: WrappedMoviesProps) {
                   You watched <i>{movies[i].title}</i>
                 </p>
                 <p className="moviesDisplayP">
-                  {movies[i].numEpWatched} {movies[i].numEpWatched > 1 ? ("times") : ("time")}
+                  {movies[i].numEpWatched}{" "}
+                  {movies[i].numEpWatched > 1 ? "times" : "time"}
                 </p>
               </div>
             </div>
@@ -79,7 +95,7 @@ export function WrappedMoviesOverview(props: WrappedMoviesProps) {
             which you watched{" "}
             <b>
               {props.movies[0].numEpWatched}{" "}
-              {props.movies[0].numEpWatched  > 1 ? "times" : "time"}
+              {props.movies[0].numEpWatched > 1 ? "times" : "time"}
             </b>
             .
           </p>

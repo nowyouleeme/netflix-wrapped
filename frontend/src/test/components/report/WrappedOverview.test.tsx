@@ -3,6 +3,9 @@ import mockAll from "../../../assets/mocks/mockActor.json";
 import { WrappedOverview } from "../../../components/report/WrappedOverview";
 import { carousel_label } from "../../../components/report/MediaCarousel";
 
+/**
+ * Test where we check that the WrappedOverview component renders properly.
+ */
 test("render WrappedOverview", () => {
   render(
     <WrappedOverview

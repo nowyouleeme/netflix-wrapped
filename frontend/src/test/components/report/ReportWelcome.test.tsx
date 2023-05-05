@@ -2,6 +2,9 @@
 import { render, screen } from "@testing-library/react";
 import { ReportWelcome } from "../../../components/report/ReportWelcome";
 
+/**
+ * Test where we check that the ReportWelcome component renders properly.
+ */
 test("render ReportWelcome", () => {
   render(<ReportWelcome name={"Karen"} />);
 

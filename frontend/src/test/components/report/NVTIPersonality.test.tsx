@@ -3,6 +3,9 @@ import { render, screen } from "@testing-library/react";
 import mockAll from "../../../assets/mocks/mockActor.json";
 import { NVTIPersonality } from "../../../components/report/NVTIPersonality";
 
+/**
+ * Test where we check that the NVTIPersonality component renders properly.
+ */
 test("renders learn react link", () => {
   render(<NVTIPersonality personality={mockAll.personality} />);
 

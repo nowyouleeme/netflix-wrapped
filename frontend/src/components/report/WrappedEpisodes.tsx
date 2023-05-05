@@ -1,3 +1,6 @@
+/**
+ * An interface containing all of the properties expected of the props that are passed into the WrappedEpisodes component.
+ */
 interface WrappedEpisodesProps {
   totalEps: number;
   totalShows: number;
@@ -11,10 +14,17 @@ interface WrappedEpisodesProps {
     numEpWatched: number;
     image: string;
   }[];
-};
+}
 
-export const episode_display = "Episodes watched by user with episode count and percentage finished"
+export const episode_display =
+  "Episodes watched by user with episode count and percentage finished";
 
+  /**
+ * Function that returns a WrappedEpisodes component, 
+ * which displays information on the user's most watched shows and the number of episodes watched based on their NetflixViewingHistory.csv.
+ * @param props all of the information needed to display the user's most frequently watched shows
+ * @returns a WrappedEpisodes component
+ */
 export function WrappedEpisodes(props: WrappedEpisodesProps) {
   // pass in array of different processed show objects with how many episodes of tht show u watched + percentage
   return (

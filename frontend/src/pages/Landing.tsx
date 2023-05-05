@@ -5,6 +5,10 @@ import Uploader from "../components/landing/Uploader";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
+
+/**
+ * Styling prop for the input field on the landing page for the user to input their name. 
+ */
 const style = {
   input: {
     color: "white",
@@ -28,9 +32,18 @@ const style = {
   },
 };
 
+/**
+ * Aria labels for the button elements on the landing page.
+ */
 export const next_button_field = "Navigation to upload CSV";
 export const back_button_field = "Navigation to text field";
 
+/**
+ * Function that returns the Netflix Wrapped Landing React component, where users will be able to input
+ * their name, upload their NetflixViewingHistory.csv, figure out how to obtain their NetflixViewingHistory.csv, and generate
+ * their report.
+ * @returns the Netflix Wrapped Landing React component
+ */
 function Landing() {
   const [userName, setUserName] = useState<string>("");
   const [selectedTab, setSelectedTab] = useState("field");

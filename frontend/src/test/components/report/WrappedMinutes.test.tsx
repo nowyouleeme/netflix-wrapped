@@ -3,6 +3,9 @@ import { render, screen } from "@testing-library/react";
 import mockAll from "../../../assets/mocks/mockActor.json";
 import { WrappedMinutes } from "../../../components/report/WrappedMinutes";
 
+/**
+ * Test where we check that the WrappedMinutes component renders properly.
+ */
 test("renders WrappedMinutes", () => {
   render(<WrappedMinutes totalMin={mockAll.totalMin} />);
 

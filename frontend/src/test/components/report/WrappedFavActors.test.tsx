@@ -4,6 +4,9 @@ import mockAll from "../../../assets/mocks/mockActor.json";
 import { WrappedFavActors } from "../../../components/report/WrappedFavActors";
 import { carousel_label } from "../../../components/report/MediaCarousel";
 
+/**
+ * Test where we check that the WrappedFavActors component renders properly.
+ */
 test("render WrappedFavActors", () => {
   render(
     <WrappedFavActors

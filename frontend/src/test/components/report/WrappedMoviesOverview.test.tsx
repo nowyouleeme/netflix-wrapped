@@ -3,6 +3,9 @@ import { render, screen } from "@testing-library/react";
 import mockAll from "../../../assets/mocks/mockActor.json";
 import { WrappedMoviesOverview, favorite_movie, remaining_movies } from "../../../components/report/WrappedMoviesOverview";
 
+/**
+ * Test where we check that the WrappedMoviesOverview component renders properly.
+ */
 test("renders WrappedMoviesOverview", () => {
   render(
     <WrappedMoviesOverview year={2022} movies={mockAll.movie.top5Movies} />

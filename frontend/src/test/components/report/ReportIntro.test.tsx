@@ -1,10 +1,13 @@
 import { render, screen } from "@testing-library/react";
 import { ReportIntro } from "../../../components/report/ReportIntro";
 
+/**
+ * Test where we check that the ReportIntro component renders properly.
+ */
 test("render ReportIntro", () => {
-  render(<ReportIntro year={2022} />);
+  render(<ReportIntro />);
   const reportHeading = screen.getByRole("heading", {
-    name: /Your Netflix 2022 Wrapped is finally here!/i,
+    name: /Your Netflix Wrapped is finally here!/i,
   });
   expect(reportHeading).toBeInTheDocument();
 

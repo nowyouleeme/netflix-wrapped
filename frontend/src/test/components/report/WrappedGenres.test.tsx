@@ -3,6 +3,9 @@ import { render, screen } from "@testing-library/react";
 import { WrappedGenres } from "../../../components/report/WrappedGenres";
 import mockAll from "../../../assets/mocks/mockActor.json";
 
+/**
+ * Test where we check that the WrappedGenres component renders properly.
+ */
 test("render WrappedGenres", () => {
   render(<WrappedGenres genres={mockAll.top5Genres} />);
 

@@ -1,8 +1,10 @@
-import { useRouteError } from "react-router-dom";
 
+
+/**
+ * Function that returns an Error React Component, which is returned when a routing error occurs or components are not properly rendered.
+ * @returns an Error React Component
+ */
 export default function Error() {
-  const error = useRouteError();
-  console.error(error);
 
   return (
     <div className="error-page">
