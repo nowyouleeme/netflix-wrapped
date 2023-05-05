@@ -601,6 +601,22 @@ table {
   row-gap: 2em;
 }
 
+.oneItem {
+  padding: 1em 0 3em 0;
+    margin: auto;
+}
+
+.twoItem {
+  padding: 1em 0 3em 0;
+    --n: 2;
+    /* The maximum number of columns */
+    min-width: 75%/var(--n);
+    width: 75%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(max(5em, 100%/var(--n)), 1fr));
+    row-gap: 2em;
+}
+
 .BingeShow img {
   border-radius: 0.75em;
   height: 100%;
@@ -1056,7 +1072,7 @@ table {
   }
 
   .BingeGrid {
-    padding: 1em 0 3em 0;
+    padding: 2em 0 4em 0;
     --n: 2;
     /* The maximum number of columns */
     max-width: 60%;
@@ -1064,6 +1080,8 @@ table {
     grid-template-columns: repeat(auto-fill, minmax(max(8em, 100%/var(--n)), 1fr));
     row-gap: 2em;
   }
+
+  
 
 
   .actorContainer {
@@ -1317,13 +1335,24 @@ table {
   }
 
   .BingeGrid {
-    padding: 1em 0 3em 0;
+    padding: 2em 0 4em 0;
     --n: 1;
     /* The maximum number of columns */
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(max(8em, 100%/var(--n)), 1fr));
     row-gap: 2em;
   }
+
+    .twoItem {
+      padding: 2em 0 4em 0;
+      --n: 1;
+      /* The maximum number of columns */
+      min-width: 100%/var(--n);
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(max(20em, 100%/var(--n)), 1fr));
+      row-gap: 2em;
+    }
 
   .instructionsSection {
     display: flex;

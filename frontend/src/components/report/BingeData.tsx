@@ -1,3 +1,4 @@
+import mockAll from "../../assets/mocks/mockActor.json";
 /**
  * An interface containing all of the properties expected of the props that are passed into the BingeData component.
  */
@@ -119,6 +120,8 @@ export function BingeData(props: BingeDataProps) {
     }
   }
 
+  
+
   /**
    * Function that generates the poster images of the content that the user binged on.
    * @param shows the shows that the user binged on
@@ -147,6 +150,36 @@ export function BingeData(props: BingeDataProps) {
     return posters;
   }
 
+  function makeBingeGrid() {
+    let classGrid = "BingeGrid";
+    if ((props.bingeData.movies.length + props.bingeData.shows.length) === 1) {
+      classGrid = "oneItem";
+    } else if ((props.bingeData.movies.length + props.bingeData.shows.length) === 2) {
+      classGrid = "twoItem";
+    }
+    return (
+      <div role="figure" aria-label={binge_grid} className={classGrid}>
+        {bingeImages(props.bingeData.shows, props.bingeData.movies).map(
+          (value, index) => {
+            return (
+              <div className="BingeShow" key={index}>
+                <a
+                  rel="noreferrer"
+                  href={"https://www.google.com/search?q=" + value.title}
+                  target="_blank"
+                >
+                  <img src={value.image} alt={"Poster for " + value.title} />
+                </a>
+              </div>
+            );
+          }
+        )}
+      </div>
+    );
+  }
+
+  
+
   return (
     <div className="center WrappedBingeShow">
       <p className="bingeDisplayP">
@@ -169,23 +202,7 @@ export function BingeData(props: BingeDataProps) {
           .
         </p>
       </div>
-      <div role="figure" aria-label={binge_grid} className="BingeGrid">
-        {bingeImages(props.bingeData.shows, props.bingeData.movies).map(
-          (value, index) => {
-            return (
-              <div className="BingeShow" key={index}>
-                <a
-                  rel="noreferrer"
-                  href={"https://www.google.com/search?q=" + value.title}
-                  target="_blank"
-                >
-                  <img src={value.image} alt={"Poster for " + value.title} />
-                </a>
-              </div>
-            );
-          }
-        )}
-      </div>
+      {makeBingeGrid()}
 
       <p className="bingeDescP">Pretty productive, if we say so ourselves!</p>
     </div>
