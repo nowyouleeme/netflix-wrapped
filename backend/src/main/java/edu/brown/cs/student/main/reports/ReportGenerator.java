@@ -17,5 +17,5 @@ public interface ReportGenerator {
      * @return a wrapped data object (with all the information we need to display the wrapped report on
      *       frontend)
      */
-    JSONFinalFetch generateReportJSON(String[][] userCSVData) throws IOException;
+    Data.WrappedData generateReportJSON(String[][] userCSVData) throws IOException;
 }

@@ -11,7 +11,7 @@ import edu.brown.cs.student.main.components.JsonDataType.JSONShowSection;
 import edu.brown.cs.student.main.components.JsonDataType.JSONShowSection.JSONShow;
 import edu.brown.cs.student.main.movieData.PosterFetch;
 
-public class ShowSection {
+public class MakeShowSection {
 
     public JSONShowSection getShowSection(String[][] userHistory,
     ArrayList<Map<String, ArrayList<ArrayList<String>>>> userHistoryMapList) {

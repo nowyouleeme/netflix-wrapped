@@ -7,7 +7,7 @@ public class JSONMovieSection {
     public Integer totalMoviesWatched = 0;
     public List<JSONMovie> allMovies = new ArrayList<JSONMovie>();
     public List<JSONMovie> top5Movies = new ArrayList<JSONMovie>();
-    public MovieActors movieActors = new MovieActors();
+    public JSONMovieActors movieActors = new JSONMovieActors();
   
     public static class JSONMovie {
         public String title = new String();
@@ -15,7 +15,7 @@ public class JSONMovieSection {
         public String image = new String();
     }
 
-    public static class MovieActors {
+    public static class JSONMovieActors {
         public List<String> mostWatchedActors = new ArrayList<String>();
         public List<JSONMovie> actorFeaturedMovies = new ArrayList<JSONMovie>();
     }

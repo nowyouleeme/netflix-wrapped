@@ -11,9 +11,9 @@ import edu.brown.cs.student.main.components.JsonDataType.JSONMovieSection;
 import edu.brown.cs.student.main.components.JsonDataType.JSONMovieSection.JSONMovie;
 import edu.brown.cs.student.main.movieData.PosterFetch;
 
-public class MovieSection {
+public class MakeMovieSection {
 
-    public MovieSection() {
+    public MakeMovieSection() {
 
     }
 

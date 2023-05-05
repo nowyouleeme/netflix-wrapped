@@ -47,7 +47,7 @@ public class ServerInfo {
    * function that generates the json with all the information contained in the wrapped report.
    * @return a String representing the json
    */
-  public JSONFinalFetch generateReportJSON() throws IOException {
+  public Data.WrappedData generateReportJSON() throws IOException {
     return reportGenerator.generateReportJSON(currentUserCSV.usercsv());
   }
 

@@ -6,8 +6,8 @@ import java.util.List;
 public class JSONShowSection {
     public Integer totalEpWatched = 0;
     public List<JSONShow> allShows = new ArrayList<>();
-    public TopShows topShows = new TopShows();
-    public ShowActors showActors = new ShowActors();
+    public JSONTopShows topShows = new JSONTopShows();
+    public JSONShowActors showActors = new JSONShowActors();
   
     public static class JSONShow {
         public String title = new String();
@@ -15,12 +15,12 @@ public class JSONShowSection {
         public String image = new String();
     }
 
-    public static class TopShows {
+    public static class JSONTopShows {
         public List<JSONShow> mostWatched = new ArrayList<JSONShow>();
         public List<JSONShow> leastWatched = new ArrayList<JSONShow>();
     }
 
-    public static class ShowActors {
+    public static class JSONShowActors {
         public List<String> mostWatchedActors = new ArrayList<String>();
         public List<JSONShow> actorFeaturedShows = new ArrayList<JSONShow>();
     }

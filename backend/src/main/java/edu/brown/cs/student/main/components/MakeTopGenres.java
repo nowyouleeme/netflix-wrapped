@@ -10,8 +10,8 @@ import edu.brown.cs.student.main.components.JsonDataType.JSONTopGenres;
 import edu.brown.cs.student.main.components.JsonDataType.JSONTopGenres.JSONGenre;
 import edu.brown.cs.student.main.components.helpers.MapCreator;
 
-public class TopGenres {
-    public TopGenres() {
+public class MakeTopGenres {
+    public MakeTopGenres() {
     }
 
     public JSONTopGenres getTopGenres(String[][] userHistory,
