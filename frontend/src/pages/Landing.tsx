@@ -82,7 +82,7 @@ function Landing() {
             ) : (
               <div className="UploaderContainer">
                 {/* //TODO: give uploader the prop of the name */}
-                <Uploader name={userName}/>  
+                <Uploader name={userName} />
                 <div>
                   <Button
                     aria-label={back_button_field}
@@ -90,10 +90,12 @@ function Landing() {
                       padding: "0.75em 1.5em",
                       fontFamily: "Metropolis-Black",
                       color: "white",
-                      backgroundColor: "#D92929",
+                      backgroundColor: "transparent",
                       marginTop: "1em",
                       marginRight: "1em",
+                      textDecoration: "underline",
                     }}
+                    disableRipple
                     onClick={() => setSelectedTab("field")}
                   >
                     back
@@ -101,25 +103,8 @@ function Landing() {
                   <Link
                     style={{ textDecoration: "none" }}
                     to={`/Report`}
-                    state={{ name: userName}}
-                  >
-                    <label className="Upload" htmlFor="netflix-file">
-                      <Button
-                        style={{
-                          padding: "0.75em 1.5em",
-                          fontFamily: "Metropolis-Black",
-                          color: "white",
-                          backgroundColor: "#D92929",
-                          marginTop: "1em",
-                        }}
-                        variant="contained"
-                        color="primary"
-                        component="span"
-                      >
-                        Go
-                      </Button>
-                    </label>
-                  </Link>
+                    state={{ name: userName }}
+                  ></Link>
                 </div>
               </div>
             )}
