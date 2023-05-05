@@ -35,7 +35,7 @@ public class MLGenerator implements ReportGenerator {
 
 
 
-       try (FileWriter writer = new FileWriter("backend/backend-ml/data/viewhist.csv")) {
+       try (FileWriter writer = new FileWriter("backend/backend-ml/data/viewhist2.csv")) {
            for (int j = 0; j < userCSVData.length; j++) {
                writer.append("\""+userCSVData[j][0]+"\"");
                writer.append(",");
