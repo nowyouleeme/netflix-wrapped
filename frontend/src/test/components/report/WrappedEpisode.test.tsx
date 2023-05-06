@@ -1,9 +1,9 @@
 
 import { render, screen } from "@testing-library/react";
-import mockAll from "../../../assets/mocks/mockActor.json";
+import mockAll from "../../../assets/mocks/json/mockActor.json";
 import { WrappedEpisodes, episode_display } from "../../../components/report/WrappedEpisodes";
 import { carousel_label } from "../../../components/report/MediaCarousel";
-import empty from "../../../assets/mocks/empty.json";
+import empty from "../../../assets/mocks/json/empty.json";
 
 /**
  * Test where we check that the WrappedEpisodes component renders properly.

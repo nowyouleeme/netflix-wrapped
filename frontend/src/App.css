@@ -896,7 +896,7 @@ table {
 
 .WrappedWipeP {
   font-family: "Metropolis-Bold";
-  line-height: 1.5em;
+  line-height: 1.25em;
   font-size: 1.5em;
 }
 
@@ -910,6 +910,7 @@ table {
   font-family: 'Metropolis-Bold';
   text-align: center;
   font-size: 1.25em;
+  line-height: 1.5em;
 }
 
 @media screen and (max-width: 1200px) {

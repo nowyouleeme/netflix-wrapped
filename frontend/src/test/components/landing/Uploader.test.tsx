@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import mockAll from "../../../assets/mocks/mockActor.json";
+import mockAll from "../../../assets/mocks/json/mockActor.json";
 import Uploader, { generate_wrapped, load_csv, upload_csv } from "../../../components/landing/Uploader";
 
 /**

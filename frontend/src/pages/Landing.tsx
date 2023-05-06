@@ -36,6 +36,8 @@ const style = {
  */
 export const next_button_field = "Navigation to upload CSV";
 export const back_button_field = "Navigation to text field";
+export const netflixSettings = "Netflix 'Account' Settings Page";
+export const netflixAccount = "Netflix 'Viewing History' Page within 'Account'"; 
 
 /**
  * Function that returns the Netflix Wrapped Landing React component, where users will be able to input
@@ -187,7 +189,7 @@ function Landing() {
             <div className="instructionsImg">
               <img
                 src={require("../assets/images/findCSV.jpg")}
-                alt="Netflix 'Account' Settings Page"
+                alt={netflixSettings}
               />
             </div>
           </div>
@@ -210,7 +212,7 @@ function Landing() {
             <div className="instructionsImg">
               <img
                 src={require("../assets/images/downloadCSV.jpg")}
-                alt="Netflix 'Viewing History' Page within 'Account'"
+                alt={netflixAccount}
               />
             </div>
           </div>

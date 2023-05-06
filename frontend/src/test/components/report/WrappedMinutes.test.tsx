@@ -1,8 +1,8 @@
 
 import { render, screen } from "@testing-library/react";
-import mockAll from "../../../assets/mocks/mockActor.json";
+import mockAll from "../../../assets/mocks/json/mockActor.json";
 import { WrappedMinutes } from "../../../components/report/WrappedMinutes";
-import empty from "../../../assets/mocks/empty.json";
+import empty from "../../../assets/mocks/json/empty.json";
 
 /**
  * Test where we check that the WrappedMinutes component renders properly.

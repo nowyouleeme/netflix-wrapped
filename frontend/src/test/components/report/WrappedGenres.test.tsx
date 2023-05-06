@@ -1,8 +1,8 @@
 
 import { render, screen } from "@testing-library/react";
 import { WrappedGenres } from "../../../components/report/WrappedGenres";
-import mockAll from "../../../assets/mocks/mockActor.json";
-import empty from "../../../assets/mocks/empty.json";
+import mockAll from "../../../assets/mocks/json/mockActor.json";
+import empty from "../../../assets/mocks/json/empty.json";
 
 /**
  * Test where we check that the WrappedGenres component renders properly.
