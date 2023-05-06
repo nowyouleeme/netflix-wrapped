@@ -89,17 +89,6 @@ function Uploader(props: UploaderProps) {
 
                     //making a post...
                     const queryString = "usercsv=" + jsonstring;
-                    // const jsonBody = Object.fromEntries(new URLSearchParams(queryString));
-
-                    // const options = {
-                    //   method: 'POST',
-                    //   headers: {
-                    //     'Content-Type': 'application/json',
-                    //     Accept: 'application/json'
-
-                    //   },
-                    //   body: JSON.stringify(jsonBody),
-                    // };
 
                     const url = "http://localhost:6969/saveData?" + queryString;
                     console.log("url is " + url);

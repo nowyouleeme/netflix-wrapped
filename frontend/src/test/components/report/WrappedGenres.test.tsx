@@ -1,6 +1,6 @@
 
 import { render, screen } from "@testing-library/react";
-import { WrappedGenres } from "../../../components/report/WrappedGenres";
+import { WrappedGenres, genres } from "../../../components/report/WrappedGenres";
 import mockAll from "../../../assets/mocks/json/mockActor.json";
 import empty from "../../../assets/mocks/json/empty.json";
 
@@ -26,7 +26,7 @@ test("render WrappedGenres", () => {
 
   expect(screen.getByText(/Action./i)).toBeInTheDocument();
 
-  // check polar chart!!!
+  expect(screen.getByRole("figure", {name: genres})).toBeInTheDocument();
 });
 
 /**

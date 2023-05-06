@@ -20,6 +20,7 @@ interface WrappedGenresProps {
   genres: Array<{ genre: string; count: number }>
 }
 
+export const genres = "Figure displaying most watched genres as a polar area chart";
 /**
  * Function that returns a WrappedGenres component, 
  * which displays information on the top 5 genres the user has engaged with the most based on their NetflixViewingHistory.csv.
@@ -127,7 +128,7 @@ export function WrappedGenres(props: WrappedGenresProps) {
 
             <sub>Look at you go, venturing into the unknown 🚀</sub>
           </div>
-          <div className="GenreVis">
+          <div role="figure" aria-label={genres} className="GenreVis">
             <PolarArea
               data={data}
               width="1vw"
