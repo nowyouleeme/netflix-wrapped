@@ -6,6 +6,7 @@ import tensorflow as tf
 from tensorflow import keras
 from keras import layers
 import random
+import os
 from csv_read import featurized_movies, dict
 
 input_shape = (150, 44)
@@ -63,6 +64,7 @@ def prediction(path):
     prediction_batch = model.predict(inputs)
     prediction_id = np.argmax(prediction_batch, axis=-1)
     prediction = classes[prediction_id[0]]
+    os.remove(path)
     return '\"'+prediction+'\"'
 
 # main driver function
