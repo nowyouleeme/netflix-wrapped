@@ -292,7 +292,7 @@ table {
   margin-bottom: 3em;
 }
 
-.subReroute{
+.subReroute {
   display: block;
   margin-top: 0.5em;
   color: rgb(221, 221, 221);
@@ -325,7 +325,7 @@ table {
 
 .WrappedWelcome sub {
   color: #feffb9bf;
-  line-height: 1.5em; 
+  line-height: 1.5em;
   font-size: 0.9em;
   position: absolute;
   bottom: 0;
@@ -434,8 +434,8 @@ table {
   padding: 0 0.5em;
   height: 50vh;
   transition: transform .5s;
-    /* Animation */
-    
+  /* Animation */
+
 }
 
 .carouselCard:hover {
@@ -623,18 +623,18 @@ table {
 
 .oneItem {
   padding: 1.5em 0 6em 0;
-    margin: auto;
+  margin: auto;
 }
 
 .twoItem {
   padding: 1.5em 0 6em 0;
-    --n: 2;
-    /* The maximum number of columns */
-    min-width: 75%/var(--n);
-    width: 75%;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(max(5em, 100%/var(--n)), 1fr));
-    row-gap: 2em;
+  --n: 2;
+  /* The maximum number of columns */
+  min-width: 75%/var(--n);
+  width: 75%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(max(5em, 100%/var(--n)), 1fr));
+  row-gap: 2em;
 }
 
 .BingeShow img {
@@ -890,7 +890,7 @@ table {
 .WrappedWipe {
   padding: 4em 32em;
   background-color: #181826;
-    color: rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
   text-align: center;
 }
 
@@ -913,6 +913,7 @@ table {
 }
 
 @media screen and (max-width: 1200px) {
+
   html,
   body,
   div,
@@ -1112,7 +1113,7 @@ table {
     row-gap: 2em;
   }
 
-  
+
 
 
   .actorContainer {
@@ -1120,9 +1121,9 @@ table {
     margin: 2em 0 5em 0;
   }
 
-    .WrappedWipe {
-      padding: 5em 24em;
-    }
+  .WrappedWipe {
+    padding: 5em 24em;
+  }
 
 }
 
@@ -1378,16 +1379,16 @@ table {
     padding: 1.25em 0 5em 0;
   }
 
-    .twoItem {
-      padding: 1.25em 0 5em 0;
-      --n: 1;
-      /* The maximum number of columns */
-      min-width: 100%/var(--n);
-      width: 100%;
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(max(20em, 100%/var(--n)), 1fr));
-      row-gap: 2em;
-    }
+  .twoItem {
+    padding: 1.25em 0 5em 0;
+    --n: 1;
+    /* The maximum number of columns */
+    min-width: 100%/var(--n);
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(max(20em, 100%/var(--n)), 1fr));
+    row-gap: 2em;
+  }
 
   .instructionsSection {
     display: flex;
@@ -1412,7 +1413,7 @@ table {
     line-height: 1.15em;
   }
 
-    .WrappedWipe {
-      padding: 5em 12em;
-    }
+  .WrappedWipe {
+    padding: 5em 12em;
+  }
 }
