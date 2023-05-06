@@ -1,6 +1,5 @@
 package edu.brown.cs.student.main.reports;
 
-import edu.brown.cs.student.main.components.JsonDataType.JSONFinalFetch;
 import edu.brown.cs.student.main.csv.data.Data;
 
 import java.io.IOException;

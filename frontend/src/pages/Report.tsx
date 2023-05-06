@@ -15,8 +15,6 @@ import { useState } from "react";
 import ReportError from "./ReportError";
 import { Wipe } from "../components/report/Wipe";
 
-export const wipe_data = "Wipe your personal csv data from our server";
-
 /**
  * Function that returns the Netflix Wrapped Report React component, containing information and visualizing the data on a user's
  * watching and viewing behavior on Netflix

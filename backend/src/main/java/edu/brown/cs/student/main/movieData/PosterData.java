@@ -1,7 +1,5 @@
 package edu.brown.cs.student.main.movieData;
-import java.util.Map;
 import com.squareup.moshi.Json;
-import java.util.ArrayList;
 
 
 

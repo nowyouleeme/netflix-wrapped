@@ -8,7 +8,6 @@ import java.util.Map;
 
 import edu.brown.cs.student.main.components.JsonDataType.JSONTopGenres;
 import edu.brown.cs.student.main.components.JsonDataType.JSONTopGenres.JSONGenre;
-import edu.brown.cs.student.main.components.helpers.MapCreator;
 
 public class MakeTopGenres {
     public MakeTopGenres() {
@@ -22,7 +21,6 @@ public class MakeTopGenres {
 
         for (Map<String, ArrayList<ArrayList<String>>> map : userHistoryMapList) {
             for (Map.Entry<String, ArrayList<ArrayList<String>>> entry : map.entrySet()) {
-            String key = entry.getKey();
             ArrayList<ArrayList<String>> value = entry.getValue();
             // if value is 1 it means we dont have genre info
             if (value.size() != 1) {

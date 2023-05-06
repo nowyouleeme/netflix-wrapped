@@ -181,8 +181,6 @@ public class MakeShowSection {
     public String actorFeaturedMovies(String actor,
             ArrayList<Map<String, ArrayList<ArrayList<String>>>> movieList) {
 
-        ArrayList<String> actorMovies = new ArrayList<String>();
-
         for (Map<String, ArrayList<ArrayList<String>>> map : movieList) {
             for (Map.Entry<String, ArrayList<ArrayList<String>>> entry : map.entrySet()) {
                 if (entry.getValue().get(4).contains(actor)) {

@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Test;
 
 import edu.brown.cs.student.main.components.MakeBingeData;
 import edu.brown.cs.student.main.components.JsonDataType.JSONBingeData;
-import edu.brown.cs.student.main.components.JsonDataType.JSONTopGenres;
 import edu.brown.cs.student.main.components.helpers.MapCreator;
 
 public class BingeDataTest {

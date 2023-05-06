@@ -1,13 +1,9 @@
 package edu.brown.cs.student.main.components;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import edu.brown.cs.student.main.components.JsonDataType.JSONTotalMin;
-import edu.brown.cs.student.main.components.helpers.MapCreator;
 
 public class MakeTotalMin {
     public MakeTotalMin() {

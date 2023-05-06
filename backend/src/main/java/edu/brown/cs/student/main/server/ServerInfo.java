@@ -1,14 +1,8 @@
 package edu.brown.cs.student.main.server;
-
-import com.squareup.moshi.Json;
-import edu.brown.cs.student.main.components.JsonDataType.JSONFinalFetch;
 import edu.brown.cs.student.main.csv.data.Data;
 import edu.brown.cs.student.main.reports.ReportGenerator;
-import edu.brown.cs.student.main.user.UserID;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 /** Class for our ServerInfo object initialized upon starting the Server. */
 public class ServerInfo {

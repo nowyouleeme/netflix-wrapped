@@ -168,7 +168,10 @@ export function BingeData(props: BingeDataProps) {
                   href={"https://www.google.com/search?q=" + value.title}
                   target="_blank"
                 >
-                  <img src={value.image} alt={"Poster for " + value.title} />
+                  <img
+                    src={value.image}
+                    alt={"Poster for " + "'" + value.title + "'"}
+                  />
                 </a>
               </div>
             );

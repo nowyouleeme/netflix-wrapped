@@ -30,7 +30,43 @@ test("renders BingeData", () => {
       name: binge_grid,
     })
   ).toBeInTheDocument();
-  // check individual cards
+  
+  expect(
+    screen.getByRole("img", { name: "Poster for 'Attack on Titan'" })
+  ).toBeInTheDocument();
+
+  expect(
+    screen.getByRole("img", { name: "Poster for 'Juvenile Justice'" })
+  ).toBeInTheDocument();
+
+  expect(
+    screen.getByRole("img", { name: "Poster for 'La La Land'" })
+  ).toBeInTheDocument();
+
+  expect(
+    screen.getByRole("img", { name: "Poster for 'The Call'" })
+  ).toBeInTheDocument();
+
+  // link
+  expect(
+    screen.getByRole("link", { name: "Poster for 'Attack on Titan'" })
+  ).toBeInTheDocument();
+
+  expect(
+    screen.getByRole("link", { name: "Poster for 'Juvenile Justice'" })
+  ).toBeInTheDocument();
+
+  expect(
+    screen.getByRole("link", { name: "Poster for 'La La Land'" })
+  ).toBeInTheDocument();
+
+  expect(
+    screen.getByRole("link", { name: "Poster for 'The Call'" })
+  ).toBeInTheDocument();
+
+  expect(
+    screen.getByRole("link", { name: "your most bingeful show day" })
+  ).toBeInTheDocument();
 });
 
 /**

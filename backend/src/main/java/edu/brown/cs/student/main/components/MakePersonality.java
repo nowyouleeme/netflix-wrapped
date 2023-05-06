@@ -1,9 +1,6 @@
 package edu.brown.cs.student.main.components;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
@@ -11,7 +8,6 @@ import java.util.Map;
 
 import com.squareup.moshi.Moshi;
 
-import edu.brown.cs.student.main.components.helpers.MapCreator;
 import okio.Buffer;
 
 public class MakePersonality {

@@ -1,18 +1,7 @@
 package edu.brown.cs.student.API;
 
 //import edu.brown.cs.student.main.API.BboxRequest;
-import edu.brown.cs.student.main.csv.data.Data;
-import edu.brown.cs.student.main.server.ServerInfo;
-import org.junit.jupiter.api.Test;
 
-import java.text.DecimalFormat;
-import java.util.List;
-import java.util.Random;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class FuzzBboxRequest {
 //TODO: For the Random Testing Badge:

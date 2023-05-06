@@ -1,13 +1,10 @@
 package edu.brown.cs.student.main.movieData;
 
-import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;
 import edu.brown.cs.student.main.Token.PrivateToken;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.URL;
-import java.util.Scanner;
 import java.net.HttpURLConnection;
 import okio.Buffer;
 

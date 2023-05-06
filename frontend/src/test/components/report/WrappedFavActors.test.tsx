@@ -42,7 +42,33 @@ test("render WrappedFavActors", () => {
     })
   ).toBeInTheDocument();
 
-  // check individual cards
+  expect(
+    screen.getByRole("img", { name: "Poster for 'Breaking Bad'" })
+  ).toBeInTheDocument();
+  expect(
+    screen.getByRole("img", { name: "Poster for 'Bob's Burgers'" })
+  ).toBeInTheDocument();
+  expect(
+    screen.getByRole("img", { name: "Poster for 'Gilmore Girls'" })
+  ).toBeInTheDocument();
+
+  // links
+  expect(
+    screen.getByRole("link", { name: "Poster for 'Breaking Bad'" })
+  ).toBeInTheDocument();
+  expect(
+    screen.getByRole("link", { name: "Poster for 'Bob's Burgers'" })
+  ).toBeInTheDocument();
+  expect(
+    screen.getByRole("link", { name: "Poster for 'Gilmore Girls'" })
+  ).toBeInTheDocument();
+
+  expect(
+    screen.getByRole("link", { name: "Thomas Jefferson" })
+  ).toBeInTheDocument();
+  expect(
+    screen.getByRole("link", { name: "Amy Hu" })
+  ).toBeInTheDocument();
 });
 
 /**

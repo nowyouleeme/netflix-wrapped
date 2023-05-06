@@ -36,7 +36,38 @@ test("render WrappedEpisodes", () => {
     })
   ).toBeInTheDocument();
 
-  // check individual cards
+  expect(
+    screen.getByRole("img", { name: "Poster for the show 'Reply 1988'"})
+  ).toBeInTheDocument();
+
+  expect(
+    screen.getByRole("img", { name: "Poster for the show 'Attack on Titan'" })
+  ).toBeInTheDocument();
+
+  expect(
+    screen.getByRole("img", { name: "Poster for the show 'Juvenile Justice'" })
+  ).toBeInTheDocument();
+
+  expect(
+    screen.getByRole("img", { name: "Poster for the show 'Gilmore Girls'" })
+  ).toBeInTheDocument();
+
+  // link
+  expect(
+    screen.getByRole("link", { name: "Poster for the show 'Reply 1988'" })
+  ).toBeInTheDocument();
+
+  expect(
+    screen.getByRole("link", { name: "Poster for the show 'Attack on Titan'" })
+  ).toBeInTheDocument();
+
+  expect(
+    screen.getByRole("link", { name: "Poster for the show 'Juvenile Justice'" })
+  ).toBeInTheDocument();
+
+  expect(
+    screen.getByRole("link", { name: "Poster for the show 'Gilmore Girls'" })
+  ).toBeInTheDocument();
 });
 
 /**

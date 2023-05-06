@@ -28,7 +28,104 @@ test("render WrappedOverview", () => {
     }).length
   ).toBe(2);
 
-  // check individual cards
+  expect(
+    screen.getByRole("img", { name: "Poster for 'BEEF'" })
+  ).toBeInTheDocument();
+
+  expect(
+    screen.getByRole("img", { name: "Poster for 'Breaking Bad'" })
+  ).toBeInTheDocument();
+
+  expect(
+    screen.getByRole("img", { name: "Poster for 'Bob's Burgers'" })
+  ).toBeInTheDocument();
+
+  expect(
+    screen.getByRole("img", { name: "Poster for 'Gilmore Girls'" })
+  ).toBeInTheDocument();
+
+  expect(
+    screen.getByRole("img", { name: "Poster for 'Reply 1988'" })
+  ).toBeInTheDocument();
+
+  expect(
+    screen.getByRole("img", { name: "Poster for 'Attack on Titan'" })
+  ).toBeInTheDocument();
+
+  expect(
+    screen.getByRole("img", { name: "Poster for 'Juvenile Justice'" })
+  ).toBeInTheDocument();
+
+  expect(
+    screen.getByRole("img", { name: "Poster for 'Inception'" })
+  ).toBeInTheDocument();
+
+  expect(
+    screen.getByRole("img", {
+      name: "Poster for 'Minions: The Rise of Gru'",
+    })
+  ).toBeInTheDocument();
+
+  expect(
+    screen.getByRole("img", { name: "Poster for 'La La Land'" })
+  ).toBeInTheDocument();
+  expect(
+    screen.getByRole("img", { name: "Poster for 'The Call'" })
+  ).toBeInTheDocument();
+  expect(
+    screen.getByRole("img", { name: "Poster for '21 Jump Street'" })
+  ).toBeInTheDocument();
+
+  // links
+
+  expect(
+    screen.getByRole("link", { name: "Poster for '21 Jump Street'" })
+  ).toBeInTheDocument();
+  expect(
+    screen.getByRole("link", { name: "Poster for 'BEEF'" })
+  ).toBeInTheDocument();
+
+  expect(
+    screen.getByRole("link", { name: "Poster for 'Breaking Bad'" })
+  ).toBeInTheDocument();
+
+  expect(
+    screen.getByRole("link", { name: "Poster for 'Bob's Burgers'" })
+  ).toBeInTheDocument();
+
+  expect(
+    screen.getByRole("link", { name: "Poster for 'Gilmore Girls'" })
+  ).toBeInTheDocument();
+
+  expect(
+    screen.getByRole("link", { name: "Poster for 'Reply 1988'" })
+  ).toBeInTheDocument();
+
+  expect(
+    screen.getByRole("link", { name: "Poster for 'Attack on Titan'" })
+  ).toBeInTheDocument();
+
+  expect(
+    screen.getByRole("link", { name: "Poster for 'Juvenile Justice'" })
+  ).toBeInTheDocument();
+
+  expect(
+    screen.getByRole("link", { name: "Poster for 'Inception'" })
+  ).toBeInTheDocument();
+
+  expect(
+    screen.getByRole("link", {
+      name: "Poster for 'Minions: The Rise of Gru'",
+    })
+  ).toBeInTheDocument();
+
+  expect(
+    screen.getByRole("link", { name: "Poster for 'La La Land'" })
+  ).toBeInTheDocument();
+  expect(
+    screen.getByRole("link", { name: "Poster for 'The Call'" })
+  ).toBeInTheDocument();
+
 });
 
 /**

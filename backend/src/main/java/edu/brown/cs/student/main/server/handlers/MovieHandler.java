@@ -3,8 +3,6 @@ package edu.brown.cs.student.main.server.handlers;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -19,12 +17,9 @@ import edu.brown.cs.student.main.components.MakeShowSection;
 import edu.brown.cs.student.main.components.MakeTopGenres;
 import edu.brown.cs.student.main.components.MakeTotalMin;
 import edu.brown.cs.student.main.components.JsonDataType.JSONFinalFetch;
-import edu.brown.cs.student.main.components.JsonDataType.movieData;
 import edu.brown.cs.student.main.components.JsonDataType.movieData.movieJson;
 import edu.brown.cs.student.main.components.helpers.MapCreator;
 import edu.brown.cs.student.main.components.helpers.JsonReader;
-import edu.brown.cs.student.main.movieData.PosterData;
-import edu.brown.cs.student.main.movieData.PosterFetch;
 import spark.Request;
 import spark.Response;
 

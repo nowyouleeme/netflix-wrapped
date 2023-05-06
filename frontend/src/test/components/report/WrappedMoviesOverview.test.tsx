@@ -33,7 +33,43 @@ test("renders WrappedMoviesOverview", () => {
       name: remaining_movies,
     })
   ).toBeInTheDocument();
-  // render individual cards
+  
+  expect(
+    screen.getByRole("img", { name: "Poster for the movie 'Inception'" })
+  ).toBeInTheDocument();
+  expect(
+    screen.getByRole("img", {
+      name: "Poster for the movie 'Minions: The Rise of Gru'",
+    })
+  ).toBeInTheDocument();
+  expect(
+    screen.getByRole("img", { name: "Poster for the movie 'La La Land'" })
+  ).toBeInTheDocument();
+  expect(
+    screen.getByRole("img", { name: "Poster for the movie 'The Call'" })
+  ).toBeInTheDocument();
+  expect(
+    screen.getByRole("img", { name: "Poster for the movie '21 Jump Street'" })
+  ).toBeInTheDocument();
+
+  // links
+  expect(
+    screen.getByRole("link", { name: "Poster for the movie 'Inception'" })
+  ).toBeInTheDocument();
+  expect(
+    screen.getByRole("link", {
+      name: "Poster for the movie 'Minions: The Rise of Gru'",
+    })
+  ).toBeInTheDocument();
+  expect(
+    screen.getByRole("link", { name: "Poster for the movie 'La La Land'" })
+  ).toBeInTheDocument();
+  expect(
+    screen.getByRole("link", { name: "Poster for the movie 'The Call'" })
+  ).toBeInTheDocument();
+  expect(
+    screen.getByRole("link", { name: "Poster for the movie '21 Jump Street'" })
+  ).toBeInTheDocument();
 });
 
 /**

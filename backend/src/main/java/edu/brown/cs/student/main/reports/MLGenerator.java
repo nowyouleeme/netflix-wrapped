@@ -2,11 +2,8 @@ package edu.brown.cs.student.main.reports;
 
 import edu.brown.cs.student.main.components.*;
 import edu.brown.cs.student.main.components.JsonDataType.JSONFinalFetch;
-import edu.brown.cs.student.main.components.JsonDataType.movieData;
-import edu.brown.cs.student.main.components.helpers.JsonReader;
 import edu.brown.cs.student.main.components.helpers.MapCreator;
 import edu.brown.cs.student.main.csv.data.Data;
-import edu.brown.cs.student.main.csv.data.Data.ShowActors;
 import edu.brown.cs.student.main.csv.data.Data.TitleNEWImage;
 import edu.brown.cs.student.main.csv.data.Data.WrappedData;
 
@@ -15,14 +12,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
 
-import javax.xml.datatype.DatatypeConfigurationException;
 
 public class MLGenerator implements ReportGenerator {
     public WrappedData generateReportJSON(String[][] userCSVData) throws IOException {
 
 
 
-        JsonReader<movieData.movieJson> jsonReader = new JsonReader<>(movieData.movieJson.class);
         // movieJson result = jsonReader.fromJson("backend/data/netflix_titles.json");
         // Map<String, String> cast = result.cast();
         MapCreator mapCreator = new MapCreator();
