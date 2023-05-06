@@ -26,6 +26,7 @@ public class Server {
         (request, response) -> {
           response.header("Access-Control-Allow-Origin", "*");
           response.header("Access-Control-Allow-Methods", "*");
+          response.header("Access-Control-Allow-Headers", "*");
         });
 
     // serverInfo contains the shared states, including the 'database' of user csvs
@@ -148,7 +149,8 @@ public class Server {
     ServerInfo serverInfo = new ServerInfo(generator);
 
     // set up loadData and wipeData and wrapped endpoints
-    Spark.get("saveData", new SaveDataHandler(serverInfo));
+    Spark.post("saveData", new SaveDataHandler(serverInfo));
+    // Spark.get("saveData", new SaveDataHandler(serverInfo));
     // System.out.print(serverInfo.getFullRedliningGeoJSON().keySet());
     Spark.get("wipeData", new WipeDataHandler(serverInfo));
     Spark.get("wrapped", new WrappedHandler(serverInfo));
@@ -157,6 +159,6 @@ public class Server {
 
     Spark.init();
     Spark.awaitInitialization();
-    System.out.println("Server started.: http://localhost:6969");
+    System.out.println("Server started.");
   }
 }

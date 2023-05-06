@@ -25,10 +25,14 @@ public class SaveDataHandler implements Route {
 
   @Override
   public Object handle(Request request, Response response) {
-    QueryParamsMap queryMap = request.queryMap();
-    String userCSVQuery = queryMap.value("usercsv");
+    // QueryParamsMap queryMap = request.queryMap();
+    // String userCSVQuery = queryMap.value("usercsv");
+    String userCSVQuery0 = request.body();
+    String userCSVQuery = userCSVQuery0.substring(1, userCSVQuery0.length() - 1).replace("\\", "");
+    System.out.println(userCSVQuery);
     HashMap<String, String> errorMessages = new HashMap<>();
 
+<<<<<<< Updated upstream
     if (queryMap.toMap().size() != 1) {
       errorMessages.put("error_bad_json", "expected 1 query parameters but received " + queryMap.toMap().size());
       return serialize(fail(errorMessages));
@@ -36,31 +40,47 @@ public class SaveDataHandler implements Route {
 
     if (userCSVQuery == null) {
       errorMessages.put("error_bad_json", "need usercsv query parameter in order to save data");
+=======
+    // if (queryMap.toMap().size() != 1) {
+    //   errorMessages.put("error_bad_json", "expected 1 query parameters but received" + queryMap.toMap().size());
+    //   System.out.println(1);
+    //   return serialize(fail(errorMessages));
+    // }
+
+    if (userCSVQuery == null) {
+      errorMessages.put("error_bad_json", "need user's csv to save data");
+>>>>>>> Stashed changes
       return serialize(fail(errorMessages));
     }
 
 
     try {
       Moshi moshi = new Moshi.Builder().build();
-      System.out.print("usercsvquery\n" + userCSVQuery + "\n");
+      System.out.println("hello");
       Data.UserCSV parsedUserCSV = moshi.adapter(Data.UserCSV.class).fromJson(userCSVQuery);
-
-      System.out.print("parsedUserCSV\n");
       //must be at least 2 rows
+      System.out.println(parsedUserCSV);
       if (parsedUserCSV.usercsv().length < 2) {
+<<<<<<< Updated upstream
         System.out.println(parsedUserCSV.usercsv().length);
         errorMessages.put("error_bad_request", "invalid netflix history csv");
+=======
+        errorMessages.put("error_bad_json", "invalid csv");
+>>>>>>> Stashed changes
         return serialize(fail(errorMessages));
       }
 
       //each row must be 2 columns
       for (int i = 0; i < parsedUserCSV.usercsv().length; i++) {
         if (parsedUserCSV.usercsv()[i].length != 2) {
+<<<<<<< Updated upstream
           System.out.println(4);
           errorMessages.put("error_bad_request", "invalid netflix history csv");
+=======
+          errorMessages.put("error_bad_json", "invalid csv");
+>>>>>>> Stashed changes
           return serialize(fail(errorMessages));
         }
-        System.out.print(Arrays.toString(parsedUserCSV.usercsv()[i])  + "\n");
       }
 
 //      headers must be title and date
@@ -71,16 +91,20 @@ public class SaveDataHandler implements Route {
 
       //save the userCSV into the serverInfo
       serverInfo.saveUserData(parsedUserCSV);
-      System.out.print("user data in server\n");
-      for (int i = 0; i < serverInfo.getUserData().usercsv().length; i++) {
-        System.out.print(Arrays.toString(serverInfo.getUserData().usercsv()[i])  + "\n");
-      }
+      // for (int i = 0; i < serverInfo.getUserData().usercsv().length; i++) {
+      //   System.out.print(Arrays.toString(serverInfo.getUserData().usercsv()[i])  + "\n");
+      // }
 
       //return serialized success response
       return serialize(success());
     } catch (Exception e) {
+<<<<<<< Updated upstream
       System.out.println(e.getMessage());
       errorMessages.put("error_bad_request", "unexpected error occured trying to save csv");
+=======
+      // System.out.println(e.getMessage()); // TODO: better error handling
+      errorMessages.put("error_bad_json", "unexpected error");
+>>>>>>> Stashed changes
       return serialize(fail(errorMessages));
     }
   }
