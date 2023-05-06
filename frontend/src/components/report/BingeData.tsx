@@ -181,7 +181,6 @@ export function BingeData(props: BingeDataProps) {
     );
   }
 
-  
 
   return (
     <div className="center WrappedBingeShow">

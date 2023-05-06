@@ -18,18 +18,6 @@ export function ReportIntro() {
       <div className="center ScrollDown">
         <div className="arrow">
           <label>Scroll down to see more ⬇</label>
-          {/* <svg
-              width="30"
-              height="18"
-              viewBox="0 0 30 18"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M3.42048 0L14.5553 11.1348L25.69 0L29.1105 3.44474L14.5553 18L0 3.44474L3.42048 0Z"
-                fill="#F5EC72"
-              />
-            </svg> */}
         </div>
       </div>
     </div>

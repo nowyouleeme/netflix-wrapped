@@ -65,6 +65,10 @@ export function WrappedFavActors(props: WrappedFavActorsProps) {
     }
   }
 
+  /**
+   * Function that filters out poster images and titles repeated multiple times.
+   * @returns an Array of Media objects.
+   */
   function filterMedia() {
     let media = new Map<string, string>();
 
