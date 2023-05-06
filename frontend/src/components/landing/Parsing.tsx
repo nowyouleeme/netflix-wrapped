@@ -18,9 +18,11 @@ export async function convertCSV(file: File): Promise<String> {
     await new Promise((resolve, reject) => {
         reader.onload = () => {
           const csvData: string = reader.result as string;
-          csv()
+          console.log("AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH: \n" + csvData)
+          csv({noheader: true})
             .fromString(csvData)
             .then((jsonObj: any[]) => {
+                console.log("JSON LENGTH HAHAHUFHEEEEEE" + jsonObj.length)
                 let json2DArray: String[][] = [];
                 jsonObj.forEach((obj: any) => {
                     const row: any[] = [];

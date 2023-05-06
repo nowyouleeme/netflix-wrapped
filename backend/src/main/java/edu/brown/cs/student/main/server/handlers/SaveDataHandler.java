@@ -55,7 +55,7 @@ public class SaveDataHandler implements Route {
 
       System.out.print("parsedUserCSV\n");
       //must be at least 2 rows
-      if (parsedUserCSV.usercsv().length < 1) {
+      if (parsedUserCSV.usercsv().length < 2) {
         System.out.println(parsedUserCSV.usercsv().length);
         errorMessages.put("error_bad_json", "invalid csv");
         return serialize(fail(errorMessages));
@@ -71,11 +71,11 @@ public class SaveDataHandler implements Route {
         System.out.print(Arrays.toString(parsedUserCSV.usercsv()[i])  + "\n");
       }
 
-      //headers must be title and date
-//      if (!(parsedUserCSV.usercsv()[0][0].equals("Title") && parsedUserCSV.usercsv()[0][1].equals("Date"))) {
-//        errorMessages.put("error_bad_json", "The csv we received was not formatted correctly. Review our instructions on how to download your netflix viewing history, and try again.");
-//        return serialize(fail(errorMessages));
-//      }
+//      headers must be title and date
+      if (!(parsedUserCSV.usercsv()[0][0].equals("Title") && parsedUserCSV.usercsv()[0][1].equals("Date"))) {
+        errorMessages.put("error_bad_json", "The csv we received was not formatted correctly. Review our instructions on how to download your netflix viewing history, and try again.");
+        return serialize(fail(errorMessages));
+      }
 
       //save the userCSV into the serverInfo
       serverInfo.saveUserData(parsedUserCSV);
