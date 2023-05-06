@@ -73,40 +73,48 @@ export function WrappedMoviesOverview(props: WrappedMoviesProps) {
 
   return (
     <div className="center WrappedMoviesOverview">
-      <div role="figure" aria-label={favorite_movie} className="FavoriteMovie">
-        <p className="moviesBigP">When it came to movies,</p>
-        <p className="moviesDescP">
-          you were a number one fan for <i>{props.movies[0].title}</i>:
-        </p>
-        <div className="center">
-          <div className="favoriteMovieImg">
-            <a
-              rel="noreferrer"
-              href={"https://www.google.com/search?q=" + props.movies[0].title}
-              target="_blank"
-            >
-              <img
-                src={props.movies[0].image}
-                alt={`Poster for the movie '${props.movies[0].title}'`}
-              />
-            </a>
-          </div>
+      {props.movies.length === 0 ? (<div>u didn't watch any movies</div>) : (<>
+        <div
+          role="figure"
+          aria-label={favorite_movie}
+          className="FavoriteMovie"
+        >
+          <p className="moviesBigP">When it came to movies,</p>
           <p className="moviesDescP">
-            which you watched{" "}
-            <b>
-              {props.movies[0].numEpWatched}{" "}
-              {props.movies[0].numEpWatched > 1 ? "times" : "time"}
-            </b>
-            .
+            you were a number one fan for <i>{props.movies[0].title}</i>:
           </p>
+          <div className="center">
+            <div className="favoriteMovieImg">
+              <a
+                rel="noreferrer"
+                href={
+                  "https://www.google.com/search?q=" + props.movies[0].title
+                }
+                target="_blank"
+              >
+                <img
+                  src={props.movies[0].image}
+                  alt={`Poster for the movie '${props.movies[0].title}'`}
+                />
+              </a>
+            </div>
+            <p className="moviesDescP">
+              which you watched{" "}
+              <b>
+                {props.movies[0].numEpWatched}{" "}
+                {props.movies[0].numEpWatched > 1 ? "times" : "time"}
+              </b>
+              .
+            </p>
+          </div>
         </div>
-      </div>
-      <div className="center OtherMovieFavorites">
-        <p className="moviesSubP">Some of your other favorites included:</p>
-        <div role="figure" aria-label={remaining_movies} className="Episodes">
-          {showOtherFavs(props.movies)}
+        <div className="center OtherMovieFavorites">
+          <p className="moviesSubP">Some of your other favorites included:</p>
+          <div role="figure" aria-label={remaining_movies} className="Episodes">
+            {showOtherFavs(props.movies)}
+          </div>
         </div>
-      </div>
+      </>)}
     </div>
   );
 }
