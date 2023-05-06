@@ -17,37 +17,51 @@ interface WrappedOverviewProps {
 export function WrappedOverview(props: WrappedOverviewProps) {
   return (
     <div className="WrappedOverview">
-      <div className="OverviewDesc">
-        <p className="overviewBigP">
-          Out of that time you spent with us in 2022,
-        </p>
-        <p className="overviewDescP">
-          you watched{" "}
-          <b>
-            {props.shows.length} {props.shows.length > 1 ? "shows" : "show"}
-          </b>
-          ...
-        </p>
-      </div>
+      {props.shows.length + props.movies.length > 0 ? (
+        <>
+          <div className="OverviewDesc">
+            <p className="overviewBigP">
+              Out of the time you've spent with us,
+            </p>
+            <p className="overviewDescP">
+              you watched{" "}
+              <b>
+                {props.shows.length}{" "}
+                {props.shows.length > 1 || props.shows.length < 1
+                  ? "shows"
+                  : "show"}
+              </b>
+              ...
+            </p>
+          </div>
 
-      {/* map list of shows to make a card component */}
-      <div className="carouselContainer">
-        <MediaCarousel media={props.shows} />
-      </div>
+          {/* map list of shows to make a card component */}
+          <div className="carouselContainer">
+            <MediaCarousel media={props.shows} />
+          </div>
 
-      <div className="OverviewDesc">
-        <p className="overviewDescP">
-          and{" "}
-          <b>
-            {props.movies.length} {props.movies.length > 1 ? "movies" : "movie"}
-          </b>
-          !
-        </p>
-      </div>
+          <div className="OverviewDesc">
+            <p className="overviewDescP">
+              and{" "}
+              <b>
+                {props.movies.length}{" "}
+                {props.movies.length > 1 || props.movies.length < 1
+                  ? "movies"
+                  : "movie"}
+              </b>
+              !
+            </p>
+          </div>
 
-      <div className="carouselContainer">
-        <MediaCarousel media={props.movies} />
-      </div>
+          <div className="carouselContainer">
+            <MediaCarousel media={props.movies} />
+          </div>
+        </>
+      ) : (
+        <div className="emptyJSON">
+          <p>We couldn’t summarize your show viewing history 😣</p>
+        </div>
+      )}
     </div>
   );
 };

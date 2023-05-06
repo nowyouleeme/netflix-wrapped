@@ -1,0 +1,43 @@
+{
+  "top5Genres": [
+  ],
+  "totalMin": 0,
+  "bingeData": {
+    "date": "",
+    "shows": [
+    ],
+    "movies": [
+    ]
+  },
+  "shows": {
+    "totalEpWatched": 0,
+    "allShows": [
+    ],
+    "topShows": {
+      "mostWatched": [
+      ],
+      "leastWatched": [
+      ]
+    },
+    "showActors": {
+      "mostWatchedActors": [],
+      "actorFeaturedShows": [
+      ]
+    }
+  },
+  "movie": {
+    "allMovies": [
+    ],
+    "top5Movies": [
+    ],
+    "movieActors": {
+      "mostWatchedActors": [
+      ],
+      "actorFeaturedMovies": [
+      ]
+    }
+  },
+  "personality": {
+    "title": ""
+  }
+}

@@ -74,7 +74,9 @@ export function WrappedMoviesOverview(props: WrappedMoviesProps) {
   return (
     <div className="center WrappedMoviesOverview">
       {props.movies.length == 0 ? (
-        <div>u didn't watch any movies</div>
+        <div className="emptyJSON">
+          <p>We couldn't sort through your movie viewing behavior 😕</p>
+        </div>
       ) : (
         <>
           <div

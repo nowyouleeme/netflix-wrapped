@@ -12,6 +12,11 @@ interface WrappedFavActorsProps {
   color: string;
 }
 
+interface Media {
+  title: string;
+  image: string; 
+}
+
 /**
  * Function that returns a WrappedFavActors component, 
  * which displays information on the most frequently featured actors based on their NetflixViewingHistory.csv shows and movies.
@@ -60,6 +65,23 @@ export function WrappedFavActors(props: WrappedFavActorsProps) {
     }
   }
 
+  function filterMedia() {
+    let media = new Map<string, string>();
+
+     for (let i = 0; i < props.media.length; i++) {
+      if (!media.has(props.media[i].title)) {
+        media.set(props.media[i].title, props.media[i].image);
+      }
+     }
+
+     let mediaArray: Media[] = [];
+     media.forEach((value: string, key: string) => {
+      let temp: Media = {title: key, image: value}
+      mediaArray.push(temp);
+     });
+     return mediaArray
+  }
+
   /**
    * Function that counts how many media types featured the most actors the user watched.
    * @param media an array of titles mapped to poster images of the shows/movies featured the actors most watched
@@ -77,29 +99,41 @@ export function WrappedFavActors(props: WrappedFavActorsProps) {
       className="center WrappedActors"
       style={{ color: props.color, backgroundColor: props.bg }}
     >
-      <p className="actorsBigP">
-        You watched {props.media.length} {numberMedia(props.media)} featuring{" "}
-        {getActors(props.actors)}, such as:
-      </p>
-      <div className="actorContainer">
-        <div role="figure" aria-label={carousel_label} className="carousel">
-          {props.media.map((value, index) => (
-            <div
-              className="actorCarouselCard"
-              key={"Poster for " + value.title + index + props.media}
-            >
-              <a
-                rel="noreferrer"
-                target="_blank"
-                href={"https://www.google.com/search?q=" + value.title}
-              >
-                <img src={value.image} alt={"Poster for " + value.title} />
-              </a>
+      {props.actors.length > 0 ? (
+        <>
+          <p className="actorsBigP">
+            You watched {props.media.length} {numberMedia(props.media)}{" "}
+            featuring {getActors(props.actors)}, such as:
+          </p>
+          <div className="actorContainer">
+            <div role="figure" aria-label={carousel_label} className="carousel">
+              
+              {filterMedia().map((value, index) => (
+                <div
+                  className="actorCarouselCard"
+                  key={"Poster for " + value.title + index + props.media}
+                >
+                  <a
+                    rel="noreferrer"
+                    target="_blank"
+                    href={"https://www.google.com/search?q=" + value.title}
+                  >
+                    <img src={value.image} alt={"Poster for " + value.title} />
+                  </a>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
+          {props.saying}
+        </>
+      ) : (
+        <div className="emptyJSON">
+          <p>
+            We weren't able to determine the most featured actors in the{" "}
+            {props.type}s you’ve watched 🥹
+          </p>
         </div>
-      </div>
-      {props.saying}
+      )}
     </div>
   );
 }

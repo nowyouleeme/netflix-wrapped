@@ -105,12 +105,14 @@ export function WrappedGenres(props: WrappedGenresProps) {
   return (
     <div className="center WrappedGenres">
       {props.genres.length == 0 ? (
-        <div>u had no fav genres</div>
+        <div className="emptyJSON">
+          <p>We weren’t able to determine your favorite genres 😞</p>
+        </div>
       ) : (
         <div className="genres">
           <div className="GenreDesc">
             <div className="DescMain">
-              <p className="genresNormalP">To start off, here are your</p>
+              <p className="genresNormalP">To start off, here {props.genres.length > 1 ? ("are"):("is")} your</p>
 
               <p className="genresStyledP">
                 {props.genres.length}

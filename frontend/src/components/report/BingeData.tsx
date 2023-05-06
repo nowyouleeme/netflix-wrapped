@@ -182,29 +182,42 @@ export function BingeData(props: BingeDataProps) {
 
   return (
     <div className="center WrappedBingeShow">
-      <p className="bingeDisplayP">
-        {date.toLocaleString("default", { month: "long" })} {date.getDate()}
-        {nth(date.getDate())}, {date.getFullYear()}
-      </p>
-      <sub>was quite the special day.</sub>
-      <div className="bingeDesc">
-        <p className="bingeDescP">
-          On this day, you managed to watch{" "}
-          {writeOutBinge(props.bingeData.shows, props.bingeData.movies)}, making
-          it{" "}
-          <a
-            target="_blank"
-            rel="noreferrer"
-            href="https://www.youtube.com/watch?v=StTqXEQ2l-Y"
-          >
-            your most bingeful show day
-          </a>
-          .
-        </p>
-      </div>
-      {makeBingeGrid()}
+      {props.bingeData.movies.length + props.bingeData.shows.length > 0 ? (
+        <>
+          <p className="bingeDisplayP">
+            {date.toLocaleString("default", { month: "long" })} {date.getDate()}
+            {nth(date.getDate())}, {date.getFullYear()}
+          </p>
+          <sub>was quite the special day.</sub>
+          <div className="bingeDesc">
+            <p className="bingeDescP">
+              On this day, you managed to watch{" "}
+              {writeOutBinge(props.bingeData.shows, props.bingeData.movies)},
+              making it{" "}
+              <a
+                target="_blank"
+                rel="noreferrer"
+                href="https://www.youtube.com/watch?v=StTqXEQ2l-Y"
+              >
+                your most bingeful show day
+              </a>
+              .
+            </p>
+          </div>
+          {makeBingeGrid()}
 
-      <p className="bingeDescP">Pretty productive, if we say so ourselves!</p>
+          <p className="bingeDescP">
+            Pretty productive, if we say so ourselves!
+          </p>
+        </>
+      ) : (
+        <div className="emptyJSON">
+          <p>
+            We weren't able to find information on when and what you binged the
+            most on Netflix 😪
+          </p>
+        </div>
+      )}
     </div>
   );
 }

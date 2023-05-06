@@ -54,18 +54,29 @@ export function WrappedMinutes(props: WrappedMinutesProps) {
         <br aria-hidden="true" />
       </p>
       <p className="minutesNormalP">
-        {Math.floor(props.totalMin) > 1 ? "minutes" : "minute"} on Netflix.
+        {Math.floor(props.totalMin) > 1 || Math.floor(props.totalMin) == 0
+          ? "minutes"
+          : "minute"}{" "}
+        on Netflix.
       </p>
       <sub>
         That's about{" "}
         <b>
           {calculateHours(props.totalMin).toLocaleString()}{" "}
-          {Number(calculateHours(props.totalMin)) > 1 ? "hours" : "hour"},
+          {Number(calculateHours(props.totalMin)) > 1 ||
+          Number(calculateHours(props.totalMin)) < 1
+            ? "hours"
+            : "hour"}
+          ,
         </b>{" "}
         or{" "}
         <b>
           {calculateDays(props.totalMin).toLocaleString()}{" "}
-          {Number(calculateDays(props.totalMin)) > 1 ? "days" : "day"}!
+          {Number(calculateDays(props.totalMin)) > 1 ||
+          Number(calculateDays(props.totalMin)) < 1
+            ? "days"
+            : "day"}
+          !
         </b>
       </sub>
     </div>

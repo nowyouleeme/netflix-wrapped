@@ -27,7 +27,13 @@ export function ReportWelcome(props: ReportWelcomeProps) {
   }
   return (
     <div className="center WrappedWelcome">
-      <p>Welcome to your Netflix Wrapped{fillName()} 🎁</p>
+      <p>
+        Welcome to your Netflix Wrapped{fillName()} 🎁 <span className="asterisk">*</span>
+      </p>
+      <sub>
+        *Any data that we couldn't generate is because our database is limited to
+        Netflix content from 2021 or before!
+      </sub>
     </div>
   );
 }

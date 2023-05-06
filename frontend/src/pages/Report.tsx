@@ -14,6 +14,7 @@ import { motion } from "framer-motion";
 import { Button } from '@mui/material';
 import {useState} from 'react'
 import { Console } from "console";
+import ReportError from "./ReportError";
 
 
 export const wipe_data = "Wipe your personal csv data from our server"
@@ -115,7 +116,7 @@ function Report() {
       {showReport && (<BingeData bingeData={state.reportJSON.bingeData} />)}
       {showReport && (<NVTIPersonality personality={state.reportJSON.personality} />)}
 
-      {!showReport && (<div> no report data in server</div>)}
+      {!showReport && (<ReportError />)}
 
       {/* Button to wipe data */}
       {showReport && (<div className="WrappedWipe">
@@ -136,7 +137,7 @@ function Report() {
             color: "white",
             backgroundColor: "#D92929",
             marginTop: "1.5em",
-            marginBottom: "10em"
+            marginBottom: "8em"
           }}
           variant="contained"
           color="primary"

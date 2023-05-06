@@ -7,7 +7,6 @@ import personality from "../../assets/graphics/personality";
 interface NVTIPersonalityProps {
   personality: {
     title: string;
-    description: string;
   };
 }
 
@@ -21,19 +20,25 @@ interface NVTIPersonalityProps {
 export function NVTIPersonality(props: NVTIPersonalityProps) {
     // we will hold svg in front end? 
     return (
-      <div className="center WrappedPersonality">
-        <div className="center PersonalityContainer">
-          <p className="personalityBigP">Meet your NVTI personality:</p>
-          <div className="personalityGraphic">
-            {personality.get(props.personality.title)?.graphic}
+      <div className="center WrappedPersonality" style={{ color: "#EEFFE7" }}>
+        {props.personality.title === "" || props.personality.title === undefined ? (
+          <div className="emptyJSON">
+            <p>We couldn't generate a viewing personality for you 😭</p>
           </div>
-          <p className="personalityTitle">✧ {props.personality.title} ✧</p>
-          <div className="personalityDesc">
-            <p className="personalityDescP">
-              <i>{personality.get(props.personality.title)?.description}</i>
-            </p>
+        ) : (
+          <div className="center PersonalityContainer">
+            <p className="personalityBigP">Meet your NVTI personality:</p>
+            <div className="personalityGraphic">
+              {personality.get(props.personality.title)?.graphic}
+            </div>
+            <p className="personalityTitle">✧ {props.personality.title} ✧</p>
+            <div className="personalityDesc">
+              <p className="personalityDescP">
+                <i>{personality.get(props.personality.title)?.description}</i>
+              </p>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     );
 }
