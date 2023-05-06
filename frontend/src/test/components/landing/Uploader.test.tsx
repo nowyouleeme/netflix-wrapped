@@ -10,3 +10,12 @@ test("render Uploader", () => {
 
   expect(screen.getByRole("button", { name: load_csv })).toBeInTheDocument();
 });
+
+/**
+ * Test where we check that the Uploader component renders properly with interaction (selecting a file)
+ */
+test("render Uploader with interaction", () => {
+  render(<Uploader name={"Tim"}/>)
+
+  expect(screen.getByRole("button", { name: load_csv })).toBeInTheDocument();
+});

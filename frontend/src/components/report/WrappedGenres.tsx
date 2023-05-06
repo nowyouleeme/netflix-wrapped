@@ -1,5 +1,4 @@
 import { PolarArea } from "react-chartjs-2";
-import React from "react";
 import {
   Chart as ChartJS,
   RadialLinearScale,
@@ -104,7 +103,7 @@ export function WrappedGenres(props: WrappedGenresProps) {
   // ensure genre has capitalized genre name
   return (
     <div className="center WrappedGenres">
-      {props.genres.length == 0 ? (
+      {props.genres.length ===0 ? (
         <div className="emptyJSON">
           <p>We weren’t able to determine your favorite genres 😞</p>
         </div>

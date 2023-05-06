@@ -1,5 +1,4 @@
 import { Button, TextField} from "@mui/material";
-import { Link } from "react-router-dom";
 import "../App.css";
 import Uploader from "../components/landing/Uploader";
 import { useState } from "react";
@@ -152,9 +151,7 @@ function Landing() {
                 </svg>
               </motion.div>
             ) : (
-              <p
-                className="center Help"
-              >
+              <p className="center Help">
                 Made with ❤️ by Kathryn, Karen, CJ, and Brian
               </p>
             )}

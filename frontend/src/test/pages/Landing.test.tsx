@@ -34,3 +34,16 @@ test("render Landing", () => {
     })
   ).toBeInTheDocument();
 });
+
+
+/**
+ * Test where we check that the Landing component renders properly with interaction.
+ */
+test("render Landing with interaction", () => {
+  render(
+    <Landing/>
+  );
+
+  userEvent.type(screen.getByRole("textbox"), "Hello,{enter}World!");
+  screen.getByRole("button", {name: next_button_field})
+});

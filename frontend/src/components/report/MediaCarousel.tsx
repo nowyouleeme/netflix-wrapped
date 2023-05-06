@@ -21,9 +21,9 @@ export function MediaCarousel(props: MediaCarouselProps) {
           <a
             rel="noreferrer"
             target="_blank"
-            href={"https://www.google.com/search?q=" + value.title}
+            href={`https://www.google.com/search?q=${value.title}`}
           >
-            <img src={value.image} alt={"Poster for " + "'" + value.title + "'"} />
+            <img src={value.image} alt={`Poster for '${value.title}'`} />
           </a>
         </div>
       ))}

@@ -43,7 +43,7 @@ export function WrappedMoviesOverview(props: WrappedMoviesProps) {
             <div className="EpisodeImg">
               <a
                 rel="noreferrer"
-                href={"https://www.google.com/search?q=" + movies[i].title}
+                href={`https://www.google.com/search?q=${movies[i].title}`}
                 target="_blank"
               >
                 <img
@@ -73,7 +73,7 @@ export function WrappedMoviesOverview(props: WrappedMoviesProps) {
 
   return (
     <div className="center WrappedMoviesOverview">
-      {props.movies.length == 0 ? (
+      {props.movies.length ===0 ? (
         <div className="emptyJSON">
           <p>We couldn't sort through your movie viewing behavior 😕</p>
         </div>

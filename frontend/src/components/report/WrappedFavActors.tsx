@@ -39,7 +39,7 @@ export function WrappedFavActors(props: WrappedFavActorsProps) {
             style={{ color: props.color }}
             rel="noreferrer"
             target="_blank"
-            href={"https://www.google.com/search?q=" + actors[i]}
+            href={`https://www.google.com/search?q=${actors[i]}`}
           >
             {actors[i]}
           </a>
@@ -111,14 +111,14 @@ export function WrappedFavActors(props: WrappedFavActorsProps) {
               {filterMedia().map((value, index) => (
                 <div
                   className="actorCarouselCard"
-                  key={"Poster for " + value.title + index + props.media}
+                  key={`Poster for ${value.title}${index}${props.media}`}
                 >
                   <a
                     rel="noreferrer"
                     target="_blank"
-                    href={"https://www.google.com/search?q=" + value.title}
+                    href={`https://www.google.com/search?q=${value.title}`}
                   >
-                    <img src={value.image} alt={"Poster for " + "'" + value.title + "'"} />
+                    <img src={value.image} alt={`Poster for '${value.title}'`} />
                   </a>
                 </div>
               ))}

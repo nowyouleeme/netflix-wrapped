@@ -1,4 +1,4 @@
-import mockAll from "../../assets/mocks/mockActor.json";
+
 /**
  * An interface containing all of the properties expected of the props that are passed into the BingeData component.
  */
@@ -165,12 +165,12 @@ export function BingeData(props: BingeDataProps) {
               <div className="BingeShow" key={index}>
                 <a
                   rel="noreferrer"
-                  href={"https://www.google.com/search?q=" + value.title}
+                  href={`https://www.google.com/search?q=${value.title}`}
                   target="_blank"
                 >
                   <img
                     src={value.image}
-                    alt={"Poster for " + "'" + value.title + "'"}
+                    alt={`Poster for '${value.title}'`}
                   />
                 </a>
               </div>
