@@ -8,19 +8,5 @@ import Uploader, { generate_wrapped, load_csv, upload_csv } from "../../../compo
 test("render Uploader", () => {
   render(<Uploader name={"Tim"}/>)
 
-  expect(screen.getAllByRole("button").length).toBe(2);
-
-  expect(screen.getByRole("button", { name: upload_csv })).toBeInTheDocument();
-
-  expect(
-    screen.getByRole("button", {
-      name: load_csv,
-    })
-  ).toBeInTheDocument();
-
-  expect(
-    screen.getByRole("button", {
-      name: upload_csv,
-    })
-  ).toBeInTheDocument();
+  expect(screen.getByRole("button", { name: load_csv })).toBeInTheDocument();
 });

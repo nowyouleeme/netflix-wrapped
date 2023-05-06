@@ -2,6 +2,7 @@ import { render, screen } from "@testing-library/react";
 import mockAll from "../../../assets/mocks/mockActor.json";
 import { WrappedOverview } from "../../../components/report/WrappedOverview";
 import { carousel_label } from "../../../components/report/MediaCarousel";
+import empty from "../../../assets/mocks/empty.json";
 
 /**
  * Test where we check that the WrappedOverview component renders properly.
@@ -14,8 +15,7 @@ test("render WrappedOverview", () => {
     />
   );
 
-  const header = screen.getByText(
-    /Out of that time you spent with us in 2022/i);
+  const header = screen.getByText(/Out of the time you've spent with us,/i);
   expect(header).toBeInTheDocument();
 
   expect(screen.getByText(/you watched/i)).toBeInTheDocument();
@@ -29,4 +29,20 @@ test("render WrappedOverview", () => {
   ).toBe(2);
 
   // check individual cards
+});
+
+/**
+ * Test where we check that the WrappedOverview component renders properly with empty data.
+ */
+test("render WrappedOverview empty", () => {
+  render(
+    <WrappedOverview
+      shows={empty.shows.allShows}
+      movies={empty.movie.allMovies}
+    />
+  );
+
+  expect(
+    screen.getByText(/We couldn’t summarize your show viewing history 😣/i)
+  ).toBeInTheDocument();
 });

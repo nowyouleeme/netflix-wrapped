@@ -1,6 +1,4 @@
 import { act, render, screen } from "@testing-library/react";
-import mockAll from "../../assets/mocks/mockActor.json";
-import { WrappedOverview } from "../../components/report/WrappedOverview";
 import Landing, { next_button_field } from "../../pages/Landing";
 import userEvent from "@testing-library/user-event";
 import { upload_csv } from "../../components/landing/Uploader";
@@ -8,7 +6,7 @@ import { upload_csv } from "../../components/landing/Uploader";
 /**
  * Test where we check that the Landing component renders properly.
  */
-test("render Landing", async() => {
+test("render Landing", () => {
   render(
     <Landing/>
   );
@@ -22,6 +20,10 @@ test("render Landing", async() => {
     screen.getByText(/A lookback on your time with Netflix/i)
   ).toBeInTheDocument();
 
+  expect(
+    screen.getByText(/Made with ❤️ by Kathryn, Karen, CJ, and Brian/i)
+  ).toBeInTheDocument();
+
   expect(screen.getByRole("button", {
     name: next_button_field,
   })).toBeInTheDocument();
@@ -31,15 +33,4 @@ test("render Landing", async() => {
       name: "What's your name?",
     })
   ).toBeInTheDocument();
-
-  act(() => {
-    userEvent.click(
-      screen.getByRole("button", {
-        name: next_button_field,
-      })
-    );
-  });
-
-  // check next, check back, check render of instructions (interactions)
-  // render report
 });

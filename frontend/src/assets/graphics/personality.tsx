@@ -58,8 +58,8 @@ const binge: PersonalityItem = {
           y2="219"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#DB1864" />
-          <stop offset="1" stop-color="#95C12B" />
+          <stop stopColor="#DB1864" />
+          <stop offset="1" stopColor="#95C12B" />
         </linearGradient>
       </defs>
     </svg>
@@ -89,8 +89,8 @@ const old: PersonalityItem = {
           y2="-35"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#7FC12B" />
-          <stop offset="0.581584" stop-color="#DB1864" />
+          <stop stopColor="#7FC12B" />
+          <stop offset="0.581584" stopColor="#DB1864" />
         </linearGradient>
       </defs>
     </svg>
@@ -120,8 +120,8 @@ const otaku: PersonalityItem = {
           y2="219"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#95C12B" />
-          <stop offset="1" stop-color="#DB1864" />
+          <stop stopColor="#95C12B" />
+          <stop offset="1" stopColor="#DB1864" />
         </linearGradient>
       </defs>
     </svg>
@@ -151,8 +151,8 @@ const lovebird: PersonalityItem = {
           y2="219.865"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#C1B22B" />
-          <stop offset="1" stop-color="#DB18B0" />
+          <stop stopColor="#C1B22B" />
+          <stop offset="1" stopColor="#DB18B0" />
         </linearGradient>
       </defs>
     </svg>

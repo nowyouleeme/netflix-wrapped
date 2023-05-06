@@ -3,8 +3,11 @@ import { Button} from '@mui/material';
 import { Link } from "react-router-dom";
 import { convertCSV } from './Parsing';
 import { ReportJSON } from '../../assets/data/ReportJSON';
+
+
 export const load_csv = "Select CSV file here"; //TODO: fix any testing that depended on the specific text.. if there's errors
-export const generate_wrapped = "Generate your wrapped report";
+export const generate_wrapped = "Generate your Wrapped Report";
+export const get_wrapped = "Go see the Netflix Wrapped Report";
 export const upload_csv = "Upload the selected CSV file";
 
 /**
@@ -247,7 +250,7 @@ function Uploader(props: UploaderProps) {
             >
               <label className="Upload" htmlFor="netflix-file">
                 <Button
-                  aria-label={generate_wrapped} //no onclick,it should go to link
+                  aria-label={get_wrapped} //no onclick,it should go to link
                   style={{
                     padding: "0.75em 1.5em",
                     fontFamily: "Metropolis-Black",

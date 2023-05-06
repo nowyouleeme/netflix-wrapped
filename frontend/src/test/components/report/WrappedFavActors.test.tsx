@@ -3,6 +3,7 @@ import { render, screen } from "@testing-library/react";
 import mockAll from "../../../assets/mocks/mockActor.json";
 import { WrappedFavActors } from "../../../components/report/WrappedFavActors";
 import { carousel_label } from "../../../components/report/MediaCarousel";
+import empty from "../../../assets/mocks/empty.json";
 
 /**
  * Test where we check that the WrappedFavActors component renders properly.
@@ -42,4 +43,27 @@ test("render WrappedFavActors", () => {
   ).toBeInTheDocument();
 
   // check individual cards
+});
+
+/**
+ * Test where we check that the WrappedFavActors component renders properly with empty data.
+ */
+test("render WrappedFavActors empty", () => {
+  render(
+    <WrappedFavActors
+      type="show"
+      actors={empty.shows.showActors.mostWatchedActors}
+      media={empty.shows.showActors.actorFeaturedShows}
+      saying={
+        <p>
+          You've got <b>amazing</b> taste in entertainers!
+        </p>
+      }
+      color="#EEFFE7"
+      bg="#EE9021"
+    />
+  );
+
+  expect(screen.getByText(/We weren't able to determine the most featured actors in the shows you’ve watched 🥹/i)).toBeInTheDocument();
+
 });

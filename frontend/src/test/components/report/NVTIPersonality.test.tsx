@@ -2,11 +2,12 @@
 import { render, screen } from "@testing-library/react";
 import mockAll from "../../../assets/mocks/mockActor.json";
 import { NVTIPersonality } from "../../../components/report/NVTIPersonality";
+import empty from "../../../assets/mocks/empty.json";
 
 /**
  * Test where we check that the NVTIPersonality component renders properly.
  */
-test("renders learn react link", () => {
+test("render NVTIPersonality", () => {
   render(<NVTIPersonality personality={mockAll.personality} />);
 
   expect(
@@ -14,11 +15,24 @@ test("renders learn react link", () => {
   ).toBeInTheDocument();
 
   expect(
-    screen.getByText(/The Explorer/i)).toBeInTheDocument();
+    screen.getByText(/The Otaku/i)).toBeInTheDocument();
 
   expect(
-    screen.getByText(/You’re an adventurous one. Not limiting yourself to either movies or shows, you delve into wide and varied range of genres to explore the unknown./i)
+    screen.getByText(
+      /You have an unmatched love for anime and other Japanese pop culture! Whether it be because of the compelling characters, creative visuals, interesting world building, or exposure to Japanese history and language, you show clear appreciation for quality media./i
+    )
   ).toBeInTheDocument();
 
   // render graphic!! 
+});
+
+/**
+ * Test where we check that the NVTIPersonality component renders properly with empty data.
+ */
+test("render NVTIPersonality empty", () => {
+  render(<NVTIPersonality personality={empty.personality} />);
+
+  expect(
+    screen.getByText(/We couldn't generate a viewing personality for you 😭/i)
+  ).toBeInTheDocument();
 });

@@ -2,6 +2,7 @@
 import { render, screen } from "@testing-library/react";
 import mockAll from "../../../assets/mocks/mockActor.json";
 import { WrappedMoviesOverview, favorite_movie, remaining_movies } from "../../../components/report/WrappedMoviesOverview";
+import empty from "../../../assets/mocks/empty.json";
 
 /**
  * Test where we check that the WrappedMoviesOverview component renders properly.
@@ -33,4 +34,18 @@ test("renders WrappedMoviesOverview", () => {
     })
   ).toBeInTheDocument();
   // render individual cards
+});
+
+/**
+ * Test where we check that the WrappedMoviesOverview component renders properly with empty data.
+ */
+test("renders WrappedMoviesOverview empty", () => {
+  render(
+    <WrappedMoviesOverview year={2022} movies={empty.movie.top5Movies} />
+  );
+
+  expect(
+    screen.getByText(/We couldn't sort through your movie viewing behavior 😕/i)
+  ).toBeInTheDocument();
+
 });

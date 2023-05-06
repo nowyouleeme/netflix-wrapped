@@ -12,7 +12,7 @@ test("render ReportIntro", () => {
   expect(reportHeading).toBeInTheDocument();
 
   const reportSubtitle = screen.getByText(
-    /Take a glimpse at your watch time, top shows \+ movies, favorite genres—all in one place./i
+    /Take a glimpse at your watch time, top shows \+ movies, and favorite genres—all in one place./i
   );
   expect(reportSubtitle).toBeInTheDocument();
 
