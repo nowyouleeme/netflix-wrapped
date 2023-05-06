@@ -51,24 +51,16 @@ public class SaveDataHandler implements Route {
       //must be at least 2 rows
       System.out.println(parsedUserCSV);
       if (parsedUserCSV.usercsv().length < 2) {
-<<<<<<< Updated upstream
         System.out.println(parsedUserCSV.usercsv().length);
         errorMessages.put("error_bad_request", "invalid netflix history csv");
-=======
-        errorMessages.put("error_bad_json", "invalid csv");
->>>>>>> Stashed changes
         return serialize(fail(errorMessages));
       }
 
       //each row must be 2 columns
       for (int i = 0; i < parsedUserCSV.usercsv().length; i++) {
         if (parsedUserCSV.usercsv()[i].length != 2) {
-<<<<<<< Updated upstream
           System.out.println(4);
           errorMessages.put("error_bad_request", "invalid netflix history csv");
-=======
-          errorMessages.put("error_bad_json", "invalid csv");
->>>>>>> Stashed changes
           return serialize(fail(errorMessages));
         }
       }
@@ -88,13 +80,8 @@ public class SaveDataHandler implements Route {
       //return serialized success response
       return serialize(success());
     } catch (Exception e) {
-<<<<<<< Updated upstream
       System.out.println(e.getMessage());
       errorMessages.put("error_bad_request", "unexpected error occured trying to save csv");
-=======
-      // System.out.println(e.getMessage()); // TODO: better error handling
-      errorMessages.put("error_bad_json", "unexpected error");
->>>>>>> Stashed changes
       return serialize(fail(errorMessages));
     }
   }
