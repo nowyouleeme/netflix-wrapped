@@ -32,15 +32,6 @@ public class SaveDataHandler implements Route {
     System.out.println(userCSVQuery);
     HashMap<String, String> errorMessages = new HashMap<>();
 
-<<<<<<< Updated upstream
-    if (queryMap.toMap().size() != 1) {
-      errorMessages.put("error_bad_json", "expected 1 query parameters but received " + queryMap.toMap().size());
-      return serialize(fail(errorMessages));
-    }
-
-    if (userCSVQuery == null) {
-      errorMessages.put("error_bad_json", "need usercsv query parameter in order to save data");
-=======
     // if (queryMap.toMap().size() != 1) {
     //   errorMessages.put("error_bad_json", "expected 1 query parameters but received" + queryMap.toMap().size());
     //   System.out.println(1);
@@ -49,7 +40,6 @@ public class SaveDataHandler implements Route {
 
     if (userCSVQuery == null) {
       errorMessages.put("error_bad_json", "need user's csv to save data");
->>>>>>> Stashed changes
       return serialize(fail(errorMessages));
     }
 
