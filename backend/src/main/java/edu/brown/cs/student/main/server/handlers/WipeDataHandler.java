@@ -35,7 +35,7 @@ public class WipeDataHandler implements Route {
     HashMap<String, String> errorMessages = new HashMap<>();
 
     if (queryMap.toMap().size() != 0) {
-      errorMessages.put("error_bad_json", "expected 0 query parameters but received" + queryMap.toMap().size());
+      errorMessages.put("error_bad_json", "expected 0 query parameters but received " + queryMap.toMap().size());
       return serialize(fail(errorMessages));
     }
 
@@ -45,8 +45,8 @@ public class WipeDataHandler implements Route {
       System.out.print("user data in server info\n" + serverInfo.getUserData() + "\n");
       return serialize(success());
     } catch (Exception e) {
-      System.out.println(e.getMessage()); // TODO: better error handling
-      errorMessages.put("error_bad_json", e.getMessage());
+      System.out.println(e.getMessage());
+      errorMessages.put("error_bad_request", "unexpected error occured trying to wipe data");
       return serialize(fail(errorMessages));
     }
   }
