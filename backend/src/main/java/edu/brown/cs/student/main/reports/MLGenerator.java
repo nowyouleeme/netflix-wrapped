@@ -44,7 +44,7 @@ public class MLGenerator implements ReportGenerator {
 
 
 
-       try (FileWriter writer = new FileWriter("backend/backend-ml/data/viewhist2.csv")) {
+       try (FileWriter writer = new FileWriter("backend-ml/data/viewhist2.csv")) {
            for (int j = 0; j < userCSVData.length; j++) {
                writer.append("\""+userCSVData[j][0]+"\"");
                writer.append(",");
@@ -206,7 +206,7 @@ public class MLGenerator implements ReportGenerator {
 
         Data.WrappedData wrappedData = new WrappedData(genreCountArr, dataToConvert.totalMin, 
         bingeData, shows, movie, personality);
-
+        System.out.println(13);
         return wrappedData;
         
     }

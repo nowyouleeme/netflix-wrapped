@@ -37,11 +37,13 @@ public class SaveDataHandler implements Route {
 
     if (queryMap.toMap().size() != 1) {
       errorMessages.put("error_bad_json", "expected 1 query parameters but received" + queryMap.toMap().size());
+      System.out.println(1);
       return serialize(fail(errorMessages));
     }
 
     if (userCSVQuery == null) {
       errorMessages.put("error_bad_json", "need user's csv to save data");
+      System.out.println(2);
       return serialize(fail(errorMessages));
     }
 
@@ -53,7 +55,8 @@ public class SaveDataHandler implements Route {
 
       System.out.print("parsedUserCSV\n");
       //must be at least 2 rows
-      if (parsedUserCSV.usercsv().length < 2) {
+      if (parsedUserCSV.usercsv().length < 1) {
+        System.out.println(parsedUserCSV.usercsv().length);
         errorMessages.put("error_bad_json", "invalid csv");
         return serialize(fail(errorMessages));
       }
@@ -61,6 +64,7 @@ public class SaveDataHandler implements Route {
       //each row must be 2 columns
       for (int i = 0; i < parsedUserCSV.usercsv().length; i++) {
         if (parsedUserCSV.usercsv()[i].length != 2) {
+          System.out.println(4);
           errorMessages.put("error_bad_json", "invalid csv");
           return serialize(fail(errorMessages));
         }

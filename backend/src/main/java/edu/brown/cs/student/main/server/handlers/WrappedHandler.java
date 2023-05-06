@@ -46,6 +46,7 @@ public class WrappedHandler implements Route {
         try {
             //  1. we use the generator in server info to generate the report.
             Data.WrappedData reportJSON = serverInfo.generateReportJSON();
+            System.out.println("generate wrapped data");
             //  2. we send this report into the frontend.
             return serialize(success(reportJSON));
 

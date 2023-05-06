@@ -43,7 +43,6 @@ public class MakeTopGenres {
 
         // Print the top 5 genres with their counts
         int numGenres = Math.min(5, genreCountList.size());
-        System.out.println(genreCountList);
         for (int i = 0; i < numGenres; i++) {
             JSONGenre genre = new JSONGenre();
             genre.genre = genreCountList.get(i).getKey();
