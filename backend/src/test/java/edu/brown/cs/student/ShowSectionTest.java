@@ -23,6 +23,9 @@ public class ShowSectionTest {
     }
 
 
+    /**
+     * Unit testing to check is show filters are working.
+     */
     @Test
     public void testShowOnly() {
         String[][] movieData1 = {
@@ -44,6 +47,10 @@ public class ShowSectionTest {
         assertTrue(showList.get(0).keySet().contains("Squid Game"));
     }
 
+    /**
+     * Unit testing to check is show filters are working, even when inputted a show with no 
+     * data.
+     */
     @Test
     public void testShowOnlyNoShows() {
         String[][] movieData1 = {
@@ -56,6 +63,9 @@ public class ShowSectionTest {
         assertEquals(showList.size(), 0);
     }
 
+    /**
+     * Integration testing to check is if we can get the top three actors in the history.
+     */
     @Test
     public void actorInfoTest() {
         String[][] movieData1 = {
@@ -74,6 +84,10 @@ public class ShowSectionTest {
 
     }
 
+    /**
+     * Integration testing to check is if we can get the top three actors in the history,
+     * with a larger history.
+     */
     @Test
     public void actorInfoTestLarge() {
         String[][] movieData1 = {
@@ -103,6 +117,11 @@ public class ShowSectionTest {
 
     }
 
+
+    /**
+     * Integration testing to check is if we can get the top three actors in the history,
+     * even if the show is not in data
+     */
     @Test
     public void actorInfoTestEmpty() {
         String[][] movieData1 = {
@@ -118,6 +137,10 @@ public class ShowSectionTest {
         assertEquals(actorList.size(),0);
     }
 
+    /**
+     * Integration testing to check is if we can get the top three actors in the history,
+     * and find the movie the actor is in.
+     */
     @Test
     public void actorMoviesTest() {
         String[][] movieData1 = {
@@ -134,6 +157,11 @@ public class ShowSectionTest {
         assertEquals(actorMovie, "Squid Game");
     }
 
+
+        /**
+     * Integration testing to check is if we can get the top three actors in the history,
+     * , even if there are no movies, and find the movie the actor is in.
+     */
     @Test
     public void actorMoviesUnfoundTest() {
         String[][] movieData1 = {
@@ -150,6 +178,10 @@ public class ShowSectionTest {
     }
 
 
+
+        /**
+     * Integration testing to check if getting the top three most watched show works with one data.
+     */
     @Test
     public void getTopThreeTestOneData(){
 
@@ -168,6 +200,10 @@ public class ShowSectionTest {
         assertEquals(topThree.get(1), "1");
     }
 
+
+            /**
+     * Integration testing to check if getting the top three most watched show works with no data.
+     */
     @Test
     public void getTopThreeTestEmpty(){
 
@@ -184,6 +220,12 @@ public class ShowSectionTest {
         assertEquals(topThree.size(), 0);
     }
 
+
+
+/**
+     * Integration testing to check if getting the top three most watched show works with
+     * a larger mock.
+     */
     @Test
     public void getTopThreeTestLarge(){
 
@@ -230,6 +272,11 @@ public class ShowSectionTest {
 
 
 
+/**
+     * Integration testing to check if getting the bottom three most watched show works with
+     * one data.
+     */
+
     @Test
     public void getBottomThreeTestOneData(){
 
@@ -248,6 +295,12 @@ public class ShowSectionTest {
         assertEquals(bottomThree.get(1), "1");
     }
 
+
+
+/**
+     * Integration testing to check if getting the bottom three most watched show works with
+     * empty data.
+     */
     @Test
     public void getBottomThreeTestEmpty(){
 
@@ -264,6 +317,11 @@ public class ShowSectionTest {
         assertEquals(bottomThree.size(), 0);
     }
 
+
+    /**
+     * Integration testing to check if getting the bottom three most watched show works with
+     * a larger data.
+     */
     @Test
     public void getBottomThreeTestLarge(){
 

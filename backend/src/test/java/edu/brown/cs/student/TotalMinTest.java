@@ -25,6 +25,9 @@ public class TotalMinTest {
         assertEquals(1+1, 2);
     }
     
+    /**
+     * Unit testing to see if the total minutes watched works with shows and movies
+     */
     @Test
     public void totalMintestMainFunction(){
         String[][] movieData = {
@@ -40,6 +43,10 @@ public class TotalMinTest {
         assertEquals(minData.totalMin, 124);
     }
 
+        /**
+     * Unit testing to see if the total minutes watched works with shows and movies,
+     * when the one movie is not found in our data
+     */
     @Test
     public void totalMintestUnfoundMovie(){
         String[][] movieData = {
@@ -53,6 +60,11 @@ public class TotalMinTest {
         assertEquals(minData.totalMin, 30);
     }
 
+
+        /**
+     * Unit testing to see if the total minutes watched works with shows in paticular,
+     * and it adds 30. 
+     */
     @Test
     public void totalMintestUnfoundShow(){
         String[][] movieData = {

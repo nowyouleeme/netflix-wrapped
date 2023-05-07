@@ -22,7 +22,10 @@ public class TopGenresTest {
         assertEquals(1+1, 2);
     }
 
-        
+ 
+    /**
+     * Integration testing to check if getting the top 5 genres is working as intended
+     */
     @Test
     public void getTopGenresBasic() throws IOException {
         MapCreator mapCreator = new MapCreator();
@@ -66,6 +69,10 @@ public class TopGenresTest {
 
 
 
+    /**
+     * Integration testing to check if getting the top 5 genres is working as intended,
+     * even when there are less than 5 genres
+     */
     @Test
     public void getTopGenresBasic2() throws IOException {
         MapCreator mapCreator = new MapCreator();
@@ -99,6 +106,10 @@ public class TopGenresTest {
         assertEquals(topGenres.top5Genres.get(3).count, 1);
     }
 
+       /**
+     * Integration testing to check if getting the top 5 genres is working as intended,
+     * even when there is only a movie we dont have data on.
+     */
     @Test
     public void getTopGenresBasicEmpty() throws IOException {
         MapCreator mapCreator = new MapCreator();
@@ -116,6 +127,11 @@ public class TopGenresTest {
 
     }
 
+
+    /**
+     * Integration testing to check if getting the top 5 genres is working as intended,
+     * even when there is only one media.
+     */
     @Test
     public void getTopGenresBasicOne() throws IOException {
         MapCreator mapCreator = new MapCreator();
