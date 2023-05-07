@@ -8,7 +8,30 @@
 ## Design Choices
 **Our project is divided up into 2 main directories: `frontend` and `backend`.**
 
+
 ### `frontend`
+The `frontend` directory contains the **UI** and **sending API requests** to the backend. Within `frontend`, we have subdirectories `public` and `src`.
+- `public` contains the HTML file to be loaded upon starting the application in the browser
+- `src` contains our React components; frontend tests; mock data; and utilities for accessing the MapBox API and the redlining overlay data by sending requests to the backend. 
+
+_Here are the most important pieces of our `frontend` and how they function/connect:_
+
+- `components` is a package that contains the components of our App
+  - `Display` is a component that displays the maps and its components.
+  - `DisplayConfirm` is a component that displays confirmation as to if annotations have been saved or not
+  - `InputPrompt` is component that prompts the user to make and submit an annotation for a given point on the redlining overlay data.
+  - `PopUp` is a component that displays the information from clicking on a point of the redlining data and an option for the user to make an annotation.
+  - `SaveAnnotations` is a component that allows a user to save the annotations made on the redlining overlay data.
+  - `SideBar`is a component that displays the center latitude and longitude data, as well as the current zoom level.
+- `mockData` is a package that contains mock geojson data that we use for testing and doing work on the frontend in isolation from the backend
+  - `fullDownload.json` is a json file that contains the full redlining geojson
+- `overlays` is a package for the overlays placed on the map
+  - `overlays.tsx` contains code describing and styling a geo layer formed from the redlining data 
+- `private` is a package for private information 
+  - `key.tsx` contains the private token needed for MapBox access
+- `tests` is a package with our frontend tests (more on this package below)
+- `utilities` is a package with code that calls the backend API
+  - `RequestHandler` contains code that calls the backend API to retrieve the data used to construct the layer of redlining geojson information.
 
 ### `backend`
 
