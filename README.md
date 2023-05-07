@@ -85,6 +85,8 @@ The backend directory is reponsible for handling the csv converted into a String
 
 ## Tests
 ### Here is a summary of our backend tests
+
+INDIVIDUAL EXPLANATIONS OF TESTS IN THE FILE ARE IN COMMENTS!
 - `test` 
   - `BingeDataTest`: Unit and Integration Testing for BingeData creation.
   - `FuzzTestingHelpers`: Helpers for fuzz testing, creating RNG and random strings.
