@@ -151,9 +151,13 @@ public class MakeShowSection {
         return topMoviesList;
     }
 
+    //returns top three or less actors
     public ArrayList<String> actorInfo(ArrayList<Map<String, ArrayList<ArrayList<String>>>> movieList) {
         Map<String, Integer> actorCountMap = new HashMap<String, Integer>();
         ArrayList<String> finalActorList = new ArrayList<String>();
+        if (movieList.size() == 0){
+            return finalActorList;
+        }
 
         for (Map<String, ArrayList<ArrayList<String>>> map : movieList) {
             for (Map.Entry<String, ArrayList<ArrayList<String>>> entry : map.entrySet()) {

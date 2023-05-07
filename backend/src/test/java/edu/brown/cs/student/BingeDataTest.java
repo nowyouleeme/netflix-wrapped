@@ -87,7 +87,7 @@ public class BingeDataTest {
 
 
     @Test
-    public void BingeDataBasicTestEmpty() throws IOException {
+    public void BingeDataBasicTestUnfoundMovie() throws IOException {
         MapCreator mapCreator = new MapCreator();
 
         String[][] movieData1 = {
@@ -106,5 +106,4 @@ public class BingeDataTest {
         assertEquals(bingeData.shows.size(), 0);
         
     }
-
 }
