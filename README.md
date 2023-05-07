@@ -94,6 +94,7 @@ _Here are the most important pieces of our `frontend` and how they function/conn
 
 ## Bugs
 ### `frontend`
+We had to utilize `POST` requests for uploading a user's NetflixViewingHistory.csv file when it was substantially large (when our request to the backend surpassed 2,048 characters), which caused some issues particularly with the CORS policy. As a result, we had to change the request mode to "no-cors" to be able to fetch the response with CORS disabled, which seemed to be the only way we were able to work around making the request successfully. However, this ended up limiting us from being able to return responses that were more specific on the nature of certain errors (like trying to pass a CSV with the incorrect headers or number of columns). As a result, this ended up limiting our ability to provide the appropriate feedback to the user based on the nature of the CSV file they uploaded. However, we did attempt to account for this in the backend endpoint handler that handles how a CSV is uploaded to our server. Next steps would be to look more into the nature of `POST` requests and their browser dependencies to understand how enable response specificity like we had been able to with `GET` requests. 
 
 ### `backend`
 
