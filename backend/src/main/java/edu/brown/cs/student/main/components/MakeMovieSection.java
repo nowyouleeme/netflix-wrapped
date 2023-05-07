@@ -151,7 +151,7 @@ public class MakeMovieSection {
             }
 
         }
-        return "no movie found";
+        return "";
 
     }
 

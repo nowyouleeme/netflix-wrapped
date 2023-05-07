@@ -237,11 +237,11 @@ public class ShowSectionTest {
         MakeShowSection showSection = new MakeShowSection();
         ArrayList<Map<String, ArrayList<ArrayList<String>>>> showList = showSection
         .showOnly(mapCreator.createWatchedMovieMap(movieData1));
-        ArrayList<String> topThree = showSection.getTopThree(showList);
+        ArrayList<String> bottomThree = showSection.getBottomThree(showList);
 
-        assertEquals(topThree.size(), 2);
-        assertEquals(topThree.get(0), "Itaewon Class");
-        assertEquals(topThree.get(1), "1");
+        assertEquals(bottomThree.size(), 2);
+        assertEquals(bottomThree.get(0), "Itaewon Class");
+        assertEquals(bottomThree.get(1), "1");
     }
 
     @Test
@@ -255,9 +255,9 @@ public class ShowSectionTest {
         MakeShowSection showSection = new MakeShowSection();
         ArrayList<Map<String, ArrayList<ArrayList<String>>>> showList = showSection
         .showOnly(mapCreator.createWatchedMovieMap(movieData1));
-        ArrayList<String> topThree = showSection.getTopThree(showList);
+        ArrayList<String> bottomThree = showSection.getBottomThree(showList);
 
-        assertEquals(topThree.size(), 0);
+        assertEquals(bottomThree.size(), 0);
     }
 
     @Test
@@ -286,15 +286,16 @@ public class ShowSectionTest {
         MakeShowSection showSection = new MakeShowSection();
         ArrayList<Map<String, ArrayList<ArrayList<String>>>> showList = showSection
         .showOnly(mapCreator.createWatchedMovieMap(movieData1));
-        ArrayList<String> topThree = showSection.getTopThree(showList);
+        ArrayList<String> bottomThree = showSection.getBottomThree(showList);
 
-        assertEquals(topThree.size(), 6);
-        assertEquals(topThree.get(0), "Squid Game");
-        assertEquals(topThree.get(1), "5");
-        assertEquals(topThree.get(2), "Crash Landing on You");
-        assertEquals(topThree.get(3), "5");
-        assertEquals(topThree.get(4), "Itaewon Class");
-        assertEquals(topThree.get(5), "3");
+        assertEquals(bottomThree.size(), 6);
+        assertEquals(bottomThree.get(0), "Dear White People");
+        assertEquals(bottomThree.get(1), "2");
+        assertEquals(bottomThree.get(2), "Itaewon Class");
+        assertEquals(bottomThree.get(3), "3");
+        assertEquals(bottomThree.get(4), "Crash Landing on You");
+        assertEquals(bottomThree.get(5), "5");
+
 
     }
 
