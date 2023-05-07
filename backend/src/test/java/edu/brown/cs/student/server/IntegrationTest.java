@@ -208,6 +208,33 @@ public class IntegrationTest {
         assertNotNull(resp.report());
         assertTrue(resp.report().noNullInfo());
 
+        //test that save (with new set of info that's enough info..) -> generate works.
+        MockUserCSVQuery m = new MockUserCSVQuery();
+        query = m.mock1;
+        clientConnection = tryPostRequest("saveData", query);
+        assertEquals(200, clientConnection.getResponseCode());
+        assertNotNull(serverInfo.getUserData());
+
+        clientConnection = tryGetRequest("wrapped");
+        assertEquals(200, clientConnection.getResponseCode());
+        resp = clientConnectToWrappedResp(clientConnection);
+        assertEquals("success", resp.result());
+        assertNotNull(resp.report());
+        assertTrue(resp.report().noNullInfo());
+
+        //tests that wiping and then generating lead to an error
+        clientConnection = tryGetRequest("wipeData");
+        assertEquals(200, clientConnection.getResponseCode());
+        Map respMap = clientConnectToMap(clientConnection);
+        assertEquals("success", resp.result());
+        assertNull(serverInfo.getUserData());
+        clientConnection = tryGetRequest("wrapped");
+        assertEquals(200, clientConnection.getResponseCode());
+        respMap = clientConnectToMap(clientConnection);
+        if (respMap.get("result") instanceof Map result) {
+            assertEquals("no user csv in server to create wrapped with", result.get("error_bad_request"));
+        }
+
 
         clientConnection.disconnect();
     }

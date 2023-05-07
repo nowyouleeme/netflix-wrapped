@@ -121,6 +121,10 @@ public class WrappedHandlerTest {
         assertNull(serverInfo.getUserData());
         HttpURLConnection clientConnection = tryRequest("wrapped");
         assertEquals(200, clientConnection.getResponseCode());
+        Map resp= clientConnectToMap(clientConnection);
+        if (resp.get("result") instanceof Map result) {
+            assertEquals("no user csv in server to create wrapped with", result.get("error_bad_request"));
+        }
         assertNull(serverInfo.getUserData());
     }
 
