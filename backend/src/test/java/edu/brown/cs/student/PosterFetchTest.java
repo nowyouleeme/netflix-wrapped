@@ -54,6 +54,7 @@ public class PosterFetchTest {
             String posterLink = posterFetch.getPosterLink(randomTitle);
             Integer linkLength = posterLink.length();
             assertTrue(linkLength>0);
+            System.out.println(posterLink);
         }
     }
 

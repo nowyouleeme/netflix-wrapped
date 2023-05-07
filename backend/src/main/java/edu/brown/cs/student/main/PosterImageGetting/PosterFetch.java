@@ -26,10 +26,11 @@ public class PosterFetch {
             "&page=1", 
             PosterData.posterJson.class);
 
-            if (posterJson.results()[0].poster_path() == null){
-                return "https://i.imgur.com/mgzENYv.jpg";
-            }
+
             if (posterJson.results().length != 0){
+                if (posterJson.results()[0].poster_path() == null){
+                    return "https://i.imgur.com/mgzENYv.jpg";
+                }
                 return "https://image.tmdb.org/t/p/original/" + posterJson.results()[0].poster_path();
             }
             else{
