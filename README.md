@@ -2,7 +2,7 @@
 
 ## Project Details
 **Contributors:** klee161, khu21, jcha17, dhan26 <br />
-**Project Description:**
+**Project Description:** Our “Netflix Wrapped” project is an application that takes in a user's Netflix Viewing History and gives them a personalized report of their Netflix consumption habits, similar to the popular feature “Spotify Wrapped.” <br />
 **Repository:** https://github.com/cs0320-s2023/netflix-wrapped <br />
 **Total time:** 3 weeks <br />
 
@@ -86,6 +86,7 @@ _Here are the most important pieces of our `frontend` and how they function/conn
           1. tests that the MediaCarousel component renders the images as expected
         3. tests that the WrappedOverview component with mock empty data from empty.json renders properly with the expected message that we weren't able to generate their overview
     - `landing` is a subpackage with tests of the components used in the Landing page
+      - `Parsing.test` **KAREN TO DO**
       - `Uploader.test` is a test ensuring that the `Uploader` component is rendering properly
         1. tests that the Uploader component renders appropriately with the correct elements via aria-labels 
         2. tests that the interactions with the Uploader component elements causes the expected state changes
