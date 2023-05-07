@@ -26,7 +26,7 @@ public class PosterFetchTest {
         PosterFetch posterFetch = new PosterFetch();
         for(int i = 0; i < 100; i++){
 
-            String randomTitle = fuzzHelper.generateRandomString(10);
+            String randomTitle = fuzzHelper.generateRandomString(20);
             String posterLink = posterFetch.getPosterLink(randomTitle);
 
             Integer linkLength = posterLink.length();
