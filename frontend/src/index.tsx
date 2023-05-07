@@ -8,6 +8,10 @@ import Error from "./pages/Error";
 import Report from './pages/Report';
 import { AnimatePresence } from "framer-motion";
 
+/**
+ * Our router for the Netflix Wrapped application and the 
+ * pathways to the different pages. 
+ */
 const router = createBrowserRouter([
   {
     path: "/",
