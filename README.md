@@ -62,26 +62,37 @@ The backend directory is reponsible for handling the csv converted into a String
   - `main`
     - `componenets` holds the files that create the data that will be passed in as a larger json later.
       - `helpers` are the files that create the maps needed for the 'make' classes. it creates things such as a map that holds the movie as a key and attributes as values, and a map that holds the same form, but for only the movies/shows watched.
+      - `JsonDataType` is a directory that holds files that define classes for easy JSON reading and combining the data later on without typecasting issues.
+        - `JsonReader` helps us read and write JSONS.
+        - `MapCreator` creates maps such as a map that holds the movie as a key and attributes as values, and a map that holds the same form, but for only the movies/shows watched.
       - `MakeBingeData` creates the data needed for the bingeData section.
       - `MakeMovieSection` creates the data needed for the movie section. such as top 5 movies watched.
       - `MakePersonality` creates the data needed for the personality section, such as 'otaku'.
       - `MakeShowSection` creates the data needed for the shows section, such as top actors watched.
       - `MakeTopGenres` creates the data needed for the topGenres section, the top 5 genres.
       - `MakeTotalMin` creates total time watched. All shows are counted as 30 mins each, and media not in our database is also counted as 30 mins.
-      - 
-      
-      
-      
     - `csv`
     - `PosterImageGetting` holds the files needed to get the posters from an external API.
+      - `PosterData` holds the datatype we will recieve the poster data by.
+      - `PosterFetch` holds the functions to fetch the poster link from an external API.
     - `reports` is the file that holds using the data from `components` in order to combine and make a json.
+      - `MLGenerator` creates the final json, using the files in `components.
     - `server` directory holds the server file and the handlers.
+      - `MovieHandler` is the handler for movies. Although not used in the program, it is an easy way to see the data uploaded to check if the data has been processed.
     - `Test` testing.
     
  
 
 ## Tests
 ### Here is a summary of our backend tests
+- `test` 
+  - `BingeDataTest`: Unit and Integration Testing for BingeData creation.
+  - `FuzzTestingHelpers`: Helpers for fuzz testing, creating RNG and random strings.
+  - `MovieSectionTest`: Unit and Integration Testing for movieSection creation. Tests varied information such as most seen actors, and if the file inputted is not found in the netflix movie titles json, etc.
+  - `PosterFetchTest`: Unit and Integration Testing for poster link creation. Uses fuzz testing to create completely random strings for one test, and create random movie titles using the movie titles json for another test. Makes sure the links are never null.
+  - `ShowSectionTest`: Unit and Integration Testing for show section creation. Tests varied informtation such as most watched movies, if top 5 movies are getting generated even if the watch history has <5 titles, etc.
+  - `TopGenresTest`: Unit and Integration Testing for top genres creation. Tests for <5 titles, and other edge cases.
+  - `TotalMinTest`: Unit and Integration Testing for total minutes creation.
 ### Here is an overview of our frontend tests
 - `test` is a package with our frontend tests (more on this package below)
   - `components` is a subpackage with tests of the components in the `components` package, such as rendering and interactions with populated and unpopulated mock data that would be sent by the backend
@@ -145,6 +156,20 @@ There are some inaccuracies with the poster images fetched for a user's given wa
 5. Install Anaconda for Python following the steps in the website. Then, run 'conda create -n [environment name]' to create a virtual environment for machine learning.
 6. Activate the virtual environment by the command conda activate [environment name]. Install the following packages: tensorflow (conda install tensorflow), numpy (pip install numpy), pandas (pip install pandas), flask (pip install flask), and flask-restful (pip install flask-restful).
 7. Enter the `backend-ml` directory using the command `cd backend-ml`. Then run command 'flask --app server run' to run the NVTI classifier embedded in the python flask server.
+
+### Important note
+The token is ignored by gitignore. 
+1. create the Token directory at: backend/src/main/java/edu/brown/cs/student/main/Token
+2. create the privateToken.java file in there.
+3. write:
+package edu.brown.cs.student.main.Token;
+
+public class PrivateToken {
+    public String token;
+    public PrivateToken(){
+        token = "YOUR TOKEN HERE";
+    }
+}
 
 ### Run Tests
 **To run tests on the backend,** enter the backend directory using `cd backend`. Then run `mvn test` in the terminal. To run
