@@ -102,9 +102,9 @@ _Here are the most important pieces of our `frontend` and how they function/conn
 1. Clone our repository at [https://github.com/cs0320-s2023/netflix-wrapped].
 2. Open the repository in two separate code environments.
     * within **VSCode**, enter the `frontend` directory using the command `cd frontend`. 
-    * within another window of **VSCode** or in **IntelliJ**, enter the `backend` directory using the command `cd backend`.
-3. In VSCode, run npm install. Once all the necessary packages or installed, run `npm start` to load the Netflix Wrapped website in your default browser.
-4.1. In IntelliJ,...
+    * within another separate window of **VSCode** or in **IntelliJ**, enter the `backend` directory using the command `cd backend`.
+3. In VSCode, run npm install. Once all of the necessary packages are installed, run `npm start` to load the Netflix Wrapped website in your default browser.
+4.1. In IntelliJ, open the `backend` directory as a project using the `pom.xml` file. Then go to the `Server.java` class and first run `mvn package`. After that finishes successfully, start the server by clicking the green play button on line 16 or at the top of the window. 
 4.2 In VSCode, install the 'Maven for Java' and 'Extension Pack for Java' extensions. Once the extensions are installed, Click Run Java for the file 'Server.java'.
 5. Install Anaconda for Python following the steps in the website. Then, run 'conda create -n [environment name]' to create a virtual environment for machine learning.
 6. Activate the virtual environment by the command conda activate [environment name]. Install the following packages: tensorflow (conda install tensorflow), numpy (pip install numpy), pandas (pip install pandas), flask (pip install flask), and flask-restful (pip install flask-restful).
