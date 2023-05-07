@@ -5,6 +5,10 @@ import java.util.List;
 
 import edu.brown.cs.student.main.components.JsonDataType.JSONTopGenres.JSONGenre;
 
+
+/**
+class for converting the data into something readable by frontend
+*/
 public class JSONFinalFetch {
     public List<JSONGenre> top5Genres = new ArrayList<>();
     public int totalMin = 0;

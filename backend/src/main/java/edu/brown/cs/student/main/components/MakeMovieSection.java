@@ -17,6 +17,13 @@ public class MakeMovieSection {
 
     }
 
+
+    /**
+    class to create a list of a map, to find the shows found in the date recieved.
+    @param date the date to search
+    @param userHistoryMapList the map list of the user history.
+    @return the list of shows in date.
+    */  
     public JSONMovieSection getMovieSection(String[][] userHistory,
     ArrayList<Map<String, ArrayList<ArrayList<String>>>> userHistoryMapList) {
         JSONMovieSection jsonMovieSection = new JSONMovieSection();

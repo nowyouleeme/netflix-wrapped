@@ -9,6 +9,6 @@ import java.nio.file.Paths;
 public class MockUserCSVQuery {
     String mock1;
     public MockUserCSVQuery() throws IOException {
-        mock1 = new String(Files.readAllBytes(Paths.get("backend-ml/data/finalTestData.csv")));
+        mock1 = new String(Files.readAllBytes(Paths.get("backend/backend-ml/data/finalTestData.csv")));
     }
 }

@@ -3,6 +3,11 @@ package edu.brown.cs.student.main.components.JsonDataType;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
+/**
+class to create the show section without typecasting
+*/
 public class JSONShowSection {
     public Integer totalEpWatched = 0;
     public List<JSONShow> allShows = new ArrayList<>();
