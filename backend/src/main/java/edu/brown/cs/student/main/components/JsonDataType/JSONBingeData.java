@@ -3,9 +3,6 @@ package edu.brown.cs.student.main.components.JsonDataType;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
-class for createing BingeData.
-*/
 public class JSONBingeData {
   public String date;
   public List<JSONBingeShow> shows = new ArrayList<>();

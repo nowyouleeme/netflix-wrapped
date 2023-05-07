@@ -12,8 +12,7 @@ import java.util.Set;
 
 public class MakeMovieSection {
 
-  public MakeMovieSection() {
-  }
+  public MakeMovieSection() {}
 
   public JSONMovieSection getMovieSection(
       String[][] userHistory,
@@ -21,7 +20,8 @@ public class MakeMovieSection {
     JSONMovieSection jsonMovieSection = new JSONMovieSection();
     PosterFetch posterFetcher = new PosterFetch();
 
-    ArrayList<Map<String, ArrayList<ArrayList<String>>>> movieOnlyList = movieOnly(userHistoryMapList);
+    ArrayList<Map<String, ArrayList<ArrayList<String>>>> movieOnlyList =
+        movieOnly(userHistoryMapList);
     jsonMovieSection.totalMoviesWatched = movieOnlyList.size();
 
     Map<String, Integer> movieCountMap = getMovieCountMap(getMovieTitleList(movieOnlyList));
@@ -147,7 +147,8 @@ public class MakeMovieSection {
   public ArrayList<Map<String, ArrayList<ArrayList<String>>>> movieOnly(
       ArrayList<Map<String, ArrayList<ArrayList<String>>>> fullList) {
 
-    ArrayList<Map<String, ArrayList<ArrayList<String>>>> movieArray = new ArrayList<Map<String, ArrayList<ArrayList<String>>>>();
+    ArrayList<Map<String, ArrayList<ArrayList<String>>>> movieArray =
+        new ArrayList<Map<String, ArrayList<ArrayList<String>>>>();
 
     for (Map<String, ArrayList<ArrayList<String>>> map : fullList) {
       for (Map.Entry<String, ArrayList<ArrayList<String>>> entry : map.entrySet()) {

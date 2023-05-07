@@ -49,7 +49,8 @@ public class MakeBingeData {
 
     bingeData.date = dateCountList.get(0).getKey();
 
-    List<Map.Entry<String, Integer>> showsInDate = getShowsInDate(dateCountList.get(0).getKey(), userHistoryMapList);
+    List<Map.Entry<String, Integer>> showsInDate =
+        getShowsInDate(dateCountList.get(0).getKey(), userHistoryMapList);
 
     if (showsInDate != null) {
       for (Map.Entry<String, Integer> entry : showsInDate) {
@@ -61,7 +62,8 @@ public class MakeBingeData {
         bingeData.shows.add(show);
       }
     }
-    ArrayList<String> movieList = getMoviesInDate(dateCountList.get(0).getKey(), userHistoryMapList);
+    ArrayList<String> movieList =
+        getMoviesInDate(dateCountList.get(0).getKey(), userHistoryMapList);
     for (int i = 0; i < movieList.size(); i++) {
       JSONBingeMovie movie = new JSONBingeMovie();
       movie.title = movieList.get(i);
