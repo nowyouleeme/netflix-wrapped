@@ -128,5 +128,5 @@ tests individually, go to the test class you'd like to run and click the play bu
 To run tests on the frontend, enter the frontend directory using `cd frontend`. Then run `npm test` in the terminal. 
 
 ## Citations
-Sending `POST` requests: https://stackoverflow.com/questions/66607373/how-to-send-a-post-request-on-typescript, https://bobbyhadz.com/blog/typescript-http-request#making-http-post-requests-in-typescript
+Sending `POST` requests: https://stackoverflow.com/questions/66607373/how-to-send-a-post-request-on-typescript, https://bobbyhadz.com/blog/typescript-http-request#making-http-post-requests-in-typescript <br />
 React Routing: https://reactrouter.com/en/main
