@@ -54,6 +54,30 @@ _Here are the most important pieces of our `frontend` and how they function/conn
 - `index.tsx` is the component where our router is hosted and our pathways to the different parts of the application are rendered and defined. 
 
 ### `backend`
+The backend directory is reponsible for handling the csv converted into a String[][] by the frontend into data that is able to be displayed by the frontend. It uses different components, such as an API that fetches poster links, an ML model, data organization, and using a large netlix data json to create data for the frontend. Here are some quick explanations of the files in backend.
+- `backend-ml` holds the code necessary for the ML model for the personality generation.
+- `data` holds our needed data.
+  - `netflix-titles.json` is an important file. it is a large data that holds movies and their attributes such as genre.
+ - `src`
+  - `main`
+    - `componenets` holds the files that create the data that will be passed in as a larger json later.
+      - `helpers` are the files that create the maps needed for the 'make' classes. it creates things such as a map that holds the movie as a key and attributes as values, and a map that holds the same form, but for only the movies/shows watched.
+      - `MakeBingeData` creates the data needed for the bingeData section.
+      - `MakeMovieSection` creates the data needed for the movie section. such as top 5 movies watched.
+      - `MakePersonality` creates the data needed for the personality section, such as 'otaku'.
+      - `MakeShowSection` creates the data needed for the shows section, such as top actors watched.
+      - `MakeTopGenres` creates the data needed for the topGenres section, the top 5 genres.
+      - `MakeTotalMin` creates total time watched. All shows are counted as 30 mins each, and media not in our database is also counted as 30 mins.
+      
+      
+      
+    - `csv`
+    - `PosterImageGetting` holds the files needed to get the posters from an external API.
+    - `reports` is the file that holds using the data from `components` in order to combine and make a json.
+    - `server` directory holds the server file and the handlers.
+    - `Test` testing.
+    
+ 
 
 ## Tests
 ### Here is a summary of our backend tests
