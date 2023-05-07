@@ -17,9 +17,7 @@ import edu.brown.cs.student.main.components.MakeShowSection;
 import edu.brown.cs.student.main.components.MakeTopGenres;
 import edu.brown.cs.student.main.components.MakeTotalMin;
 import edu.brown.cs.student.main.components.JsonDataType.JSONFinalFetch;
-import edu.brown.cs.student.main.components.JsonDataType.movieData.movieJson;
 import edu.brown.cs.student.main.components.helpers.MapCreator;
-import edu.brown.cs.student.main.components.helpers.JsonReader;
 import spark.Request;
 import spark.Response;
 
@@ -51,7 +49,7 @@ public class MovieHandler implements Route {
   @Override
   public Object handle(Request request, Response response) throws Exception {
     try {
-      JsonReader<movieJson> jsonReader = new JsonReader<>(movieJson.class);
+
       // movieJson result = jsonReader.fromJson("backend/data/netflix_titles.json");
       // Map<String, String> cast = result.cast();
       MapCreator mapCreator = new MapCreator();
@@ -100,9 +98,20 @@ public class MovieHandler implements Route {
       // mapCreator.printMapWithArray(element);
       // }
 
-      return new MovieSuccessResponse(finalFetchJson).serialize();
+      try (FileWriter writer = new FileWriter("backend/backend-ml/data/viewhist.csv")) {
+        for (int j = 0; j < history.length; j++) {
+          writer.flush();
+        }
+        writer.close();
+      } catch (IOException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+      }
 
-    } catch (IOException | JsonDataException e) {
+      return new MovieSuccessResponse(finalFetchJson).serialize();
+      
+
+    } catch (JsonDataException e) {
       System.out.println(e.getMessage());
       return new MapFailureResponse("error_bad_request", e.getMessage()).serialize();
     }
