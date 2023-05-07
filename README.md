@@ -68,6 +68,7 @@ The backend directory is reponsible for handling the csv converted into a String
       - `MakeShowSection` creates the data needed for the shows section, such as top actors watched.
       - `MakeTopGenres` creates the data needed for the topGenres section, the top 5 genres.
       - `MakeTotalMin` creates total time watched. All shows are counted as 30 mins each, and media not in our database is also counted as 30 mins.
+      - 
       
       
       
