@@ -1,4 +1,4 @@
-package edu.brown.cs.student.main.movieData;
+package edu.brown.cs.student.main.PosterImageGetting;
 import com.squareup.moshi.Json;
 
 

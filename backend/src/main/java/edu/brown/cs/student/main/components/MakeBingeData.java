@@ -8,10 +8,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import edu.brown.cs.student.main.PosterImageGetting.PosterFetch;
 import edu.brown.cs.student.main.components.JsonDataType.JSONBingeData;
 import edu.brown.cs.student.main.components.JsonDataType.JSONBingeData.JSONBingeMovie;
 import edu.brown.cs.student.main.components.JsonDataType.JSONBingeData.JSONBingeShow;
-import edu.brown.cs.student.main.movieData.PosterFetch;
 
 public class MakeBingeData {
 

@@ -7,9 +7,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import edu.brown.cs.student.main.PosterImageGetting.PosterFetch;
 import edu.brown.cs.student.main.components.JsonDataType.JSONMovieSection;
 import edu.brown.cs.student.main.components.JsonDataType.JSONMovieSection.JSONMovie;
-import edu.brown.cs.student.main.movieData.PosterFetch;
 
 public class MakeMovieSection {
 

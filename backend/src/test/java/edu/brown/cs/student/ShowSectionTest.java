@@ -114,4 +114,189 @@ public class ShowSectionTest {
         assertEquals(actorList.size(),0);
     }
 
+    @Test
+    public void actorMoviesTest() {
+        String[][] movieData1 = {
+            { "Itaewon Class", "2/14/21"},
+            { "Squid Game: level2", "2/14/21"},
+
+        };
+        MapCreator mapCreator = new MapCreator();
+        MakeShowSection showSection = new MakeShowSection();
+        ArrayList<Map<String, ArrayList<ArrayList<String>>>> showList = showSection
+        .showOnly(mapCreator.createWatchedMovieMap(movieData1));
+        String actorMovie = showSection.actorFeaturedMovies("Lee You-mi", showList);
+
+        assertEquals(actorMovie, "Squid Game");
+    }
+
+    @Test
+    public void actorMoviesUnfoundTest() {
+        String[][] movieData1 = {
+            { "Itaewon Class", "2/14/21"},
+
+        };
+        MapCreator mapCreator = new MapCreator();
+        MakeShowSection showSection = new MakeShowSection();
+        ArrayList<Map<String, ArrayList<ArrayList<String>>>> showList = showSection
+        .showOnly(mapCreator.createWatchedMovieMap(movieData1));
+        String actorMovie = showSection.actorFeaturedMovies("Lee You-mi", showList);
+
+        assertEquals(actorMovie, "");
+    }
+
+
+    @Test
+    public void getTopThreeTestOneData(){
+
+        String[][] movieData1 = {
+            { "Itaewon Class", "2/14/21"},
+
+        };
+        MapCreator mapCreator = new MapCreator();
+        MakeShowSection showSection = new MakeShowSection();
+        ArrayList<Map<String, ArrayList<ArrayList<String>>>> showList = showSection
+        .showOnly(mapCreator.createWatchedMovieMap(movieData1));
+        ArrayList<String> topThree = showSection.getTopThree(showList);
+
+        assertEquals(topThree.size(), 2);
+        assertEquals(topThree.get(0), "Itaewon Class");
+        assertEquals(topThree.get(1), "1");
+    }
+
+    @Test
+    public void getTopThreeTestEmpty(){
+
+        String[][] movieData1 = {
+            { "SLKDF", "2/14/21"},
+
+        };
+        MapCreator mapCreator = new MapCreator();
+        MakeShowSection showSection = new MakeShowSection();
+        ArrayList<Map<String, ArrayList<ArrayList<String>>>> showList = showSection
+        .showOnly(mapCreator.createWatchedMovieMap(movieData1));
+        ArrayList<String> topThree = showSection.getTopThree(showList);
+
+        assertEquals(topThree.size(), 0);
+    }
+
+    @Test
+    public void getTopThreeTestLarge(){
+
+        String[][] movieData1 = {
+            { "Squid Game: level2", "2/14/21"},
+            {"Crash Landing on You", "2/14/21" },
+            { "Squid Game: level2", "2/14/21"},
+            {"Crash Landing on You", "2/14/21" },
+            { "Squid Game: level2", "2/14/21"},
+            {"Crash Landing on You", "2/14/21" },
+            { "Squid Game: level2", "2/14/21"},
+            {"Crash Landing on You", "2/14/21" },
+            { "Squid Game: level2", "2/14/21"},
+            {"Crash Landing on You", "2/14/21" },
+            {"Itaewon Class", "2/14/21"},
+            {"Itaewon Class", "2/14/21"},
+            {"Itaewon Class", "2/14/21"},
+            {"Dear White People", "2/14/21"},
+            {"Dear White People", "2/14/21"},
+
+
+        };
+        MapCreator mapCreator = new MapCreator();
+        MakeShowSection showSection = new MakeShowSection();
+        ArrayList<Map<String, ArrayList<ArrayList<String>>>> showList = showSection
+        .showOnly(mapCreator.createWatchedMovieMap(movieData1));
+        ArrayList<String> topThree = showSection.getTopThree(showList);
+
+        assertEquals(topThree.size(), 6);
+        assertEquals(topThree.get(0), "Squid Game");
+        assertEquals(topThree.get(1), "5");
+        assertEquals(topThree.get(2), "Crash Landing on You");
+        assertEquals(topThree.get(3), "5");
+        assertEquals(topThree.get(4), "Itaewon Class");
+        assertEquals(topThree.get(5), "3");
+
+    }
+
+
+    
+
+
+
+
+
+
+    @Test
+    public void getBottomThreeTestOneData(){
+
+        String[][] movieData1 = {
+            { "Itaewon Class", "2/14/21"},
+
+        };
+        MapCreator mapCreator = new MapCreator();
+        MakeShowSection showSection = new MakeShowSection();
+        ArrayList<Map<String, ArrayList<ArrayList<String>>>> showList = showSection
+        .showOnly(mapCreator.createWatchedMovieMap(movieData1));
+        ArrayList<String> topThree = showSection.getTopThree(showList);
+
+        assertEquals(topThree.size(), 2);
+        assertEquals(topThree.get(0), "Itaewon Class");
+        assertEquals(topThree.get(1), "1");
+    }
+
+    @Test
+    public void getBottomThreeTestEmpty(){
+
+        String[][] movieData1 = {
+            { "SLKDF", "2/14/21"},
+
+        };
+        MapCreator mapCreator = new MapCreator();
+        MakeShowSection showSection = new MakeShowSection();
+        ArrayList<Map<String, ArrayList<ArrayList<String>>>> showList = showSection
+        .showOnly(mapCreator.createWatchedMovieMap(movieData1));
+        ArrayList<String> topThree = showSection.getTopThree(showList);
+
+        assertEquals(topThree.size(), 0);
+    }
+
+    @Test
+    public void getBottomThreeTestLarge(){
+
+        String[][] movieData1 = {
+            { "Squid Game: level2", "2/14/21"},
+            {"Crash Landing on You", "2/14/21" },
+            { "Squid Game: level2", "2/14/21"},
+            {"Crash Landing on You", "2/14/21" },
+            { "Squid Game: level2", "2/14/21"},
+            {"Crash Landing on You", "2/14/21" },
+            { "Squid Game: level2", "2/14/21"},
+            {"Crash Landing on You", "2/14/21" },
+            { "Squid Game: level2", "2/14/21"},
+            {"Crash Landing on You", "2/14/21" },
+            {"Itaewon Class", "2/14/21"},
+            {"Itaewon Class", "2/14/21"},
+            {"Itaewon Class", "2/14/21"},
+            {"Dear White People", "2/14/21"},
+            {"Dear White People", "2/14/21"},
+
+
+        };
+        MapCreator mapCreator = new MapCreator();
+        MakeShowSection showSection = new MakeShowSection();
+        ArrayList<Map<String, ArrayList<ArrayList<String>>>> showList = showSection
+        .showOnly(mapCreator.createWatchedMovieMap(movieData1));
+        ArrayList<String> topThree = showSection.getTopThree(showList);
+
+        assertEquals(topThree.size(), 6);
+        assertEquals(topThree.get(0), "Squid Game");
+        assertEquals(topThree.get(1), "5");
+        assertEquals(topThree.get(2), "Crash Landing on You");
+        assertEquals(topThree.get(3), "5");
+        assertEquals(topThree.get(4), "Itaewon Class");
+        assertEquals(topThree.get(5), "3");
+
+    }
+
+
 }

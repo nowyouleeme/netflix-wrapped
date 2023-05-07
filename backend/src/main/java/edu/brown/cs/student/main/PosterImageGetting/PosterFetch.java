@@ -1,4 +1,4 @@
-package edu.brown.cs.student.main.movieData;
+package edu.brown.cs.student.main.PosterImageGetting;
 
 import com.squareup.moshi.Moshi;
 import edu.brown.cs.student.main.Token.PrivateToken;
@@ -9,6 +9,7 @@ import java.net.HttpURLConnection;
 import okio.Buffer;
 
 public class PosterFetch {
+    //"2edcbd73d186d2ddb0ab62223e88b891"
     public String getPosterLink(String title){
         PosterData.posterJson posterJson;
         try {
@@ -16,7 +17,7 @@ public class PosterFetch {
             String userToken = privateToken.token;
             String filteredTitle = title.replace(" ", "-");
 
-            
+            //https://api.themoviedb.org/3/search/multi?api_key=2edcbd73d186d2ddb0ab62223e88b891&query=Age-gap-love&page=1
             posterJson = requestFromAPI(
             "https://api.themoviedb.org/3/search/multi?api_key=" 
             + userToken
@@ -24,6 +25,10 @@ public class PosterFetch {
             + filteredTitle +
             "&page=1", 
             PosterData.posterJson.class);
+
+            if (posterJson.results()[0].poster_path() == null){
+                return "https://i.imgur.com/mgzENYv.jpg";
+            }
             if (posterJson.results().length != 0){
                 return "https://image.tmdb.org/t/p/original/" + posterJson.results()[0].poster_path();
             }

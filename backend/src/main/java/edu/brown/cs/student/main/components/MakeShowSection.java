@@ -7,9 +7,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import edu.brown.cs.student.main.PosterImageGetting.PosterFetch;
 import edu.brown.cs.student.main.components.JsonDataType.JSONShowSection;
 import edu.brown.cs.student.main.components.JsonDataType.JSONShowSection.JSONShow;
-import edu.brown.cs.student.main.movieData.PosterFetch;
 
 public class MakeShowSection {
 
@@ -194,7 +194,7 @@ public class MakeShowSection {
             }
 
         }
-        return "no movie found";
+        return "";
 
     }
 

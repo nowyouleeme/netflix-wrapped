@@ -9,8 +9,8 @@ import java.util.Map;
 
 import org.junit.jupiter.api.Test;
 
+import edu.brown.cs.student.main.PosterImageGetting.PosterFetch;
 import edu.brown.cs.student.main.components.helpers.MapCreator;
-import edu.brown.cs.student.main.movieData.PosterFetch;
 
 public class PosterFetchTest {
 
@@ -55,6 +55,18 @@ public class PosterFetchTest {
             Integer linkLength = posterLink.length();
             assertTrue(linkLength>0);
         }
+    }
+
+    @Test
+    public void posterTestBugNullPosterPath() throws IOException {
+        FuzzTestingHelpers fuzzHelper = new FuzzTestingHelpers();
+        PosterFetch posterFetch = new PosterFetch();
+
+            String randomTitle = "Age gap love";
+            String posterLink = posterFetch.getPosterLink(randomTitle);
+
+            //length of imgur link that outputs when no movie found.
+            assertEquals(posterLink, "https://i.imgur.com/mgzENYv.jpg");
     }
     
 }
