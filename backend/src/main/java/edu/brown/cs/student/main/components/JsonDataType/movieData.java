@@ -3,6 +3,11 @@ package edu.brown.cs.student.main.components.JsonDataType;
 import com.squareup.moshi.Json;
 import java.util.Map;
 
+import com.squareup.moshi.Json;
+
+/**
+ * class to read the netflix titles json without typecasting
+ */
 public class movieData {
   public record movieJson(
       @Json(name = "show_id") Map<String, String> show_id,
@@ -16,5 +21,6 @@ public class movieData {
       @Json(name = "rating") Map<String, String> rating,
       @Json(name = "duration") Map<String, String> duration,
       @Json(name = "listed_in") Map<String, String> listed_in,
-      @Json(name = "description") Map<String, String> description) {}
+      @Json(name = "description") Map<String, String> description) {
+  }
 }
