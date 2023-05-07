@@ -1,7 +1,15 @@
+/**
+ * An interface containing all of the expected attributes of a PersonalityItem.
+ */
 interface PersonalityItem {
     graphic: JSX.Element,
     description: string
 }
+
+/**
+ * The Map data structure containing a graphic and descriptor for a particular 
+ * NVTI personality. 
+ */
 const personality = new Map<string, PersonalityItem>();
 
 const explorer: PersonalityItem = {
