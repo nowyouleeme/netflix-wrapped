@@ -1,27 +1,27 @@
 package edu.brown.cs.student.main.components.helpers;
 
 import com.squareup.moshi.*;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
 /**
- A class that provides the necessary methods to parse JSON files using Moshi.
- @param <T> The type of the object to parse the JSON file into.
+ * A class that provides the necessary methods to parse JSON files using Moshi.
+ *
+ * @param <T> The type of the object to parse the JSON file into.
  */
 public class JsonReader<T> {
   private final Class<T> type;
-
 
   public JsonReader(Class<T> objType) throws IOException {
     this.type = objType;
   }
 
   /**
-   Parses the json into an object of type T.
-   @return An object of type T representing the contents of the json file.
-   @throws IOException json can't be serialized.
+   * Parses the json into an object of type T.
+   *
+   * @return An object of type T representing the contents of the json file.
+   * @throws IOException json can't be serialized.
    */
   public T fromJson(String filepath) throws IOException, JsonDataException {
     String json;
@@ -38,6 +38,7 @@ public class JsonReader<T> {
 
   /**
    * returns a deserialized object from json string
+   *
    * @param json
    * @return type T object for deserializing
    * @throws IOException
@@ -49,10 +50,11 @@ public class JsonReader<T> {
   }
 
   /**
-   Serializes a type T object into a json string.
-   @param input The object to serialize.
-   @return json string representing the contents of the input object.
-   @throws IOException object can't be serialized into a json string.
+   * Serializes a type T object into a json string.
+   *
+   * @param input The object to serialize.
+   * @return json string representing the contents of the input object.
+   * @throws IOException object can't be serialized into a json string.
    */
   public String toJson(T input) throws IOException, JsonDataException {
     Moshi moshi = new Moshi.Builder().build();

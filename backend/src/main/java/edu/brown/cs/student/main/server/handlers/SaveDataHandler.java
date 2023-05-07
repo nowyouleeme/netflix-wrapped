@@ -4,13 +4,11 @@ import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;
 import com.squareup.moshi.Types;
 import edu.brown.cs.student.main.csv.data.Data;
+import edu.brown.cs.student.main.server.ServerInfo;
 import java.lang.reflect.Type;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
-
-import edu.brown.cs.student.main.server.ServerInfo;
-import spark.QueryParamsMap;
 import spark.Request;
 import spark.Response;
 import spark.Route;
@@ -32,31 +30,26 @@ public class SaveDataHandler implements Route {
     System.out.println("editted csvquery hahahahaha  " + userCSVQuery);
     HashMap<String, String> errorMessages = new HashMap<>();
 
-
     if (userCSVQuery == null) {
       errorMessages.put("error_bad_json", "usercsv not provided");
       return serialize(fail(errorMessages));
     }
-
 
     try {
       Moshi moshi = new Moshi.Builder().build();
       System.out.println("hello");
       Data.UserCSV parsedUserCSV = moshi.adapter(Data.UserCSV.class).fromJson(userCSVQuery);
 
-
-
-
-      //this checks that the usercsv 2D array was actually created, aka checking query parameters
+      // this checks that the usercsv 2D array was actually created, aka checking query parameters
       if (parsedUserCSV.usercsv() == null) {
         errorMessages.put("error_bad_json", "usercsv not provided");
         return serialize(fail(errorMessages));
       }
       System.out.println("parsedcsv  ");
       for (int i = 0; i < parsedUserCSV.usercsv().length; i++) {
-        System.out.print(Arrays.toString(parsedUserCSV.usercsv()[i])  + "\n");
+        System.out.print(Arrays.toString(parsedUserCSV.usercsv()[i]) + "\n");
       }
-      //must be at least 2 rows
+      // must be at least 2 rows
       System.out.println(parsedUserCSV);
       if (parsedUserCSV.usercsv().length < 2) {
         System.out.println(parsedUserCSV.usercsv().length);
@@ -64,7 +57,7 @@ public class SaveDataHandler implements Route {
         return serialize(fail(errorMessages));
       }
 
-      //each row must be 2 columns
+      // each row must be 2 columns
       for (int i = 0; i < parsedUserCSV.usercsv().length; i++) {
         if (parsedUserCSV.usercsv()[i].length != 2) {
           errorMessages.put("error_bad_request", "invalid netflix history csv");
@@ -72,20 +65,21 @@ public class SaveDataHandler implements Route {
         }
       }
 
-//      headers must be title and date
-      if (!(parsedUserCSV.usercsv()[0][0].equals("Title") && parsedUserCSV.usercsv()[0][1].equals("Date"))) {
+      //      headers must be title and date
+      if (!(parsedUserCSV.usercsv()[0][0].equals("Title")
+          && parsedUserCSV.usercsv()[0][1].equals("Date"))) {
         errorMessages.put("error_bad_request", "invalid netflix history csv");
         return serialize(fail(errorMessages));
       }
 
-      //save the userCSV into the serverInfo
+      // save the userCSV into the serverInfo
       serverInfo.saveUserData(parsedUserCSV);
       System.out.println("csv in server  ");
       for (int i = 0; i < serverInfo.getUserData().usercsv().length; i++) {
-        System.out.print(Arrays.toString(serverInfo.getUserData().usercsv()[i])  + "\n");
+        System.out.print(Arrays.toString(serverInfo.getUserData().usercsv()[i]) + "\n");
       }
 
-      //return serialized success response
+      // return serialized success response
       return serialize(success());
     } catch (Exception e) {
       System.out.println(e.getMessage());

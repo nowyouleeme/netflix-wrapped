@@ -8,13 +8,10 @@ import edu.brown.cs.student.main.server.ServerInfo;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.Map;
-
-import edu.brown.cs.student.main.user.UserID;
 import spark.QueryParamsMap;
 import spark.Request;
 import spark.Response;
 import spark.Route;
-
 
 /** Class that holds the handler for the "loadRLTData" server endpoint. */
 public class WipeDataHandler implements Route {
@@ -35,12 +32,13 @@ public class WipeDataHandler implements Route {
     HashMap<String, String> errorMessages = new HashMap<>();
 
     if (queryMap.toMap().size() != 0) {
-      errorMessages.put("error_bad_json", "expected 0 query parameters but received " + queryMap.toMap().size());
+      errorMessages.put(
+          "error_bad_json", "expected 0 query parameters but received " + queryMap.toMap().size());
       return serialize(fail(errorMessages));
     }
 
     try {
-      //wipe userCSV from the serverInfo
+      // wipe userCSV from the serverInfo
       serverInfo.wipeUserData();
       System.out.print("user data in server info\n" + serverInfo.getUserData() + "\n");
       return serialize(success());
