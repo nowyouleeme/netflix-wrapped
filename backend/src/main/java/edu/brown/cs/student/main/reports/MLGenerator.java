@@ -32,7 +32,7 @@ public class MLGenerator implements ReportGenerator {
         System.out.print(4);
 
         ArrayList<Map<String, ArrayList<ArrayList<String>>>> userHistoryMapList = mapCreator
-                .createWatchedMovieMap(userCSVData);
+                .createWatchedMediaMap(userCSVData);
         JSONFinalFetch finalFetchJson = new JSONFinalFetch();
         System.out.print(5);
 

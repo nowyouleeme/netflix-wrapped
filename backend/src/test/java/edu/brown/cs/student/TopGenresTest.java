@@ -37,7 +37,7 @@ public class TopGenresTest {
             { "asflnv", "2/14/21" },
         };
         MakeTopGenres topGenresMaker = new MakeTopGenres();
-        ArrayList<Map<String, ArrayList<ArrayList<String>>>> userHistoryMap = mapCreator.createWatchedMovieMap(movieData1);
+        ArrayList<Map<String, ArrayList<ArrayList<String>>>> userHistoryMap = mapCreator.createWatchedMediaMap(movieData1);
         JSONTopGenres topGenres = topGenresMaker.getTopGenres(movieData1, userHistoryMap);
         for (Map<String, ArrayList<ArrayList<String>>> element : userHistoryMap){
             mapCreator.printMapWithArray(element);
@@ -78,7 +78,7 @@ public class TopGenresTest {
             { "akljr", "0/21/21" },
         };
         MakeTopGenres topGenresMaker = new MakeTopGenres();
-        ArrayList<Map<String, ArrayList<ArrayList<String>>>> userHistoryMap = mapCreator.createWatchedMovieMap(movieData1);
+        ArrayList<Map<String, ArrayList<ArrayList<String>>>> userHistoryMap = mapCreator.createWatchedMediaMap(movieData1);
         JSONTopGenres topGenres = topGenresMaker.getTopGenres(movieData1, userHistoryMap);
         for (Map<String, ArrayList<ArrayList<String>>> element : userHistoryMap){
             mapCreator.printMapWithArray(element);
@@ -104,7 +104,7 @@ public class TopGenresTest {
             { "akljr", "0/21/21" },
         };
         MakeTopGenres topGenresMaker = new MakeTopGenres();
-        ArrayList<Map<String, ArrayList<ArrayList<String>>>> userHistoryMap = mapCreator.createWatchedMovieMap(movieData1);
+        ArrayList<Map<String, ArrayList<ArrayList<String>>>> userHistoryMap = mapCreator.createWatchedMediaMap(movieData1);
         JSONTopGenres topGenres = topGenresMaker.getTopGenres(movieData1, userHistoryMap);
         for (Map<String, ArrayList<ArrayList<String>>> element : userHistoryMap){
             mapCreator.printMapWithArray(element);
@@ -121,7 +121,7 @@ public class TopGenresTest {
             { "Dear White People", "0/21/21" }
         };
         MakeTopGenres topGenresMaker = new MakeTopGenres();
-        ArrayList<Map<String, ArrayList<ArrayList<String>>>> userHistoryMap = mapCreator.createWatchedMovieMap(movieData1);
+        ArrayList<Map<String, ArrayList<ArrayList<String>>>> userHistoryMap = mapCreator.createWatchedMediaMap(movieData1);
         JSONTopGenres topGenres = topGenresMaker.getTopGenres(movieData1, userHistoryMap);
         for (Map<String, ArrayList<ArrayList<String>>> element : userHistoryMap){
             mapCreator.printMapWithArray(element);

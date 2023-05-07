@@ -32,7 +32,7 @@ public class MovieSectionTest {
         MapCreator mapCreator = new MapCreator();
         MakeMovieSection movieSection = new MakeMovieSection();
         ArrayList<Map<String, ArrayList<ArrayList<String>>>> movieList = movieSection
-        .movieOnly(mapCreator.createWatchedMovieMap(movieData1));
+        .movieOnly(mapCreator.createWatchedMediaMap(movieData1));
         
         assertEquals(movieList.size(), 2);
         assertTrue(movieList.get(1).keySet().contains("Elizabeth at 90: A Family Tribute"));
@@ -67,7 +67,7 @@ public class MovieSectionTest {
         MapCreator mapCreator = new MapCreator();
         MakeMovieSection movieSection = new MakeMovieSection();
         ArrayList<Map<String, ArrayList<ArrayList<String>>>> movieList = movieSection
-        .movieOnly(mapCreator.createWatchedMovieMap(movieData1));
+        .movieOnly(mapCreator.createWatchedMediaMap(movieData1));
         ArrayList<String> topFive = movieSection.getTopFiveMovies(movieList);
         
         assertEquals(topFive.size(), 5);
@@ -103,7 +103,7 @@ public class MovieSectionTest {
         MapCreator mapCreator = new MapCreator();
         MakeMovieSection movieSection = new MakeMovieSection();
         ArrayList<Map<String, ArrayList<ArrayList<String>>>> movieList = movieSection
-        .movieOnly(mapCreator.createWatchedMovieMap(movieData1));
+        .movieOnly(mapCreator.createWatchedMediaMap(movieData1));
         ArrayList<String> topFive = movieSection.getTopFiveMovies(movieList);
         
         assertEquals(topFive.size(), 4);
@@ -124,7 +124,7 @@ public class MovieSectionTest {
         MapCreator mapCreator = new MapCreator();
         MakeMovieSection movieSection = new MakeMovieSection();
         ArrayList<Map<String, ArrayList<ArrayList<String>>>> movieList = movieSection
-        .movieOnly(mapCreator.createWatchedMovieMap(movieData1));
+        .movieOnly(mapCreator.createWatchedMediaMap(movieData1));
         ArrayList<String> topFive = movieSection.getTopFiveMovies(movieList);
         
         assertEquals(topFive.size(), 0);
@@ -157,7 +157,7 @@ public class MovieSectionTest {
     MapCreator mapCreator = new MapCreator();
     MakeMovieSection movieSection = new MakeMovieSection();
     ArrayList<Map<String, ArrayList<ArrayList<String>>>> movieList = movieSection
-    .movieOnly(mapCreator.createWatchedMovieMap(movieData1));
+    .movieOnly(mapCreator.createWatchedMediaMap(movieData1));
     ArrayList<String> actors = movieSection.actorInfo(movieList);
 
    
@@ -185,7 +185,7 @@ public class MovieSectionTest {
     MapCreator mapCreator = new MapCreator();
     MakeMovieSection movieSection = new MakeMovieSection();
     ArrayList<Map<String, ArrayList<ArrayList<String>>>> movieList = movieSection
-    .movieOnly(mapCreator.createWatchedMovieMap(movieData1));
+    .movieOnly(mapCreator.createWatchedMediaMap(movieData1));
     ArrayList<String> actors = movieSection.actorInfo(movieList);
 
    
@@ -207,7 +207,7 @@ public class MovieSectionTest {
     MapCreator mapCreator = new MapCreator();
     MakeMovieSection movieSection = new MakeMovieSection();
     ArrayList<Map<String, ArrayList<ArrayList<String>>>> movieList = movieSection
-    .movieOnly(mapCreator.createWatchedMovieMap(movieData1));
+    .movieOnly(mapCreator.createWatchedMediaMap(movieData1));
     ArrayList<String> actors = movieSection.actorInfo(movieList);
 
    

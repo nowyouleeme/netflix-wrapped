@@ -60,7 +60,7 @@ public class MovieHandler implements Route {
       MakeShowSection showSection = new MakeShowSection();
 
       ArrayList<Map<String, ArrayList<ArrayList<String>>>> userHistoryMapList = mapCreator
-          .createWatchedMovieMap(history);
+          .createWatchedMediaMap(history);
       JSONFinalFetch finalFetchJson = new JSONFinalFetch();
 
 

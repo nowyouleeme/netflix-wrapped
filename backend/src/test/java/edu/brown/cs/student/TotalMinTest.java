@@ -29,7 +29,7 @@ public class TotalMinTest {
             { "The Golden Child", "10/21/21" }
         };
         MapCreator mapCreator = new MapCreator();
-        userHistoryMapList = mapCreator.createWatchedMovieMap(movieData);
+        userHistoryMapList = mapCreator.createWatchedMediaMap(movieData);
         MakeTotalMin makeTotalMin = new MakeTotalMin();
 
         JSONTotalMin minData = makeTotalMin.getTotalMin(movieData, userHistoryMapList);
@@ -43,7 +43,7 @@ public class TotalMinTest {
             { "aaaaaaaaaaaaaaaaaaa", "4/10/20" }
         };
         MapCreator mapCreator = new MapCreator();
-        userHistoryMapList = mapCreator.createWatchedMovieMap(movieData);
+        userHistoryMapList = mapCreator.createWatchedMediaMap(movieData);
         MakeTotalMin makeTotalMin = new MakeTotalMin();
 
         JSONTotalMin minData = makeTotalMin.getTotalMin(movieData, userHistoryMapList);
@@ -56,7 +56,7 @@ public class TotalMinTest {
             { "Community: Season 1: Advanced Criminal Law", "4/10/20" }
         };
         MapCreator mapCreator = new MapCreator();
-        userHistoryMapList = mapCreator.createWatchedMovieMap(movieData);
+        userHistoryMapList = mapCreator.createWatchedMediaMap(movieData);
         MakeTotalMin makeTotalMin = new MakeTotalMin();
 
         JSONTotalMin minData = makeTotalMin.getTotalMin(movieData, userHistoryMapList);

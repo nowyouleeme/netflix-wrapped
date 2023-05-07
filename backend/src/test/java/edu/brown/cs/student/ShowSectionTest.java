@@ -35,7 +35,7 @@ public class ShowSectionTest {
         MapCreator mapCreator = new MapCreator();
         MakeShowSection showSection = new MakeShowSection();
         ArrayList<Map<String, ArrayList<ArrayList<String>>>> showList = showSection
-                .showOnly(mapCreator.createWatchedMovieMap(movieData1));
+                .showOnly(mapCreator.createWatchedMediaMap(movieData1));
         assertEquals(showList.size(), 1);
         assertTrue(showList.get(0).keySet().contains("Squid Game"));
     }
@@ -48,7 +48,7 @@ public class ShowSectionTest {
         MapCreator mapCreator = new MapCreator();
         MakeShowSection showSection = new MakeShowSection();
         ArrayList<Map<String, ArrayList<ArrayList<String>>>> showList = showSection
-                .showOnly(mapCreator.createWatchedMovieMap(movieData1));
+                .showOnly(mapCreator.createWatchedMediaMap(movieData1));
         assertEquals(showList.size(), 0);
     }
 
@@ -61,7 +61,7 @@ public class ShowSectionTest {
         MapCreator mapCreator = new MapCreator();
         MakeShowSection showSection = new MakeShowSection();
         ArrayList<Map<String, ArrayList<ArrayList<String>>>> showList = showSection
-        .showOnly(mapCreator.createWatchedMovieMap(movieData1));
+        .showOnly(mapCreator.createWatchedMediaMap(movieData1));
         ArrayList<String> actorList = showSection.actorInfo(showList);
 
         assertEquals(actorList.size(), 3);
@@ -89,7 +89,7 @@ public class ShowSectionTest {
         MapCreator mapCreator = new MapCreator();
         MakeShowSection showSection = new MakeShowSection();
         ArrayList<Map<String, ArrayList<ArrayList<String>>>> showList = showSection
-        .showOnly(mapCreator.createWatchedMovieMap(movieData1));
+        .showOnly(mapCreator.createWatchedMediaMap(movieData1));
         ArrayList<String> actorList = showSection.actorInfo(showList);
 
         assertEquals(actorList.size(), 3);
@@ -108,7 +108,7 @@ public class ShowSectionTest {
         MapCreator mapCreator = new MapCreator();
         MakeShowSection showSection = new MakeShowSection();
         ArrayList<Map<String, ArrayList<ArrayList<String>>>> showList = showSection
-        .showOnly(mapCreator.createWatchedMovieMap(movieData1));
+        .showOnly(mapCreator.createWatchedMediaMap(movieData1));
         ArrayList<String> actorList = showSection.actorInfo(showList);
 
         assertEquals(actorList.size(),0);
@@ -124,7 +124,7 @@ public class ShowSectionTest {
         MapCreator mapCreator = new MapCreator();
         MakeShowSection showSection = new MakeShowSection();
         ArrayList<Map<String, ArrayList<ArrayList<String>>>> showList = showSection
-        .showOnly(mapCreator.createWatchedMovieMap(movieData1));
+        .showOnly(mapCreator.createWatchedMediaMap(movieData1));
         String actorMovie = showSection.actorFeaturedShows("Lee You-mi", showList);
 
         assertEquals(actorMovie, "Squid Game");
@@ -139,7 +139,7 @@ public class ShowSectionTest {
         MapCreator mapCreator = new MapCreator();
         MakeShowSection showSection = new MakeShowSection();
         ArrayList<Map<String, ArrayList<ArrayList<String>>>> showList = showSection
-        .showOnly(mapCreator.createWatchedMovieMap(movieData1));
+        .showOnly(mapCreator.createWatchedMediaMap(movieData1));
         String actorMovie = showSection.actorFeaturedShows("Lee You-mi", showList);
 
         assertEquals(actorMovie, "");
@@ -156,7 +156,7 @@ public class ShowSectionTest {
         MapCreator mapCreator = new MapCreator();
         MakeShowSection showSection = new MakeShowSection();
         ArrayList<Map<String, ArrayList<ArrayList<String>>>> showList = showSection
-        .showOnly(mapCreator.createWatchedMovieMap(movieData1));
+        .showOnly(mapCreator.createWatchedMediaMap(movieData1));
         ArrayList<String> topThree = showSection.getTopThree(showList);
 
         assertEquals(topThree.size(), 2);
@@ -174,7 +174,7 @@ public class ShowSectionTest {
         MapCreator mapCreator = new MapCreator();
         MakeShowSection showSection = new MakeShowSection();
         ArrayList<Map<String, ArrayList<ArrayList<String>>>> showList = showSection
-        .showOnly(mapCreator.createWatchedMovieMap(movieData1));
+        .showOnly(mapCreator.createWatchedMediaMap(movieData1));
         ArrayList<String> topThree = showSection.getTopThree(showList);
 
         assertEquals(topThree.size(), 0);
@@ -205,7 +205,7 @@ public class ShowSectionTest {
         MapCreator mapCreator = new MapCreator();
         MakeShowSection showSection = new MakeShowSection();
         ArrayList<Map<String, ArrayList<ArrayList<String>>>> showList = showSection
-        .showOnly(mapCreator.createWatchedMovieMap(movieData1));
+        .showOnly(mapCreator.createWatchedMediaMap(movieData1));
         ArrayList<String> topThree = showSection.getTopThree(showList);
 
         assertEquals(topThree.size(), 6);
@@ -236,7 +236,7 @@ public class ShowSectionTest {
         MapCreator mapCreator = new MapCreator();
         MakeShowSection showSection = new MakeShowSection();
         ArrayList<Map<String, ArrayList<ArrayList<String>>>> showList = showSection
-        .showOnly(mapCreator.createWatchedMovieMap(movieData1));
+        .showOnly(mapCreator.createWatchedMediaMap(movieData1));
         ArrayList<String> bottomThree = showSection.getBottomThree(showList);
 
         assertEquals(bottomThree.size(), 2);
@@ -254,7 +254,7 @@ public class ShowSectionTest {
         MapCreator mapCreator = new MapCreator();
         MakeShowSection showSection = new MakeShowSection();
         ArrayList<Map<String, ArrayList<ArrayList<String>>>> showList = showSection
-        .showOnly(mapCreator.createWatchedMovieMap(movieData1));
+        .showOnly(mapCreator.createWatchedMediaMap(movieData1));
         ArrayList<String> bottomThree = showSection.getBottomThree(showList);
 
         assertEquals(bottomThree.size(), 0);
@@ -285,7 +285,7 @@ public class ShowSectionTest {
         MapCreator mapCreator = new MapCreator();
         MakeShowSection showSection = new MakeShowSection();
         ArrayList<Map<String, ArrayList<ArrayList<String>>>> showList = showSection
-        .showOnly(mapCreator.createWatchedMovieMap(movieData1));
+        .showOnly(mapCreator.createWatchedMediaMap(movieData1));
         ArrayList<String> bottomThree = showSection.getBottomThree(showList);
 
         assertEquals(bottomThree.size(), 6);

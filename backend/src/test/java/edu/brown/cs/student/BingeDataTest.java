@@ -34,7 +34,7 @@ public class BingeDataTest {
         };
         
         MakeBingeData bingeDataMaker = new MakeBingeData();
-        ArrayList<Map<String, ArrayList<ArrayList<String>>>> userHistoryMap = mapCreator.createWatchedMovieMap(movieData1);
+        ArrayList<Map<String, ArrayList<ArrayList<String>>>> userHistoryMap = mapCreator.createWatchedMediaMap(movieData1);
 
         JSONBingeData bingeData = bingeDataMaker.getBingeData(movieData1, userHistoryMap);
 
@@ -67,7 +67,7 @@ public class BingeDataTest {
         };
         
         MakeBingeData bingeDataMaker = new MakeBingeData();
-        ArrayList<Map<String, ArrayList<ArrayList<String>>>> userHistoryMap = mapCreator.createWatchedMovieMap(movieData1);
+        ArrayList<Map<String, ArrayList<ArrayList<String>>>> userHistoryMap = mapCreator.createWatchedMediaMap(movieData1);
 
         JSONBingeData bingeData = bingeDataMaker.getBingeData(movieData1, userHistoryMap);
 
@@ -95,7 +95,7 @@ public class BingeDataTest {
         };
         
         MakeBingeData bingeDataMaker = new MakeBingeData();
-        ArrayList<Map<String, ArrayList<ArrayList<String>>>> userHistoryMap = mapCreator.createWatchedMovieMap(movieData1);
+        ArrayList<Map<String, ArrayList<ArrayList<String>>>> userHistoryMap = mapCreator.createWatchedMediaMap(movieData1);
 
         JSONBingeData bingeData = bingeDataMaker.getBingeData(movieData1, userHistoryMap);
 

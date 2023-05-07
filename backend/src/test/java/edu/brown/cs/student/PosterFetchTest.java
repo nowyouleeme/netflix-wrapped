@@ -39,7 +39,7 @@ public class PosterFetchTest {
     public void fuzzTestPosterFetchFromList() throws IOException {
         PosterFetch posterFetch = new PosterFetch();
         MapCreator mapCreator = new MapCreator();
-        Map<String, ArrayList<ArrayList<String>>> movieMap = mapCreator.createMovieMap();
+        Map<String, ArrayList<ArrayList<String>>> movieMap = mapCreator.createMediaMap();
         ArrayList<String> titleList = new ArrayList<String>();
 
         //fill titlelist

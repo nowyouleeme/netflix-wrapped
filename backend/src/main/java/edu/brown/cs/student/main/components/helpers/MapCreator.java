@@ -16,16 +16,11 @@ public class MapCreator {
 
   }
 
-  public ArrayList<Map<String, ArrayList<ArrayList<String>>>> createWatchedMovieMap(String[][] history) {
-    //fix show issue
-
-
+  public ArrayList<Map<String, ArrayList<ArrayList<String>>>> createWatchedMediaMap(String[][] history) {
     ArrayList<Map<String, ArrayList<ArrayList<String>>>> historyMapList = new ArrayList<>();
-
-
     for (int i = 0; i < history.length; i++) {
       //fill up historyMapList.
-      final Map<String, ArrayList<ArrayList<String>>> movieMap = createMovieMap();
+      final Map<String, ArrayList<ArrayList<String>>> movieMap = createMediaMap();
       Map<String, ArrayList<ArrayList<String>>> mapToAdd = new HashMap<String, ArrayList<ArrayList<String>>>();
       //System.out.println(mapToAdd.get(history[i][0]).size());
 
@@ -103,7 +98,7 @@ public class MapCreator {
 
 
 
-  public Map<String, ArrayList<ArrayList<String>>> createMovieMap() {
+  public Map<String, ArrayList<ArrayList<String>>> createMediaMap() {
     Map<String, ArrayList<ArrayList<String>>> finalMap = new HashMap<>();
     try {
       JsonReader<movieJson> jsonReader = new JsonReader<>(movieJson.class);
