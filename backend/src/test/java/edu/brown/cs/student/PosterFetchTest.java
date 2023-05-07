@@ -53,8 +53,10 @@ public class PosterFetchTest {
             String randomTitle = titleList.get(randomIndex);
             String posterLink = posterFetch.getPosterLink(randomTitle);
             Integer linkLength = posterLink.length();
-            assertTrue(linkLength>0);
-            System.out.println(posterLink);
+            if(posterLink != "https://i.imgur.com/mgzENYv.jpg"){
+                assertEquals(posterLink.substring(0, 23), "https://image.tmdb.org/");
+                assertTrue(posterLink != "https://image.tmdb.org/t/p/original/null");
+            }
         }
     }
 
