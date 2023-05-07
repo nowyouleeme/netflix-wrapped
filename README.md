@@ -2,7 +2,9 @@
 
 ## Project Details
 **Contributors:** klee161, khu21, jcha17, dhan26 <br />
-**Project Description:** Our “Netflix Wrapped” project is an application that takes in a user's Netflix Viewing History and gives them a personalized report of their Netflix consumption habits, similar to the popular feature “Spotify Wrapped.” <br />
+**Project Description:** Currently, Netflix does not offer a “Netflix Wrapped” feature, and thus users seem to have no way of easily tracking and analyzing their viewing history and trends. Knowledge about this problem was gathered through various sources, including articles discussing the currently existing “Spotify Wrapped” feature and streaming services; user interviews with roommates, friends, and online forum users; and personal experience from group members with losing track of their Netflix activity.
+Our project aims to solve this problem by providing a personalized report of a user’s Netflix activity on our web application, where users can view their watch history and trends in media consumption. After witnessing the highly anticipated annual event for music lovers with “Spotify Wrapped,” the sweeping popularity of the MBTI trend across the globe, and reading up on Twitter and Reddit posts talking about the need for a Netflix Wrapped feature (https://www.reddit.com/r/netflix/comments/rr8wq7/i_wanted_a_netflix_wrapped_really_badly_so_i_made/, https://twitter.com/mlgpp26/status/1645417563151646720?s=20, https://twitter.com/killingasher/status/1600222831727456256?s=20, https://twitter.com/sugar__bay/status/1608542903080726528?s=20, https://twitter.com/SyarifahAmin/status/1598635315505561600?s=20, to list a few), we chose to work on this problem to provide Netflix users a unique and engaging way to understand themselves and connect with others through their streaming habits.
+ <br />
 **Repository:** https://github.com/cs0320-s2023/netflix-wrapped <br />
 **Total time:** 3 weeks <br />
 
