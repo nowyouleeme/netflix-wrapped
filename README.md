@@ -123,7 +123,7 @@ There are some inaccuracies with the poster images fetched for a user's given wa
 
 ### Run Tests
 **To run tests on the backend,** enter the backend directory using `cd backend`. Then run `mvn test` in the terminal. To run
-tests individually, go to the test class you'd like to run and click the play button on the left side of the code window.
+tests individually, go to the test class you'd like to run and click the play button on the left side of the code window. <br />
 **To run tests on the frontend,** enter the frontend directory using `cd frontend`. Then run `npm test` in the terminal. 
 
 ## Citations
