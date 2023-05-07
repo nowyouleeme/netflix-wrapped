@@ -19,8 +19,6 @@ public class FuzzTestingHelpers {
     public String generateRandomString(int length) {
         StringBuilder sb = new StringBuilder(length);
         for (int i = 0; i < length; i++) {
-            //int randomAscii = randomNum.nextInt(96) + 32;
-            //no spaces
             int randomAscii = randomNum.nextInt(45, 127);
             sb.append((char) randomAscii);
         }

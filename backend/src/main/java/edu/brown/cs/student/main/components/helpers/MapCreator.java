@@ -16,15 +16,17 @@ public class MapCreator {
 
   }
 
+
+/**
+create a list map of all watched movies and shows. 
+ @param history a string array of watched shows from the csv
+ @return a map of all watched movies and shows. 
+ */
   public ArrayList<Map<String, ArrayList<ArrayList<String>>>> createWatchedMediaMap(String[][] history) {
     ArrayList<Map<String, ArrayList<ArrayList<String>>>> historyMapList = new ArrayList<>();
     for (int i = 0; i < history.length; i++) {
-      //fill up historyMapList.
       final Map<String, ArrayList<ArrayList<String>>> movieMap = createMediaMap();
       Map<String, ArrayList<ArrayList<String>>> mapToAdd = new HashMap<String, ArrayList<ArrayList<String>>>();
-      //System.out.println(mapToAdd.get(history[i][0]).size());
-
-      //check if a title is a show: search and not found-> split by :, and search again. 
 
       if(movieMap.containsKey(history[i][0])){
         ArrayList<ArrayList<String>> movieInfo = new ArrayList<ArrayList<String>>();
@@ -32,7 +34,6 @@ public class MapCreator {
         mapToAdd.put(history[i][0], movieInfo);
         ArrayList<String> stringList = new ArrayList<String>();
         stringList.add(history[i][1]);
-        //this line ic changing movemap somehow
         mapToAdd.get(history[i][0]).add(stringList);
       }
       else{
@@ -43,7 +44,6 @@ public class MapCreator {
           mapToAdd.put(showTitle, movieInfo);
           ArrayList<String> stringList = new ArrayList<String>();
           stringList.add(history[i][1]);
-          //this line ic changing movemap somehow
           mapToAdd.get(showTitle).add(stringList);
         }
         else{
@@ -51,53 +51,22 @@ public class MapCreator {
           ArrayList<String> stringList = new ArrayList<String>();
           stringList.add(history[i][1]);
           largeStringArray.add(stringList);
-          //this line ic changing movemap somehow
           mapToAdd.put(history[i][0], largeStringArray);
         }
       }
       historyMapList.add(mapToAdd);
-      //printMapWithArray(mapToAdd);
     }
     return historyMapList;
   }
 
-// //loop through the history length
-// for (int i = 0; i < history.length; i++) {
-//   //make new variables, movieInfo is the movie information array and mapToAdd is the map we add to the final array
-//   ArrayList<ArrayList<String>> movieInfo = new ArrayList<ArrayList<String>>();
-//   Map<String, ArrayList<ArrayList<String>>> mapToAdd = new HashMap<>();
-
-//   //if movieMap actually has information on the movie title,
-//   if (movieMap.containsKey(history[i][0])) {
-//     //movieinfo is the information in the movieMap. 
-
-//     System.out.println(history[i][0] + ": " + movieMap.get(history[i][0]).size());
-//     movieInfo = movieMap.get(history[i][0]);
-//   }
-//   // gets null if not found
-//   ArrayList<String> watchDateList = new ArrayList<>();
-//   watchDateList.add(history[i][1]);
-//   // prevent adding multiple versions of view dates.
-
-//   movieInfo.add(watchDateList);
-  
-
-
-//   mapToAdd.put(history[i][0], movieInfo);
-//   historyMapList.add(mapToAdd);
-// }
-// System.out.println(historyMapList.size());
-// for (Map<String, ArrayList<ArrayList<String>>> entry : historyMapList) {
-//   printMapWithArray(entry);
-// }
-// return historyMapList;
 
 
 
 
-
-
-
+  /**
+  create a list map of all movies and shows from the database json.
+ @return a map of all  movies and shows. 
+ */
   public Map<String, ArrayList<ArrayList<String>>> createMediaMap() {
     Map<String, ArrayList<ArrayList<String>>> finalMap = new HashMap<>();
     try {

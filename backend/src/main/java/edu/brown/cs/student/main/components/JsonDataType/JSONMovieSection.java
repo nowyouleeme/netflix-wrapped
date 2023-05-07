@@ -3,6 +3,12 @@ package edu.brown.cs.student.main.components.JsonDataType;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
+
+  /**
+    class for creating the movie section to avoid typecasting issues
+ */
 public class JSONMovieSection {
     public Integer totalMoviesWatched = 0;
     public List<JSONMovie> allMovies = new ArrayList<JSONMovie>();

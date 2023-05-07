@@ -17,6 +17,13 @@ public class MakeMovieSection {
 
     }
 
+
+    /**
+     * A function that gets the movie section to pass in the frontend
+     * @param userHistory the string array of csv of watch history
+     * @param userHistoryMapList is the arraylist  of maps of all the movies and shows watched
+     * @return the moviesection
+    */
     public JSONMovieSection getMovieSection(String[][] userHistory,
     ArrayList<Map<String, ArrayList<ArrayList<String>>>> userHistoryMapList) {
         JSONMovieSection jsonMovieSection = new JSONMovieSection();
@@ -42,7 +49,6 @@ public class MakeMovieSection {
                 movieTitles.add(element); 
             }
         }
-        // although a for loop, this is adding only one movie title.
         for (String element : getTopFiveMovies(movieOnlyList)) {
             JSONMovie movie = new JSONMovie();
             movie.title = element;
@@ -70,6 +76,11 @@ public class MakeMovieSection {
 
 
 
+    /**
+     * getMovieCountMap the movieCount map to hold how many times you watched the movie.
+     * @param movieTitleList is the list of movieTitles
+     * @return the map 
+    */
     public Map<String, Integer> getMovieCountMap(ArrayList<String> movieTitleList){
         Map<String, Integer> movieCountMap = new HashMap<String, Integer>();
         for (String title : movieTitleList) {
@@ -83,6 +94,11 @@ public class MakeMovieSection {
 
     }
 
+    /**
+     * getMovieTitleList gets the list of movie titles.
+     * @param movieList the list of movies
+     * @return the list of just titles
+    */
     public ArrayList<String> getMovieTitleList(ArrayList<Map<String, ArrayList<ArrayList<String>>>> movieList){
         ArrayList<String> movieTitleList = new ArrayList<String>();
         for (Map<String, ArrayList<ArrayList<String>>> map : movieList) {
@@ -94,6 +110,11 @@ public class MakeMovieSection {
 
     }
 
+    /**
+     * we recieve the top five movies watched.
+     * @param movieList the list of movies
+     * @return the list of top five movies
+    */
     public ArrayList<String> getTopFiveMovies(ArrayList<Map<String, ArrayList<ArrayList<String>>>> movieList) {
         ArrayList<String> topMoviesList = new ArrayList<String>();
         ArrayList<String> movieTitleList = getMovieTitleList(movieList);
@@ -102,7 +123,6 @@ public class MakeMovieSection {
         List<Map.Entry<String, Integer>> movieCountList = new ArrayList<>(movieCountMap.entrySet());
         Collections.sort(movieCountList, (a, b) -> b.getValue().compareTo(a.getValue()));
 
-        // Print the top 5 genres with their counts
         int numGenres = Math.min(5, movieCountList.size());
         for (int i = 0; i < numGenres; i++) {
             topMoviesList.add(movieCountList.get(i).getKey());
@@ -111,6 +131,11 @@ public class MakeMovieSection {
 
     }
 
+    /**
+     * getting the top three actors.
+     * @param movieList the list of movies
+     * @return returns the list of top actors.
+    */
     public ArrayList<String> actorInfo(ArrayList<Map<String, ArrayList<ArrayList<String>>>> movieList) {
         Map<String, Integer> actorCountMap = new HashMap<String, Integer>();
         ArrayList<String> finalActorList = new ArrayList<String>();
@@ -130,7 +155,6 @@ public class MakeMovieSection {
         List<Map.Entry<String, Integer>> actorCountlist = new ArrayList<>(actorCountMap.entrySet());
         Collections.sort(actorCountlist, (a, b) -> b.getValue().compareTo(a.getValue()));
 
-        // Print the top 5 genres with their counts
         int num = Math.min(3, actorCountlist.size());
         for (int i = 0; i < num; i++) {
             finalActorList.add(actorCountlist.get(i).getKey());
@@ -138,6 +162,13 @@ public class MakeMovieSection {
         return finalActorList;
     }
 
+
+    /**
+     * getting the movie the actor in the input is feautred in. 
+     * @param actor the actor to search
+     * @param movieList the list of just movies
+     * @return returns the movie the actor stars in 
+    */
     public String actorFeaturedMovies(String actor,
             ArrayList<Map<String, ArrayList<ArrayList<String>>>> movieList) {
 
@@ -155,6 +186,12 @@ public class MakeMovieSection {
 
     }
 
+
+    /**
+     * filtering the list of media into just movies
+     * @param fullList the list of all movies and shows
+     * @return the filtered list.
+    */
     public ArrayList<Map<String, ArrayList<ArrayList<String>>>> movieOnly(
             ArrayList<Map<String, ArrayList<ArrayList<String>>>> fullList) {
 

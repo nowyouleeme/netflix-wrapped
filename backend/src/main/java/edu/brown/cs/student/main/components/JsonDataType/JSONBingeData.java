@@ -3,6 +3,10 @@ package edu.brown.cs.student.main.components.JsonDataType;
 import java.util.ArrayList;
 import java.util.List;
 
+
+  /**
+    class for creating the BingeData to avoid typecasting issues
+ */
 public class JSONBingeData {
     public String date;
     public List<JSONBingeShow> shows = new ArrayList<>();

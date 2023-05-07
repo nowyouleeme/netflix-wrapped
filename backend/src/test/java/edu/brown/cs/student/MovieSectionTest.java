@@ -14,12 +14,18 @@ import edu.brown.cs.student.main.components.helpers.MapCreator;
 
 public class MovieSectionTest {
 
+        /**
+     * Basic test to see if the test in this file are working
+     */
     @Test
     public void testFileWorking() throws IOException {
         assertEquals(1 + 1, 2);
     }
 
 
+    /**
+     * Basic test to see if the filter for the moviesOnly is working
+     */
     @Test
     public void testMovieOnly() {
         String[][] movieData1 = {
@@ -39,6 +45,12 @@ public class MovieSectionTest {
         assertTrue(movieList.get(0).keySet().contains("Valentine's Day"));
 
     }
+
+
+    /**
+     * Integration test to see if getting the top five movies watched works, using helpers.
+     * Checks if shows are being filtered.
+     */
     @Test
     public void testTopFiveMovies() {
         String[][] movieData1 = {
@@ -78,6 +90,11 @@ public class MovieSectionTest {
         assertEquals(topFive.get(4), ("Superbad"));
     }
 
+    /**
+     * Integration test to see if getting the top five movies watched works, 
+     * even if there is less than five variety.
+     * Checks if shows are being filtered.
+     */
     @Test
     public void testTopFiveMoviesLessThanFive() {
         String[][] movieData1 = {
@@ -116,6 +133,11 @@ public class MovieSectionTest {
 
 
 
+    /**
+     * Integration test to see if getting the top five movies watched works, even if the only movie
+     * in there is a movie not in data.
+     * Checks if shows are being filtered.
+     */
     @Test
     public void testTopFiveMoviesEmpty() {
         String[][] movieData1 = {
@@ -131,6 +153,9 @@ public class MovieSectionTest {
     }
 
 
+    /**
+     * Integration test for checking for the top actors and movies they are in, using a variety of movies
+     */
     @Test
     public void topActorsAndMoviesTest(){
         String[][] movieData1 = {
@@ -176,6 +201,12 @@ public class MovieSectionTest {
 
     }
 
+
+
+        /**
+     * checking for the top actors and movies they are in, even if the movie in it is not in our
+     * data.
+     */
     @Test
     public void topActorsAndMoviesTestEmpty(){
         String[][] movieData1 = {
@@ -197,6 +228,10 @@ public class MovieSectionTest {
     }
 
 
+            /**
+     * checking for the top actors and movies they are in, and checking that our list
+     * can hold people from different movies.
+     */
     @Test
     public void topActorsAndMoviesDifferentMovies(){
         String[][] movieData1 = {

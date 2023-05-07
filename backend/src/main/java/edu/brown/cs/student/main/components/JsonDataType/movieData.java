@@ -6,6 +6,9 @@ import java.util.Map;
 import com.squareup.moshi.Json;
 
 
+  /**
+    class for reading the large data json for movie/show information
+ */
 public class movieData {
    public record movieJson(
        @Json(name = "show_id") Map<String, String> show_id,

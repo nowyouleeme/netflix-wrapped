@@ -15,12 +15,18 @@ import edu.brown.cs.student.main.components.helpers.MapCreator;
 public class BingeDataTest {
     
 
+    /**
+     * Basic test to see if the test in this file are working
+     */
     @Test
     public void testFileWorking() throws IOException {
         assertEquals(1+1, 2);
     }
 
 
+        /**
+     * Basic test to recognize the binge date., and the movies watched that day
+     */
     @Test
     public void BingeDataBasicTest() throws IOException {
         MapCreator mapCreator = new MapCreator();
@@ -48,6 +54,9 @@ public class BingeDataTest {
     }
     
 
+        /**
+     * Basic test to see if the binge date is recognized with shows, and the media watched that day.
+     */
     @Test
     public void BingeDataBasicTestWithShow() throws IOException {
         MapCreator mapCreator = new MapCreator();
@@ -86,6 +95,9 @@ public class BingeDataTest {
     }
 
 
+    /**
+     * Basic test to see if the binge date is used with movies not in our data
+     */
     @Test
     public void BingeDataBasicTestUnfoundMovie() throws IOException {
         MapCreator mapCreator = new MapCreator();

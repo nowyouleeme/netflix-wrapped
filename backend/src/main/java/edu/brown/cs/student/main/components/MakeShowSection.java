@@ -13,19 +13,25 @@ import edu.brown.cs.student.main.components.JsonDataType.JSONShowSection.JSONSho
 
 public class MakeShowSection {
 
+    /**
+     * get the showsection for the frontend
+     * @param userHistory the string array of userHistory
+     * @param userHistoryMapList is the users watched movies and shows
+     * @return JSONShowSection to send in
+    */
     public JSONShowSection getShowSection(String[][] userHistory,
     ArrayList<Map<String, ArrayList<ArrayList<String>>>> userHistoryMapList) {
         PosterFetch posterFetcher = new PosterFetch();
         JSONShowSection showSection = new JSONShowSection();
 
         ArrayList<Map<String, ArrayList<ArrayList<String>>>> showOnlyList = showOnly(userHistoryMapList);
-        //System.out.println("movie only list size" + movieOnlyList.size());
+    
         showSection.totalEpWatched = showOnlyList.size();
 
         Map<String, Integer> showCountMap = getShowCountMap(getShowTitleList(showOnlyList));
         
 
-        // although a for loop, this is adding only one movie title.
+
         ArrayList<String> showTitles = new ArrayList<String>();
         for (int i = 0; i < showOnlyList.size(); i++) {
             Set<String> showSet = showOnlyList.get(i).keySet();
@@ -42,7 +48,7 @@ public class MakeShowSection {
             }
 
         }
-       // showSection.topShows.above50_3
+
        ArrayList<String> topShows = getTopThree(showOnlyList);
        ArrayList<String> bottomShows = getBottomThree(showOnlyList);
 
@@ -78,6 +84,13 @@ public class MakeShowSection {
         return showSection;
 
     }
+
+
+    /**
+     * get the map of counting how many times you watched the show
+     * @param showTitleList the string array of userHistory
+     * @return the map of show title to count
+    */
     public Map<String, Integer> getShowCountMap(ArrayList<String> showTitleList){
         Map<String, Integer> showCountMap = new HashMap<String, Integer>();
         for (String title : showTitleList) {
@@ -90,6 +103,12 @@ public class MakeShowSection {
         return showCountMap;
 
     }
+
+    /**
+     * get the title list of shows
+     * @param showList the string array of shows
+     * @return the arraylist of just show titles
+    */
     public ArrayList<String> getShowTitleList(ArrayList<Map<String, ArrayList<ArrayList<String>>>> showList){
         ArrayList<String> showTitleList = new ArrayList<String>();
         for (Map<String, ArrayList<ArrayList<String>>> map : showList) {
@@ -101,6 +120,12 @@ public class MakeShowSection {
 
     }
 
+
+    /**
+     * use helpers to create the top three shows you watched
+     * @param showList the string map array of shows
+     * @return the list of top three shows.
+    */
     public ArrayList<String> getTopThree(ArrayList<Map<String, ArrayList<ArrayList<String>>>> showList) {
         ArrayList<String> topShowList = new ArrayList<String>();
         ArrayList<String> showTitleList = getShowTitleList(showList);
@@ -124,6 +149,14 @@ public class MakeShowSection {
         return topShowList;
     }
 
+
+
+
+    /**
+     * use helpers to create the bottom three shows you watched
+     * @param showList the string map array of shows
+     * @return the list of bottom three shows.
+    */
     public ArrayList<String> getBottomThree(ArrayList<Map<String, ArrayList<ArrayList<String>>>> showList) {
         ArrayList<String> topShowList = new ArrayList<String>();
         ArrayList<String> showTitleList = getShowTitleList(showList);
@@ -151,7 +184,12 @@ public class MakeShowSection {
         return topShowList;
     }
 
-    //returns top three or less actors
+
+    /**
+     * The list of top actors
+     * @param showList the string map array of shows
+     * @return the list of top actors
+    */
     public ArrayList<String> actorInfo(ArrayList<Map<String, ArrayList<ArrayList<String>>>> showList) {
         Map<String, Integer> actorCountMap = new HashMap<String, Integer>();
         ArrayList<String> finalActorList = new ArrayList<String>();
@@ -174,7 +212,6 @@ public class MakeShowSection {
         List<Map.Entry<String, Integer>> actorCountlist = new ArrayList<>(actorCountMap.entrySet());
         Collections.sort(actorCountlist, (a, b) -> b.getValue().compareTo(a.getValue()));
 
-        // Print the top 5 genres with their counts
         int num = Math.min(3, actorCountlist.size());
         for (int i = 0; i < num; i++) {
             finalActorList.add(actorCountlist.get(i).getKey());
@@ -182,6 +219,14 @@ public class MakeShowSection {
         return finalActorList;
     }
 
+
+
+
+    /**
+     * we recieve the show the target actor is in.
+     * @param actor the actor to search
+     * @return the arraylist of show the actor is in. only one is returned.
+    */
     public String actorFeaturedShows(String actor,
             ArrayList<Map<String, ArrayList<ArrayList<String>>>> showList) {
 
@@ -198,6 +243,12 @@ public class MakeShowSection {
 
     }
 
+
+    /**
+     * filters the users data into only just shows.
+     * @param fullList the list of all user data.
+     * @return the arraylist of the filtered data.
+    */
     public ArrayList<Map<String, ArrayList<ArrayList<String>>>> showOnly(
             ArrayList<Map<String, ArrayList<ArrayList<String>>>> fullList) {
 

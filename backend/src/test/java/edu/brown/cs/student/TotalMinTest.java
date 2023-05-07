@@ -17,6 +17,9 @@ public class TotalMinTest {
     ArrayList<Map<String, ArrayList<ArrayList<String>>>> userHistoryMapList;
 
 
+        /**
+     * Basic test to see if the test in this file are working
+     */
     @Test
     public void testFileWorking() throws IOException {
         assertEquals(1+1, 2);

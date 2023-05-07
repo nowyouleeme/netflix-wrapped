@@ -2,7 +2,9 @@ package edu.brown.cs.student.main.PosterImageGetting;
 import com.squareup.moshi.Json;
 
 
-
+    /**
+     * Class to recieve the poster information without typecasting errors
+    */
 public class PosterData {
     public record posterJson(
         @Json(name = "page") Integer page,

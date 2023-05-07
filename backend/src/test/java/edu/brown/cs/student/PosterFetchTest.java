@@ -15,11 +15,17 @@ import edu.brown.cs.student.main.components.helpers.MapCreator;
 public class PosterFetchTest {
 
     
+        /**
+     * Basic test to see if the test in this file are working
+     */
      @Test
     public void testFileWorking() throws IOException {
         assertEquals(1+1, 2);
     }
 
+    /**
+     * A fuzz test to see if the poster fetch never returns null, when searched with random string.
+     */
     @Test
     public void fuzzTestPosterFetchRandom() throws IOException {
         FuzzTestingHelpers fuzzHelper = new FuzzTestingHelpers();
@@ -35,6 +41,10 @@ public class PosterFetchTest {
         }
     }
 
+       /**
+     * A fuzz test to see if the poster fetch never returns null, when searched with a random
+     * title from a movie.
+     */
     @Test
     public void fuzzTestPosterFetchFromList() throws IOException {
         PosterFetch posterFetch = new PosterFetch();
@@ -60,6 +70,10 @@ public class PosterFetchTest {
         }
     }
 
+       /**
+     * A fuzz test to see if the poster fetch never returns null, even when searched
+     * for a movie with no poster.
+     */
     @Test
     public void posterTestBugNullPosterPath() throws IOException {
         FuzzTestingHelpers fuzzHelper = new FuzzTestingHelpers();

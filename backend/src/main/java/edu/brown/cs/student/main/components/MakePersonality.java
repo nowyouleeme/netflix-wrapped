@@ -15,6 +15,12 @@ public class MakePersonality {
 
     }
 
+    /**
+     * create the personality using the ML model.
+     * @param userHistory the string array of userHistory
+     * @param userHistoryMapList is the users watched movies and shows
+     * @return the personality
+    */
     public String getPersonality(String[][] userHistory,
     ArrayList<Map<String, ArrayList<ArrayList<String>>>> userHistoryMapList){
 
@@ -43,7 +49,7 @@ public class MakePersonality {
         return apiResponse;
     }
         static private HttpURLConnection tryRequest(String url) throws IOException {
-        // Configure the connection (but don't actually send the request yet)
+
         URL requestURL = new URL(url);
         HttpURLConnection clientConnection = (HttpURLConnection) requestURL.openConnection();
 

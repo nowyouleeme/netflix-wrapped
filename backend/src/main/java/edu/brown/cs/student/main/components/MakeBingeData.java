@@ -15,6 +15,14 @@ import edu.brown.cs.student.main.components.JsonDataType.JSONBingeData.JSONBinge
 
 public class MakeBingeData {
 
+
+
+    /**
+     * a function that recieves the binge data using other helpers.
+     * @param userHistory is the csv parsed string array of watching media info
+     * @param userHistoryMapList is the arraylist  of maps of all the movies and shows watched
+     * @return the binge data needed
+    */
     public JSONBingeData getBingeData(String[][] userHistory,
             ArrayList<Map<String, ArrayList<ArrayList<String>>>> userHistoryMapList) {
         PosterFetch posterFetcher = new PosterFetch();
@@ -24,7 +32,6 @@ public class MakeBingeData {
         for (Map<String, ArrayList<ArrayList<String>>> map : userHistoryMapList) {
             for (Map.Entry<String, ArrayList<ArrayList<String>>> entry : map.entrySet()) {
                 ArrayList<ArrayList<String>> value = entry.getValue();
-                // if value is 1 it means we dont have genre info
                 if (value.size() != 1) {
                     if (dateCountMap.containsKey(value.get(5).get(0))) {
                         int count = dateCountMap.get(value.get(5).get(0));
@@ -43,7 +50,6 @@ public class MakeBingeData {
                 }
             }
         }
-        // rewrite code for this
         List<Map.Entry<String, Integer>> dateCountList = new ArrayList<>(dateCountMap.entrySet());
         Collections.sort(dateCountList, (a, b) -> b.getValue().compareTo(a.getValue()));
 
@@ -73,6 +79,12 @@ public class MakeBingeData {
 
     }
 
+    /**
+     * A function that gets the shows in the specifed date.
+     * @param date the date to search
+     * @param userHistoryMapList is the arraylist  of maps of all the movies and shows watched
+     * @return the list of shows
+    */
     public List<Map.Entry<String, Integer>> getShowsInDate(String date,
             ArrayList<Map<String, ArrayList<ArrayList<String>>>> userHistoryMapList) {
         Map<String, Integer> showCountMap = new HashMap<>();
@@ -103,6 +115,13 @@ public class MakeBingeData {
         }
     }
 
+
+    /**
+     * A function that gets the movies in the specifed date.
+     * @param date the date to search
+     * @param userHistoryMapList is the arraylist  of maps of all the movies and shows watched
+     * @return The arraylist of movies in a date
+    */
     public ArrayList<String> getMoviesInDate(String date,
             ArrayList<Map<String, ArrayList<ArrayList<String>>>> userHistoryMapList) {
         Set<String> movies = new HashSet<String>();

@@ -14,12 +14,18 @@ import java.util.Map;
 
 
 public class MLGenerator implements ReportGenerator {
+    /**
+     * The function that lastly combines all the information, ready to send over to the frontend.
+     * @param userCSVData the parsed userCSV
+     * @return WrappedData, dataform able to be read by frontend
+     * @throws IOException thrown in case accessing url's connection has errors
+     */
     public WrappedData generateReportJSON(String[][] userCSVData) throws IOException {
 
 
 
-        // movieJson result = jsonReader.fromJson("backend/data/netflix_titles.json");
-        // Map<String, String> cast = result.cast();
+
+        //create data
         MapCreator mapCreator = new MapCreator();
         MakeTopGenres topGenre = new MakeTopGenres();
         MakeBingeData bingeData = new MakeBingeData();
@@ -39,6 +45,7 @@ public class MLGenerator implements ReportGenerator {
 
 
 
+        //write the data in the file in backend-ml, so that the mL model can read the data
        try (FileWriter writer = new FileWriter("backend-ml/data/viewhist2.csv")) {
            for (int j = 0; j < userCSVData.length; j++) {
                writer.append("\""+userCSVData[j][0]+"\"");
@@ -48,18 +55,18 @@ public class MLGenerator implements ReportGenerator {
            }
            writer.close();
        } catch (IOException e) {
-           // TODO Auto-generated catch block
            e.printStackTrace();
        }
+       //DATA IS ERASED AFTER USEAGE FOR SECURITY REASONS
 
        MakePersonality personality = new MakePersonality();
         System.out.print(6);
 
         finalFetchJson.personality.title = personality.getPersonality(userCSVData, userHistoryMapList);
-        //finalFetchJson.personality.title = "ml gen mock";
         System.out.print(7);
 
 
+        //CREATING ALL DATA NEEDED...
         finalFetchJson.top5Genres = topGenre.getTopGenres(userCSVData, userHistoryMapList).top5Genres;
         System.out.print(8);
         finalFetchJson.bingeData = bingeData.getBingeData(userCSVData, userHistoryMapList);
@@ -71,19 +78,18 @@ public class MLGenerator implements ReportGenerator {
         finalFetchJson.shows = showSection.getShowSection(userCSVData, userHistoryMapList);
         System.out.print(12);
 
-        // System.out.println("TotalTime: "+totalMin.getTotalMin(userCSVData));
-        // System.out.println("bingeData: " + bingeData.getBingeData(userCSVData));
-        // System.out.println("movieSection: "+ movieSection.getMovieSection(userCSVData));
-        // System.out.println("showSection: "+ showSection.getMovieSection(userCSVData));
-
-        // for (Map<String, ArrayList<ArrayList<String>>> element :
-        // mapCreator.createWatchedMovieMap(userCSVData)){
-        // mapCreator.printMapWithArray(element);
-        // }
-
+        //LASTSLY, CONVERT THE DATA INTO SOMETHING THE FRONTEND CAN READ
         return converterToData(finalFetchJson);
 
     }
+
+
+
+    /**
+     * The function that converts the data into something readable by frontend.
+     * @param dataToConvert the data made by backend
+     * @return WrappedData, dataform able to be read by frontend
+     */
     public WrappedData converterToData(JSONFinalFetch dataToConvert){
 
 
@@ -189,15 +195,8 @@ public class MLGenerator implements ReportGenerator {
         
         Data.Movie movie = new Data.Movie(allMovies, top5Movies, movieActors);
 
-
-
-
-
         Data.Personality personality = new Data.Personality(
-            dataToConvert.personality.title, "backend personality");
-
-
-        
+            dataToConvert.personality.title, "backend personality");        
 
         Data.WrappedData wrappedData = new WrappedData(genreCountArr, dataToConvert.totalMin, 
         bingeData, shows, movie, personality);

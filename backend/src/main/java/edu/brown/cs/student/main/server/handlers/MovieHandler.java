@@ -21,37 +21,27 @@ import edu.brown.cs.student.main.components.helpers.MapCreator;
 import spark.Request;
 import spark.Response;
 
+
+
 /**
- * Handler class for the filtered map
- *
- */
+  * THIS CLASS IS NOT USED BY THE ACTUAL PROGRAM, BUT RATHER USED TO MAKE SURE THE DATA
+  IS BEING PROCESSED. THE ENDPOINT IS USED TO VISUALIZE DATA FOR THE DEVELOPERS.
+  *THE CODE IS NEARLY IDENTICAL TO MLGenerator.
+  */
 public class MovieHandler implements Route {
   public String[][] history;
 
-  /**
-   * Constructor accepts some shared csv
-   */
+
   public MovieHandler(String[][] userData) {
     history = userData;
   }
 
-  /**
-   * Filters GeoJsonData objects based on query parameters and returns a success
-   * or failure response
-   * 
-   * @param request  the HTTP request
-   * @param response the HTTP response
-   * @return a success response with the filtered GeoJsonData object, or a failure
-   *         response
-   * @throws Exception if something goes wrong while filtering the GeoJsonData
-   *                   object
-   */
+
   @Override
   public Object handle(Request request, Response response) throws Exception {
     try {
 
-      // movieJson result = jsonReader.fromJson("backend/data/netflix_titles.json");
-      // Map<String, String> cast = result.cast();
+
       MapCreator mapCreator = new MapCreator();
       MakeTopGenres topGenre = new MakeTopGenres();
       MakeBingeData bingeData = new MakeBingeData();
@@ -75,7 +65,7 @@ public class MovieHandler implements Route {
         }
         writer.close();
       } catch (IOException e) {
-        // TODO Auto-generated catch block
+
         e.printStackTrace();
       }
 
@@ -88,23 +78,13 @@ public class MovieHandler implements Route {
       finalFetchJson.movie = movieSection.getMovieSection(history, userHistoryMapList);
       finalFetchJson.shows = showSection.getShowSection(history, userHistoryMapList);
 
-      // System.out.println("TotalTime: "+totalMin.getTotalMin(history));
-      // System.out.println("bingeData: " + bingeData.getBingeData(history));
-      // System.out.println("movieSection: "+ movieSection.getMovieSection(history));
-      // System.out.println("showSection: "+ showSection.getMovieSection(history));
-
-      // for (Map<String, ArrayList<ArrayList<String>>> element :
-      // mapCreator.createWatchedMovieMap(history)){
-      // mapCreator.printMapWithArray(element);
-      // }
-
       try (FileWriter writer = new FileWriter("backend/backend-ml/data/viewhist.csv")) {
         for (int j = 0; j < history.length; j++) {
           writer.flush();
         }
         writer.close();
       } catch (IOException e) {
-        // TODO Auto-generated catch block
+
         e.printStackTrace();
       }
 
@@ -117,7 +97,7 @@ public class MovieHandler implements Route {
     }
   }
 
-  // Success response record
+
   public record MovieSuccessResponse(String result, Object json) {
     public MovieSuccessResponse(Object json) {
       this("success", json);

@@ -8,7 +8,14 @@ import java.net.URL;
 import java.net.HttpURLConnection;
 import okio.Buffer;
 
+
+
 public class PosterFetch {
+    /**
+     * An important function to get the link of poster
+     * @param title the title of the media to search
+     * @return the poster link for frontend
+    */
     public String getPosterLink(String title){
         PosterData.posterJson posterJson;
         try {
@@ -27,15 +34,18 @@ public class PosterFetch {
 
             if (posterJson.results().length != 0){
                 if (posterJson.results()[0].poster_path() == null){
+                    //if not found
                     return "https://i.imgur.com/mgzENYv.jpg";
                 }
                 return "https://image.tmdb.org/t/p/original/" + posterJson.results()[0].poster_path();
             }
             else{
+                                    //if not found
                 return "https://i.imgur.com/mgzENYv.jpg";
             }
         } catch (IOException e) {
             e.printStackTrace();
+                                //if not found
             return "https://i.imgur.com/mgzENYv.jpg";
         }
     }
@@ -60,7 +70,7 @@ public class PosterFetch {
      * @throws IOException thrown in case accessing url's connection has errors
      */
     static private HttpURLConnection tryRequest(String url) throws IOException {
-        // Configure the connection (but don't actually send the request yet)
+
         URL requestURL = new URL(url);
         HttpURLConnection clientConnection = (HttpURLConnection) requestURL.openConnection();
 
