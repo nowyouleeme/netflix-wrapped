@@ -125,7 +125,7 @@ public class ShowSectionTest {
         MakeShowSection showSection = new MakeShowSection();
         ArrayList<Map<String, ArrayList<ArrayList<String>>>> showList = showSection
         .showOnly(mapCreator.createWatchedMovieMap(movieData1));
-        String actorMovie = showSection.actorFeaturedMovies("Lee You-mi", showList);
+        String actorMovie = showSection.actorFeaturedShows("Lee You-mi", showList);
 
         assertEquals(actorMovie, "Squid Game");
     }
@@ -140,7 +140,7 @@ public class ShowSectionTest {
         MakeShowSection showSection = new MakeShowSection();
         ArrayList<Map<String, ArrayList<ArrayList<String>>>> showList = showSection
         .showOnly(mapCreator.createWatchedMovieMap(movieData1));
-        String actorMovie = showSection.actorFeaturedMovies("Lee You-mi", showList);
+        String actorMovie = showSection.actorFeaturedShows("Lee You-mi", showList);
 
         assertEquals(actorMovie, "");
     }

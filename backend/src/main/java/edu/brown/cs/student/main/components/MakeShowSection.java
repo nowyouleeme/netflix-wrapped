@@ -22,7 +22,7 @@ public class MakeShowSection {
         //System.out.println("movie only list size" + movieOnlyList.size());
         showSection.totalEpWatched = movieOnlyList.size();
 
-        Map<String, Integer> movieCountMap = getMovieCountMap(getShowTitleList(movieOnlyList));
+        Map<String, Integer> movieCountMap = getShowCountMap(getShowTitleList(movieOnlyList));
         
 
         // although a for loop, this is adding only one movie title.
@@ -70,15 +70,15 @@ public class MakeShowSection {
 
         for (String actor : actorInfo(movieOnlyList)) {
             JSONShow show = new JSONShow();
-            show.title = actorFeaturedMovies(actor, movieOnlyList);
-            show.image = posterFetcher.getPosterLink(actorFeaturedMovies(actor, movieOnlyList));
+            show.title = actorFeaturedShows(actor, movieOnlyList);
+            show.image = posterFetcher.getPosterLink(actorFeaturedShows(actor, movieOnlyList));
             showSection.showActors.actorFeaturedShows.add(show);
         }
 
         return showSection;
 
     }
-    public Map<String, Integer> getMovieCountMap(ArrayList<String> movieTitleList){
+    public Map<String, Integer> getShowCountMap(ArrayList<String> movieTitleList){
         Map<String, Integer> movieCountMap = new HashMap<String, Integer>();
         for (String title : movieTitleList) {
             if (movieCountMap.containsKey(title)) {
@@ -105,7 +105,7 @@ public class MakeShowSection {
         ArrayList<String> topMoviesList = new ArrayList<String>();
         ArrayList<String> movieTitleList = getShowTitleList(movieList);
 
-        Map<String, Integer> movieCountMap = getMovieCountMap(movieTitleList);
+        Map<String, Integer> movieCountMap = getShowCountMap(movieTitleList);
         List<Map.Entry<String, Integer>> movieCountList = new ArrayList<>(movieCountMap.entrySet());
         Collections.sort(movieCountList, (a, b) -> b.getValue().compareTo(a.getValue()));
         try{
@@ -128,7 +128,7 @@ public class MakeShowSection {
         ArrayList<String> topMoviesList = new ArrayList<String>();
         ArrayList<String> movieTitleList = getShowTitleList(movieList);
 
-        Map<String, Integer> movieCountMap = getMovieCountMap(movieTitleList);
+        Map<String, Integer> movieCountMap = getShowCountMap(movieTitleList);
         List<Map.Entry<String, Integer>> movieCountList = new ArrayList<>(movieCountMap.entrySet());
         Collections.sort(movieCountList, (a, b) -> b.getValue().compareTo(a.getValue()));
 
@@ -182,7 +182,7 @@ public class MakeShowSection {
         return finalActorList;
     }
 
-    public String actorFeaturedMovies(String actor,
+    public String actorFeaturedShows(String actor,
             ArrayList<Map<String, ArrayList<ArrayList<String>>>> movieList) {
 
         for (Map<String, ArrayList<ArrayList<String>>> map : movieList) {
