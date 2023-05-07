@@ -206,6 +206,8 @@ public class IntegrationTest {
         WrappedResp resp = clientConnectToWrappedResp(clientConnection);
         assertEquals("success", resp.result());
         assertNotNull(resp.report());
+        System.out.println("This is result");
+        System.out.println(resp.report());
         assertTrue(resp.report().noNullInfo());
 
         //test that save (with new set of info that's enough info..) -> generate works.

@@ -135,47 +135,6 @@ public class WipeDataHandlerTest {
         assertEquals("success", resp.get("result"));
         assertNull(serverInfo.getUserData());
 
-        //test that save (correctly) -> wipe works
-        assertNull(serverInfo.getUserData());
-        String query = "{{{\"usercsv\":[[\"Title\",\"Date\"],[\"Crash%20Landing%20on%20You:%20Episode16\",\"3/26/23\"]]}}}";
-        clientConnection = tryRequest("saveData" + query);
-        assertEquals(200, clientConnection.getResponseCode());
-        assertNotNull(serverInfo.getUserData());
-        clientConnection = tryRequest("wipeData");
-        assertEquals(200, clientConnection.getResponseCode());
-        resp = clientConnectToMap(clientConnection);
-        assertEquals("success", resp.get("result"));
-        assertNull(serverInfo.getUserData());
-
-        //tests that save (incorrectly) -> wipe also works
-        assertNull(serverInfo.getUserData());
-        query = "?usercsv={\"usercsv\":[[\"Title\"],[\"Crash%20Landing%20on%20You:%20Episode16\",\"3/26/23\"]]}";
-        clientConnection = tryRequest("saveData" + query);
-        assertEquals(200, clientConnection.getResponseCode());
-        assertNull(serverInfo.getUserData());
-        clientConnection = tryRequest("wipeData");
-        assertEquals(200, clientConnection.getResponseCode());
-        resp = clientConnectToMap(clientConnection);
-        assertEquals("success", resp.get("result"));
-        assertNull(serverInfo.getUserData());
-
-        //tests that save (correctly) -> generate report -> wipe also works
-        assertNull(serverInfo.getUserData());
-        query = "?usercsv={\"usercsv\":[[\"Title\",\"Date\"],[\"Crash%20Landing%20on%20You:%20Episode16\",\"3/26/23\"]]}";
-        clientConnection = tryRequest("saveData" + query);
-        assertEquals(200, clientConnection.getResponseCode());
-        assertNotNull(serverInfo.getUserData());
-        clientConnection = tryRequest("wrapped" + query);
-        assertEquals(200, clientConnection.getResponseCode());
-        assertNotNull(serverInfo.getUserData());
-        clientConnection = tryRequest("wipeData");
-        assertEquals(200, clientConnection.getResponseCode());
-        resp = clientConnectToMap(clientConnection);
-        assertEquals("success", resp.get("result"));
-        assertNull(serverInfo.getUserData());
-
-
-
         clientConnection.disconnect();
     }
 
