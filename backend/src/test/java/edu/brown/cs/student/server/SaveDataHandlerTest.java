@@ -14,7 +14,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import spark.Spark;
 
+
+
 import java.io.IOException;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
@@ -25,6 +28,9 @@ import java.util.logging.Logger;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * class to test save data endpoint
+ */
 public class SaveDataHandlerTest {
     /** Method that sets up the port and logger at the start of the testing suite execution. */
     @BeforeAll
@@ -42,7 +48,7 @@ public class SaveDataHandlerTest {
         MockRGenerator mockGenerator = new MockRGenerator();
         ServerInfo serverInfo = new ServerInfo(mockGenerator);
         // In fact, restart the entire Spark server for every test!
-        Spark.get("/saveData", new SaveDataHandler(serverInfo));
+        Spark.post("/saveData", new SaveDataHandler(serverInfo));
         Spark.init();
         Spark.awaitInitialization(); // don't continue until the server is listening
     }
@@ -63,15 +69,37 @@ public class SaveDataHandlerTest {
      * @return the connection for the given URL, just after connecting
      * @throws IOException when the connection fails or cannot be made
      */
-    private static HttpURLConnection tryRequest(String apiCall) throws IOException {
+    private static HttpURLConnection tryRequest(String apiCall, String requestBody0) throws IOException {
+        String requestBody = requestBody0.substring(1, requestBody0.length() - 1).replace("\\", "");
+
         // Configure the connection (but don't actually send the request yet)
         URL requestURL = new URL("http://localhost:" + Spark.port() + "/" + apiCall);
         HttpURLConnection clientConnection = (HttpURLConnection) requestURL.openConnection();
+        System.out.println("bruh moment1");
+        clientConnection.setRequestMethod("POST");
+        clientConnection.setRequestProperty("Content-Type", "application/json");
+        clientConnection.setRequestProperty("Accept", "application/json");
+        System.out.println("bruh moment2");
+        clientConnection.setDoOutput(true);
+        OutputStream outputStream = clientConnection.getOutputStream();
+        byte[] input = requestBody.getBytes("utf-8");
+        outputStream.write(input, 0, input.length);
+//        outputStream.write(requestBody.getBytes());
+        outputStream.flush();
+        outputStream.close();
+        System.out.println("bruh moment3");
+
 
         clientConnection.connect();
         return clientConnection;
     }
 
+    /**
+     * turns http url connection intoa map representing the contents of the http url connection
+     * @param clientConnection http url connection to convert
+     * @return map representing the contents of the http url connection
+     * @throws IOException
+     */
     public Map clientConnectToMap(HttpURLConnection clientConnection) throws IOException {
         Moshi moshi = new Moshi.Builder().build();
         JsonAdapter<Map<String, Object>> adapter =
@@ -88,48 +116,36 @@ public class SaveDataHandlerTest {
     public void testBadJSON() throws IOException {
         //test for no parameters.
             //get client connection
-        HttpURLConnection clientConnection = tryRequest("saveData");
+        HttpURLConnection clientConnection = tryRequest("saveData", "{{{}}}");
         assertEquals(200, clientConnection.getResponseCode());
             //get response
         Map resp = clientConnectToMap(clientConnection);
         assertTrue(resp.get("result") instanceof Map);
         if (resp.get("result") instanceof Map result) {
-            assertEquals("expected 1 query parameters but received 0", result.get("error_bad_json"));
+            assertEquals("usercsv not provided", result.get("error_bad_json"));
         }
 
-        //test for too many parameters.
-        String query = "?usercsv={\"usercsv\":[[\"Title\",\"Date\"],[\"Crash%20Landing%20on%20You:%20Episode16\",\"3/26/23\"]]}&hi=1";
-        HttpURLConnection clientConnection2 = tryRequest("saveData" + query);
-        assertEquals(200, clientConnection2.getResponseCode());
 
-        resp = clientConnectToMap(clientConnection2);
-        assertTrue(resp.get("result") instanceof Map);
-        if (resp.get("result") instanceof Map result) {
-            assertEquals("expected 1 query parameters but received 2", result.get("error_bad_json"));
-        }
-
-        //test for right number of parameters, wrong queryParam name (diff word)
-        //test for wrong parameter name
-        query = "?bahaha={\"usercsv\":[[\"Title\",\"Date\"],[\"Crash%20Landing%20on%20You:%20Episode16\",\"3/26/23\"]]}";
-        clientConnection = tryRequest("saveData" + query);
+        //test for wrong queryParam name (diff word)
+        String query = "{{{\"bahaha\":[[\"Title\",\"Date\"],[\"Crash%20Landing%20on%20You:%20Episode16\",\"3/26/23\"]]}}}";
+        clientConnection = tryRequest("saveData", query);
         assertEquals(200, clientConnection.getResponseCode());
 
         resp = clientConnectToMap(clientConnection);
         assertTrue(resp.get("result") instanceof Map);
         if (resp.get("result") instanceof Map result) {
-            assertEquals("need usercsv query parameter in order to save data", result.get("error_bad_json"));
+            assertEquals("usercsv not provided", result.get("error_bad_json"));
         }
 
-        //test for right number of parameters, wrong queryParam name (diff word)
-        //test for wrong parameter name
-        query = "?userCSV={\"usercsv\":[[\"Title\",\"Date\"],[\"Crash%20Landing%20on%20You:%20Episode16\",\"3/26/23\"]]}";
-        clientConnection = tryRequest("saveData" + query);
+        //test for wrong queryParam name (diff capitalisation)
+        query = "{{{\"userCSV\":[[\"Title\",\"Date\"],[\"Crash%20Landing%20on%20You:%20Episode16\",\"3/26/23\"]]}}}";
+        clientConnection = tryRequest("saveData", query);
         assertEquals(200, clientConnection.getResponseCode());
 
         resp = clientConnectToMap(clientConnection);
         assertTrue(resp.get("result") instanceof Map);
         if (resp.get("result") instanceof Map result) {
-            assertEquals("need usercsv query parameter in order to save data", result.get("error_bad_json"));
+            assertEquals("usercsv not provided", result.get("error_bad_json"));
         }
 
 
@@ -142,8 +158,8 @@ public class SaveDataHandlerTest {
     @Test
     public void testBadRequest() throws IOException {
         //test for too few rows [[title, date]]
-        String query = "?usercsv={\"usercsv\":[[\"Title\",\"Date\"]]}";
-        HttpURLConnection clientConnection = tryRequest("saveData" + query);
+        String query = "{{{\"usercsv\":[[\"Title\",\"Date\"]]}}}";
+        HttpURLConnection clientConnection = tryRequest("saveData", query);
         assertEquals(200, clientConnection.getResponseCode());
 
         Map resp = clientConnectToMap(clientConnection);
@@ -153,8 +169,8 @@ public class SaveDataHandlerTest {
         }
 
         //test for too few rows [[]]
-        query = "?usercsv={\"usercsv\":[[]]}";
-        clientConnection = tryRequest("saveData" + query);
+        query = "{{{\"usercsv\":[[]]}}}";
+        clientConnection = tryRequest("saveData", query);
         assertEquals(200, clientConnection.getResponseCode());
 
         resp = clientConnectToMap(clientConnection);
@@ -163,10 +179,10 @@ public class SaveDataHandlerTest {
             assertEquals("invalid netflix history csv", result.get("error_bad_request"));
         }
 
-        //test for 1 columns
-        query = "?usercsv={\"usercsv\":[[\"Title\"],[\"Crash%20Landing%20on%20You:%20Episode16\"]," +
-                "[\"Crash%20Landing%20on%20You:%20Episode15\"]]}";
-        clientConnection = tryRequest("saveData" + query);
+        //test for 1 column
+        query = "{{{\"usercsv\":[[\"Title\"],[\"Crash%20Landing%20on%20You:%20Episode16\"]," +
+                "[\"Crash%20Landing%20on%20You:%20Episode15\"]]}}}";
+        clientConnection = tryRequest("saveData", query);
         assertEquals(200, clientConnection.getResponseCode());
 
         resp = clientConnectToMap(clientConnection);
@@ -176,8 +192,9 @@ public class SaveDataHandlerTest {
         }
 
         //test for 3 columns
-        query = "?usercsv={\"usercsv\":[[\"Title\",\"Date\",\"Director\"],[\"Crash%20Landing%20on%20You:%20Episode16\",\"3/26/23\",\"Lee%20Jeong-hyo\"]]}";
-        clientConnection = tryRequest("saveData" + query);
+        query = "{{{\"usercsv\":[[\"Title\",\"Date\",\"Director\"]," +
+                "[\"Crash%20Landing%20on%20You:%20Episode16\",\"3/26/23\",\"Lee%20Jeong-hyo\"]]}}}";
+        clientConnection = tryRequest("saveData", query);
         assertEquals(200, clientConnection.getResponseCode());
 
         resp = clientConnectToMap(clientConnection);
@@ -187,9 +204,9 @@ public class SaveDataHandlerTest {
         }
 
         //test for 5 columns
-        query = "?usercsv={\"usercsv\":[[\"Title\",\"Date\"],[\"Crash%20Landing%20on%20You:%20Episode16\",\"3/26/23\"]," +
-                "[\"Title\",\"Date\",\"Title\",\"Date\",\"Title\"]]}";
-        clientConnection = tryRequest("saveData" + query);
+        query = "{{{\"usercsv\":[[\"Title\",\"Date\"],[\"Crash%20Landing%20on%20You:%20Episode16\",\"3/26/23\"]," +
+                "[\"Title\",\"Date\",\"Title\",\"Date\",\"Title\"]]}}}";
+        clientConnection = tryRequest("saveData", query);
         assertEquals(200, clientConnection.getResponseCode());
 
         resp = clientConnectToMap(clientConnection);
@@ -199,9 +216,10 @@ public class SaveDataHandlerTest {
         }
 
         //test for not title date
-        query = "?usercsv={\"usercsv\":[[\"Title\",\"Time\"],[\"Crash%20Landing%20on%20You:%20Episode16\",\"3/26/23\"]," +
-                "[\"Crash%20Landing%20on%20You:%20Episode15\",\"3/26/23\"],[\"Crash%20Landing%20on%20You:%20Episode14\",\"3/26/23\"]]}";
-        clientConnection = tryRequest("saveData" + query);
+        query = "{{{\"usercsv\":[[\"Title\",\"Time\"],[\"Crash%20Landing%20on%20You:%20Episode16\",\"3/26/23\"]," +
+                "[\"Crash%20Landing%20on%20You:%20Episode15\",\"3/26/23\"]," +
+                "[\"Crash%20Landing%20on%20You:%20Episode14\",\"3/26/23\"]]}}}";
+        clientConnection = tryRequest("saveData", query);
         assertEquals(200, clientConnection.getResponseCode());
 
         resp = clientConnectToMap(clientConnection);
@@ -211,9 +229,10 @@ public class SaveDataHandlerTest {
         }
 
         //test for not title date
-        query = "?usercsv={\"usercsv\":[[\"Media\",\"Time\"],[\"Crash%20Landing%20on%20You:%20Episode16\",\"3/26/23\"]," +
-                "[\"Crash%20Landing%20on%20You:%20Episode15\",\"3/26/23\"],[\"Crash%20Landing%20on%20You:%20Episode14\",\"3/26/23\"]]}";
-        clientConnection = tryRequest("saveData" + query);
+        query = "{{{\"usercsv\":[[\"Media\",\"Time\"],[\"Crash%20Landing%20on%20You:%20Episode16\",\"3/26/23\"]," +
+                "[\"Crash%20Landing%20on%20You:%20Episode15\",\"3/26/23\"]," +
+                "[\"Crash%20Landing%20on%20You:%20Episode14\",\"3/26/23\"]]}}}";
+        clientConnection = tryRequest("saveData", query);
         assertEquals(200, clientConnection.getResponseCode());
 
         resp = clientConnectToMap(clientConnection);
@@ -222,28 +241,6 @@ public class SaveDataHandlerTest {
             assertEquals("invalid netflix history csv", result.get("error_bad_request"));
         }
 
-
-        //test for right number of parameters, wrong queryParam name (diff word)
-        query = "?bahaha={\"usercsv\":[[\"Title\",\"Date\"],[\"Crash%20Landing%20on%20You:%20Episode16\",\"3/26/23\"]]}";
-        clientConnection = tryRequest("saveData" + query);
-        assertEquals(200, clientConnection.getResponseCode());
-
-        resp = clientConnectToMap(clientConnection);
-        assertTrue(resp.get("result") instanceof Map);
-        if (resp.get("result") instanceof Map result) {
-            assertEquals("need usercsv query parameter in order to save data", result.get("error_bad_json"));
-        }
-
-        //test for right number of parameters, wrong queryParam name (diff capitalization)
-        query = "?userCSV={\"usercsv\":[[\"Title\",\"Date\"],[\"Crash%20Landing%20on%20You:%20Episode16\",\"3/26/23\"]]}";
-        clientConnection = tryRequest("saveData" + query);
-        assertEquals(200, clientConnection.getResponseCode());
-
-        resp = clientConnectToMap(clientConnection);
-        assertTrue(resp.get("result") instanceof Map);
-        if (resp.get("result") instanceof Map result) {
-            assertEquals("need usercsv query parameter in order to save data", result.get("error_bad_json"));
-        }
 
         clientConnection.disconnect();
     }
@@ -254,34 +251,34 @@ public class SaveDataHandlerTest {
     public void testSuccess() throws IOException {
 
         //test that a 2row csv is successful
-        String query = "?usercsv={\"usercsv\":[[\"Title\",\"Date\"],[\"Crash%20Landing%20on%20You:%20Episode16\",\"3/26/23\"]]}";
-        HttpURLConnection clientConnection = tryRequest("saveData" + query);
+        String query = "{{{\"usercsv\":[[\"Title\",\"Date\"],[\"Crash%20Landing%20on%20You:%20Episode16\",\"3/26/23\"]]}}}";
+        HttpURLConnection clientConnection = tryRequest("saveData", query);
         assertEquals(200, clientConnection.getResponseCode());
 
         Map resp = clientConnectToMap(clientConnection);
         assertEquals("success", resp.get("result"));
 
         //tests that a 3row csv is successful
-        query = "?usercsv={\"usercsv\":[[\"Title\",\"Date\"],[\"Crash%20Landing%20on%20You:%20Episode16\",\"3/26/23\"]," +
-                "[\"One%20More%20Time:%20Episode%201\",\"3/18/2020\"]]}";
-        clientConnection = tryRequest("saveData" + query);
+        query = "{{{\"usercsv\":[[\"Title\",\"Date\"],[\"Crash%20Landing%20on%20You:%20Episode16\",\"3/26/23\"]," +
+                "[\"One%20More%20Time:%20Episode%201\",\"3/18/2020\"]]}}}";
+        clientConnection = tryRequest("saveData", query);
         assertEquals(200, clientConnection.getResponseCode());
 
         resp = clientConnectToMap(clientConnection);
         assertEquals("success", resp.get("result"));
 
         //tests that a 4row csv is successful
-        query = "?usercsv={\"usercsv\":[[\"Title\",\"Date\"],[\"Crash%20Landing%20on%20You:%20Episode16\",\"3/26/23\"]," +
+        query = "{{{\"usercsv\":[[\"Title\",\"Date\"],[\"Crash%20Landing%20on%20You:%20Episode16\",\"3/26/23\"]," +
                 "[\"One%20More%20Time:%20Episode%201\",\"3/18/2020\"]," +
-                "[\"The%20Garden%20of%20Words\",\"3/18/2020\"]]}";
-        clientConnection = tryRequest("saveData" + query);
+                "[\"The%20Garden%20of%20Words\",\"3/18/2020\"]]}}}";
+        clientConnection = tryRequest("saveData", query);
         assertEquals(200, clientConnection.getResponseCode());
 
         resp = clientConnectToMap(clientConnection);
         assertEquals("success", resp.get("result"));
 
         //tests that a 10row csv is successful
-        query = "?usercsv={\"usercsv\":[[\"Title\",\"Date\"]," +
+        query = "{{{\"usercsv\":[[\"Title\",\"Date\"]," +
                 "[\"Crash%20Landing%20on%20You:%20Episode16\",\"3/26/23\"]," +
                 "[\"Crash%20Landing%20on%20You:%20Episode15\",\"3/26/23\"]," +
                 "[\"Crash%20Landing%20on%20You:%20Episode14\",\"3/26/23\"]," +
@@ -290,8 +287,17 @@ public class SaveDataHandlerTest {
                 "[\"Crash%20Landing%20on%20You:%20Episode11\",\"3/26/23\"]," +
                 "[\"Crash%20Landing%20on%20You:%20Episode10\",\"3/26/23\"]," +
                 "[\"One%20More%20Time:%20Episode%201\",\"3/18/2020\"]," +
-                "[\"The%20Garden%20of%20Words\",\"3/18/2020\"]]}";
-        clientConnection = tryRequest("saveData" + query);
+                "[\"The%20Garden%20of%20Words\",\"3/18/2020\"]]}}}";
+        clientConnection = tryRequest("saveData", query);
+        assertEquals(200, clientConnection.getResponseCode());
+
+        resp = clientConnectToMap(clientConnection);
+        assertEquals("success", resp.get("result"));
+
+        //test success for extra queryParam name
+        query = "{{{\"usercsv\":[[\"Title\",\"Date\"],[\"Crash%20Landing%20on%20You:%20Episode16\",\"3/26/23\"]]," +
+                "\"userhistory\":[[]]}}}";
+        clientConnection = tryRequest("saveData", query);
         assertEquals(200, clientConnection.getResponseCode());
 
         resp = clientConnectToMap(clientConnection);

@@ -44,6 +44,10 @@ public class WrappedHandler implements Route {
         }
 
         try {
+            if (serverInfo.getUserData() ==  null) {
+                errorMessages.put("error_bad_request", "no user csv in server to create wrapped with");
+                return serialize(fail(errorMessages));
+            }
             //  1. we use the generator in server info to generate the report.
             Data.WrappedData reportJSON = serverInfo.generateReportJSON();
             System.out.println("generate wrapped data");

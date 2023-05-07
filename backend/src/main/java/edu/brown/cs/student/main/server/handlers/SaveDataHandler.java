@@ -25,21 +25,16 @@ public class SaveDataHandler implements Route {
 
   @Override
   public Object handle(Request request, Response response) {
-    // QueryParamsMap queryMap = request.queryMap();
-    // String userCSVQuery = queryMap.value("usercsv");
     String userCSVQuery0 = request.body();
+    System.out.println("raw csvquery hahahahaha  " + userCSVQuery0);
+
     String userCSVQuery = userCSVQuery0.substring(1, userCSVQuery0.length() - 1).replace("\\", "");
-    System.out.println(userCSVQuery);
+    System.out.println("editted csvquery hahahahaha  " + userCSVQuery);
     HashMap<String, String> errorMessages = new HashMap<>();
 
-    // if (queryMap.toMap().size() != 1) {
-    //   errorMessages.put("error_bad_json", "expected 1 query parameters but received" + queryMap.toMap().size());
-    //   System.out.println(1);
-    //   return serialize(fail(errorMessages));
-    // }
 
     if (userCSVQuery == null) {
-      errorMessages.put("error_bad_json", "need user's csv to save data");
+      errorMessages.put("error_bad_json", "usercsv not provided");
       return serialize(fail(errorMessages));
     }
 
@@ -48,6 +43,19 @@ public class SaveDataHandler implements Route {
       Moshi moshi = new Moshi.Builder().build();
       System.out.println("hello");
       Data.UserCSV parsedUserCSV = moshi.adapter(Data.UserCSV.class).fromJson(userCSVQuery);
+
+
+
+
+      //this checks that the usercsv 2D array was actually created, aka checking query parameters
+      if (parsedUserCSV.usercsv() == null) {
+        errorMessages.put("error_bad_json", "usercsv not provided");
+        return serialize(fail(errorMessages));
+      }
+      System.out.println("parsedcsv  ");
+      for (int i = 0; i < parsedUserCSV.usercsv().length; i++) {
+        System.out.print(Arrays.toString(parsedUserCSV.usercsv()[i])  + "\n");
+      }
       //must be at least 2 rows
       System.out.println(parsedUserCSV);
       if (parsedUserCSV.usercsv().length < 2) {
@@ -59,7 +67,6 @@ public class SaveDataHandler implements Route {
       //each row must be 2 columns
       for (int i = 0; i < parsedUserCSV.usercsv().length; i++) {
         if (parsedUserCSV.usercsv()[i].length != 2) {
-          System.out.println(4);
           errorMessages.put("error_bad_request", "invalid netflix history csv");
           return serialize(fail(errorMessages));
         }
@@ -73,9 +80,10 @@ public class SaveDataHandler implements Route {
 
       //save the userCSV into the serverInfo
       serverInfo.saveUserData(parsedUserCSV);
-      // for (int i = 0; i < serverInfo.getUserData().usercsv().length; i++) {
-      //   System.out.print(Arrays.toString(serverInfo.getUserData().usercsv()[i])  + "\n");
-      // }
+      System.out.println("csv in server  ");
+      for (int i = 0; i < serverInfo.getUserData().usercsv().length; i++) {
+        System.out.print(Arrays.toString(serverInfo.getUserData().usercsv()[i])  + "\n");
+      }
 
       //return serialized success response
       return serialize(success());

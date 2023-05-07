@@ -23,10 +23,7 @@ import java.util.logging.Logger;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * class to test wipe data endpoint
- */
-public class WipeDataHandlerTest {
+public class WrappedHandlerTest {
     /** Method that sets up the port and logger at the start of the testing suite execution. */
     @BeforeAll
     public static void beforeAll() {
@@ -45,7 +42,7 @@ public class WipeDataHandlerTest {
         MockRGenerator mockGenerator = new MockRGenerator();
         serverInfo = new ServerInfo(mockGenerator);
         // In fact, restart the entire Spark server for every test!
-        Spark.get("/saveData", new SaveDataHandler(serverInfo));
+        Spark.post("/saveData", new SaveDataHandler(serverInfo));
         Spark.get("/wrapped", new WipeDataHandler(serverInfo));
         Spark.get("/wipeData", new WipeDataHandler(serverInfo));
         Spark.init();
@@ -79,12 +76,6 @@ public class WipeDataHandlerTest {
         return clientConnection;
     }
 
-    /**
-     * turns http url connection intoa map representing the contents of the http url connection
-     * @param clientConnection http url connection to convert
-     * @return map representing the contents of the http url connection
-     * @throws IOException
-     */
     public Map clientConnectToMap(HttpURLConnection clientConnection) throws IOException {
         Moshi moshi = new Moshi.Builder().build();
         JsonAdapter<Map<String, Object>> adapter =
@@ -96,11 +87,13 @@ public class WipeDataHandlerTest {
     }
 
 
+
+
     /** tests wipeData Handler without providing wipeData returns bad json response */
     @Test
     public void testBadJSON() throws IOException {
         //test for > 0 parameters. (1)
-        HttpURLConnection clientConnection = tryRequest("wipeData?userName=karen");
+        HttpURLConnection clientConnection = tryRequest("wrapped?userName=karen");
         assertEquals(200, clientConnection.getResponseCode());
         Map resp = clientConnectToMap(clientConnection);
         assertTrue(resp.get("result") instanceof Map);
@@ -109,7 +102,7 @@ public class WipeDataHandlerTest {
         }
 
         //test for too many parameters. (2)
-        clientConnection = tryRequest("wipeData?userName=karen&password=123");
+        clientConnection = tryRequest("wrapped?userName=karen&password=123");
         assertEquals(200, clientConnection.getResponseCode());
 
         resp = clientConnectToMap(clientConnection);
@@ -121,63 +114,22 @@ public class WipeDataHandlerTest {
         clientConnection.disconnect();
     }
 
-
-    /** tests wipeData Handler without providing wipeData returns bad request response,
-     * includes integration tests dealing with wiping data.
+    /** tests wrapped when there's no user csv saved
      */
     @Test
-    public void testSuccess() throws IOException {
-        //test that wipe works
+    public void testBadRequest() throws IOException {
         assertNull(serverInfo.getUserData());
-        HttpURLConnection clientConnection = tryRequest("wipeData");
-        assertEquals(200, clientConnection.getResponseCode());
-        Map resp = clientConnectToMap(clientConnection);
-        assertEquals("success", resp.get("result"));
-        assertNull(serverInfo.getUserData());
-
-        //test that save (correctly) -> wipe works
-        assertNull(serverInfo.getUserData());
-        String query = "{{{\"usercsv\":[[\"Title\",\"Date\"],[\"Crash%20Landing%20on%20You:%20Episode16\",\"3/26/23\"]]}}}";
-        clientConnection = tryRequest("saveData" + query);
-        assertEquals(200, clientConnection.getResponseCode());
-        assertNotNull(serverInfo.getUserData());
-        clientConnection = tryRequest("wipeData");
-        assertEquals(200, clientConnection.getResponseCode());
-        resp = clientConnectToMap(clientConnection);
-        assertEquals("success", resp.get("result"));
-        assertNull(serverInfo.getUserData());
-
-        //tests that save (incorrectly) -> wipe also works
-        assertNull(serverInfo.getUserData());
-        query = "?usercsv={\"usercsv\":[[\"Title\"],[\"Crash%20Landing%20on%20You:%20Episode16\",\"3/26/23\"]]}";
-        clientConnection = tryRequest("saveData" + query);
+        HttpURLConnection clientConnection = tryRequest("wrapped");
         assertEquals(200, clientConnection.getResponseCode());
         assertNull(serverInfo.getUserData());
-        clientConnection = tryRequest("wipeData");
-        assertEquals(200, clientConnection.getResponseCode());
-        resp = clientConnectToMap(clientConnection);
-        assertEquals("success", resp.get("result"));
-        assertNull(serverInfo.getUserData());
-
-        //tests that save (correctly) -> generate report -> wipe also works
-        assertNull(serverInfo.getUserData());
-        query = "?usercsv={\"usercsv\":[[\"Title\",\"Date\"],[\"Crash%20Landing%20on%20You:%20Episode16\",\"3/26/23\"]]}";
-        clientConnection = tryRequest("saveData" + query);
-        assertEquals(200, clientConnection.getResponseCode());
-        assertNotNull(serverInfo.getUserData());
-        clientConnection = tryRequest("wrapped" + query);
-        assertEquals(200, clientConnection.getResponseCode());
-        assertNotNull(serverInfo.getUserData());
-        clientConnection = tryRequest("wipeData");
-        assertEquals(200, clientConnection.getResponseCode());
-        resp = clientConnectToMap(clientConnection);
-        assertEquals("success", resp.get("result"));
-        assertNull(serverInfo.getUserData());
-
-
-
-        clientConnection.disconnect();
     }
+
+
+    /** tests for successfull wrapped Handler are in IntegrationTest class since they require calling other endpoints
+     * first
+     */
+    @Test
+    public void testSuccess() {}
 
 
 
