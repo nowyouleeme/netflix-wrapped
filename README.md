@@ -131,7 +131,6 @@ INDIVIDUAL EXPLANATIONS OF TESTS IN THE FILE ARE IN COMMENTS!
           1. tests that the MediaCarousel component renders the images as expected
         3. tests that the WrappedOverview component with mock empty data from empty.json renders properly with the expected message that we weren't able to generate their overview
     - `landing` is a subpackage with tests of the components used in the Landing page
-      - `Parsing.test` **KAREN TO DO**
       - `Uploader.test` is a test ensuring that the `Uploader` component is rendering properly
         1. tests that the Uploader component renders appropriately with the correct elements via aria-labels 
         2. tests that the interactions with the Uploader component elements causes the expected state changes
