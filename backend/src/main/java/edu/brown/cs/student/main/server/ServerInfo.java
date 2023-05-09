@@ -12,6 +12,8 @@ public class ServerInfo {
 
   /**
    * Constructor for our ServerInfo object, that is responsible for creating an empty userCSVs map
+   * @param reportGenerator the ReportGenerator that will be used to generate user's wrapped reports given the
+   *                        current csv in the server.
    */
   public ServerInfo(ReportGenerator reportGenerator) {
     // note thatusercsv initialized as null
@@ -24,17 +26,14 @@ public class ServerInfo {
    */
   public void saveUserData(Data.UserCSV userCSV) {
     this.currentUserCSV = userCSV;
-    //TODO: maybe might need something like 'checking if the password is correct'..
-    //  it's okay to replace a user's old csv with new csv, as long as the username and password are right
   }
 
   /**
-   * function to wipe the user csv data in our server
+   * function to wipe the user csv data in our server. If the current user csv is already null, no error is thrown but
+   * rather the field is set to null redundantly.
    */
   public void wipeUserData() {
-    this.currentUserCSV = null; //TODO: null handling
-    //TODO: maybe might need something like 'checking if the password is correct'..
-    //  maybe try catch in case data was unsaved (therefore not in map)
+    this.currentUserCSV = null;
   }
 
   /**
@@ -46,7 +45,7 @@ public class ServerInfo {
   }
 
   /**
-   * function that gets the user csv data stored in the server, this function is only used for testing purposes
+   * function that gets the user csv data stored in the server, this function is only used mostly for testing purposes
    * @return the Data.UserCSV object stored in the server
    */
   public Data.UserCSV getUserData() {

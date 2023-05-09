@@ -15,36 +15,34 @@ import spark.Request;
 import spark.Response;
 import spark.Route;
 
-/** Class that holds the handler for the "saveAnnotations" server endpoint. */
+/** Class that holds the handler for the "saveData" server endpoint. */
 public class SaveDataHandler implements Route {
   private ServerInfo serverInfo;
 
+  /**
+   * constructor for savedatahandler object
+   * @param serverInfo a ServerInfo object holding the data that our server maintains
+   */
   public SaveDataHandler(ServerInfo serverInfo) {
     this.serverInfo = serverInfo;
   }
 
   @Override
   public Object handle(Request request, Response response) {
-    String userCSVQuery0 = request.body();
-    System.out.println("raw csvquery hahahahaha  " + userCSVQuery0);
-
-    String userCSVQuery = userCSVQuery0.substring(1, userCSVQuery0.length() - 1).replace("\\", "");
-    System.out.println("editted csvquery hahahahaha  " + userCSVQuery);
     HashMap<String, String> errorMessages = new HashMap<>();
 
-
-    if (userCSVQuery == null) {
-      errorMessages.put("error_bad_json", "usercsv not provided");
+    String userCSVQuery0 = request.body();
+    if (userCSVQuery0 == null) {
+      errorMessages.put("error_bad_json", "request body not provided");
       return serialize(fail(errorMessages));
     }
 
 
+    String userCSVQuery = userCSVQuery0.substring(1, userCSVQuery0.length() - 1).replace("\\", "");
+
     try {
       Moshi moshi = new Moshi.Builder().build();
-      System.out.println("hello");
       Data.UserCSV parsedUserCSV = moshi.adapter(Data.UserCSV.class).fromJson(userCSVQuery);
-
-
 
 
       //this checks that the usercsv 2D array was actually created, aka checking query parameters
@@ -52,14 +50,8 @@ public class SaveDataHandler implements Route {
         errorMessages.put("error_bad_json", "usercsv not provided");
         return serialize(fail(errorMessages));
       }
-      System.out.println("parsedcsv  ");
-      for (int i = 0; i < parsedUserCSV.usercsv().length; i++) {
-        System.out.print(Arrays.toString(parsedUserCSV.usercsv()[i])  + "\n");
-      }
       //must be at least 2 rows
-      System.out.println(parsedUserCSV);
       if (parsedUserCSV.usercsv().length < 2) {
-        System.out.println(parsedUserCSV.usercsv().length);
         errorMessages.put("error_bad_request", "invalid netflix history csv");
         return serialize(fail(errorMessages));
       }
@@ -80,15 +72,10 @@ public class SaveDataHandler implements Route {
 
       //save the userCSV into the serverInfo
       serverInfo.saveUserData(parsedUserCSV);
-      System.out.println("csv in server  ");
-      for (int i = 0; i < serverInfo.getUserData().usercsv().length; i++) {
-        System.out.print(Arrays.toString(serverInfo.getUserData().usercsv()[i])  + "\n");
-      }
 
       //return serialized success response
       return serialize(success());
     } catch (Exception e) {
-      System.out.println(e.getMessage());
       errorMessages.put("error_bad_request", "unexpected error occured trying to save csv");
       return serialize(fail(errorMessages));
     }

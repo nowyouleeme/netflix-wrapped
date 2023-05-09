@@ -32,6 +32,10 @@ public class MovieHandler implements Route {
   public String[][] history;
 
 
+  /**
+   * constructor for a moviehandler object
+   * @param userData a 2d array representing user data
+   */
   public MovieHandler(String[][] userData) {
     history = userData;
   }
@@ -97,7 +101,7 @@ public class MovieHandler implements Route {
     }
   }
 
-
+  //success response record
   public record MovieSuccessResponse(String result, Object json) {
     public MovieSuccessResponse(Object json) {
       this("success", json);

@@ -27,6 +27,9 @@ import java.util.logging.Logger;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * class to hold integration tests for endpoints (saveData, wrapped, wipeData)
+ */
 public class IntegrationTest {
     /** Method that sets up the port and logger at the start of the testing suite execution. */
     @BeforeAll
@@ -38,7 +41,7 @@ public class IntegrationTest {
     ServerInfo serverInfo;
 
     /**
-     * Method that initalizes all the global variables and sets up the route mapping for the endpoints
+     * Method that initializes all the global variables and sets up the route mapping for the endpoints
      * before every test.
      */
     @BeforeEach
@@ -94,11 +97,9 @@ public class IntegrationTest {
         // Configure the connection (but don't actually send the request yet)
         URL requestURL = new URL("http://localhost:" + Spark.port() + "/" + apiCall);
         HttpURLConnection clientConnection = (HttpURLConnection) requestURL.openConnection();
-        System.out.println("bruh moment1");
         clientConnection.setRequestMethod("POST");
         clientConnection.setRequestProperty("Content-Type", "application/json");
         clientConnection.setRequestProperty("Accept", "application/json");
-        System.out.println("bruh moment2");
         clientConnection.setDoOutput(true);
         OutputStream outputStream = clientConnection.getOutputStream();
         byte[] input = requestBody.getBytes("utf-8");
@@ -106,7 +107,6 @@ public class IntegrationTest {
 //        outputStream.write(requestBody.getBytes());
         outputStream.flush();
         outputStream.close();
-        System.out.println("bruh moment3");
 
 
         clientConnection.connect();

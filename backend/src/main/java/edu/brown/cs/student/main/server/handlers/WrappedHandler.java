@@ -20,14 +20,14 @@ import spark.Route;
 // from
 // https://www.javatpoint.com/convert-json-file-to-string-in-java#:~:text=In%20Java%2C%20we%20can%20easily,intensive%20I%2FO%20operations).
 
-/** Class that holds the handler for the "loadRLTData" server endpoint. */
+/** Class that holds the handler for the "wrapped" server endpoint. */
 public class WrappedHandler implements Route {
     private final ServerInfo serverInfo;
 
     /**
      * Constructor for a WipeDataHandler object.
      *
-     * @param serverInfo - ServerInfo object that holds the currently loaded GeoJSON file.
+     * @param serverInfo - ServerInfo object that holds the currently loaded usercsv
      */
     public WrappedHandler(ServerInfo serverInfo) {
         this.serverInfo = serverInfo;
@@ -55,7 +55,6 @@ public class WrappedHandler implements Route {
 
 
         } catch (Exception e) {
-            System.out.println(e.getMessage()); // TODO: better error handling
             errorMessages.put("error_bad_json", e.getMessage());
             return serialize(fail(errorMessages));
         }
