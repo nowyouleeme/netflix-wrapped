@@ -72,7 +72,7 @@ def gen_data(arr):
     if len(ret) > 150:
         ret = random.sample(ret, 150)
     elif len(ret) == 0:
-        return 0
+        return np.array([])
     elif len(ret) < 150:
         dup = random.choices(ret, k=150 - len(ret))
         ret.extend(dup)
@@ -125,7 +125,7 @@ def prediction(path):
     print(path)
     csv = pd.read_csv(path).to_numpy()
     inputs = gen_data(csv)
-    if inputs == 0:
+    if inputs.size == 0:
         return '\" \"'
     inputs = inputs.astype('int32').reshape((1,150,44))
     prediction_batch = model.predict(inputs)
