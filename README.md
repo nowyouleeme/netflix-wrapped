@@ -3,8 +3,8 @@
 ## Project Details
 ### Contributors
 UI Design - klee161 <br />
-Frontend - klee161, khu21 <br />
-Backend - khu21, dhan26, jcha17 <br />
+Frontend development - klee161, khu21 <br />
+Backend development - khu21, dhan26, jcha17 <br />
 ML modeling - jcha17 <br />
 ### Project Description
 Currently, Netflix does not offer a “Netflix Wrapped” feature, and thus Netflix users seem to have no way of easily tracking and analyzing their viewing history and trends. Knowledge about this problem was gathered through various sources, including articles discussing the currently existing “Spotify Wrapped” feature and streaming services; user interviews with roommates, friends, and online forum users; and personal experience from group members with losing track of their Netflix activity.
