@@ -96,6 +96,8 @@ INDIVIDUAL EXPLANATIONS OF TESTS IN THE FILE ARE IN COMMENTS!
   - `ShowSectionTest`: Unit and Integration Testing for show section creation. Tests varied informtation such as most watched movies, if top 5 movies are getting generated even if the watch history has <5 titles, etc.
   - `TopGenresTest`: Unit and Integration Testing for top genres creation. Tests for <5 titles, and other edge cases.
   - `TotalMinTest`: Unit and Integration Testing for total minutes creation.
+- `python test`
+  - Machine Learning model tested by validation set in `model.fit()` and `model.evaluate()`. This can be regarded as mock testing since we generated mock data and trained/tested the model.
 ### Here is an overview of our frontend tests
 - `test` is a package with our frontend tests (more on this package below)
   - `components` is a subpackage with tests of the components in the `components` package, such as rendering and interactions with populated and unpopulated mock data that would be sent by the backend
