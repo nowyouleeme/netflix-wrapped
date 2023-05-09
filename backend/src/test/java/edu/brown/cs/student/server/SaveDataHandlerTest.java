@@ -39,6 +39,7 @@ public class SaveDataHandlerTest {
         Logger.getLogger("").setLevel(Level.WARNING);
     }
 
+    ServerInfo serverInfo;
     /**
      * Method that initalizes all the global variables and sets up the route mapping for the endpoints
      * before every test.
@@ -46,7 +47,7 @@ public class SaveDataHandlerTest {
     @BeforeEach
     public void setup() {
         MockRGenerator mockGenerator = new MockRGenerator();
-        ServerInfo serverInfo = new ServerInfo(mockGenerator);
+        serverInfo = new ServerInfo(mockGenerator);
         // In fact, restart the entire Spark server for every test!
         Spark.post("/saveData", new SaveDataHandler(serverInfo));
         Spark.init();
@@ -75,11 +76,9 @@ public class SaveDataHandlerTest {
         // Configure the connection (but don't actually send the request yet)
         URL requestURL = new URL("http://localhost:" + Spark.port() + "/" + apiCall);
         HttpURLConnection clientConnection = (HttpURLConnection) requestURL.openConnection();
-        System.out.println("bruh moment1");
         clientConnection.setRequestMethod("POST");
         clientConnection.setRequestProperty("Content-Type", "application/json");
         clientConnection.setRequestProperty("Accept", "application/json");
-        System.out.println("bruh moment2");
         clientConnection.setDoOutput(true);
         OutputStream outputStream = clientConnection.getOutputStream();
         byte[] input = requestBody.getBytes("utf-8");
@@ -87,7 +86,6 @@ public class SaveDataHandlerTest {
 //        outputStream.write(requestBody.getBytes());
         outputStream.flush();
         outputStream.close();
-        System.out.println("bruh moment3");
 
 
         clientConnection.connect();
@@ -111,7 +109,7 @@ public class SaveDataHandlerTest {
     }
 
 
-    /** tests saveData Handler without providing saveData returns bad json response */
+    /** tests saveData Handler cases with bad json response */
     @Test
     public void testBadJSON() throws IOException {
         //test for no parameters.
@@ -154,7 +152,7 @@ public class SaveDataHandlerTest {
 
 
 
-    /** tests saveDataHandler without providing saveData returns bad request response */
+    /** tests saveDataHandler cases with bad request response */
     @Test
     public void testBadRequest() throws IOException {
         //test for too few rows [[title, date]]
@@ -246,9 +244,27 @@ public class SaveDataHandlerTest {
     }
 
 
-    /** tests saveData Handler without providing saveData returns bad request response */
+    /** tests saveData singular call success case */
     @Test
     public void testSuccess() throws IOException {
+
+        //test that a csv is successful
+        String query = "{{{\"usercsv\":[[\"Title\",\"Date\"],[\"Crash%20Landing%20on%20You:%20Episode16\",\"3/26/23\"]]}}}";
+        HttpURLConnection clientConnection = tryRequest("saveData", query);
+        assertEquals(200, clientConnection.getResponseCode());
+
+        Map resp = clientConnectToMap(clientConnection);
+        assertEquals("success", resp.get("result"));
+        assertEquals(serverInfo.getUserData().usercsv().length, 2);
+
+
+        clientConnection.disconnect();
+    }
+
+
+    /** tests saveData multiple call success cases */
+    @Test
+    public void testMultipleSuccess() throws IOException {
 
         //test that a 2row csv is successful
         String query = "{{{\"usercsv\":[[\"Title\",\"Date\"],[\"Crash%20Landing%20on%20You:%20Episode16\",\"3/26/23\"]]}}}";
@@ -257,6 +273,7 @@ public class SaveDataHandlerTest {
 
         Map resp = clientConnectToMap(clientConnection);
         assertEquals("success", resp.get("result"));
+        assertEquals(serverInfo.getUserData().usercsv().length, 2);
 
         //tests that a 3row csv is successful
         query = "{{{\"usercsv\":[[\"Title\",\"Date\"],[\"Crash%20Landing%20on%20You:%20Episode16\",\"3/26/23\"]," +
@@ -266,6 +283,7 @@ public class SaveDataHandlerTest {
 
         resp = clientConnectToMap(clientConnection);
         assertEquals("success", resp.get("result"));
+        assertEquals(serverInfo.getUserData().usercsv().length, 3);
 
         //tests that a 4row csv is successful
         query = "{{{\"usercsv\":[[\"Title\",\"Date\"],[\"Crash%20Landing%20on%20You:%20Episode16\",\"3/26/23\"]," +
@@ -273,6 +291,7 @@ public class SaveDataHandlerTest {
                 "[\"The%20Garden%20of%20Words\",\"3/18/2020\"]]}}}";
         clientConnection = tryRequest("saveData", query);
         assertEquals(200, clientConnection.getResponseCode());
+        assertEquals(serverInfo.getUserData().usercsv().length, 4);
 
         resp = clientConnectToMap(clientConnection);
         assertEquals("success", resp.get("result"));
@@ -293,6 +312,7 @@ public class SaveDataHandlerTest {
 
         resp = clientConnectToMap(clientConnection);
         assertEquals("success", resp.get("result"));
+        assertEquals(serverInfo.getUserData().usercsv().length, 10);
 
         //test success for extra queryParam name
         query = "{{{\"usercsv\":[[\"Title\",\"Date\"],[\"Crash%20Landing%20on%20You:%20Episode16\",\"3/26/23\"]]," +
@@ -302,10 +322,12 @@ public class SaveDataHandlerTest {
 
         resp = clientConnectToMap(clientConnection);
         assertEquals("success", resp.get("result"));
+        assertEquals(serverInfo.getUserData().usercsv().length, 2);
 
 
         clientConnection.disconnect();
     }
+
 
 
 

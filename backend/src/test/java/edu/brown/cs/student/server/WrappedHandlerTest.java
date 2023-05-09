@@ -23,6 +23,9 @@ import java.util.logging.Logger;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * class to test wrapped enpoint
+ */
 public class WrappedHandlerTest {
     /** Method that sets up the port and logger at the start of the testing suite execution. */
     @BeforeAll
@@ -76,6 +79,12 @@ public class WrappedHandlerTest {
         return clientConnection;
     }
 
+    /**
+     * turns http url connection intoa map representing the contents of the http url connection
+     * @param clientConnection http url connection to convert
+     * @return map representing the contents of the http url connection
+     * @throws IOException
+     */
     public Map clientConnectToMap(HttpURLConnection clientConnection) throws IOException {
         Moshi moshi = new Moshi.Builder().build();
         JsonAdapter<Map<String, Object>> adapter =
@@ -89,7 +98,7 @@ public class WrappedHandlerTest {
 
 
 
-    /** tests wipeData Handler without providing wipeData returns bad json response */
+    /** tests wipeData Handler cases that return bad json response */
     @Test
     public void testBadJSON() throws IOException {
         //test for > 0 parameters. (1)
@@ -114,10 +123,10 @@ public class WrappedHandlerTest {
         clientConnection.disconnect();
     }
 
-    /** tests wrapped when there's no user csv saved
-     */
+    /** tests wrapped endpoint calls that return bad request responses  */
     @Test
     public void testBadRequest() throws IOException {
+        //when wrapped is the first call, so there's no data in server to generate the wrapped report with
         assertNull(serverInfo.getUserData());
         HttpURLConnection clientConnection = tryRequest("wrapped");
         assertEquals(200, clientConnection.getResponseCode());
@@ -129,8 +138,8 @@ public class WrappedHandlerTest {
     }
 
 
-    /** tests for successfull wrapped Handler are in IntegrationTest class since they require calling other endpoints
-     * first
+    /** tests for successful wrapped Handler are in IntegrationTest class since they require calling other endpoints
+     * first (saveData)
      */
     @Test
     public void testSuccess() {}

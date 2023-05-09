@@ -96,7 +96,7 @@ public class WipeDataHandlerTest {
     }
 
 
-    /** tests wipeData Handler without providing wipeData returns bad json response */
+    /** tests wipeData Handler cases with bad json response */
     @Test
     public void testBadJSON() throws IOException {
         //test for > 0 parameters. (1)
@@ -122,12 +122,11 @@ public class WipeDataHandlerTest {
     }
 
 
-    /** tests wipeData Handler without providing wipeData returns bad request response,
-     * includes integration tests dealing with wiping data.
+    /** tests single call to wipeData is successful. Integration tests with wipeData in IntegrationTest class
      */
     @Test
     public void testSuccess() throws IOException {
-        //test that wipe works
+        //test that wipe works as initial call
         assertNull(serverInfo.getUserData());
         HttpURLConnection clientConnection = tryRequest("wipeData");
         assertEquals(200, clientConnection.getResponseCode());

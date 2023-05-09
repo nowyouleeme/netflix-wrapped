@@ -9,21 +9,20 @@ import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.Map;
 
-import edu.brown.cs.student.main.user.UserID;
 import spark.QueryParamsMap;
 import spark.Request;
 import spark.Response;
 import spark.Route;
 
 
-/** Class that holds the handler for the "loadRLTData" server endpoint. */
+/** Class that holds the handler for the "wipeData" server endpoint. */
 public class WipeDataHandler implements Route {
   private final ServerInfo serverInfo;
 
   /**
    * Constructor for a WipeDataHandler object.
    *
-   * @param serverInfo - ServerInfo object that holds the currently loaded GeoJSON file.
+   * @param serverInfo - ServerInfo object that holds the currently loaded usercsv
    */
   public WipeDataHandler(ServerInfo serverInfo) {
     this.serverInfo = serverInfo;
@@ -42,10 +41,8 @@ public class WipeDataHandler implements Route {
     try {
       //wipe userCSV from the serverInfo
       serverInfo.wipeUserData();
-      System.out.print("user data in server info\n" + serverInfo.getUserData() + "\n");
       return serialize(success());
     } catch (Exception e) {
-      System.out.println(e.getMessage());
       errorMessages.put("error_bad_request", "unexpected error occured trying to wipe data");
       return serialize(fail(errorMessages));
     }

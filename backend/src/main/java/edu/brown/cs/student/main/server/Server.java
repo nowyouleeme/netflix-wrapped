@@ -141,7 +141,6 @@ public class Server {
 
     // set up loadData and wipeData and wrapped endpoints
     Spark.post("saveData", new SaveDataHandler(serverInfo));
-
     Spark.get("wipeData", new WipeDataHandler(serverInfo));
     Spark.get("wrapped", new WrappedHandler(serverInfo));
 
