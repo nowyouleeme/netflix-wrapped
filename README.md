@@ -2,7 +2,7 @@
 
 ## Project Details
 ### Contributors
-UI Design - klee161
+UI Design - klee161 <br />
 Frontend - klee161, khu21 <br />
 Backend - khu21, dhan26, jcha17 <br />
 ML modeling - jcha17 <br />
