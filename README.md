@@ -181,3 +181,6 @@ tests individually, go to the test class you'd like to run and click the play bu
 ## Citations
 Sending `POST` requests: https://stackoverflow.com/questions/66607373/how-to-send-a-post-request-on-typescript, https://bobbyhadz.com/blog/typescript-http-request#making-http-post-requests-in-typescript <br />
 React Routing: https://reactrouter.com/en/main
+Polar chart display: https://react-chartjs-2.js.org/
+Button UI: https://mui.com/material-ui/api/button/
+CSV to JSON parser: https://github.com/Keyang/node-csvtojson
